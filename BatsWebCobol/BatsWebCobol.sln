@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{535C04D7-A2A5-47C7-83E0-B340A995CD1F}") = "BatsWebC", "WebApplication1\BatsWebC.cblproj", "{306ADEB2-F452-4BD5-94E2-8A4C9EEF2497}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{306ADEB2-F452-4BD5-94E2-8A4C9EEF2497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{306ADEB2-F452-4BD5-94E2-8A4C9EEF2497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{306ADEB2-F452-4BD5-94E2-8A4C9EEF2497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{306ADEB2-F452-4BD5-94E2-8A4C9EEF2497}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
