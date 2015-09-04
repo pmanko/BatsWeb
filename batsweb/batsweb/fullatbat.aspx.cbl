@@ -133,6 +133,7 @@
            MOVE "RA" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
            move 1 to aa.
+           set Label4::Text to BAT666-WF-VIDEO-TITL(1).
        lines-loop.
            if aa > BAT666-NUM-AB
                go to lines-done.

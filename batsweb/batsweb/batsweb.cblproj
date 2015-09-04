@@ -50,10 +50,22 @@
     <Reference Include="MicroFocus.COBOL.RuntimeServices">
       <Name>MicroFocus.COBOL.RuntimeServices</Name>
     </Reference>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization">
+      <Name>System.Runtime.Serialization</Name>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Name>System.ServiceModel</Name>
+    </Reference>
+    <Reference Include="System.ServiceModel.Web">
+      <Name>System.ServiceModel.Web</Name>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -72,6 +84,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="test.aspx" />
     <Content Include="fullatbat.aspx" />
     <Content Include="gameSummary.aspx" />
     <Content Include="mainmenu.aspx" />
@@ -88,6 +101,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT301SE.CBL">
@@ -177,12 +191,22 @@
     <Compile Include="mainmenu.aspx.designer.cbl">
       <DependentUpon>mainmenu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service1.svc.cbl">
+      <DependentUpon>Service1.svc</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cbl">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cbl">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cbl">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cbl">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -331,7 +355,9 @@
     <None Include="App_Data\MAJORS\VIDIDX.IDX">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Vids.html" />
     <None Include="Images\logo.png" />
+    <None Include="Service1.svc" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="MicroFocus.COBOL.RuntimeServices" />

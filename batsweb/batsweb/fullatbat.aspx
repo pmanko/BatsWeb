@@ -142,6 +142,10 @@
         .auto-style108 {
             width: 160px;
         }
+        .auto-style109 {
+            width: 922px;
+            height: 224px;
+        }
     </style>
 </head>
 <body>
@@ -315,7 +319,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style24" colspan="8">
-                        <asp:Panel ID="Panel8" runat="server" GroupingText="List of At Bats">
+                        <asp:Panel ID="Panel8" runat="server" GroupingText="List of At Bats" Height="873px">
                             <table>
                                 <tr>
                                     <td align="center" class="auto-style104"><strong>Double-click an at bat to show its detail</strong></td>
@@ -331,7 +335,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="auto-style104"></td>
+                                    <td class="auto-style109">Here:
+                                        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                                    </td>
                                 </tr>
                             </table>
                         </asp:Panel>

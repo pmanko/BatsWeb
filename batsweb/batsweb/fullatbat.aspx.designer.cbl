@@ -317,5 +317,13 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
+      *>> Label4 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Label4 type System.Web.UI.WebControls.Label protected.
 
        end class.
