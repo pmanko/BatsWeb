@@ -1,350 +1,184 @@
 ﻿<%@ Page AutoEventWireup="true" CodeBehind="fullatbat.aspx.cbl" Inherits="batsweb.fullatbat" %>
 
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="'en">
 <head runat="server">
     <title></title>
-    <style type="text/css">
-        .auto-style1 {
-            width: 100%;
-            height: 122px;
-            margin-right: 0px;
-        }
-        .auto-style7 {
-            width: 238px;
-            height: 30px;
-        }
-        .auto-style19 {
-            width: 523px;
-            height: 33px;
-        }
-        .auto-style21 {
-            width: 267px;
-            height: 27px;
-        }
-        .auto-style24 {
-        }
-        .auto-style29 {
-            width: 274px;
-            height: 94px;
-        }
-        .auto-style30 {
-            height: 25px;
-            width: 100px;
-        }
-        .auto-style31 {
-            width: 100px;
-        }
-        .auto-style32 {
-            height: 26px;
-        }
-        .auto-style33 {
-            height: 26px;
-        }
-        .auto-style34 {
-            height: 26px;
-            width: 92px;
-        }
-        .auto-style37 {
-            width: 274px;
-            height: 102px;
-        }
-        .auto-style40 {
-            height: 25px;
-            width: 94px;
-        }
-        .auto-style41 {
-            width: 94px;
-        }
-        .auto-style46 {
-            width: 523px;
-            height: 59px;
-        }
-        .auto-style49 {
-            width: 613px;
-            height: 59px;
-        }
-        .auto-style50 {
-            width: 613px;
-            height: 33px;
-        }
-        .auto-style52 {
-            width: 84px;
-            height: 59px;
-        }
-        .auto-style53 {
-            width: 84px;
-            height: 33px;
-        }
-        .auto-style58 {
-            width: 283px;
-            height: 59px;
-        }
-        .auto-style59 {
-            width: 283px;
-            height: 33px;
-        }
-        .auto-style61 {
-            width: 309px;
-            height: 59px;
-        }
-        .auto-style62 {
-            width: 309px;
-            height: 33px;
-        }
-        .auto-style65 {
-            width: 61px;
-            height: 59px;
-        }
-        .auto-style66 {
-            width: 61px;
-            height: 33px;
-        }
-        .auto-style68 {
-            width: 406px;
-            height: 59px;
-        }
-        .auto-style69 {
-            width: 406px;
-            height: 33px;
-        }
-        .auto-style75 {
-            height: 149px;
-        }
-        .auto-style76 {
-            width: 238px;
-            height: 29px;
-        }
-        .auto-style77 {
-            width: 267px;
-            height: 74px;
-        }
-        .auto-style102 {
-            height: 97px;
-        }
-        .auto-style103 {
-            height: 97px;
-        }
-        .auto-style104 {
-            width: 922px;
-        }
-        .auto-style106 {
-            width: 922px;
-            height: 451px;
-        }
-        #form1 {
-            height: 950px;
-            width: 973px;
-        }
-        .auto-style108 {
-            width: 160px;
-        }
-        .auto-style109 {
-            width: 922px;
-            height: 224px;
-        }
-    </style>
+    <link type="text/css" href="Content/bootstrap_original.css" rel="stylesheet" />
+    <link type="text/css" href="Styles/revamp.css" rel="stylesheet" />
+
+
+    <script type="text/javascript" src="Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="Scripts/angular.js"></script>
+    <script type="text/javascript" src="Scripts/fullatbat.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <asp:Panel ID="Panel6" runat="server" GroupingText="Report Settings" Height="948px" style="margin-bottom: 0px" Width="970px">
-            <table style="height: 381px; width: 943px" title="Report Settings">
-                <tr>
-                    <td class="auto-style24" rowspan="3" valign="top">
-                        <table style="width: 265px">
-                            <tr>
-                                <td class="auto-style29">
-                                    <asp:Panel ID="Panel1" runat="server" GroupingText="Start Date" Height="90px" style="margin-left: 0px; margin-right: 0px; margin-top: 0px" Width="278px">
-                                        <table style="width: 260px">
-                                            <tr>
-                                                <td class="auto-style30">
-                                                    <asp:RadioButton ID="RadioButton1" runat="server" GroupName="startDate" Text="All Games" />
-                                                </td>
-                                                <td class="auto-style40"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="auto-style31">
-                                                    <asp:RadioButton ID="RadioButton2" runat="server" GroupName="startDate" Text="Start Date:" />
-                                                </td>
-                                                <td class="auto-style41">
-                                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="DateTime" Width="111px"></asp:TextBox>
-                                                    <cc1:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" BehaviorID="TextBox1_CalendarExtender" TargetControlID="TextBox1" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </asp:Panel>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="auto-style37" valign="top">
-                                    <asp:Panel ID="Panel7" runat="server" GroupingText="End Date" Height="41px" HorizontalAlign="Center" width="278px">
-                                        <table style="width: 261px">
-                                            <tr>
-                                                <td class="auto-style34">
-                                                    <asp:RadioButton ID="RadioButton3" runat="server" GroupName="endDate" Text="All Games" />
-                                                </td>
-                                                <td class="auto-style32"></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="auto-style34">
-                                                    <asp:RadioButton ID="RadioButton4" runat="server" GroupName="endDate" Text="End Date:" />
-                                                </td>
-                                                <td class="auto-style33">
-                                                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
-                                                    <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="auto-style32" colspan="2">
-                                                    <asp:Button ID="Button3" runat="server" Height="26px" Text="Date One-Clicks" />
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </asp:Panel>
-                                    <br />
-                                    <br />
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td class="auto-style75" colspan="4" valign="top">
-                        <asp:Panel ID="Panel2" runat="server" GroupingText="Pitcher" height="148px" HorizontalAlign="Center" style="margin-right: 0px; margin-left: 6px;" Width="277px">
-                            <table class="auto-style1">
-                                <tr>
-                                    <td class="auto-style76">
-                                        <asp:Panel ID="Panel3" runat="server" GroupingText="Current Pitcher Selection" HorizontalAlign="Center" style="font-size: small" height="41px" Width="267px">
-                                            <asp:TextBox ID="TextBox2" runat="server" style="text-align: left"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style7">
-                                        <asp:Button ID="Button1" runat="server" Text="Select Pitcher" OnClick="Button1_Click" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </td>
-                    <td class="auto-style75" colspan="3" valign="top">
-                        <asp:Panel ID="Panel4" runat="server" GroupingText="Batter" height="145px" HorizontalAlign="Center" width="277px">
-                            <table>
-                                <tr>
-                                    <td class="auto-style21">
-                                        <asp:Panel ID="Panel5" runat="server" GroupingText="Current Batter Selection" style="font-size: small">
-                                            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-                                        </asp:Panel>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style77">
-                                        <asp:Button ID="Button2" runat="server" Text="Select Batter" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="auto-style52">Result1:</td>
-                    <td class="auto-style65">
-                        <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True">
-                        </asp:DropDownList>
-                    </td>
-                    <td align="right" class="auto-style58">Runners:</td>
-                    <td class="auto-style61">
-                        <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
-                        </asp:DropDownList>
-                    </td>
-                    <td align="right" class="auto-style68">Inn:</td>
-                    <td class="auto-style46">
-                        <asp:DropDownList ID="DropDownList5" runat="server" OnSelectedIndexChanged="DropDownList5_SelectedIndexChanged">
-                        </asp:DropDownList>
-                    </td>
-                    <td class="auto-style49">
-                        <asp:Button ID="Button4" runat="server" Text="Reset" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" class="auto-style53">Result2:</td>
-                    <td class="auto-style66">
-                        <asp:DropDownList ID="DropDownList2" runat="server" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
-                        </asp:DropDownList>
-                    </td>
-                    <td align="right" class="auto-style59">Outs:</td>
-                    <td class="auto-style62">
-                        <asp:DropDownList ID="DropDownList4" runat="server">
-                        </asp:DropDownList>
-                    </td>
-                    <td class="auto-style69"></td>
-                    <td class="auto-style19"></td>
-                    <td class="auto-style50"></td>
-                </tr>
-                <tr>
-                    <td class="auto-style103" valign="top">
-                        <asp:CheckBoxList ID="CheckBoxList1" runat="server" Width="230px">
-                            <asp:ListItem>Maximum At Bats:</asp:ListItem>
-                            <asp:ListItem>Sort At Bats by Inning</asp:ListItem>
-                            <asp:ListItem>Sort At Bats by Batter</asp:ListItem>
-                            <asp:ListItem>Sort At Bats Oldest - Newest</asp:ListItem>
-                        </asp:CheckBoxList>
-                        <asp:Panel ID="Panel9" runat="server" style="z-index: 1; left: 397px; top: 254px; position: absolute; height: 14px; width: 44px" Visible="False">
-                            <table style="height: 111px; width: 239px">
-                                <tr>
-                                    <td align="center" class="auto-style108">
-                                        <asp:Label ID="Label2" runat="server" Text="Error Message"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" class="auto-style108">
-                                        <asp:Label ID="Label3" runat="server" Text="Hey there's an error"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="center" class="auto-style108">
-                                        <asp:Button ID="Button6" runat="server" Text="Button" />
-                                        <asp:Button ID="Button7" runat="server" Text="Button" />
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                        <asp:TextBox ID="TextBox5" runat="server" style="z-index: 1; left: 185px; top: 288px; position: absolute" Width="45px"></asp:TextBox>
-                    </td>
-                    <td class="auto-style102" colspan="7">
-                        <asp:Button ID="Button5" runat="server" style="z-index: 1; left: 821px; top: 357px; position: absolute" Text="Show At Bats" OnClick="Button5_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td class="auto-style24" colspan="8">
-                        <asp:Panel ID="Panel8" runat="server" GroupingText="List of At Bats" Height="873px">
-                            <table>
-                                <tr>
-                                    <td align="center" class="auto-style104"><strong>Double-click an at bat to show its detail</strong></td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style104">
-                                        <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Label" Width="910px"></asp:Label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style106">
-                                        <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style109">Here:
-                                        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-                                    </td>
-                                </tr>
-                            </table>
-                        </asp:Panel>
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-    </form>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><strong>BatsWeb</strong></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="mainmenu.aspx">Main Menu<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="mainmenu.aspx">Full At-Bat</a></li>
+                    <li><a href="#">Videos</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pmanko<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+    </div>
+
+    <div class="container main-container">
+
+        <form id="form1" runat="server">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:Panel ID="Panel6" runat="server" GroupingText="Report Settings">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Date Range
+                            </div>
+                            <div class="list-group">
+                                <div class="list-group-item">
+                                    <h4>Start Date</h4>
+                                    <asp:RadioButton ID="RadioButton1" runat="server" GroupName="startDate" Text="All Games" />
+                                    <asp:RadioButton ID="RadioButton2" runat="server" GroupName="startDate" Text="Start Date:" />
+                                    <asp:TextBox ID="TextBox1" runat="server" TextMode="DateTime" CssClass="form-control"></asp:TextBox>
+                                </div>
+                                <div class="list-group-item">
+                                    <h4>End Date</h4>
+                                    <asp:RadioButton ID="RadioButton3" runat="server" GroupName="endDate" Text="All Games" />
+                                    <asp:RadioButton ID="RadioButton4" runat="server" GroupName="endDate" Text="End Date:" />
+                                    <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <asp:Button ID="Button3" runat="server" Text="Date One-Clicks" CssClass="btn btn-sm btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Current Pitcher
+                            </div>
+                            <div class="panel-body">
+                                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Button ID="Button1" runat="server" Text="Select Pitcher" OnClick="Button1_Click" CssClass="btn btn-primary" />
+
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Current Batter
+                            </div>
+
+                        <div class="panel-body">            
+                            <div class="input-group">
+                                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:Button ID="Button2" runat="server" Text="Select Batter" CssClass="btn btn-primary"/>
+                            </div>                
+                        </div>
+                        </div>
+
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="input-group">
+                                    <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="">
+                                        <asp:ListItem>Maximum At Bats:</asp:ListItem>
+                                        <asp:ListItem>Sort At Bats by Inning</asp:ListItem>
+                                        <asp:ListItem>Sort At Bats by Batter</asp:ListItem>
+                                        <asp:ListItem>Sort At Bats Oldest - Newest</asp:ListItem>
+                                    </asp:CheckBoxList>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Result1:</label>
+                                <asp:DropDownList ID="DropDownList1" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" AutoPostBack="True" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Runners:</label>
+                                <asp:DropDownList ID="DropDownList3" runat="server" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Inn:</label>
+                                <asp:DropDownList ID="DropDownList5" runat="server" OnSelectedIndexChanged="DropDownList5_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Result2:</label>
+                                <asp:DropDownList ID="DropDownList2" runat="server" AppendDataBoundItems="True" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Outs:</label>
+                                <asp:DropDownList ID="DropDownList4" runat="server" CssClass="form-control"></asp:DropDownList>
+                            </div>
+                            <div class="col-lg-2">
+                            
+                                <%--<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>--%>
+                                <asp:Button ID="Button5" runat="server" Text="Show At Bats" OnClick="Button5_Click" class="btn btn-primary"/>
+                            </div>
+                            <div class="col-lg-2">
+                                <%--<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>--%>
+                                <asp:Button ID="Button4" runat="server" Text="Reset" class="btn btn-danger" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                    <asp:Panel ID="Panel8" runat="server" GroupingText="List of At Bats">
+                        <%--<h3><strong>Double-click an at bat to show its detail</strong></h3>--%>
+                        <%--<asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Label"></asp:Label>--%>
+                        <asp:ListBox ID="ListBox1" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" CssClass="form-control"></asp:ListBox>
+                        <asp:BulletedList ID="BulletedList2" runat="server" CssClass="list-group"></asp:BulletedList>
+
+                        <asp:HiddenField ID="vid_paths" runat="server" />
+                        <asp:HiddenField ID="vid_titles" runat="server" />
+                        <button id="show_videos" class="btn btn-lg btn-primary">Show Videos in BatsTube</button>
+
+                    </asp:Panel>
+                    </div>
+                </div>
+            </asp:Panel>
+        </form>
+    </div>
 </body>
 </html>

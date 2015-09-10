@@ -101,7 +101,6 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT301SE.CBL">
@@ -201,19 +200,19 @@
     <Compile Include="Site.Master.designer.cbl">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cbl">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cbl">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Content\bootstrap_superhero.css" />
+    <None Include="Content\bootstrap_blue.css" />
+    <None Include="Content\bootstrap_original.css" />
+    <None Include="Content\main.css" />
+    <None Include="Content\video-js.css" />
+    <None Include="Content\video-js.swf" />
+    <None Include="Scripts\app.js" />
     <None Include="App_Data\MAJORS\AB.DAT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -355,6 +354,29 @@
     <None Include="App_Data\MAJORS\VIDIDX.IDX">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Scripts\angular-mocks.js" />
+    <None Include="Scripts\angular.js" />
+    <None Include="Scripts\angular.min.js" />
+    <None Include="Scripts\angular.min.js.map" />
+    <None Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\bootstrap.min.js" />
+    <None Include="Scripts\fullatbat.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-1.10.2.js" />
+    <None Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery.validate.js" />
+    <None Include="Scripts\jquery.validate.min.js" />
+    <None Include="Scripts\jquery.validate.unobtrusive.js" />
+    <None Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="Scripts\angular-route.js" />
+    <None Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Scripts\respond.js" />
+    <None Include="Scripts\respond.min.js" />
+    <None Include="Scripts\video.js" />
+    <None Include="Scripts\_references.js" />
+    <None Include="Styles\revamp.css" />
     <None Include="Vids.html" />
     <None Include="Images\logo.png" />
     <None Include="Service1.svc" />

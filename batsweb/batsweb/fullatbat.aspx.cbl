@@ -65,8 +65,6 @@
                returning mem-flag
 
            set address of BAT666-DIALOG-FIELDS  to SH-BAT666-MEM-POINTER
-           set Panel9::Height to 111
-           set Panel9::Width to 239
       *     set Panel9::Visible to true.   
            MOVE BAT666-TEAM-NAME(DropDownList1::SelectedIndex + 1) to BAT666-SEL-TEAM
            MOVE BAT666-SEL-TEAM to BAT666-PITCHER-ROSTER-TEAM
@@ -116,9 +114,8 @@
        linkage section.
            COPY "C:\Users\Piotrek\SYDEXSOURCE\BATS\bat666_dg.CPB".   
        procedure division using by value sender as object e as type System.EventArgs.
-          declare mymsg = "This is a message!"
       *     if DropDownList4::SelectedItem = null
-          invoke type System.Web.UI.ScriptManager::RegisterStartupScript(self, type of self, "yourMessage", "window.onload = function(){alert('" & mymsg & "');}", true).
+      *   invoke type System.Web.UI.ScriptManager::RegisterStartupScript(self, type of self, "yourMessage", "window.onload = function(){alert('" & mymsg & "');}", true).
       *     if DropDownList1::SelectedItem = null
       *         invoke javaScript::Append("var userConfirmation = window.confirm('" + confirmMessage + "')")
       *         invoke javaScript::Append("__doPostBack('UserConfirmationPostBack',userConfirmation);")
@@ -132,10 +129,10 @@
 
            MOVE "RA" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           invoke ListBox1::Items::Clear
            move 1 to aa.
-           set Label4::Text to BAT666-WF-VIDEO-TITL(1).
        lines-loop.
-           if aa > BAT666-NUM-AB
+            if aa > BAT666-NUM-AB
                go to lines-done.
            invoke ListBox1::Items::Add(BAT666-T-LINE(aa))
            add 1 to aa.
@@ -163,6 +160,10 @@
        end method.
 
        method-id ListBox1_SelectedIndexChanged protected.
+       local-storage section.
+       01 getVidPaths type String. 
+       01 getVidTitles type String.
+       01 newListItem type ListItem.
        linkage section.
            COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
 
@@ -176,7 +177,31 @@
            set bat666rununit to self::Session::Item("rununit") as type RunUnit
        
            invoke bat666rununit::Call("BAT666WEBF")
-       
+           
+           set getVidPaths to ""
+           set getVidTitles to ""
+           invoke BulletedList2::Items::Clear
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT666-WF-VID-COUNT
+               go to lines-done.
+      *    set Label4::Text to Label4::Text & BAT666-WF-VIDEO-TITL(aa) & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & "<br/>" 
+           
+           set newListItem to new ListItem
+           set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
+           invoke newListItem::Attributes::Add("class", "list-group-item")
+           invoke BulletedList2::Items::Add(newListItem)
+           
+           set getVidPaths to getVidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
+           set getVidTitles to getVidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+           set vid_paths::Value to getVidPaths
+           set vid_titles::Value to getVidTitles
+      *    invoke self::Response::Redirect("Vids.html#?paths=" & getParams, false)
+
        end method.
 
        method-id DropDownList5_SelectedIndexChanged protected.
@@ -217,4 +242,9 @@
            goback.
        end method.
 
-       end class.
+       method-id Button8_Click protected.
+       linkage section.
+           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
+
+       procedure division using by value sender as object e as type System.EventArgs.
+       end method.
