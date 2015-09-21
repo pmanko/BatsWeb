@@ -1,0 +1,61 @@
+﻿<%@ Master AutoEventWireup="true" CodeBehind="Site.master.cbl" Inherits="batsweb.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="center" valign="center">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/logo.png" />
+                    </td>
+                    <td align="left">
+                        <div class="title">
+                        <h1>My Micro Focus COBOL ASP.NET Application</h1>
+                        </div>
+                    </td>
+                    <td align="right">
+			            <div class="loginDisplay">
+			                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+			                    <AnonymousTemplate>
+			                        [ <a href="~/Account/Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+			                    </AnonymousTemplate>
+			                    <LoggedInTemplate>
+			                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+			                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+			                    </LoggedInTemplate>
+			                </asp:LoginView>
+			            </div>
+                    </td>
+                </tr>
+            </table>
+            
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>
