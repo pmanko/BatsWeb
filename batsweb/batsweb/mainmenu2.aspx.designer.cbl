@@ -1,58 +1,42 @@
-﻿      $set sourceformat(variable)
+      $set sourceformat(variable)
 
       *> Namespace: batsweb
 
-       class-id batsweb._Default is partial.
+       class-id batsweb.mainmenu is partial.
 
        working-storage section.
       *>> <summary>
-      *>> TextBox4 control.
+      *>> form1 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 TextBox4 type System.Web.UI.WebControls.TextBox protected.
+       01 form1 type System.Web.UI.HtmlControls.HtmlForm protected.
       *>> <summary>
-      *>> TextBox1 control.
+      *>> Panel1 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 TextBox1 type System.Web.UI.WebControls.TextBox protected.
+       01 Panel1 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
-      *>> TextBox3 control.
+      *>> Panel2 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 TextBox3 type System.Web.UI.WebControls.TextBox protected.
+       01 Panel2 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
-      *>> TextBox2 control.
+      *>> gamesButton control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 TextBox2 type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
-      *>> loginButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 loginButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> Button3 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Button3 type System.Web.UI.WebControls.Button protected.
+       01 gamesButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button2 control.
       *>> </summary>
@@ -62,12 +46,36 @@
       *>> </remarks>
        01 Button2 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Label1 control.
+      *>> Button3 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Label1 type System.Web.UI.WebControls.Label protected.
+       01 Button3 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button4 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button4 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> atbatButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atbatButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button6 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button6 type System.Web.UI.WebControls.Button protected.
 
        end class.

@@ -18,9 +18,21 @@
         &nbsp;</p>
     <table class="auto-style1">
         <tr>
-            <td class="auto-style2">Login name:</td>
+            <td class="auto-style2">TEAM:</td>
+            <td>
+                <asp:TextBox ID="TextBox4" runat="server" Width="203px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style2">First name:</td>
             <td>
                 <asp:TextBox ID="TextBox1" runat="server" Width="203px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="auto-style2">Last name:</td>
+            <td>
+                <asp:TextBox ID="TextBox3" runat="server" Width="203px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -33,7 +45,9 @@
             <td class="auto-style2">
                 <asp:Button ID="loginButton" runat="server" PostBackUrl="~/mainmenu.aspx" Text="Login" />
             </td>
-            <td>&nbsp;</td>
+            <td  class="auto-style2">
+                <asp:Button ID="Button3" runat="server" Text="Test Password" OnClick="Button3_Click" />
+            </td>
         </tr>
         <tr>
             <td class="auto-style2">

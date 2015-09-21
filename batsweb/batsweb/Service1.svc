@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Debug="true" Service="batsweb.Service1" CodeBehind="Service1.svc.cbl" %>
