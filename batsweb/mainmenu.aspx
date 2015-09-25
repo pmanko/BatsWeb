@@ -1,10 +1,7 @@
-﻿<%@ Page AutoEventWireup="true" CodeBehind="mainmenu.aspx.cbl" Inherits="batsweb.mainmenu" %>
+﻿<%@ Page AutoEventWireup="true" MasterPageFile="~/Site.master" CodeBehind="mainmenu.aspx.cbl" Inherits="batsweb.mainmenu" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
     <style type="text/css">
         .auto-style1 {
             width: 34%;
@@ -39,13 +36,12 @@
             width: 88px;
         }
     </style>
-</head>
-<body>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
-        <div id="header">
-        <img src="sydex.png" style="width: 70px; height: 70px; float: left"/>Welcome to BATS! on the Web<img src="sydex.png" style="width: 70px; height: 70px; float: right"/>
-    </div>
+    <div class="container main-container">
 
+    <br />
 
     <h1>Game Summary</h1>
 
@@ -111,6 +107,7 @@
         </asp:Panel>
     
     </div>
+        <br />        <br />
         <asp:Panel ID="Panel4" runat="server" GroupingText="MISC." Height="93px" Width="415px">
             <table>
                 <tr>
@@ -133,5 +130,5 @@
         </asp:Panel>
     </form>
         </div>
-</body>
-</html>
+        </div>
+</asp:Content>

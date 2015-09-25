@@ -76,6 +76,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="EZvideo.aspx" />
     <Content Include="fullatbat.aspx" />
+    <Content Include="fullatbat_piotr.aspx" />
     <Content Include="gameSummary.aspx" />
     <Content Include="mainmenu.aspx" />
     <Content Include="Styles\Site.css" />
@@ -91,6 +92,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="batstube.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT301SE.CBL">
@@ -209,6 +211,13 @@
     <Compile Include="fullatbat.aspx.designer.cbl">
       <DependentUpon>fullatbat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="fullatbat_piotr.aspx.cbl">
+      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="fullatbat_piotr.aspx.designer.cbl">
+      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
+    </Compile>
     <Compile Include="gameSummary.aspx.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -232,6 +241,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cbl">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="batstube.aspx.cbl">
+      <DependentUpon>batstube.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="batstube.aspx.designer.cbl">
+      <DependentUpon>batstube.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -418,8 +434,40 @@
     <None Include="App_Data\TEMPmlb1.DAT" />
     <None Include="App_Data\TEMPmlb1.idx" />
     <None Include="App_Data\wininet.dll" />
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.svg" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Images\homeplateGREY.png" />
     <None Include="Images\logo.png" />
+    <None Include="Images\Play.png" />
+    <None Include="Images\SydexLogo.png" />
+    <None Include="Scripts\angular-route.js" />
+    <None Include="Scripts\angular.js" />
+    <None Include="Scripts\batstube_app.js" />
+    <None Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\fullatbat.js" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="Scripts\jquery-1.10.2.js" />
+    <None Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <None Include="Scripts\jquery.validate.js" />
+    <None Include="Scripts\jquery.validate.min.js" />
+    <None Include="Scripts\jquery.validate.unobtrusive.js" />
+    <None Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Scripts\respond.js" />
+    <None Include="Scripts\respond.min.js" />
+    <None Include="Scripts\video.js" />
+    <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
+    <None Include="Styles\bootstrap_blue.css" />
+    <None Include="Styles\bootstrap_original.css" />
+    <None Include="Styles\bootstrap_superhero.css" />
+    <None Include="Styles\main.css" />
+    <None Include="Styles\video-js.css" />
+    <None Include="Styles\video-js.swf" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="MicroFocus.COBOL.RuntimeServices" />

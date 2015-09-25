@@ -25,7 +25,7 @@
           invoke mybat666Data::populateData
           set self::Session["bat666data"] to mybat666Data.
 
-       invoke self::Response::Redirect("~/fullatbat.aspx")
+       invoke self::Response::Redirect("~/fullatbat_piotr.aspx")
 
        end method.
 
