@@ -228,7 +228,7 @@
     </Compile>
     <Compile Include="Site.Master.cbl">
       <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Site.Master.designer.cbl">
       <DependentUpon>Site.Master</DependentUpon>

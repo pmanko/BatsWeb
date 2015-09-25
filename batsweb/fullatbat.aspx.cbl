@@ -2,14 +2,14 @@
                 inherits type System.Web.UI.Page public.
 
        working-storage section.
-       COPY "C:\Users\Piotrek\sydexsource\shared\WS-SYS.CBL".
+       COPY "y:\sydexsource\shared\WS-SYS.CBL".
        01 bat666rununit         type RunUnit.
        01 BAT666WEBF                type BAT666WEBF.
        01 mydata type batsweb.bat666Data.
        
        method-id Page_Load protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
       *     invoke Button5::Attributes::Add("onclick", "return window.confirm('Are you sure?')")
@@ -88,7 +88,7 @@
        01 confirmMessage type String.
        01 gmDate        type Single.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
       *    declare mymsg = "This is a message!"
       *     if DropDownList4::SelectedItem = null
@@ -115,7 +115,7 @@
        
        method-id loadList protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -133,7 +133,7 @@
        
        method-id ListBox1_SelectedIndexChanged protected.
        linkage section.
-       COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+       COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -182,7 +182,7 @@
 
        method-id allStartRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -191,7 +191,7 @@
 
        method-id startDateRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -200,7 +200,7 @@
 
        method-id allEndRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
           set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -209,7 +209,7 @@
 
        method-id endDateRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
         set mydata to self::Session["bat666data"] as type batsweb.bat666Data
         set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -218,7 +218,7 @@
 
        method-id maxAtBatsCheckBox_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -232,7 +232,7 @@
 
        method-id sortByInningCheckBox_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -247,7 +247,7 @@
 
        method-id sortByBatterCheckBox_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -262,7 +262,7 @@
 
        method-id sortByOldCheckBox_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -277,7 +277,7 @@
 
        method-id allGamesButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -290,7 +290,7 @@
 
        method-id currentYearButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -310,7 +310,7 @@
 
        method-id pastYearButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -329,7 +329,7 @@
 
        method-id twoWeeksButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -349,7 +349,7 @@
 
        method-id currentMonthButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -368,7 +368,7 @@
 
        method-id twoMonthsButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -387,7 +387,7 @@
 
        method-id threeMonthsButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -406,7 +406,7 @@
 
        method-id teamDropDownList_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            invoke pitcherOKButton_ModalPopupExtender::Show
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
@@ -441,7 +441,7 @@
 
        method-id playerOKButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -464,7 +464,7 @@
 
        method-id playerListBox_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            invoke pitcherOKButton_ModalPopupExtender::Show
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
@@ -481,7 +481,7 @@
 
        method-id pPlayerButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -499,7 +499,7 @@
 
        method-id bPlayerButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -517,7 +517,7 @@
 
        method-id Result1_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -533,7 +533,7 @@
 
        method-id Result2_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -549,7 +549,7 @@
 
        method-id Runners_SelectedIndexChanged protected.
        linkage section.       
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -565,7 +565,7 @@
 
        method-id Innings_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -581,7 +581,7 @@
 
        method-id Outs_SelectedIndexChanged protected.
        linkage section.       
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -597,7 +597,7 @@
 
        method-id resetButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -625,7 +625,7 @@
 
        method-id pAllLeftButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -641,7 +641,7 @@
 
        method-id pAllButton_Click protected.
         linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -657,7 +657,7 @@
 
        method-id pAllRightButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -673,7 +673,7 @@
 
        method-id bAllLeftButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -689,7 +689,7 @@
 
        method-id bAllButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -705,7 +705,7 @@
 
        method-id bAllRightButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -721,7 +721,7 @@
 
        method-id pTeamButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -731,7 +731,7 @@
 
        method-id pTeamDropDownList_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -741,7 +741,7 @@
 
        method-id pTeamOKButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -756,7 +756,7 @@
 
        method-id pTeamLeftButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -766,7 +766,7 @@
 
        method-id pTeamRightButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -776,7 +776,7 @@
 
        method-id bTeamDropDownList_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -786,7 +786,7 @@
 
        method-id bTeamOKButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -801,7 +801,7 @@
 
        method-id bTeamButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -811,7 +811,7 @@
        
        method-id bTeamLeftButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -821,7 +821,7 @@
 
        method-id bTeamRightButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".  
+           COPY "Y:\SYDEXSOURCE\BATS\bat666_dg.CPB".  
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
