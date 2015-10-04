@@ -132,18 +132,44 @@
        end method.
        
        method-id ListBox1_SelectedIndexChanged protected.
+       local-storage section.
+       01 getVidPaths type String. 
+       01 getVidTitles type String.
+       01 newListItem type ListItem.
        linkage section.
        COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
+       
+       
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "Y" TO BAT666-T-SEL(ListBox1::SelectedIndex + 1).
            MOVE "               00000000000" TO BAT666-I-KEY.
            MOVE "VS" to BAT666-ACTION
-           set bat666rununit to self::Session::Item("666rununit")
-               as type RunUnit
+           set bat666rununit to self::Session::Item("666rununit") as type RunUnit
 
            invoke bat666rununit::Call("BAT666WEBF")
+           
+           set getVidPaths to ""
+           set getVidTitles to ""
+           invoke BulletedList2::Items::Clear
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT666-WF-VID-COUNT
+               go to lines-done.
+           set newListItem to new ListItem
+           set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
+           invoke newListItem::Attributes::Add("class", "list-group-item")
+           invoke BulletedList2::Items::Add(newListItem)
+           
+           set getVidPaths to getVidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
+           set getVidTitles to getVidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+           set vid_paths::Value to getVidPaths
+           set vid_titles::Value to getVidTitles
        end method.
 
 
