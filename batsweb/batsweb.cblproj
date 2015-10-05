@@ -438,6 +438,7 @@
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Images\1288A.mp4" />
     <None Include="Images\homeplateGREY.png" />
     <None Include="Images\logo.png" />
     <None Include="Images\Play.png" />

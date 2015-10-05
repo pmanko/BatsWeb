@@ -14,7 +14,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container body-content" ng-controller="VideoCtrl">
+    <div class="container body-content" ng-app="VidApp">
 
         <div class="jumbotron">
             <div class="input-group">
@@ -26,7 +26,7 @@
 
         </div>
 
-        <div class='row'>
+        <div class='row' ng-controller="VideoCtrl">
 
             <div class='col-lg-9 col-lg-push-3'>
                 <div class='row'>
@@ -44,7 +44,7 @@
                     <div class='col-lg-12'>
                         <div class='text-center'>
                             <button type="button" class="btn btn-default btn-lg" id='step-back' ng-click="stepBack()">
-                                <span class="glyphicon glyphicon-step-backward" aria-h  idden="true"></span> Step Back
+                                <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Step Back
                             </button>
                             <button type="button" class="btn btn-default btn-lg" id='play' ng-click="play()">
                                 <span class="glyphicon glyphicon-play" aria-hidden="true" data-toggle="button" aria-pressed="false"></span> Play
@@ -67,7 +67,7 @@
                     <div class="panel-heading">My Playlist</div>
 
                     <div class="list-group">
-                        <a class='list-group-item' ng-repeat="video in videos | filter:query" ng-class="{active: currentVideo == video}" ng-click="setCurrentVideo(video)">
+                        <a class='list-group-item' ng-repeat="video in videos | filter:query" ng-class="GetClass(video)" ng-click="setCurrentVideo(video)">
                             <h4>{{video.title}}</h4>
                             <p>{{video.path.substring(video.path.lastIndexOf('/')+1)}}</p>
                         </a>
