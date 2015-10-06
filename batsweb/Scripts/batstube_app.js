@@ -40,8 +40,6 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     else
         titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
 
-    alert(paths);
-
     $scope.videos = [];
     $scope.currentVideo = null;
 
@@ -83,14 +81,20 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
 
     $scope.setCurrentVideo = function (newVid) {
+
+
         $scope.model.currentVideo = newVid;
 
         videojs("main_vid").ready(function () {
             var myvid = this;
+            var currentRate = myvid.playbackRate();
 
-            this.src([{ type: "video/mp4", src: newVid.path }]);
-            this.addClass("embed-responsive-item");
-            this.play();
+
+
+            myvid.src([{ type: "video/mp4", src: newVid.path }]);
+            myvid.addClass("embed-responsive-item");
+            myvid.playbackRate(currentRate);
+            myvid.play();
         });
             
     };
@@ -123,10 +127,17 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.play = function () {
         videojs("main_vid").ready(function () {
             var myvid = this;
-
-            this.play();
+            myvid.playbackRate(1.0);
+            myvid.play();
         });
     };
+
+    $scope.slow = function () {
+        videojs("main_vid").ready(function () {
+            this.playbackRate(0.25);
+            this.play();
+        });
+    }
 
     $scope.pause = function () {
         videojs("main_vid").ready(function () {
@@ -134,18 +145,6 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
             this.pause();
         });
-    };
-
-    $scope.GetClass = function (val) {
-        console.log(val);
-        var ret;
-        console.log(val == $scope.model.currentVideo)
-        if (val == $scope.model.currentVideo)
-            ret = 'active';
-        else
-            ret = '';
-        console.log(ret);
-        return ret;
     };
 }]);
 

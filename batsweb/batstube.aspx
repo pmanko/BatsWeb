@@ -56,11 +56,14 @@
 							<button type="button" class="btn btn-default btn-lg" id='step-back' ng-click="stepBack()">
 								<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Step Back
 							</button>
-							<button type="button" class="btn btn-default btn-lg" id='play' ng-click="play()">
-								<span class="glyphicon glyphicon-play" aria-hidden="true" data-toggle="button" aria-pressed="false"></span> Play
-							</button>
 							<button type="button" class="btn btn-default btn-lg" id='pause' ng-click="pause()">
 								<span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause
+							</button>
+							<button type="button" class="btn btn-default btn-lg" id='slow' ng-click="slow()">
+								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true" data-toggle="button" aria-pressed="false"></span> Slow
+							</button>
+							<button type="button" class="btn btn-default btn-lg" id='play' ng-click="play()">
+								<span class="glyphicon glyphicon-play" aria-hidden="true" data-toggle="button" aria-pressed="false"></span> Play
 							</button>
 							<button type="button" class="btn btn-default btn-lg" id='step-forward' ng-click="stepForward()">
 								Step Forward
