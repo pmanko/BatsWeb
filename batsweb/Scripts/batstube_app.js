@@ -1,11 +1,32 @@
 ﻿var VidApp = angular.module('VidApp', ['ngRoute']);
 
+VidApp.controller('PathCtrl', ['$scope', function ($scope) {
+    $scope.sentVideos = [];
+    for (var i = 0; i < videoPaths.length; i++) {
+        if (videoPaths[i] != "") {
+            $scope.sentVideos.push(
+                {
+                    path: videoPaths[i],
+                    title: videoTitles[i]
+                }
+            );
+
+        }
+    };
+
+
+}]);
+
 VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-
-
     var paths = $location.search().paths;
     var titles = $location.search().titles;
     var network_path = false;
+
+    $scope.model = {
+        currentVideo: undefined
+    };
+
+
 
     if (paths) {
         path = paths.split(',');
@@ -19,34 +40,11 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     else
         titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
 
-    console.log(paths);
-    console.log(titles);
-
-
-    //var single_path = $location.search().paths.split(',')[0].replace(/ /g, '').replace(/"/, '');
-
-    //var cutoff_location = single_path.indexOf("App_Data");
-
-    //console.log(single_path);
-
-    //$http.get('/Service1.svc/DoWork').
-    //    success(function (response) {
-    //        $scope.videos = response.d;
-    //        $scope.currentVideo = $scope.videos[0]
-
-    //        videojs("main_vid", { }, function () {
-    //            this.src([{ type: "video/mp4", src: $scope.currentVideo }]);
-    //            this.height("auto");
-    //            this.width("auto"); 
-    //        });
-    //    });
+    alert(paths);
 
     $scope.videos = [];
     $scope.currentVideo = null;
 
-    $scope.model = {
-        currentVideo: undefined
-    };
 
     for (var i = 0; i < paths.length; i++) {
         if (paths[i].replace(/ /g, '') != "") {
@@ -65,14 +63,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
         }            
     }
-    //    .map(function (path) {
-    //    path
-    //});
 
-
-    console.log($scope.videos);
     $scope.model.currentVideo = $scope.videos[0];
-
 
     videojs("main_vid", { }, function () {
         this.src([{ type: "video/mp4", src: $scope.model.currentVideo.path }]);
