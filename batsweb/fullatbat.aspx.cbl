@@ -90,12 +90,6 @@
        linkage section.
            COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-      *    declare mymsg = "This is a message!"
-      *     if DropDownList4::SelectedItem = null
-      *    invoke type System.Web.UI.ScriptManager::RegisterStartupScript(self, type of self, "yourMessage", "window.onload = function(){alert('" & mymsg & "');}", true).
-      *     if DropDownList1::SelectedItem = null
-      *         invoke javaScript::Append("var userConfirmation = window.confirm('" + confirmMessage + "')")
-      *         invoke javaScript::Append("__doPostBack('UserConfirmationPostBack',userConfirmation);")
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            invoke type System.Single::TryParse(TextBox1::Text::ToString::Replace("/", ""), by reference gmDate)
@@ -114,28 +108,36 @@
        end method.
        
        method-id loadList protected.
+       local-storage section.
+       01 getVidPaths type String.
        linkage section.
            COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
        procedure division.
+           set getVidPaths to ""
+
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            invoke ListBox1::Items::Clear.
+           
            move 1 to aa.
        lines-loop.
            if aa > BAT666-NUM-AB
                go to lines-done.
            invoke ListBox1::Items::Add(" " & BAT666-T-LINE(aa))
+           set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
            add 1 to aa.
            go to lines-loop.
        lines-done.     
       *     set ListBox1::TopIndex to ListBox1::Items::Count - 1.
+           set self::Session::Item("testing") to getVidPaths
+     
        end method.
        
        method-id ListBox1_SelectedIndexChanged protected.
        local-storage section.
-       01 getVidPaths type String. 
-       01 getVidTitles type String.
-       01 newListItem type ListItem.
+       01 vidPaths type String. 
+       01 vidTitles type String.
+      *01 newListItem type ListItem.
        linkage section.
        COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB".
        
@@ -150,26 +152,28 @@
 
            invoke bat666rununit::Call("BAT666WEBF")
            
-           set getVidPaths to ""
-           set getVidTitles to ""
-           invoke BulletedList2::Items::Clear
+           set vidPaths to ""
+           set vidTitles to ""
+      *    invoke BulletedList2::Items::Clear
            move 1 to aa.
        lines-loop.
            if aa > BAT666-WF-VID-COUNT
                go to lines-done.
-           set newListItem to new ListItem
-           set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
-           invoke newListItem::Attributes::Add("class", "list-group-item")
-           invoke BulletedList2::Items::Add(newListItem)
+      *    set newListItem to new ListItem
+      *    set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
+      *    invoke newListItem::Attributes::Add("class", "list-group-item")
+      *    invoke BulletedList2::Items::Add(newListItem)
            
-           set getVidPaths to getVidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
-           set getVidTitles to getVidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
+           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
            
            add 1 to aa.
            go to lines-loop.
        lines-done.
-           set vid_paths::Value to getVidPaths
-           set vid_titles::Value to getVidTitles
+           set self::Session::Item("video-paths") to vidPaths
+           set self::Session::Item("video-titles") to vidTitles
+      *    set vid_paths::Value to getVidPaths
+      *    set vid_titles::Value to getVidTitles
        end method.
 
 
