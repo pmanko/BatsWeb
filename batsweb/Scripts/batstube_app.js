@@ -1,18 +1,7 @@
 ﻿var VidApp = angular.module('VidApp', ['ngRoute']);
 
 VidApp.controller('PathCtrl', ['$scope', function ($scope) {
-    $scope.sentVideos = [];
-    for (var i = 0; i < videoPaths.length; i++) {
-        if (videoPaths[i] != "") {
-            $scope.sentVideos.push(
-                {
-                    path: videoPaths[i],
-                    title: videoTitles[i]
-                }
-            );
 
-        }
-    };
 
 
 }]);
@@ -44,6 +33,20 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.currentVideo = null;
 
 
+    $scope.sentVideos = [];
+    for (var i = 0; i < videoPaths.length; i++) {
+        if (videoPaths[i] != "") {
+            $scope.sentVideos.push(
+                {
+                    path: videoPaths[i].trim().replace(/\s+/g, "/"),
+                    title: videoTitles[i]
+                }
+            );
+
+        }
+    };
+
+
     for (var i = 0; i < paths.length; i++) {
         if (paths[i].replace(/ /g, '') != "") {
             if (network_path) {
@@ -62,7 +65,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
         }            
     }
 
-    $scope.model.currentVideo = $scope.videos[0];
+    $scope.model.currentVideo = $scope.sentVideos[0];
 
     videojs("main_vid", { }, function () {
         this.src([{ type: "video/mp4", src: $scope.model.currentVideo.path }]);
@@ -72,8 +75,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
         this.on('ended', function () {
             $scope.$apply(function () {
-                var next_vid_index = ($scope.videos.indexOf($scope.model.currentVideo) + 1) % $scope.videos.length;
-                $scope.setCurrentVideo($scope.videos[next_vid_index]);
+                var next_vid_index = ($scope.sentVideos.indexOf($scope.model.currentVideo) + 1) % $scope.sentVideos.length;
+                $scope.setCurrentVideo($scope.sentVideos[next_vid_index]);
 
             });
         });

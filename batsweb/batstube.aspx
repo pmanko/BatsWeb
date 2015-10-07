@@ -26,16 +26,6 @@
 				</span>
 			</div>
 		</div>
-
-        <div class="row" ng-controller="PathCtrl">
-            <div  class="col-lg-12">
-				<div  class="list-group">
-					<div class='list-group-item' ng-repeat="v in sentVideos">
-						{{v.title}}  {{v.path}}
-					</div>
-				</div>
-            </div>
-        </div>
         
 		<div class='row' ng-controller="VideoCtrl">         
 			<div class='col-lg-9 col-lg-push-3'>
@@ -80,9 +70,8 @@
 					<div class="panel-heading">My Playlist</div>
 
 					<div class="list-group">
-						<a class='list-group-item' ng-repeat="video in videos" ng-class="{ active: video == model.currentVideo }" ng-click="setCurrentVideo(video)">
+						<a class='list-group-item' ng-repeat="video in sentVideos" ng-class="{ active: video == model.currentVideo }" ng-click="setCurrentVideo(video)">
 							<h4>{{video.title}}</h4>
-							<p>{{video.path.substring(video.path.lastIndexOf('/')+1)}}</p>
 						</a>
 					</div>
 				</div>
