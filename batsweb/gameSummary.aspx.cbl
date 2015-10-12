@@ -2,17 +2,17 @@
                 inherits type System.Web.UI.Page public.
 
        working-storage section.
-       COPY "C:\Users\Piotrek\sydexsource\shared\WS-SYS.CBL".
+       COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01 bat360rununit         type RunUnit.
        01 BAT360WEBF                type BAT360WEBF.
        01 mydata type batsweb.bat360Data.
-
+       
        method-id Page_Load protected.
        local-storage section.
            01 dataLine             type String.
            01 gameNum              pic x.
        LINKAGE SECTION.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
 
@@ -62,7 +62,7 @@
            01 dataLine             type String.
            01 gameNum              pic x.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -98,12 +98,12 @@
            05  WS2-ASTERISK PIC X.
            05  WS2-DATA-R PIC X(39).
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
-           MOVE BAT360-G-GAME-DATE(ListBox1::SelectedIndex + 1) to BAT360-I-GAME-DATE
-           MOVE BAT360-G-GAME-ID(ListBox1::SelectedIndex + 1) to BAT360-I-GAME-ID
+           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
            MOVE "RA" to BAT360-ACTION
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
@@ -137,7 +137,7 @@
 
        method-id allRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -151,7 +151,7 @@
 
        method-id teamRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -167,7 +167,7 @@
 
        method-id nlRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -181,7 +181,7 @@
 
        method-id alRadioButton_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -195,7 +195,7 @@
 
        method-id teamDropDownList_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -210,7 +210,7 @@
 
        method-id pitchersCheckBox_CheckedChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -230,7 +230,7 @@
        local-storage section.
        01 seasonYear       type Single.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -245,7 +245,7 @@
 
        method-id visButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -348,7 +348,7 @@
 
        method-id homeButton_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat360_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
@@ -407,4 +407,121 @@
        procedure division using by value sender as object e as type System.EventArgs.
        end method.
 
+       method-id ListBox2_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           set BAT360-SEL-AB to ListBox2::SelectedIndex
+           add 1 to BAT360-SEL-AB
+      *     IF BAT360-REC-TYPE(BAT360-SEL-AB) NOT = "B"
+      *         invoke message-box::Show ("You cannot select a header field!" "Warning" message-button::"OK")
+      *         exit method.      
+           MOVE BAT360-SEL-AB to BAT360-AB-IP
+           MOVE BAT360-AB-KEY(BAT360-SEL-AB) to BAT360-I-KEY
+       end method.
+
+       method-id fromSelected_Click protected.
+       local-storage section.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+      *     if BAT360-AB-IP = 0
+      *         invoke message-box::Show ("No starting point is highlighted!" "Warning" message-button::"OK")
+      *         exit method.                 
+           MOVE "VS" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke self::batstube.
+       end method.
+
+       method-id ListBox1_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
+       end method.
+
+       method-id playVis_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           MOVE "VV" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke self::batstube.
+       end method.
+
+       method-id playHome_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           MOVE "VH" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")               
+           invoke self::batstube.
+       end method.
+
+       method-id playFull_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           MOVE "VX" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke self::batstube.
+       end method.
+
+       method-id batstube protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit      
+           set vidPaths to ""
+PM         set vidTitles to ""
+      *    invoke BulletedList2::Items::Clear
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT360-WF-VID-COUNT
+               go to lines-done.
+      *    set newListItem to new ListItem
+      *    set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
+      *    invoke newListItem::Attributes::Add("class", "list-group-item")
+      *    invoke BulletedList2::Items::Add(newListItem)
+           
+PM         set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-A(aa) & ","
+PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+PM         set self::Session::Item("video-paths") to vidPaths
+PM         set self::Session::Item("video-titles") to vidTitles
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+       end method.
        end class.

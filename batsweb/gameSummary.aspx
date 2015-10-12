@@ -103,6 +103,13 @@
             width: 4px;
         }
     </style>
+    <script type="text/javascript">
+        function callBatstube() {
+            var url = 'batstube.aspx';
+            var win = window.open(url, '_blank');
+            win.focus();
+            event.preventDefault();
+      }</script>
 </head>
 <body>
 
@@ -126,7 +133,7 @@
             </tr>
             <tr>
                 <td class="auto-style1" valign="top">
-                    <asp:ListBox ID="ListBox1" runat="server" Height="238px" Width="988px"></asp:ListBox>
+                    <asp:ListBox ID="ListBox1" runat="server" Height="238px" Width="988px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
                 </td>
             </tr>
         </table>
@@ -226,7 +233,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:ListBox ID="ListBox2" runat="server" Height="137px" Width="983px" Font-Bold="True" Font-Names="Consolas"></asp:ListBox>
+                        <asp:ListBox ID="ListBox2" runat="server" Height="137px" Width="983px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged"></asp:ListBox>
                     </td>
                 </tr>
             </table>
@@ -234,10 +241,17 @@
             <table style="height: 60px; width: 988px">
                 <tr>
                     <td class="auto-style32">
-                        &nbsp;</td>
-                    <td class="auto-style33">&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                        <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" />
+                    </td>
+                    <td class="auto-style33">
+                        <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" />
+                    </td>
+                    <td>
+                        <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" />
+                    </td>
+                    <td>
+                        <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="auto-style32">

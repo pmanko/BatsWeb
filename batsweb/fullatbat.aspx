@@ -4,6 +4,13 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/fullatbat.js"></script>
+    <script type="text/javascript"> 
+         function callBatstube() {
+             var url = 'batstube.aspx';
+             var win = window.open(url, '_blank');
+             win.focus();
+             event.preventDefault();
+        }</script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -48,7 +55,8 @@
                                 
                                 <asp:TextBox ID="pitcherTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
                                 <asp:Button ID="pitcherButton" runat="server" Text="Select Pitcher" OnClick="Button1_Click" CssClass="btn btn-default" />
-                                <cc1:ModalPopupExtender ID="pitcherButton_ModalPopupExtender" runat="server" BehaviorID="pitcherButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="selectPitcher" TargetControlID="pitcherButton" X="0" Y="0"></cc1:ModalPopupExtender>
+                                <cc1:PopupControlExtender ID="pitcherButton_PopupExtender" runat="server" BehaviorID="pitcherButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectPitcher" TargetControlID="pitcherButton">
+                                </cc1:PopupControlExtender>
                             </div>
                         </div>
                     </div>
@@ -161,7 +169,8 @@
                             <div class="col-lg-4">
                                 <label>Outs:</label>
                                 <asp:DropDownList ID="Outs" runat="server" OnSelectedIndexChanged="Outs_SelectedIndexChanged" AutoPostBack="True" class="form-control">
-                                </asp:DropDownList>                            </div>
+                                </asp:DropDownList>      
+                            </div>
                             <div class="col-lg-2">
                             
                                 <%--<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>--%>
@@ -182,7 +191,7 @@
                                 List of At-Bats
                             </div>
                             <div class="panel-body">
-                                <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control"></asp:ListBox>
+                                <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
                                 <asp:BulletedList ID="BulletedList2" runat="server" CssClass="list-group"></asp:BulletedList>
 
                                 <asp:HiddenField ID="vid_paths" runat="server" />
@@ -198,7 +207,7 @@
             </asp:Panel>
 
 
-            <asp:Panel ID="Panel12" runat="server" BackColor="#CCCCCC" GroupingText="Dates" Height="240px" style="text-align: left; margin-right: 1px" Width="173px">
+            <asp:Panel ID="Panel12" runat="server" BackColor="#CCCCCC" GroupingText="Dates" Height="260px" style="text-align: left; margin-right: 1px" Width="173px">
             <table align="center" style="height: 205px; width: 125px;">
                 <tr>
                     <td align="center" class="auto-style120">
@@ -232,7 +241,7 @@
                 </tr>
                 <tr>
                     <td align="center" class="auto-style120">
-                        <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" />
+                        <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" width="125px" />
                     </td>
                 </tr>
             </table>
@@ -307,7 +316,7 @@
                 <tr>
                     <td align="center" colspan="3">
                         <asp:Button ID="pitcherOKButton" runat="server" Text="OK" />
-                        <cc1:ModalPopupExtender ID="pitcherOKButton_ModalPopupExtender" runat="server" BehaviorID="pitcherOKButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="pitcherOKButton" X="25" Y="25">
+                        <cc1:ModalPopupExtender ID="pitcherOKButton_ModalPopupExtender" runat="server" BehaviorID="pitcherOKButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="pitcherOKButton" X="100" Y="50">
                         </cc1:ModalPopupExtender>
                         <asp:HiddenField ID="pHiddenField" runat="server" />
                         <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField" X="2" Y="2">
@@ -318,25 +327,14 @@
         </asp:Panel>
             <br />
             <asp:Panel ID="playerPanel" runat="server" BackColor="Silver" Height="275px" Width="292px">
-                <table style="height: 178px; width: 279px">
-                    <tr>
-                        <td class="auto-style126">Team:</td>
-                        <td class="auto-style127">
-                            <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True">
-                            </asp:DropDownList>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style154" colspan="2">
-                            <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" Width="267px" AutoPostBack="True"></asp:ListBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="auto-style125" colspan="2">
-                            <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK" />
-                        </td>
-                    </tr>
-                </table>
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <ContentTemplate>
+                        <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True">
+                        </asp:DropDownList> 
+                        <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" Width="267px"></asp:ListBox>
+                    </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK" />
             </asp:Panel>
         <asp:Panel ID="selectBatter" runat="server" BackColor="Silver" Height="281px" Width="320px" GroupingText="Select Batter">
             <table style="height: 277px; width: 321px">
@@ -422,7 +420,7 @@
             <table style="height: 84px; width: 160px">
                 <tr>
                     <td align="center" class="auto-style152">
-                        <asp:DropDownList ID="pTeamDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged">
+                        <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
                 </tr>
@@ -440,7 +438,7 @@
             <table>
                 <tr>
                     <td align="center" class="auto-style158">
-                        <asp:DropDownList ID="bTeamDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged">
+                        <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged">
                         </asp:DropDownList>
                     </td>
                 </tr>

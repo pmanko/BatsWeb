@@ -150,6 +150,38 @@
       *>> </remarks>
        01 ListBox2 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
+      *>> playVis control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playVis type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> playHome control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playHome type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> fromSelected control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 fromSelected type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> playFull control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playFull type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
       *>> visButton control.
       *>> </summary>
       *>> <remarks>

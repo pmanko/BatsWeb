@@ -255,8 +255,12 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\BATSW010.DAT" />
-    <None Include="App_Data\BATSW010.idx" />
+    <None Include="App_Data\BATSW010.DAT">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App_Data\BATSW010.idx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="App_Data\BATSW020.DAT" />
     <None Include="App_Data\BATSW020.idx" />
     <None Include="App_Data\MAJORS\AB.DAT">

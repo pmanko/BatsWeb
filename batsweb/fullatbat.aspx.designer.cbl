@@ -142,13 +142,13 @@
       *>> </remarks>
        01 pitcherButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> pitcherButton_ModalPopupExtender control.
+      *>> pitcherButton_PopupExtender control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 pitcherButton_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
+       01 pitcherButton_PopupExtender type AjaxControlToolkit.PopupControlExtender protected.
       *>> <summary>
       *>> batterTextBox control.
       *>> </summary>
@@ -533,6 +533,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 playerPanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> UpdatePanel1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 UpdatePanel1 type System.Web.UI.UpdatePanel protected.
       *>> <summary>
       *>> teamDropDownList control.
       *>> </summary>

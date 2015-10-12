@@ -2,7 +2,7 @@
                 inherits type System.Web.UI.Page public.
                  
        working-storage section.
-       COPY "C:\Users\Piotrek\sydexsource\shared\WS-SYS.CBL".
+       COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01  node-name.
            05  name-len         pic x comp-5 value 10.
            05  id1              pic x(10) value "bat666_dg".        
@@ -14,7 +14,7 @@
        
        method-id Page_Load protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\bats\bat666_dg.CPB".
+           COPY "Y:\sydexsource\bats\bat666_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
            goback.
@@ -23,7 +23,7 @@
 
        method-id DropDownList1_SelectedIndexChanged protected.
        linkage section.
-           COPY "c:\Users\Piotrek\SYDEXSOURCE\BATS\bat666_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            call "CBL_GET_SHMEM_PTR" using  SH-BAT666-MEM-POINTER node-name
                returning mem-flag
@@ -49,7 +49,7 @@
 
        method-id DropDownList3_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\SYDEXSOURCE\BATS\bat666_dg.CPB".
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
            call "CBL_GET_SHMEM_PTR" using  SH-BAT666-MEM-POINTER node-name
                returning mem-flag
@@ -76,7 +76,7 @@
        01 javaScript type System.Text.StringBuilder.
        01 confirmMessage type String.
        linkage section.
-           COPY "C:\Users\Piotrek\SYDEXSOURCE\BATS\bat666_dg.CPB".   
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".   
        procedure division using by value sender as object e as type System.EventArgs.
       *     if DropDownList4::SelectedItem = null
       *   invoke type System.Web.UI.ScriptManager::RegisterStartupScript(self, type of self, "yourMessage", "window.onload = function(){alert('" & mymsg & "');}", true).
@@ -106,7 +106,7 @@
 
        method-id DropDownList2_SelectedIndexChanged protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB". 
        procedure division using by value sender as object e as type System.EventArgs.
            call "CBL_GET_SHMEM_PTR" using  SH-BAT666-MEM-POINTER node-name
                returning mem-flag
@@ -129,7 +129,7 @@
        01 getVidTitles type String.
        01 newListItem type ListItem.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB". 
 
        procedure division using by value sender as object e as type System.EventArgs.
            call "CBL_GET_SHMEM_PTR" using  SH-BAT666-MEM-POINTER node-name
@@ -189,7 +189,7 @@
        local-storage section.
        01 confirmMessage type String.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB". 
        procedure division.
            continue
       *      set bat666rununit to self::Session::Item("rununit") as type RunUnit
@@ -208,7 +208,7 @@
 
        method-id Button8_Click protected.
        linkage section.
-           COPY "C:\Users\Piotrek\sydexsource\BATS\bat666_dg.CPB". 
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB". 
 
        procedure division using by value sender as object e as type System.EventArgs.
        end method.

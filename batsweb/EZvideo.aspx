@@ -24,7 +24,13 @@
             width: 100%;
         }
     </style> -->
-    
+    <script type="text/javascript">
+          function callBatstube() {
+              var url = 'batstube.aspx';
+              var win = window.open(url, '_blank');
+              win.focus();
+              event.preventDefault();
+    }</script>  
 </head>
 <body>
 
@@ -84,7 +90,7 @@
                 </tr>
                 <tr>
                     <td class="auto-style2" colspan="6">
-                        <asp:ListBox ID="ListBox1" runat="server" Height="213px" Width="946px"></asp:ListBox>
+                        <asp:ListBox ID="ListBox1" runat="server" Height="213px" Width="946px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
                     </td>
                 </tr>
                 <tr>
