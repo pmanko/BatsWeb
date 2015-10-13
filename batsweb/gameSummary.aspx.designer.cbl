@@ -214,14 +214,6 @@
       *>> </remarks>
        01 homeButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> homeButton_PopupControlExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 homeButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
       *>> visPanel control.
       *>> </summary>
       *>> <remarks>

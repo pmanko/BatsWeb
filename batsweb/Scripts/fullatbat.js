@@ -1,5 +1,5 @@
 ﻿$(document).on("click", "#show_videos", function (event) {
-    //var vid_paths = $("#vid_paths").val();
+    var vid_paths = $("#vid_paths").val();
     //var vid_titles = $("#vid_titles").val();
 
     //alert(vid_paths.length + "|" + vid_titles.length);
@@ -15,9 +15,11 @@
     //  '</form>');
     //$('body').append(form);
     //form.submit();
-
-    var win = window.open(url, '_blank');
-    win.focus();
-
+    //if (vid_paths.length == 0) {
+        alert(vid_paths);
+    //} else {
+        var win = window.open(url, '_blank');
+        win.focus();
+    //}
     event.preventDefault();
 });

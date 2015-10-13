@@ -116,7 +116,7 @@
                         </asp:Panel>
                     </td>
                     <td>
-                        <asp:Button ID="Button3" runat="server" Text="Play Video" CssClass="playbutton" />
+                        <asp:Button ID="Button3" runat="server" Text="Play Video" CssClass="playbutton" OnClick="Button3_Click" />
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

@@ -184,11 +184,15 @@ PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    set vid_paths::Value to getVidPaths
       *    set vid_titles::Value to getVidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
 
 
 
+
+       method-id Button3_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+       end method.
 
        end class.

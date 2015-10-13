@@ -6,7 +6,9 @@
     <script type="text/javascript" src="Scripts/fullatbat.js"></script>
     <script type="text/javascript"> 
          function callBatstube() {
+             var vid_paths = $("#vid_paths").val();
              var url = 'batstube.aspx';
+             alert(vid_paths);
              var win = window.open(url, '_blank');
              win.focus();
              event.preventDefault();
