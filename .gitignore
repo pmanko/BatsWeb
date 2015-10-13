@@ -214,6 +214,8 @@ ModelManifest.xml
 
 
 # Custom
-App_Data/
+MAJORS/
+MINORS/
+
 bin/
 obj/
