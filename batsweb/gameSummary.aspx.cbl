@@ -401,6 +401,7 @@
            if BAT360-V-ROSTER-NAME(15) not = spaces
                set Button15::Visible to true
                set Button15::Text to BAT360-V-ROSTER-NAME(15)::Trim. 
+           set homeButton_PopupControlExtender::Visible to true
        end method.
 
        method-id Button1_Click protected.

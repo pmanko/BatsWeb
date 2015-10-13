@@ -217,9 +217,6 @@
                 <td class="auto-style6">
                     &nbsp;</td>
                 <td class="auto-style7">
-        <asp:HiddenField ID="HiddenField1" runat="server" />
-        <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" DynamicServicePath="" TargetControlID="HiddenField1" PopupControlID="visPanel" X="0" Y="0">
-        </cc1:ModalPopupExtender>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
             </tr>
@@ -256,6 +253,13 @@
                 <tr>
                     <td class="auto-style32">
                         <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" />
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                        <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel" PopupDragHandleControlID="visPanel">
+                        </cc1:ModalPopupExtender>
+                        <asp:HiddenField ID="HiddenField1" runat="server" />
+                        </ContentTemplate>
+                        </asp:UpdatePanel>
                     </td>
                     <td class="auto-style33">
                         <asp:Button ID="statsButton" runat="server" Text="View Game Stats" />
@@ -265,7 +269,7 @@
                     </td>
                     <td>
                         <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" />
-                        <cc1:PopupControlExtender ID="homeButton_PopupControlExtender" runat="server" BehaviorID="homeButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" TargetControlID="homeButton" PopupControlID="visPanel">
+                        <cc1:PopupControlExtender ID="homeButton_PopupControlExtender" runat="server" BehaviorID="homeButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="visPanel" TargetControlID="homeButton">
                         </cc1:PopupControlExtender>
                     </td>
                 </tr>
