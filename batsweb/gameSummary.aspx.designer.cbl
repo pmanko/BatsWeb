@@ -174,14 +174,6 @@
       *>> </remarks>
        01 visButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> UpdatePanel1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 UpdatePanel1 type System.Web.UI.UpdatePanel protected.
-      *>> <summary>
       *>> HiddenField1Vis_ModalPopupExtender control.
       *>> </summary>
       *>> <remarks>

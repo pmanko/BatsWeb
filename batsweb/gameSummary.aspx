@@ -117,7 +117,6 @@
     <div id="main">
     <form id="form1" runat="server">
            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div>
     
         <table style="height: 284px; width: 985px">
             <tr>
@@ -247,13 +246,9 @@
                 <tr>
                     <td class="auto-style32">
                         <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" />
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                        <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel" PopupDragHandleControlID="visPanel">
+                        <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel">
                         </cc1:ModalPopupExtender>
                         <asp:HiddenField ID="HiddenField1" runat="server" />
-                        </ContentTemplate>
-                        </asp:UpdatePanel>
                     </td>
                     <td class="auto-style33">
                         <asp:Button ID="statsButton" runat="server" Text="View Game Stats" />
@@ -269,7 +264,8 @@
                 </tr>
             </table>
         </asp:Panel>
-        <br />
+
+
         <asp:Panel ID="visPanel" runat="server" Height="203px" Width="592px" BackColor="Silver">
             <table style="height: 200px; width: 543px">
                 <tr>
@@ -277,106 +273,105 @@
                         <asp:Button ID="Button1" runat="server" Text="Button" Visible="False" OnClick="Button1_Click" width="112px" />
                     </td>
                     <td>
-                        <asp:Button ID="Button2" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button2" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button2_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button3" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button3" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button3_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button4" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button4" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button4_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button5" runat="server" Text="Button" Visible="False" style="margin-left: 0px" Width="112px" />
+                        <asp:Button ID="Button5" runat="server" Text="Button" Visible="False" style="margin-left: 0px" Width="112px" OnClick="Button5_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button6" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button6" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button6_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button7" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button7" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button7_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button8" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button8" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button8_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button9" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button9" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button9_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button10" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button10" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button10_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button11" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button11" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button11_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button12" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button12" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button12_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button13" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button13" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button13_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button14" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button14" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button14_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button15" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button15" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button15_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button16" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button16" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button16_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button17" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button17" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button17_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button18" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button18" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button18_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button19" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button19" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button19_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button20" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button20" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button20_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button21" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button21" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button21_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button22" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button22" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button22_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button23" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button23" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button23_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button24" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button24" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button24_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button25" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button25" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button25_Click" />
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:Button ID="Button26" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button26" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button26_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button27" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button27" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button27_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button28" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button28" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button28_Click" />
                     </td>
                     <td>
-                        <asp:Button ID="Button29" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button29" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button29_Click" />
                     </td>
                     <td class="auto-style34">
-                        <asp:Button ID="Button30" runat="server" Text="Button" Visible="False" width="112px" />
+                        <asp:Button ID="Button30" runat="server" Text="Button" Visible="False" width="112px" OnClick="Button30_Click" />
                     </td>
                 </tr>
             </table>
         </asp:Panel>
-    </div>
     </form>
     </div>
 </body>
