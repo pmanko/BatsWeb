@@ -103,13 +103,7 @@
             width: 4px;
         }
     </style>
-    <script type="text/javascript">
-        function callBatstube() {
-            var url = 'batstube.aspx';
-            var win = window.open(url, '_blank');
-            win.focus();
-            event.preventDefault();
-      }</script>
+    <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
 </head>
 <body>
 

@@ -4,15 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/fullatbat.js"></script>
-    <script type="text/javascript"> 
-         function callBatstube() {
-             var vid_paths = $("#vid_paths").val();
-             var url = 'batstube.aspx';
-             alert(vid_paths);
-             var win = window.open(url, '_blank');
-             win.focus();
-             event.preventDefault();
-        }</script>
+    <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -318,8 +310,9 @@
                 <tr>
                     <td align="center" colspan="3">
                         <asp:Button ID="pitcherOKButton" runat="server" Text="OK" />
-                        <cc1:ModalPopupExtender ID="pitcherOKButton_ModalPopupExtender" runat="server" BehaviorID="pitcherOKButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="pitcherOKButton" X="100" Y="50">
+                        <cc1:ModalPopupExtender ID="pitcherOKButton_ModalPopupExtender" runat="server" BehaviorID="pitcherOKButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="ipHiddenField">
                         </cc1:ModalPopupExtender>
+                        <asp:HiddenField ID="ipHiddenField" runat="server" />
                         <asp:HiddenField ID="pHiddenField" runat="server" />
                         <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField" X="2" Y="2">
                         </cc1:ModalPopupExtender>

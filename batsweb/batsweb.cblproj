@@ -76,7 +76,6 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="EZvideo.aspx" />
     <Content Include="fullatbat.aspx" />
-    <Content Include="fullatbat_piotr.aspx" />
     <Content Include="gameSummary.aspx" />
     <Content Include="mainmenu.aspx" />
     <Content Include="Styles\Site.css" />
@@ -210,13 +209,6 @@
     </Compile>
     <Compile Include="fullatbat.aspx.designer.cbl">
       <DependentUpon>fullatbat.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="fullatbat_piotr.aspx.cbl">
-      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="fullatbat_piotr.aspx.designer.cbl">
-      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
     </Compile>
     <Compile Include="gameSummary.aspx.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>
@@ -451,6 +443,7 @@
     <None Include="Scripts\angular.js" />
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-1.10.2.js" />

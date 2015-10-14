@@ -1,7 +1,7 @@
 ﻿       class-id batsweb.Global
                inherits type System.Web.HttpApplication public.
        working-storage section.
-      *copy "C:\Users\Piotrek\sydexsource\bats\batsglobal.cpb".
+      *copy "Y:\sydexsource\bats\batsglobal.cpb".
            
        method-id Application_Start internal.
        local-storage section.

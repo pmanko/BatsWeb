@@ -510,6 +510,14 @@
       *>> </remarks>
        01 pitcherOKButton_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
       *>> <summary>
+      *>> ipHiddenField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 ipHiddenField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> pHiddenField control.
       *>> </summary>
       *>> <remarks>
