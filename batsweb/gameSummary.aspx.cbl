@@ -31,6 +31,8 @@
                 set self::Session::Item("360rununit") to  bat360rununit.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
+           set label1::Text to label1::Text::Replace(" ", "&nbsp;")
+           set gamesHeader::Text to gamesHeader::Text::Replace(" ", "&nbsp;")
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if BAT360-GAMES-CHOICE = " "
@@ -80,6 +82,7 @@
                Set dataLine to BAT360-G-DSP-DATE(aa)::ToString("0#/##/##") & " "
                   & gameNum & " " & BAT360-G-VIS(aa) & " "
                   & BAT360-G-HOME(aa) & " " & BAT360-G-TIME(aa)
+               INSPECT dataline REPLACING ALL " " BY X'A0'
                invoke listbox1::Items::Add(dataLine).
            add 1 to aa
            go to games-loop.
@@ -131,8 +134,18 @@
       *        END-IF   
            add 1 to aa
            go to ab-loop.
-
        ab-done.
+           invoke listbox3::Items::Clear
+           move 1 to aa.
+       5-loop.
+           if aa > BAT360-NUM-T-LINES
+               go to 10-done
+           else
+               INSPECT BAT360-T-LINE(aa) REPLACING ALL " " BY X'A0'
+               invoke listbox3::Items::Add(BAT360-T-LINE(aa)).
+           add 1 to aa
+           go to 5-loop.
+       10-done.
        end method.
 
        method-id allRadioButton_CheckedChanged protected.
@@ -940,6 +953,22 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "PV" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::batstube.
+       end method.
+
+       method-id printButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit      
+           MOVE "PG" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           MOVE " " to SYD145WD-FILENAME
+           MOVE "S" to SYD145WD-PAGE-ORIENT
+           MOVE 1 to SYD145WD-COPIES
+           MOVE " " to SYD145WD-NOTEPAD
        end method.
 
        end class.

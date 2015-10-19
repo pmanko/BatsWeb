@@ -47,7 +47,7 @@
                             </div>
                             <div class="panel-body">
                                 
-                                <asp:TextBox ID="pitcherTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
+                                <asp:TextBox ID="pitcherTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
                                 <asp:Button ID="pitcherButton" runat="server" Text="Select Pitcher" OnClick="Button1_Click" CssClass="btn btn-default" />
                                 <cc1:PopupControlExtender ID="pitcherButton_PopupExtender" runat="server" BehaviorID="pitcherButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectPitcher" TargetControlID="pitcherButton">
                                 </cc1:PopupControlExtender>
@@ -62,7 +62,7 @@
 
                             <div class="panel-body">            
                                 <div class="input-group">
-                                    <asp:TextBox ID="batterTextBox" runat="server" class="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="batterTextBox" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
 
                                     <asp:Button ID="batterButton" runat="server" Text="Select Batter" class="btn btn-default"/>
                                     <cc1:PopupControlExtender ID="batterButton_PopupControlExtender" runat="server" BehaviorID="batterButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectBatter" TargetControlID="batterButton">
@@ -187,7 +187,6 @@
                             <div class="panel-body">
                                 <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
                                 <asp:BulletedList ID="BulletedList2" runat="server" CssClass="list-group"></asp:BulletedList>
-
                                 <asp:HiddenField ID="vid_paths" runat="server" />
                                 <asp:HiddenField ID="vid_titles" runat="server" />
                                 <button id="show_videos" class="btn btn-lg btn-primary">Show Videos in BatsTube</button>

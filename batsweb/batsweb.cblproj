@@ -29,6 +29,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <AdditionalDirectives>
     </AdditionalDirectives>
+    <IncludeIisSettings>false</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -300,96 +301,6 @@
     <None Include="App_Data\MAJORS\TEMPHIT2.DAT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1288A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1289A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1290A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1291A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1292A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1293A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1294A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1295A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1296A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1297A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1298A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1299A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1300A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1301A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1302A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1303A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1304A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1305A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1306A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1307A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1308A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1309A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1310A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1311A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1312A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1313A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1314A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1315A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1316A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1317A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="App_Data\MAJORS\VIDIDX.DAT">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -410,21 +321,6 @@
     <None Include="App_Data\MINORS\ROSTER.IDX" />
     <None Include="App_Data\MINORS\TEAM.DAT" />
     <None Include="App_Data\MINORS\TEAM.IDX" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1001A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1002A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1003A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1004A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1005A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1006A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1007A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1008A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1009A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1010A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1011A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1012A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1013A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1014A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1015A.mov" />
     <None Include="App_Data\MINORS\VIDIDX.DAT" />
     <None Include="App_Data\MINORS\VIDIDX.IDX" />
     <None Include="App_Data\TEMPmlb1.DAT" />
@@ -439,6 +335,7 @@
     <None Include="Images\logo.png" />
     <None Include="Images\Play.png" />
     <None Include="Images\SydexLogo.png" />
+    <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\angular-route.js" />
     <None Include="Scripts\angular.js" />
     <None Include="Scripts\batstube_app.js" />

@@ -198,6 +198,14 @@
       *>> </remarks>
        01 statsButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> statsButton_PopupControlExtender control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 statsButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
+      *>> <summary>
       *>> replaysButton control.
       *>> </summary>
       *>> <remarks>
@@ -469,5 +477,29 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 Button30 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> statsPanel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 statsPanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> ListBox3 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 ListBox3 type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
+      *>> Button31 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button31 type System.Web.UI.WebControls.Button protected.
 
        end class.

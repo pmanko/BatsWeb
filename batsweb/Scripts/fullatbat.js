@@ -16,7 +16,6 @@
     //$('body').append(form);
     //form.submit();
     //if (vid_paths.length == 0) {
-        alert(vid_paths);
     //} else {
         var win = window.open(url, '_blank');
         win.focus();

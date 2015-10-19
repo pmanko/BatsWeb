@@ -6,6 +6,7 @@
        01 bat666rununit         type RunUnit.
        01 BAT666WEBF                type BAT666WEBF.
        01 mydata type batsweb.bat666Data.
+       01 abnum        type Single.
        method-id Page_Load protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
@@ -46,6 +47,14 @@
            set batterTextBox::Text to BAT666-BATTER
            set BAT666-PITCHER-TYPE-FLAG TO " "    
            set BAT666-BATTER-TYPE-FLAG TO " "    
+           if BAT666-SORT-FLAG = "Y"
+               set sortByInningCheckBox::Checked to true
+           else if BAT666-SORT-FLAG = "B"
+               set sortByBatterCheckBox::Checked to true
+           else if BAT666-SORT-FLAG = "O"
+               set sortByOldCheckBox::Checked to true.
+           if BAT666-MAX-FLAG = "Y"
+               set maxAtBatsCheckBox::Checked to true.             
            move 1 to aa.
        team-loop.
            if aa > BAT666-NUM-TEAMS
@@ -97,6 +106,9 @@
            set BAT666-GAME-DATE to gmDate
            invoke type System.Single::TryParse(TextBox4::Text::ToString::Replace("/", ""), by reference gmDate)
            set BAT666-END-GAME-DATE to gmDate
+           if maxAtBatsCheckBox::Checked
+               invoke type System.Single::TryParse(MaxABTextBox::Text::ToString, by reference abnum)
+               set BAT666-MAX-NUM to abnum.
            MOVE "GO" to BAT668-ACTION
            MOVE "T" to BAT666-ACTION
            set bat666rununit to self::Session::Item("666rununit")
@@ -263,8 +275,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-
            if maxAtBatsCheckBox::Checked
+               invoke type System.Single::TryParse(MaxABTextBox::Text::ToString, by reference abnum)
+               set BAT666-MAX-NUM to abnum
                move "Y" to BAT666-MAX-FLAG
                invoke maxABTextBox::Focus
            else

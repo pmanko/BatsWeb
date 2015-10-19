@@ -121,12 +121,12 @@
         <table style="height: 284px; width: 985px">
             <tr>
                 <td class="auto-style2">
-                    <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Label" Width="984px"></asp:Label>
+                    <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Width="984px" Font-Names="consolas" Font-Size="Medium"></asp:Label>
                 </td>
             </tr>
             <tr>
                 <td class="auto-style1" valign="top">
-                    <asp:ListBox ID="ListBox1" runat="server" Height="238px" Width="988px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox>
+                    <asp:ListBox ID="ListBox1" runat="server" Height="238px" Width="988px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium"></asp:ListBox>
                 </td>
             </tr>
         </table>
@@ -201,7 +201,7 @@
                 <td class="auto-style29"></td>
                 <td class="auto-style30">&nbsp;</td>
                 <td class="auto-style25" rowspan="2">
-                    <asp:Button ID="printButton" runat="server" Text="Print Game List" />
+                    <asp:Button ID="printButton" runat="server" Text="Print Game List" OnClick="printButton_Click" />
                 </td>
             </tr>
             <tr>
@@ -218,12 +218,12 @@
             <table style="height: 107px; width: 991px">
                 <tr>
                     <td>
-                        <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Label" Width="981px"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Width="981px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium"></asp:Label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <asp:ListBox ID="ListBox2" runat="server" Height="137px" Width="983px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged"></asp:ListBox>
+                        <asp:ListBox ID="ListBox2" runat="server" Height="137px" Width="983px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium"></asp:ListBox>
                     </td>
                 </tr>
             </table>
@@ -251,7 +251,9 @@
                         <asp:HiddenField ID="HiddenField1" runat="server" />
                     </td>
                     <td class="auto-style33">
-                        <asp:Button ID="statsButton" runat="server" Text="View Game Stats" />
+                        <asp:Button ID="statsButton" runat="server" Text="View Game Stats"/>
+                        <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="statsPanel" TargetControlID="statsButton">
+                        </cc1:PopupControlExtender>
                     </td>
                     <td>
                         <asp:Button ID="replaysButton" runat="server" Text="Replays" />
@@ -371,6 +373,11 @@
                     </td>
                 </tr>
             </table>
+        </asp:Panel>
+        <asp:Panel ID="statsPanel" runat="server" BackColor="Silver" Width="591px">
+            <asp:ListBox ID="ListBox3" runat="server" Height="245px" Width="586px" Font-Names="consolas"></asp:ListBox>
+            <br />
+            <asp:Button ID="Button31" runat="server" Text="Button" />
         </asp:Panel>
     </form>
     </div>
