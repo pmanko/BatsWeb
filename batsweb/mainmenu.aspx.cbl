@@ -104,4 +104,9 @@
        
        end method.
 
+       method-id pitcherBatterButton_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::Response::Redirect("~/pitchervsbatter.aspx")
+       end method.
+
        end class.

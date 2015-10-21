@@ -224,6 +224,8 @@
                 <tr>
                     <td>
                         <asp:ListBox ID="ListBox2" runat="server" Height="137px" Width="983px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium"></asp:ListBox>
+                        <asp:HiddenField ID="vid_paths" runat="server" />
+                        <asp:HiddenField ID="vid_titles" runat="server" />
                     </td>
                 </tr>
             </table>

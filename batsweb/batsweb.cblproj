@@ -79,6 +79,7 @@
     <Content Include="fullatbat.aspx" />
     <Content Include="gameSummary.aspx" />
     <Content Include="mainmenu.aspx" />
+    <Content Include="pitchervsbatter.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -155,6 +156,21 @@
     <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
       <Link>BWEBFTP2.CBL</Link>
     </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
+      <Link>BAT766.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat766SharedData.COB">
+      <Link>Bat766SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT766WEBF.CBL">
+      <Link>BAT766WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT767.CBL">
+      <Link>BAT767.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT768.CBL">
+      <Link>BAT768.CBL</Link>
+    </Compile>
     <Compile Include="About.aspx.cbl">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +243,13 @@
     </Compile>
     <Compile Include="mainmenu.aspx.designer.cbl">
       <DependentUpon>mainmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pitchervsbatter.aspx.cbl">
+      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pitchervsbatter.aspx.designer.cbl">
+      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cbl">
       <DependentUpon>Site.Master</DependentUpon>

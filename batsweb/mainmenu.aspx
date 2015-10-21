@@ -56,7 +56,7 @@
                         <asp:Button ID="gamesButton" runat="server" Text="Games" OnClick="gamesButton_Click" />
                     </td>
                     <td class="auto-style5">
-                        <asp:Button ID="Button2" runat="server" Text="Button" />
+                        <asp:Button ID="pitcherBatterButton" runat="server" Text="Pitcher vs Batter At Bats" OnClick="pitcherBatterButton_Click" />
                     </td>
                 </tr>
                 <tr>
