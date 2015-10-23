@@ -883,4 +883,13 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke bHiddenFieldTeam_ModalPopupExtender::Show
        end method.
 
+       method-id showVideosButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".      
+       procedure division using by value sender as object e as type System.EventArgs.
+           if listBox1::SelectedItem = null
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
+           else    
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+       end method.
        end class.

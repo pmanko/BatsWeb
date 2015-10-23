@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-    <script type="text/javascript" src="Scripts/fullatbat.js"></script>
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -46,7 +45,6 @@
                                 Current Pitcher
                             </div>
                             <div class="panel-body">
-                                
                                 <asp:TextBox ID="pitcherTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
                                 <asp:Button ID="pitcherButton" runat="server" Text="Select Pitcher" OnClick="Button1_Click" CssClass="btn btn-default" />
                                 <cc1:PopupControlExtender ID="pitcherButton_PopupExtender" runat="server" BehaviorID="pitcherButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectPitcher" TargetControlID="pitcherButton">
@@ -186,10 +184,9 @@
                             </div>
                             <div class="panel-body">
                                 <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" AutoPostBack="True" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                <asp:BulletedList ID="BulletedList2" runat="server" CssClass="list-group"></asp:BulletedList>
                                 <asp:HiddenField ID="vid_paths" runat="server" />
                                 <asp:HiddenField ID="vid_titles" runat="server" />
-                                <button id="show_videos" class="btn btn-lg btn-primary">Show Videos in BatsTube</button>
+                                <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
 
                             </div>
                         </div>
@@ -200,253 +197,199 @@
             </asp:Panel>
 
 
-            <asp:Panel ID="Panel12" runat="server" BackColor="#CCCCCC" GroupingText="Dates" Height="260px" style="text-align: left; margin-right: 1px" Width="173px">
-            <table align="center" style="height: 205px; width: 125px;">
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style121">
-                        <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" width="125px" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style120">
-                        <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" width="125px" />
-                    </td>
-                </tr>
-            </table>
-        </asp:Panel>
-        <asp:Panel ID="SelectPitcher" runat="server" BackColor="Silver" Height="259px" style="margin-left: 0px" Width="263px" GroupingText="Select Pitcher">
-            <table style="height: 159px; width: 261px">
-                <tr>
-                    <td align="center" colspan="3">
-                        <asp:TextBox ID="pCurrentSelection" runat="server" ReadOnly="True"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center">
-                        <asp:Button ID="pAllLeftButton" runat="server" OnClick="pAllLeftButton_Click" Text="All Left" />
-                    </td>
-                    <td align="center">
-                        <asp:Button ID="pAllButton" runat="server" OnClick="pAllButton_Click" Text="All" />
-                    </td>
-                    <td align="center">
-                        <asp:Button ID="pAllRightButton" runat="server" OnClick="pAllRightButton_Click" Text="All Right" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style112">
-                        <asp:Button ID="pTeamLeftButton" runat="server" Text="Team Left" OnClick="pTeamLeftButton_Click" />
-                    </td>
-                    <td align="center" class="auto-style112">
-                        <asp:Button ID="pTeamButton" runat="server" Text="Team" OnClick="pTeamButton_Click" />
-                    </td>
-                    <td align="center" class="auto-style112">
-                        <asp:Button ID="pTeamRightButton" runat="server" Text="Team Right" OnClick="pTeamRightButton_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" colspan="3">
-                        <asp:Button ID="pPlayerButton" runat="server" Text="Select Player" OnClick="pPlayerButton_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3">
-                        <asp:Panel ID="Panel11" runat="server" GroupingText="Pitcher options">
-                            <table style="height: 69px; width: 210px">
-                                <tr>
-                                    <td class="auto-style122">
-                                        <asp:TextBox ID="TextBox5" runat="server" Height="16px" Width="18px"></asp:TextBox>
-                                    </td>
-                                    <td class="auto-style123">
-                                        <asp:RadioButton ID="RadioButton1" runat="server" Text="Any Type" />
-                                    </td>
-                                    <td class="auto-style124">
-                                        <asp:RadioButton ID="RadioButton3" runat="server" Text="Custom" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style118">&nbsp;</td>
-                                    <td class="auto-style114">
-                                        <asp:RadioButton ID="RadioButton2" runat="server" Text="Power" />
-                                    </td>
-                                    <td class="auto-style115">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td class="auto-style118">&nbsp;</td>
-                                    <td class="auto-style114">
-                                        <asp:RadioButton ID="RadioButton4" runat="server" Text="Single" />
-                                    </td>
-                                    <td class="auto-style115">&nbsp;</td>
-                                </tr>
-                            </table>
+            <asp:Panel ID="Panel12" runat="server" Height="260px" style="margin-left: 0px" Width="175px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Dates
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                        <div class="row">
+                            <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+        <asp:Panel ID="SelectPitcher" runat="server" Height="300px" style="margin-left: 0px" Width="425px" >
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Select Pitcher
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <asp:TextBox ID="pCurrentSelection" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="pAllLeftButton" runat="server" OnClick="pAllLeftButton_Click" Text="All Left" style="margin-left: 25px" Width="125px" class="btn btn-default" />
+                        <asp:Button ID="pAllButton" runat="server" OnClick="pAllButton_Click" Text="All" Width="125px"  class="btn btn-default" />
+                        <asp:Button ID="pAllRightButton" runat="server" OnClick="pAllRightButton_Click" Text="All Right" Width="125px"  class="btn btn-default" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="pTeamLeftButton" runat="server" Text="Team Left" OnClick="pTeamLeftButton_Click" style="margin-left: 25px" Width="125px" class="btn btn-default" />
+                        <asp:Button ID="pTeamButton" runat="server" Text="Team" OnClick="pTeamButton_Click" Width="125px"  class="btn btn-default" />
+                        <asp:Button ID="pTeamRightButton" runat="server" Text="Team Right" OnClick="pTeamRightButton_Click" Width="125px"  class="btn btn-default" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="pPlayerButton" runat="server" Text="Select Player" OnClick="pPlayerButton_Click" style="margin-left: 154px" Width="125px" class="btn btn-default"/>
+                    </div>
+                    <div class="row">
+                        <asp:Panel ID="Panel11" runat="server">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Pitcher Options
+                                </div>
+                                <div class="panel-body"> 
+                                    <div class="row">
+                                        <asp:TextBox ID="TextBox5" runat="server" Width="20px" style="margin-left: 25px" class="form-control"></asp:TextBox>
+                                        <asp:RadioButton ID="RadioButton1" runat="server" Text="Any Type" style="margin-left: 75px" />
+                                        <asp:RadioButton ID="RadioButton3" runat="server" Text="Custom" style="margin-left: 25px" />
+                                    </div>
+                                    <div class="row">
+                                        <asp:RadioButton ID="RadioButton2" runat="server" Text="Power" style="margin-left: 75px"/>
+                                    </div>
+                                    <div class="row">
+                                        <asp:RadioButton ID="RadioButton4" runat="server" Text="Single" style="margin-left: 75px"/>
+                                    </div>
+                                </div>
+                            </div>
                         </asp:Panel>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" colspan="3">
-                        <asp:Button ID="pitcherOKButton" runat="server" Text="OK" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="pitcherOKButton" runat="server" Text="OK" style="margin-left: 154px" Width="125px" class="btn btn-default" />
                         <cc1:ModalPopupExtender ID="pitcherOKButton_ModalPopupExtender" runat="server" BehaviorID="pitcherOKButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="ipHiddenField">
                         </cc1:ModalPopupExtender>
                         <asp:HiddenField ID="ipHiddenField" runat="server" />
                         <asp:HiddenField ID="pHiddenField" runat="server" />
-                        <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField" X="2" Y="2">
+                        <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField">
                         </cc1:ModalPopupExtender>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
+             </div>
         </asp:Panel>
-            <br />
-            <asp:Panel ID="playerPanel" runat="server" BackColor="Silver" Height="275px" Width="292px">
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <asp:Panel ID="playerPanel" runat="server" Height="275px" Width="275px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Select Player 
+                </div>
+                <div class="panel-body"> 
+                    <div class="row">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                     <ContentTemplate>
-                        <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True">
+                        <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
                         </asp:DropDownList> 
-                        <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" Width="267px"></asp:ListBox>
+                        <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>
                     </ContentTemplate>
                     </asp:UpdatePanel>
-                    <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK" />
-            </asp:Panel>
-        <asp:Panel ID="selectBatter" runat="server" BackColor="Silver" Height="281px" Width="320px" GroupingText="Select Batter">
-            <table style="height: 277px; width: 321px">
-                <tr>
-                    <td align="center" class="auto-style133" colspan="3">
-                        <asp:TextBox ID="bCurrentSelection" runat="server" Height="16px" ReadOnly="True" style="margin-left: 0px" Width="139px"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style133">
-                        <asp:Button ID="bAllLeftButton" runat="server" OnClick="bAllLeftButton_Click" Text="All Left" />
-                    </td>
-                    <td align="center" class="auto-style133">
-                        <asp:Button ID="bAllButton" runat="server" OnClick="bAllButton_Click" Text="All" />
-                    </td>
-                    <td align="center" class="auto-style137">
-                        <asp:Button ID="bAllRightButton" runat="server" OnClick="bAllRightButton_Click" Text="All Right" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style138">
-                        <asp:Button ID="bTeamLeftButton" runat="server" Text="Team Left" OnClick="bTeamLeftButton_Click" />
-                    </td>
-                    <td align="center" class="auto-style138">
-                        <asp:Button ID="bTeamButton" runat="server" Text="Team" OnClick="bTeamButton_Click" />
-                    </td>
-                    <td align="center" class="auto-style147">
-                        <asp:Button ID="bTeamRightButton" runat="server" Text="Team Right" OnClick="bTeamRightButton_Click" />
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style155"></td>
-                    <td align="center" class="auto-style155">
-                        <asp:Button ID="bPlayerButton" runat="server" Text="Select Player" OnClick="bPlayerButton_Click" />
-                    </td>
-                    <td align="center" class="auto-style148">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td class="auto-style140" align="left" colspan="3">
-                        <asp:Panel ID="Panel14" runat="server" GroupingText="Batter Options" Height="102px" Width="314px">
-                            <table style="height: 85px; width: 248px">
-                                <tr>
-                                    <td align="left">
-                                        <asp:TextBox ID="TextBox6" runat="server" Height="16px" Width="23px"></asp:TextBox>
-                                    </td>
-                                    <td align="left" class="auto-style142">
-                                        <asp:RadioButton ID="RadioButton" runat="server" Text="Any Type" />
-                                    </td>
-                                    <td align="left">
-                                        <asp:RadioButton ID="RadioButton5" runat="server" Text="Custom" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" class="auto-style143"></td>
-                                    <td align="left" class="auto-style144">
-                                        <asp:RadioButton ID="RadioButton6" runat="server" Text="Power" />
-                                    </td>
-                                    <td align="left" class="auto-style143">&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td align="left">&nbsp;</td>
-                                    <td align="left" class="auto-style142">
-                                        <asp:RadioButton ID="RadioButton7" runat="server" Text="Single" />
-                                    </td>
-                                    <td align="left">&nbsp;</td>
-                                </tr>
-                            </table>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK" style="margin-left: 100px" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </asp:Panel>
+        <asp:Panel ID="selectBatter" runat="server"  Height="300px" style="margin-left: 0px" Width="425px" >
+           <div class="panel panel-default">
+                <div class="panel-heading">
+                    Select Batter
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <asp:TextBox ID="bCurrentSelection" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="bAllLeftButton" runat="server" OnClick="bAllLeftButton_Click" Text="All Left" style="margin-left: 25px" Width="125px" class="btn btn-default" />
+                        <asp:Button ID="bAllButton" runat="server" OnClick="bAllButton_Click" Text="All" Width="125px" class="btn btn-default" />
+                        <asp:Button ID="bAllRightButton" runat="server" OnClick="bAllRightButton_Click" Text="All Right" Width="125px" class="btn btn-default" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="bTeamLeftButton" runat="server" Text="Team Left" OnClick="bTeamLeftButton_Click" style="margin-left: 25px" Width="125px" class="btn btn-default" />
+                        <asp:Button ID="bTeamButton" runat="server" Text="Team" OnClick="bTeamButton_Click"  Width="125px" class="btn btn-default" />
+                        <asp:Button ID="bTeamRightButton" runat="server" Text="Team Right" OnClick="bTeamRightButton_Click"  Width="125px" class="btn btn-default" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="bPlayerButton" runat="server" Text="Select Player" OnClick="bPlayerButton_Click" style="margin-left: 154px" Width="125px" class="btn btn-default" />
+                    </div>
+                    <div class="row">
+                        <asp:Panel ID="Panel14" runat="server">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Batter Options
+                                </div>
+                                <div class="panel-body"> 
+                                    <div class="row">  
+                                        <asp:TextBox ID="TextBox6" runat="server" Width="23px" style="margin-left: 25px" class="form-control"></asp:TextBox>
+                                        <asp:RadioButton ID="RadioButton" runat="server" Text="Any Type" style="margin-left: 75px" />
+                                        <asp:RadioButton ID="RadioButton5" runat="server" Text="Custom" style="margin-left: 25px"  />
+                                    </div>
+                                    <div class="row">  
+                                        <asp:RadioButton ID="RadioButton6" runat="server" Text="Power" style="margin-left: 75px" />
+                                    </div>
+                                    <div class="row">  
+                                        <asp:RadioButton ID="RadioButton7" runat="server" Text="Single" style="margin-left: 75px"  />
+                                    </div>
+                                </div>
+                            </div>
                         </asp:Panel>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style132" colspan="3">
-                        <asp:Button ID="batterOKButton" runat="server" Text="OK" />
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="batterOKButton" runat="server" Text="OK" style="margin-left: 154px" Width="125px" class="btn btn-default" />
                         <asp:HiddenField ID="bHiddenField" runat="server" />
-                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" X="50" Y="50">
+                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField">
                         </cc1:ModalPopupExtender>
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                </div>
+            </div>
         </asp:Panel>
         <br />
-        <asp:Panel ID="pTeamPanel" runat="server" BackColor="Silver" Height="110px" Width="180px" GroupingText="Which pitcher team?">
-            <table style="height: 84px; width: 160px">
-                <tr>
-                    <td align="center" class="auto-style152">
-                        <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged">
+        <asp:Panel ID="pTeamPanel" runat="server" Height="110px" Width="180px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Which pitcher team?
+                </div>
+                <div class="panel-body">     
+                    <div class="row">
+                        <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
                         </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style153"></td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style149">
-                        <asp:Button ID="pTeamOKButton" runat="server" Text="OK" OnClick="pTeamOKButton_Click" />
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
         </asp:Panel>
-        <asp:Panel ID="bTeamPanel" runat="server" BackColor="Silver" GroupingText="Which batter team?" Height="112px" Width="149px">
-            <table>
-                <tr>
-                    <td align="center" class="auto-style158">
-                        <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged">
+        <asp:Panel ID="bTeamPanel" runat="server" Height="110px" Width="180px">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Which batter team?
+                </div>
+                <div class="panel-body">     
+                    <div class="row">
+                        <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
                         </asp:DropDownList>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style157"></td>
-                </tr>
-                <tr>
-                    <td align="center" class="auto-style158">
-                        <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" />
-                    </td>
-                </tr>
-            </table>
+                    </div>
+                    <div class="row">
+                        <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
         </asp:Panel>
-
         </form>
     </div>
 </asp:Content>

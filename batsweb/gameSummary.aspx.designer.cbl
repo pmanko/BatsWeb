@@ -22,6 +22,14 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
+      *>> gamesPanel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gamesPanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
       *>> gamesHeader control.
       *>> </summary>
       *>> <remarks>
@@ -134,6 +142,22 @@
       *>> </remarks>
        01 ListBox2 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
+      *>> vid_paths control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 vid_paths type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> vid_titles control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 vid_titles type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> playVis control.
       *>> </summary>
       *>> <remarks>
@@ -221,14 +245,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 homeButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> homeButton_PopupControlExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 homeButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
       *>> <summary>
       *>> visPanel control.
       *>> </summary>
@@ -494,12 +510,12 @@
       *>> </remarks>
        01 ListBox3 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
-      *>> Button31 control.
+      *>> printStatsButton control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Button31 type System.Web.UI.WebControls.Button protected.
+       01 printStatsButton type System.Web.UI.WebControls.Button protected.
 
        end class.

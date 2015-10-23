@@ -30,13 +30,13 @@
       *>> </remarks>
        01 gamesButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Button2 control.
+      *>> pitcherBatterButton control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Button2 type System.Web.UI.WebControls.Button protected.
+       01 pitcherBatterButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button3 control.
       *>> </summary>
@@ -70,13 +70,13 @@
       *>> </remarks>
        01 Button6 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Panel3 control.
+      *>> Panel2 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Panel3 type System.Web.UI.WebControls.Panel protected.
+       01 Panel2 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
       *>> Button7 control.
       *>> </summary>
@@ -118,13 +118,13 @@
       *>> </remarks>
        01 fullatbatButtonmi type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Panel4 control.
+      *>> Panel3 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Panel4 type System.Web.UI.WebControls.Panel protected.
+       01 Panel3 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
       *>> EZvideobutton control.
       *>> </summary>

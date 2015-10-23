@@ -286,14 +286,6 @@
       *>> </remarks>
        01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
-      *>> BulletedList2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 BulletedList2 type System.Web.UI.WebControls.BulletedList protected.
-      *>> <summary>
       *>> vid_paths control.
       *>> </summary>
       *>> <remarks>
@@ -309,6 +301,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 vid_titles type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> showVideosButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 showVideosButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Panel12 control.
       *>> </summary>

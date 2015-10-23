@@ -1,7 +1,7 @@
        class-id batsweb._Default is partial
                inherits type System.Web.UI.Page public.
 
-       
+
        $SET CALLFH"EXTFH"
        $SET DATACOMPRESS"1"
         SELECT WEBPASS-FILE ASSIGN WS-BATSW020-FILE
@@ -43,7 +43,7 @@
        local-storage section.
 
        procedure division using by value sender as object by value e as type EventArgs.
-
+           set self::Session["team"] to "DEMO".
            goback.
        end method.
 
@@ -51,19 +51,19 @@
        local-storage section.
        01 app-data-folder pic x(256).
        procedure division using by value sender as object e as type System.EventArgs.
-          set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")                                         
+          set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
           string '"' app-data-folder delimited by "  "
-              '\BATSW020.DAT"' delimited by size 
+              '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
-          set WS-TEAM-NAME to TextBox4::Text. 
-          set WS-FIRST to TextBox1::Text.   
-          set WS-LAST to TextBox3::Text.   
+          set WS-TEAM-NAME to TextBox4::Text.
+          set WS-FIRST to TextBox1::Text.
+          set WS-LAST to TextBox3::Text.
           set WS-PASS to TextBox2::Text.
           invoke self::verify_password
           set TextBox2::Text to WS-REJECT-FLAG.
        end method.
 
-      
+
 
        method-id verify_password protected.
        local-storage section.
@@ -75,7 +75,7 @@
             IF STATUS-BYTE-1 NOT EQUAL ZEROES
                go to  100-done.
 
-            MOVE WS-TEAM-NAME TO WEBPASS-TEAM-NAME
+            MOVE self::Session["team"] TO WEBPASS-TEAM-NAME
             MOVE WS-LAST TO WEBPASS-LAST
             MOVE WS-FIRST TO WEBPASS-FIRST
             READ WEBPASS-FILE

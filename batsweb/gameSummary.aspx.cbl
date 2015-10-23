@@ -29,10 +29,12 @@
                 set BAT360WEBF to new BAT360WEBF
                 invoke bat360rununit::Add(BAT360WEBF)
                 set self::Session::Item("360rununit") to  bat360rununit.
+           invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            set label1::Text to label1::Text::Replace(" ", "&nbsp;")
            set gamesHeader::Text to gamesHeader::Text::Replace(" ", "&nbsp;")
+           move "I" to BAT360-ACTION
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if BAT360-GAMES-CHOICE = " "
@@ -356,7 +358,7 @@
            if BAT360-V-ROSTER-NAME(30) not = spaces
                set Button30::Visible to true
                set Button30::Text to BAT360-V-ROSTER-NAME(30)::Trim. 
-           invoke HiddenField1Vis_ModalPopupExtender::Show.
+      *     invoke HiddenField1Vis_ModalPopupExtender::Show.
        end method.
 
        method-id homeButton_Click protected.
@@ -433,6 +435,8 @@
 
        method-id fromSelected_Click protected.
        local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -463,6 +467,9 @@
        end method.
 
        method-id playVis_Click protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -510,19 +517,12 @@ PM     01 vidPaths type String.
        procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
            set vidPaths to ""
 PM         set vidTitles to ""
-      *    invoke BulletedList2::Items::Clear
            move 1 to aa.
        lines-loop.
            if aa > BAT360-WF-VID-COUNT
                go to lines-done.
-      *    set newListItem to new ListItem
-      *    set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
-      *    invoke newListItem::Attributes::Add("class", "list-group-item")
-      *    invoke BulletedList2::Items::Add(newListItem)
            
 PM         set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-A(aa) & ","
 PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ","
@@ -532,7 +532,7 @@ PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ","
        lines-done.
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        
        method-id Button1_Click protected.
