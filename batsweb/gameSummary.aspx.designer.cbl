@@ -246,6 +246,22 @@
       *>> </remarks>
        01 homeButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> HiddenField2Home_ModalPopupExtender control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 HiddenField2Home_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
+      *>> <summary>
+      *>> HiddenField2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 HiddenField2 type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> visPanel control.
       *>> </summary>
       *>> <remarks>
@@ -493,6 +509,254 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 Button30 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> homePanel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 homePanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> Button31 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button31 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button32 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button32 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button33 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button33 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button34 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button34 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button35 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button35 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button36 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button36 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button37 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button37 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button38 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button38 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button39 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button39 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button40 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button40 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button41 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button41 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button42 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button42 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button43 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button43 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button44 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button44 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button45 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button45 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button46 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button46 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button47 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button47 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button48 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button48 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button49 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button49 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button50 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button50 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button51 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button51 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button52 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button52 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button53 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button53 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button54 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button54 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button55 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button55 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button56 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button56 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button57 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button57 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button58 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button58 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button59 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button59 type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Button60 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Button60 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> statsPanel control.
       *>> </summary>

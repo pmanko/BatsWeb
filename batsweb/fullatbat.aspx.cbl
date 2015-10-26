@@ -12,8 +12,8 @@
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
-           if (Request["__EVENTARGUMENT"] not = null and Request["__EVENTARGUMENT"] = "move")
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+      *     if (Request["__EVENTARGUMENT"] not = null and Request["__EVENTARGUMENT"] = "move")
+      *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
            if self::IsPostBack
                exit method.
       *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
@@ -197,6 +197,7 @@ PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    set vid_paths::Value to getVidPaths
       *    set vid_titles::Value to getVidTitles
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
 

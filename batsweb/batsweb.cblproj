@@ -159,8 +159,8 @@
     <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
       <Link>BAT766.CBL</Link>
     </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\Bat766SharedData.COB">
-      <Link>Bat766SharedData.COB</Link>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat766SharedData.CBL">
+      <Link>Bat766SharedData.CBL</Link>
     </Compile>
     <Compile Include="..\..\..\..\sydexsource\bats\BAT766WEBF.CBL">
       <Link>BAT766WEBF.CBL</Link>

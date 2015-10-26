@@ -4,6 +4,7 @@
        working-storage section.
        01 mybat666Data type batsweb.bat666Data.
        01 mybat360Data type batsweb.bat360Data.
+       01 mybat766Data type batsweb.bat766Data. 
        01 mybatsw060Data type batsweb.batsw060Data.
        01 batsw150rununit         type RunUnit.
        01 BATSW150WEBF                type BATSW150WEBF.
@@ -106,6 +107,12 @@
 
        method-id pitcherBatterButton_Click protected.
        procedure division using by value sender as object e as type System.EventArgs.
+       SET self::Session::Item("database") to "MA"
+       if   self::Session["bat766data"] = null
+          set mybat766Data to new batsweb.bat766Data
+          invoke mybat766Data::populateData
+          set self::Session["bat766data"] to mybat766Data.
+
            invoke self::Response::Redirect("~/pitchervsbatter.aspx")
        end method.
 

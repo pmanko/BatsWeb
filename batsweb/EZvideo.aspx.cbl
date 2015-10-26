@@ -99,22 +99,6 @@
            invoke self::populate_listbox().
        end method.
 
-
-
-
-       method-id allGamesButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
-           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
-           move "RG" to BATSW060-ACTION
-           set batsw060rununit to self::Session::Item("w060rununit") as
-               type RunUnit
-           invoke batsw060rununit::Call("BATSW060WEBF")
-           invoke self::populate_listbox().
-       end method.
-
        method-id Button2_Click protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
@@ -161,38 +145,149 @@ PM     01 vidPaths type String.
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke batsw060rununit::Call("BATSW060WEBF")
+           invoke self::batstube.
 
-PM         set vidPaths to ""
+      *     if aa > BATSW060-NUM-SEL
+       end method.
+
+
+       method-id batstube protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer       
+           set vidPaths to ""
 PM         set vidTitles to ""
-      *    invoke BulletedList2::Items::Clear
            move 1 to aa.
        lines-loop.
-           if aa > BATSW060-NUM-SEL
+           if aa > BATSW060-WF-VID-COUNT
                go to lines-done.
-      *    set newListItem to new ListItem
-      *    set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
-      *    invoke newListItem::Attributes::Add("class", "list-group-item")
-      *    invoke BulletedList2::Items::Add(newListItem)
-
+           
 PM         set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-A(aa) & ","
 PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ","
-
+           
            add 1 to aa.
            go to lines-loop.
        lines-done.
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
-      *    set vid_paths::Value to getVidPaths
-      *    set vid_titles::Value to getVidTitles
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
-
-
-
 
 
        method-id Button3_Click protected.
+      * Play video Button
        procedure division using by value sender as object e as type System.EventArgs.
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+      *    invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+           invoke self::batstube.
        end method.
 
+       method-id allGamesButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "A" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id currentYearButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "C" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id pastYearButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "P" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id twoWeeksButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "W" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id currentMonthButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "M" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id twoMonthsButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "2" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
+
+       method-id threeMonthsButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           MOVE "3" to BATSW060-DATE-CHOICE-FLAG
+           MOVE "DT" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke BATSW060rununit::Call("BATSW060WEBF")
+           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
+       end method.
        end class.
