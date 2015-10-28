@@ -32,6 +32,7 @@
 
            move "I" to BATSW060-ACTION
            invoke batsw060rununit::Call("BATSW060WEBF")
+           set headerLabel::Text to headerLabel::Text::Replace(" ", "&nbsp;")
            set textBox1::Text to BATSW060-START-DATE::ToString("00/00/00")
            set textBox2::Text to BATSW060-END-DATE::ToString("00/00/00")
            invoke self::populate_listbox().
@@ -193,11 +194,11 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "A" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
-           set TextBox1::Text to BATSW060-START-DATE::ToString("##/##/##").
+           set TextBox1::Text to "01/01/00".
            set TextBox2::Text to BATSW060-END-DATE::ToString("##/##/##").
        end method.
 
@@ -208,7 +209,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "C" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
@@ -223,7 +224,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "P" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
@@ -238,7 +239,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "W" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
@@ -253,7 +254,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "M" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
@@ -268,7 +269,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "2" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")
@@ -283,7 +284,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
            MOVE "3" to BATSW060-DATE-CHOICE-FLAG
-           MOVE "DT" to BATSW060-ACTION
+           MOVE "DC" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
            invoke BATSW060rununit::Call("BATSW060WEBF")

@@ -46,12 +46,12 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <asp:Label ID="headerLabel" runat="server"></asp:Label>
+                        <asp:Label ID="headerLabel" runat="server" Text="Date     Clip Description"  Font-Names="consolas" Font-Size="Medium" class="form-control" ></asp:Label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <asp:ListBox ID="ListBox1" runat="server" Height="213px"  OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control"></asp:ListBox>
+                        <asp:ListBox ID="ListBox1" runat="server" Height="213px"  OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
                     </div>
                 </div>
                 <div class="row">

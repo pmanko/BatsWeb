@@ -22,7 +22,6 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
     <DebugSymbols>True</DebugSymbols>
-    <WarningLevel>3</WarningLevel>
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
     <DefineConstants>DEBUG</DefineConstants>
@@ -96,9 +95,6 @@
     <Content Include="batstube.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT301SE.CBL">
-      <Link>BAT301SE.CBL</Link>
-    </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT360.CBL">
       <Link>BAT360.CBL</Link>
     </Compile>
@@ -131,9 +127,6 @@
     </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT668.CBL">
       <Link>BAT668.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSCPLY.CBL">
-      <Link>BATSCPLY.CBL</Link>
     </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BATSIPCA.CBL">
       <Link>BATSIPCA.CBL</Link>

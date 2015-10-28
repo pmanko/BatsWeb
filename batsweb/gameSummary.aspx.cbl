@@ -584,845 +584,363 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
        
        method-id Button1_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 1 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           MOVE 1 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button2_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 2 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           MOVE 2 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button3_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 3 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           MOVE 3 to aa
        end method.
 
        method-id Button4_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 4 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           MOVE 4 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button5_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 5 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 5 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button6_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 6 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 6 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button7_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 7 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.    
+           MOVE 7 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button8_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 8 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.    
+           MOVE 8 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button9_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 9 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 9 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button10_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 10 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.   
+           MOVE 10 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button11_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 11 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.  
+           MOVE 11 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button12_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 12 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.    
+           MOVE 12 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button13_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 13 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.   
+           MOVE 13 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button14_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 14 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.    
+           MOVE 14 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button15_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 15 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.   
+           MOVE 15 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button16_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 16 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 16 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button17_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 17 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 17 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button18_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 18 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 18 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button19_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 19 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 19 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button20_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 20 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 20 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button21_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 21 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 21 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button22_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 22 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 22 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button23_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 23 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 23 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button24_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 24 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 24 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button25_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 25 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 25 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button26_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 26 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 26 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button27_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 27 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.     
+           MOVE 27 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button28_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 28 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.      
+           MOVE 28 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button29_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 29 to BAT360-V-SEL-BUTTON
-           MOVE "PV" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.       
+           MOVE 29 to aa
+           invoke self::visitorPlayer.
        end method.
 
        method-id Button30_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           MOVE 30 to aa
+           invoke self::visitorPlayer.
+       end method.
+       
+       method-id visitorPlayer protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           MOVE 30 to BAT360-V-SEL-BUTTON
+           MOVE aa to BAT360-V-SEL-BUTTON
            MOVE "PV" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::batstube.
        end method.
-  
+       
        method-id Button31_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 31 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 1 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button32_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 32 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 2 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button33_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 33 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 3 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button34_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 34 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 4 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button35_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 35 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 5 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button36_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 36 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 6 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button37_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 37 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 7 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button38_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 38 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 8 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button39_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 39 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 9 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button40_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 40 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-
+           move 10 to aa.
+           invoke self::homePlayer.
+       end method. 
        method-id Button41_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 41 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 11 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button42_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 42 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 12 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button43_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 43 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 13 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button44_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 44 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 14 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button45_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 45 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 15 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button46_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 46 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 16 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button47_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 47 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
+           move 17 to aa.
+           invoke self::homePlayer.
+       end method.     
        method-id Button48_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 48 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 18 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button49_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 49 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           move 19 to aa.
+           invoke self::homePlayer.
        end method.
-  
        method-id Button50_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 20 to aa.
+           invoke self::homePlayer.
+       end method. 
+       method-id Button51_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 21 to aa.
+           invoke self::homePlayer.
+       end method.     
+       method-id Button52_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 22 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button53_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 23 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button54_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 24 to aa.
+           invoke self::homePlayer.
+       end method.     
+       method-id Button55_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 25 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button56_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 26 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button57_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 27 to aa.
+           invoke self::homePlayer.
+       end method.     
+       method-id Button58_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 28 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button59_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 29 to aa.
+           invoke self::homePlayer.
+       end method.
+       method-id Button60_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           move 30 to aa.
+           invoke self::homePlayer.
+       end method. 
+       
+       method-id homePlayer protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           MOVE 50 to BAT360-H-SEL-BUTTON
+           MOVE aa to BAT360-V-SEL-BUTTON
            MOVE "PH" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::batstube.
        end method.
        
-       method-id Button51_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 51 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button52_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 52 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button53_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 53 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button54_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 54 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button55_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 55 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button56_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 56 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button57_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 57 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button58_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 58 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button59_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 59 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-  
-       method-id Button60_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit      
-           MOVE 60 to BAT360-H-SEL-BUTTON
-           MOVE "PH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
-       end method.
-
        method-id printButton_Click protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
