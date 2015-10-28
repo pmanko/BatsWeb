@@ -9,12 +9,14 @@
     <div class="container main-container">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                <div class="row">
+                <div class="col-lg-12">
                 <asp:Panel ID="gamesPanel" runat="server">
                     <div class="row">
-                        <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Width="984px" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                        <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
                     </div>
                     <div class="row">
-                        <asp:ListBox ID="ListBox1" runat="server" Height="238px" Width="988px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                        <asp:ListBox ID="ListBox1" runat="server" Height="238px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
                     </div>
                     <div class="row">
                         <div class="col-lg-3">
@@ -87,14 +89,18 @@
                         </div>
                     </div>
                </asp:Panel>
-               <asp:Panel ID="Panel1" runat="server" Width="998px">
+               </div>
+               </div>
+                <div class="row">
+                <div class="col-lg-12">
+               <asp:Panel ID="Panel1" runat="server">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Inning Summary
                         </div>
                         <div class="panel-body"> 
                             <div class="row">
-                                <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Width="981px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
                             </div>
                             <div class="row">
                                 <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
@@ -139,7 +145,9 @@
                            </div>
                        </div>
                    </div>
-             </asp:Panel>
+              </asp:Panel>
+                                   </div>
+               </div>
         <asp:Panel ID="visPanel" runat="server" Height="203px" Width="800px">
             <div class="panel panel-default">
                 <div class="panel-heading">

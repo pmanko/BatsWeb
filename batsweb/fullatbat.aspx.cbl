@@ -339,6 +339,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "A" to BAT666-DATE-CHOICE-FLAG
            MOVE "A" to BAT666-GAME-FLAG
            MOVE "A" to BAT666-END-GAME-FLAG
+           set startDateRadioButton::Checked to false
+           set endDateRadioButton::Checked to false
            set allStartRadioButton::Checked to true
            set allEndRadioButton::Checked to true
        end method.
@@ -547,7 +549,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke bat666rununit::Call("BAT666WEBF")
            MOVE " " TO BAT666-SEL-TEAM
            invoke pitcherOKButton_ModalPopupExtender::Show.
-           set teamDropDownList::SelectedIndex to 0
+           set teamDropDownList::SelectedIndex to 1
+      *     invoke teamDropDownList::SelectedIndexChanged(self::teamDropDownList, null)
        end method.
 
        method-id bPlayerButton_Click protected.
@@ -791,7 +794,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set BAT666-PITCHER-TEAM to pTeamDropDownList::SelectedItem.
-           invoke pHiddenFieldTeam_ModalPopupExtender::Show
        end method.
 
        method-id pTeamOKButton_Click protected.
@@ -802,6 +804,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
+           if BAT666-PITCHER-TEAM = spaces
+               set BAT666-PITCHER-TEAM to pTeamDropDownList::SelectedItem.
            MOVE "T" to BAT666-ACTION
            MOVE "TI" to BAT668-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
@@ -836,7 +840,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set BAT666-BATTER-TEAM to bTeamDropDownList::SelectedItem.
-           invoke bHiddenFieldTeam_ModalPopupExtender::Show
        end method.
 
        method-id bTeamOKButton_Click protected.
@@ -847,6 +850,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
+           if BAT666-BATTER-TEAM = spaces
+               set BAT666-BATTER-TEAM to bTeamDropDownList::SelectedItem.
            MOVE "T" to BAT666-ACTION
            MOVE "TI" to BAT668-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
