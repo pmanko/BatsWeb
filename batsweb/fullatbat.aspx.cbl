@@ -549,8 +549,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke bat666rununit::Call("BAT666WEBF")
            MOVE " " TO BAT666-SEL-TEAM
            invoke pitcherOKButton_ModalPopupExtender::Show.
-           set teamDropDownList::SelectedIndex to 1
-      *     invoke teamDropDownList::SelectedIndexChanged(self::teamDropDownList, null)
+           set teamDropDownList::SelectedIndex to 0
+      *     invoke teamDropDownList::SelectedIndexChanged(self, new System.EventArgs)
        end method.
 
        method-id bPlayerButton_Click protected.
