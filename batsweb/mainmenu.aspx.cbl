@@ -5,6 +5,7 @@
        01 mybat666Data type batsweb.bat666Data.
        01 mybat360Data type batsweb.bat360Data.
        01 mybat766Data type batsweb.bat766Data. 
+       01 mybat310Data type batsweb.bat310Data. 
        01 mybatsw060Data type batsweb.batsw060Data.
        01 batsw150rununit         type RunUnit.
        01 BATSW150WEBF                type BATSW150WEBF.
@@ -114,6 +115,17 @@
           set self::Session["bat766data"] to mybat766Data.
 
            invoke self::Response::Redirect("~/pitchervsbatter.aspx")
+       end method.
+   
+       method-id breakdownButton_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+           SET self::Session::Item("database") to "MA"
+           if self::Session["bat310data"] = null
+          set mybat310Data to new batsweb.bat310Data
+          invoke mybat310Data::populateData
+          set self::Session["bat310data"] to mybat310Data.
+
+           invoke self::Response::Redirect("~/breakdown.aspx")
        end method.
 
        end class.

@@ -1,6 +1,25 @@
+      $set ilusing "System.Collections.Generic";
+      $set ilusing "System.Linq";
+      $set ilusing "System.Web";
+      $set ilusing "System.Web.UI";
+      $set ilusing "System.Web.UI.WebControls";
        class-id batsweb.pitchervsbatter is partial 
                 inherits type System.Web.UI.Page public.
-                 
+     
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+          SELECT PLAY-FILE ASSIGN LK-PLAYER-FILE
+              ORGANIZATION IS INDEXED
+              ACCESS IS DYNAMIC
+              RECORD KEY IS PLAY-KEY
+              ALTERNATE KEY IS PLAY-ALT-KEY WITH DUPLICATES
+              LOCK MANUAL
+              FILE STATUS IS STATUS-COMN.
+
+       DATA DIVISION.
+       FILE SECTION.
+       COPY "Y:\SYDEXSOURCE\FDS\FDPLAY.CBL".
+       
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01 bat766rununit         type RunUnit.
@@ -44,6 +63,8 @@
           add 1 to aa
           go to 5-loop.
        10-done.    
+           invoke self::populatePitcher
+           invoke self::populateBatter
            goback.
        end method.
        
@@ -53,6 +74,13 @@
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::populatePitcher
+       end method.
+       
+       method-id populatePitcher protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".       
+       procedure division.
            set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
@@ -210,9 +238,6 @@
                set Button30::Text to BAT766-P-ROSTER-NAME(30)::Trim 
            else
                set Button30::Visible to false. 
-      *     invoke type ScriptManager::GetCurrent(self)::RegisterPostBackControl(Button1)
-      *      set Button1::OnClientClick to new EventHandler(Button1_Click)
-      *     invoke ScriptManager1::RegisterPostBackControl(Button1)
        end method.
        
        method-id Button1_Click protected.
@@ -386,6 +411,13 @@
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::populateBatter
+       end method.
+       
+       method-id populateBatter protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
+       procedure division.
            set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
@@ -826,4 +858,33 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke bat766rununit::Call("BAT766WEBF")
            invoke self::batstube.
        end method.
+       
+       method-id GetNames public static
+           attribute System.Web.Services.WebMethod()
+           attribute System.Web.Script.Services.ScriptMethod().
+       local-storage section.
+       01  names           type String[].
+       01  playerName      type String.
+       01  aa              type Single.
+       procedure division using by value prefixText as String,
+      *                    count as Int64
+                          returning GetNames as String occurs any.
+           move 0 to aa.
+           open input play-file.
+      *     initialize play-alt-key
+      *     start play-file key > play-alt-key.
+       15-loop.
+           read play-file next
+               at end go to 20-done.
+           move spaces to playerName
+      *     string play-last-name, ", " play-first-name
+      *         delimited "  " into playerName
+           set names[aa] to playerName
+           add 1 to aa
+           go to 15-loop.
+       20-done.
+           close play-file.
+      *     return names.
+       end method.
+       
        end class.

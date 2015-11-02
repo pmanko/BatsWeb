@@ -12,14 +12,14 @@
                 <asp:Panel ID="Panel1" runat="server">
                 <div class="row">
                         <asp:Button ID="gamesButton" runat="server" Text="Games" OnClick="gamesButton_Click" Width="200px" CssClass="btn btn-default" />
-                        <asp:Button ID="pitcherBatterButton" runat="server" Text="Pitcher vs Batter At Bats" OnClick="pitcherBatterButton_Click" Width="200px" CssClass="btn btn-default" />
-                </div>
-                <div class="row">
-                        <asp:Button ID="Button3" runat="server" Text="Button" Width="200px" CssClass="btn btn-default" />
-                        <asp:Button ID="Button4" runat="server" Text="Button" Width="200px" CssClass="btn btn-default" />
-                </div>
-                <div class="row">
                         <asp:Button ID="atbatButton" runat="server" Text="Full at Bat" OnClick="atbatButton_Click" Width="200px" CssClass="btn btn-default" />
+                </div>
+                <div class="row">
+                        <asp:Button ID="pitcherBatterButton" runat="server" Text="Pitcher vs Batter At Bats" OnClick="pitcherBatterButton_Click" Width="200px" CssClass="btn btn-default" />
+                        <asp:Button ID="Button3" runat="server" Text="Button" Width="200px" CssClass="btn btn-default" />
+                </div>
+                <div class="row">
+                        <asp:Button ID="breakdownButton" runat="server" Text="Batter/Pitcher Breakdown" OnClick="breakdownButton_Click" Width="200px" CssClass="btn btn-default" />
                         <asp:Button ID="Button6" runat="server" Text="Button" Width="200px" CssClass="btn btn-default" />
                 </div>
                 </asp:Panel>

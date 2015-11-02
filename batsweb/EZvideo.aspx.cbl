@@ -27,6 +27,7 @@
                 invoke batsw060rununit::Add(BATSW060WEBF)
                 set self::Session::Item("w060rununit") to  batsw060rununit.
 
+           invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
 

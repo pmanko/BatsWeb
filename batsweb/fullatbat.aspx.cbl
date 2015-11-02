@@ -465,6 +465,13 @@ PM         set self::Session::Item("video-titles") to vidTitles
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::populateTeam.     
+       end method.
+       
+       method-id populateTeam protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
+       procedure division.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set BAT666-SEL-TEAM to teamDropDownList::SelectedItem
@@ -535,6 +542,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
 
        method-id pPlayerButton_Click protected.
+       local-storage section.
+       01  arg             type EventArgs.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -548,9 +557,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "T" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
            MOVE " " TO BAT666-SEL-TEAM
+           invoke self::populateTeam.     
            invoke pitcherOKButton_ModalPopupExtender::Show.
-           set teamDropDownList::SelectedIndex to 0
-      *     invoke teamDropDownList::SelectedIndexChanged(self, new System.EventArgs)
        end method.
 
        method-id bPlayerButton_Click protected.
@@ -567,8 +575,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "T" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
            MOVE " " TO BAT666-SEL-TEAM
+           invoke self::populateTeam.     
            invoke pitcherOKButton_ModalPopupExtender::Show.
-           set teamDropDownList::SelectedIndex to 0
        end method.
 
        method-id Result1_SelectedIndexChanged protected.

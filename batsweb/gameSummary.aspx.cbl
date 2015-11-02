@@ -18,9 +18,9 @@
 
            if self::IsPostBack
                exit method.
-           invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
-           'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
-            & 'window.onbeforeunload = HandleOnclose;', true)
+      *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
+      *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
+      *      & 'window.onbeforeunload = HandleOnclose;', true)
            if  self::Session::Item("360rununit") not = null
                set bat360rununit to self::Session::Item("360rununit")
                    as type RunUnit
@@ -30,6 +30,7 @@
                 invoke bat360rununit::Add(BAT360WEBF)
                 set self::Session::Item("360rununit") to  bat360rununit.
            invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
+           invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            set label1::Text to label1::Text::Replace(" ", "&nbsp;")
@@ -92,62 +93,7 @@
        end method.
 
        method-id inningsButton_Click protected.
-       local-storage section.
-       01 WS-DATA-LINE.
-           05  WS-DATA-L PIC X(39).
-           05  WS-ASTERISK PIC X.
-           05  WS-DATA-R PIC X(39).
-       
-       01 WS-DATA-LINE2.
-           05  WS2-DATA-L PIC X(39).
-           05  WS2-ASTERISK PIC X.
-           05  WS2-DATA-R PIC X(39).
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer
-           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
-           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
-           MOVE "RA" to BAT360-ACTION
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit
-
-           invoke bat360rununit::Call("BAT360WEBF")
-           invoke listbox2::Items::Clear.
-
-           move 1 to aa.
-       ab-loop.
-           if aa > BAT360-NUM-AB
-               go to ab-done
-           else
-               MOVE BAT360-AB-LINE(AA) TO WS-DATA-LINE, WS-DATA-LINE2
-               MOVE SPACES TO WS-ASTERISK
-      *        IF WS-DATA-L = SPACES
-                   INSPECT WS-DATA-LINE REPLACING ALL " " BY X'A0'
-      *        END-IF
-               invoke listbox2::Items::Add(WS-DATA-LINE).
-      *        IF AA > 1
-                   IF WS2-DATA-L = SPACES
-                       invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
-                   ELSE
-                       Invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
-                   END-IF
-      *        END-IF   
-           add 1 to aa
-           go to ab-loop.
-       ab-done.
-           invoke listbox3::Items::Clear
-           move 1 to aa.
-       5-loop.
-           if aa > BAT360-NUM-T-LINES
-               go to 10-done
-           else
-               INSPECT BAT360-T-LINE(aa) REPLACING ALL " " BY X'A0'
-               invoke listbox3::Items::Add(BAT360-T-LINE(aa)).
-           add 1 to aa
-           go to 5-loop.
-       10-done.
        end method.
 
        method-id allRadioButton_CheckedChanged protected.
@@ -173,6 +119,7 @@
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
            MOVE "T" to BAT360-GAMES-CHOICE
+           set BAT360-GAMES-TEAM to teamDropDownList::SelectedItem
            if BAT360-GAMES-TEAM = spaces
                exit method.
            MOVE "RG" to BAT360-ACTION
@@ -504,6 +451,16 @@ PM     01 vidPaths type String.
        end method.
 
        method-id ListBox1_SelectedIndexChanged protected.
+       local-storage section.
+       01 WS-DATA-LINE.
+           05  WS-DATA-L PIC X(39).
+           05  WS-ASTERISK PIC X.
+           05  WS-DATA-R PIC X(39).
+       
+       01 WS-DATA-LINE2.
+           05  WS2-DATA-L PIC X(39).
+           05  WS2-ASTERISK PIC X.
+           05  WS2-DATA-R PIC X(39).
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -512,6 +469,47 @@ PM     01 vidPaths type String.
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
            set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
+           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
+           MOVE "RA" to BAT360-ACTION
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke listbox2::Items::Clear.
+
+           move 1 to aa.
+       ab-loop.
+           if aa > BAT360-NUM-AB
+               go to ab-done
+           else
+               MOVE BAT360-AB-LINE(AA) TO WS-DATA-LINE, WS-DATA-LINE2
+               MOVE SPACES TO WS-ASTERISK
+      *        IF WS-DATA-L = SPACES
+                   INSPECT WS-DATA-LINE REPLACING ALL " " BY X'A0'
+      *        END-IF
+               invoke listbox2::Items::Add(WS-DATA-LINE).
+      *        IF AA > 1
+                   IF WS2-DATA-L = SPACES
+                       invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
+                   ELSE
+                       Invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
+                   END-IF
+      *        END-IF   
+           add 1 to aa
+           go to ab-loop.
+       ab-done.
+           invoke listbox3::Items::Clear
+           move 1 to aa.
+       5-loop.
+           if aa > BAT360-NUM-T-LINES
+               go to 10-done
+           else
+               INSPECT BAT360-T-LINE(aa) REPLACING ALL " " BY X'A0'
+               invoke listbox3::Items::Add(BAT360-T-LINE(aa)).
+           add 1 to aa
+           go to 5-loop.
+       10-done.
        end method.
 
        method-id playVis_Click protected.

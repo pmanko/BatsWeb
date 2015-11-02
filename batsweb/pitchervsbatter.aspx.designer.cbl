@@ -166,6 +166,22 @@
       *>> </remarks>
        01 selectPitcher type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
+      *>> locatePTextBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locatePTextBox type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
+      *>> pitcherAutoComplete control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 pitcherAutoComplete type AjaxControlToolkit.AutoCompleteExtender protected.
+      *>> <summary>
       *>> Button1 control.
       *>> </summary>
       *>> <remarks>

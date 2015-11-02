@@ -88,6 +88,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Locate Player
+                                <asp:TextBox ID="locatePTextBox" runat="server" class="form-control"></asp:TextBox>
+                                <cc1:AutoCompleteExtender runat="server" ID="pitcherAutoComplete" TargetControlID="locatePTextBox" ServiceMethod="GetNames"  ServicePath=""> </cc1:AutoCompleteExtender>
+                            </div>
                             <div class="panel-body">
                                 <div class="row">
                                     <asp:Button ID="Button1" runat="server" Text="Button1" Visible="False" width="155px" OnClick="Button1_Click" class="btn btn-default"/>

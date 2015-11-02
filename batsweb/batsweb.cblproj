@@ -74,6 +74,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
     <Content Include="fullatbat.aspx" />
     <Content Include="gameSummary.aspx" />
@@ -149,6 +150,9 @@
     <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
       <Link>BWEBFTP2.CBL</Link>
     </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat310SharedData.cbl">
+      <Link>Bat310SharedData.cbl</Link>
+    </Compile>
     <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
       <Link>BAT766.CBL</Link>
     </Compile>
@@ -198,6 +202,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cbl">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdown.aspx.cbl">
+      <DependentUpon>breakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdown.aspx.designer.cbl">
+      <DependentUpon>breakdown.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cbl">
       <DependentUpon>Default.aspx</DependentUpon>
