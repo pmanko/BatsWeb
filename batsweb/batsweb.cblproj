@@ -12,7 +12,7 @@
     <OutputName>batsweb</OutputName>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>batsweb</RootNamespace>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Version>1.0.0.0</Version>
     <FileVersion>1.0.0.0</FileVersion>
     <Title>batsweb</Title>
@@ -74,18 +74,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="EZvideo.aspx" />
-    <Content Include="fullatbat.aspx" />
-    <Content Include="gameSummary.aspx" />
-    <Content Include="mainmenu.aspx" />
-    <Content Include="pitchervsbatter.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -95,75 +88,6 @@
     <Content Include="batstube.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT360.CBL">
-      <Link>BAT360.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\Bat360SharedData.cbl">
-      <Link>Bat360SharedData.cbl</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT360WEBF.CBL">
-      <Link>BAT360WEBF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT365.CBL">
-      <Link>BAT365.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT367.CBL">
-      <Link>BAT367.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT560CA.CBL">
-      <Link>BAT560CA.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT666.CBL">
-      <Link>BAT666.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\Bat666SharedData.cbl">
-      <Link>Bat666SharedData.cbl</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT666WEBF.CBL">
-      <Link>BAT666WEBF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT667.CBL">
-      <Link>BAT667.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT668.CBL">
-      <Link>BAT668.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSIPCA.CBL">
-      <Link>BATSIPCA.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSMILWF.CBL">
-      <Link>BATSMILWF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\Batsw060SharedData.cbl">
-      <Link>Batsw060SharedData.cbl</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSW060WEBF.CBL">
-      <Link>BATSW060WEBF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSW150MG.CBL">
-      <Link>BATSW150MG.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSW150WEBF.CBL">
-      <Link>BATSW150WEBF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
-      <Link>BWEBFTP2.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
-      <Link>BAT766.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\Bat766SharedData.CBL">
-      <Link>Bat766SharedData.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\BAT766WEBF.CBL">
-      <Link>BAT766WEBF.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\BAT767.CBL">
-      <Link>BAT767.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\sydexsource\bats\BAT768.CBL">
-      <Link>BAT768.CBL</Link>
-    </Compile>
     <Compile Include="About.aspx.cbl">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -206,43 +130,11 @@
     <Compile Include="Default.aspx.designer.cbl">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EZvideo.aspx.cbl">
-      <DependentUpon>EZvideo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Properties\Resources.Designer.cbl">
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="EZvideo.aspx.designer.cbl">
-      <DependentUpon>EZvideo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="fullatbat.aspx.cbl">
-      <DependentUpon>fullatbat.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="fullatbat.aspx.designer.cbl">
-      <DependentUpon>fullatbat.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="gameSummary.aspx.cbl">
-      <DependentUpon>gameSummary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="gameSummary.aspx.designer.cbl">
-      <DependentUpon>gameSummary.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Global.asax.cbl">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="mainmenu.aspx.cbl">
-      <DependentUpon>mainmenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mainmenu.aspx.designer.cbl">
-      <DependentUpon>mainmenu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pitchervsbatter.aspx.cbl">
-      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pitchervsbatter.aspx.designer.cbl">
-      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
+    <Compile Include="Properties\Settings.Designer.cbl">
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cbl">
       <DependentUpon>Site.Master</DependentUpon>
@@ -267,43 +159,122 @@
     <None Include="App_Data\TEMPmlb1.DAT" />
     <None Include="App_Data\TEMPmlb1.idx" />
     <None Include="App_Data\wininet.dll" />
-    <None Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="fonts\glyphicons-halflings-regular.svg" />
-    <None Include="fonts\glyphicons-halflings-regular.ttf" />
-    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="bower.json" />
+    <None Include="bower_components\angular-route\.bower.json" />
+    <None Include="bower_components\angular-route\angular-route.js" />
+    <None Include="bower_components\angular-route\angular-route.min.js" />
+    <None Include="bower_components\angular-route\angular-route.min.js.map" />
+    <None Include="bower_components\angular-route\bower.json" />
+    <None Include="bower_components\angular-route\index.js" />
+    <None Include="bower_components\angular-route\package.json" />
+    <None Include="bower_components\angular-route\README.md" />
+    <None Include="bower_components\angular\.bower.json" />
+    <None Include="bower_components\angular\angular-csp.css" />
+    <None Include="bower_components\angular\angular.js" />
+    <None Include="bower_components\angular\angular.min.js" />
+    <None Include="bower_components\angular\angular.min.js.gzip" />
+    <None Include="bower_components\angular\angular.min.js.map" />
+    <None Include="bower_components\angular\bower.json" />
+    <None Include="bower_components\angular\index.js" />
+    <None Include="bower_components\angular\package.json" />
+    <None Include="bower_components\angular\README.md" />
+    <None Include="bower_components\bootstrap-sass\.bower.json" />
+    <None Include="bower_components\bootstrap-sass\bower.json" />
+    <None Include="bower_components\bootstrap-sass\CHANGELOG.md" />
+    <None Include="bower_components\bootstrap-sass\composer.json" />
+    <None Include="bower_components\bootstrap-sass\CONTRIBUTING.md" />
+    <None Include="bower_components\bootstrap-sass\LICENSE" />
+    <None Include="bower_components\bootstrap-sass\package.json" />
+    <None Include="bower_components\bootstrap-sass\README.md" />
+    <None Include="bower_components\bootstrap-sass\sache.json" />
+    <None Include="bower_components\jquery-validation-unobtrusive\.bower.json" />
+    <None Include="bower_components\jquery-validation-unobtrusive\bower.json" />
+    <None Include="bower_components\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="bower_components\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="bower_components\jquery-validation\.bower.json" />
+    <None Include="bower_components\jquery-validation\bower.json" />
+    <None Include="bower_components\jquery-validation\changelog.md" />
+    <None Include="bower_components\jquery-validation\CONTRIBUTING.md" />
+    <None Include="bower_components\jquery-validation\Gruntfile.js" />
+    <None Include="bower_components\jquery-validation\LICENSE.md" />
+    <None Include="bower_components\jquery-validation\package.json" />
+    <None Include="bower_components\jquery-validation\README.md" />
+    <None Include="bower_components\jquery-validation\validation.jquery.json" />
+    <None Include="bower_components\jquery\.bower.json" />
+    <None Include="bower_components\jquery\bower.json" />
+    <None Include="bower_components\jquery\MIT-LICENSE.txt" />
+    <None Include="bower_components\modernizr\.bower.json" />
+    <None Include="bower_components\modernizr\.coveralls.yml" />
+    <None Include="bower_components\modernizr\.editorconfig" />
+    <None Include="bower_components\modernizr\.gitattributes" />
+    <None Include="bower_components\modernizr\.gitignore" />
+    <None Include="bower_components\modernizr\.jscsrc" />
+    <None Include="bower_components\modernizr\.jshintignore" />
+    <None Include="bower_components\modernizr\.jshintrc" />
+    <None Include="bower_components\modernizr\.npmignore" />
+    <None Include="bower_components\modernizr\.travis.yml" />
+    <None Include="bower_components\modernizr\appveyor.yml" />
+    <None Include="bower_components\modernizr\Gruntfile.js" />
+    <None Include="bower_components\modernizr\LICENSE" />
+    <None Include="bower_components\modernizr\package.json" />
+    <None Include="bower_components\modernizr\readme.md" />
+    <None Include="bower_components\respond\.bower.json" />
+    <None Include="bower_components\respond\bower.json" />
+    <None Include="bower_components\respond\Gruntfile.js" />
+    <None Include="bower_components\respond\LICENSE-MIT" />
+    <None Include="bower_components\respond\package.json" />
+    <None Include="bower_components\respond\README.md" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="dist\scripts\batstube_app.js" />
+    <None Include="dist\scripts\bootstrap.min.js" />
+    <None Include="dist\scripts\callBatstube.js" />
+    <None Include="dist\scripts\fullatbat.js" />
+    <None Include="dist\scripts\vendor.bundle.min.js" />
+    <None Include="dist\scripts\video.js" />
+    <None Include="dist\styles\app.css" />
+    <None Include="dist\styles\batstube.css" />
+    <None Include="dist\styles\BenStyleSheet.css" />
+    <None Include="dist\styles\main.css" />
+    <None Include="dist\styles\Site.css" />
+    <None Include="dist\styles\video-js.css" />
+    <None Include="gulpfile.js" />
     <None Include="Images\1288A.mp4" />
     <None Include="Images\homeplateGREY.png" />
     <None Include="Images\logo.png" />
     <None Include="Images\Play.png" />
     <None Include="Images\SydexLogo.png" />
+    <None Include="node_modules\.bin\gulp" />
+    <None Include="node_modules\.bin\gulp.cmd" />
+    <None Include="node_modules\del\index.js" />
+    <None Include="node_modules\del\license" />
+    <None Include="node_modules\del\package.json" />
+    <None Include="node_modules\del\readme.md" />
+    <None Include="node_modules\gulp\bin\gulp.js" />
+    <None Include="node_modules\gulp\CHANGELOG.md" />
+    <None Include="node_modules\gulp\index.js" />
+    <None Include="node_modules\gulp\LICENSE" />
+    <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
-    <None Include="Scripts\angular-route.js" />
-    <None Include="Scripts\angular.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <None Include="Scripts\batstube_app.js" />
-    <None Include="Scripts\bootstrap.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-1.10.2.js" />
-    <None Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <None Include="Scripts\jquery.validate.js" />
-    <None Include="Scripts\jquery.validate.min.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <None Include="Scripts\modernizr-2.6.2.js" />
-    <None Include="Scripts\respond.js" />
-    <None Include="Scripts\respond.min.js" />
     <None Include="Scripts\video.js" />
+    <None Include="Styles\app.scss" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
-    <None Include="Styles\bootstrap_blue.css" />
-    <None Include="Styles\bootstrap_original.css" />
-    <None Include="Styles\bootstrap_superhero.css" />
+    <None Include="Styles\custom_bootstrap.scss" />
     <None Include="Styles\main.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />
+    <None Include="Theme\stylesheets\custom.scss" />
+    <None Include="Theme\stylesheets\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="MicroFocus.COBOL.RuntimeServices" />
@@ -317,7 +288,132 @@
     <Import Include="System.Web.UI.WebControls" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bower_components\bootstrap-sass\assets\fonts\bootstrap\" />
+    <Folder Include="bower_components\bootstrap-sass\assets\images\" />
+    <Folder Include="bower_components\bootstrap-sass\assets\javascripts\bootstrap\" />
+    <Folder Include="bower_components\bootstrap-sass\assets\stylesheets\bootstrap\mixins\" />
+    <Folder Include="bower_components\jquery-validation\build\" />
+    <Folder Include="bower_components\jquery-validation\dist\" />
+    <Folder Include="bower_components\jquery-validation\src\additional\" />
+    <Folder Include="bower_components\jquery-validation\src\localization\" />
+    <Folder Include="bower_components\jquery\dist\" />
+    <Folder Include="bower_components\jquery\src\ajax\var\" />
+    <Folder Include="bower_components\jquery\src\attributes\" />
+    <Folder Include="bower_components\jquery\src\core\var\" />
+    <Folder Include="bower_components\jquery\src\css\var\" />
+    <Folder Include="bower_components\jquery\src\data\var\" />
+    <Folder Include="bower_components\jquery\src\effects\" />
+    <Folder Include="bower_components\jquery\src\event\" />
+    <Folder Include="bower_components\jquery\src\exports\" />
+    <Folder Include="bower_components\jquery\src\manipulation\var\" />
+    <Folder Include="bower_components\jquery\src\queue\" />
+    <Folder Include="bower_components\jquery\src\sizzle\dist\" />
+    <Folder Include="bower_components\jquery\src\traversing\var\" />
+    <Folder Include="bower_components\jquery\src\var\" />
+    <Folder Include="bower_components\modernizr\bin\" />
+    <Folder Include="bower_components\modernizr\feature-detects\audio\" />
+    <Folder Include="bower_components\modernizr\feature-detects\a\" />
+    <Folder Include="bower_components\modernizr\feature-detects\battery\" />
+    <Folder Include="bower_components\modernizr\feature-detects\canvas\" />
+    <Folder Include="bower_components\modernizr\feature-detects\crypto\" />
+    <Folder Include="bower_components\modernizr\feature-detects\css\" />
+    <Folder Include="bower_components\modernizr\feature-detects\dom\" />
+    <Folder Include="bower_components\modernizr\feature-detects\elem\" />
+    <Folder Include="bower_components\modernizr\feature-detects\es5\" />
+    <Folder Include="bower_components\modernizr\feature-detects\es6\" />
+    <Folder Include="bower_components\modernizr\feature-detects\event\" />
+    <Folder Include="bower_components\modernizr\feature-detects\file\" />
+    <Folder Include="bower_components\modernizr\feature-detects\forms\" />
+    <Folder Include="bower_components\modernizr\feature-detects\iframe\" />
+    <Folder Include="bower_components\modernizr\feature-detects\img\" />
+    <Folder Include="bower_components\modernizr\feature-detects\input\" />
+    <Folder Include="bower_components\modernizr\feature-detects\network\" />
+    <Folder Include="bower_components\modernizr\feature-detects\script\" />
+    <Folder Include="bower_components\modernizr\feature-detects\speech\" />
+    <Folder Include="bower_components\modernizr\feature-detects\storage\" />
+    <Folder Include="bower_components\modernizr\feature-detects\style\" />
+    <Folder Include="bower_components\modernizr\feature-detects\svg\" />
+    <Folder Include="bower_components\modernizr\feature-detects\textarea\" />
+    <Folder Include="bower_components\modernizr\feature-detects\url\" />
+    <Folder Include="bower_components\modernizr\feature-detects\video\" />
+    <Folder Include="bower_components\modernizr\feature-detects\webgl\" />
+    <Folder Include="bower_components\modernizr\feature-detects\webrtc\" />
+    <Folder Include="bower_components\modernizr\feature-detects\websockets\" />
+    <Folder Include="bower_components\modernizr\feature-detects\window\" />
+    <Folder Include="bower_components\modernizr\feature-detects\workers\" />
+    <Folder Include="bower_components\modernizr\lib\" />
+    <Folder Include="bower_components\modernizr\media\" />
+    <Folder Include="bower_components\modernizr\src\" />
+    <Folder Include="bower_components\modernizr\test\browser\integration\" />
+    <Folder Include="bower_components\modernizr\test\browser\src\" />
+    <Folder Include="bower_components\modernizr\test\img\" />
+    <Folder Include="bower_components\modernizr\test\js\lib\" />
+    <Folder Include="bower_components\modernizr\test\mocks\lib\" />
+    <Folder Include="bower_components\modernizr\test\node\lib\" />
+    <Folder Include="bower_components\modernizr\test\universal\lib\" />
+    <Folder Include="bower_components\respond\cross-domain\" />
+    <Folder Include="bower_components\respond\dest\" />
+    <Folder Include="bower_components\respond\src\" />
+    <Folder Include="fonts\" />
+    <Folder Include="node_modules\del\node_modules\.bin\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\array-union\node_modules\array-uniq\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\arrify\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\inflight\node_modules\wrappy\test\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\inherits\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\balanced-match\test\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\concat-map\example\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\concat-map\test\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\once\node_modules\wrappy\test\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\once\test\" />
+    <Folder Include="node_modules\del\node_modules\globby\node_modules\glob\node_modules\path-is-absolute\" />
+    <Folder Include="node_modules\del\node_modules\is-path-cwd\" />
+    <Folder Include="node_modules\del\node_modules\is-path-in-cwd\node_modules\is-path-inside\node_modules\path-is-inside\lib\" />
+    <Folder Include="node_modules\del\node_modules\object-assign\" />
+    <Folder Include="node_modules\del\node_modules\pify\" />
+    <Folder Include="node_modules\del\node_modules\pinkie-promise\node_modules\pinkie\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\inflight\node_modules\wrappy\test\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\inherits\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\balanced-match\test\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\concat-map\example\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\minimatch\node_modules\brace-expansion\node_modules\concat-map\test\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\once\node_modules\wrappy\test\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\once\test\" />
+    <Folder Include="node_modules\del\node_modules\rimraf\node_modules\glob\node_modules\path-is-absolute\" />
+    <Folder Include="node_modules\gulp\completion\" />
+    <Folder Include="node_modules\gulp\lib\" />
+    <Folder Include="node_modules\gulp\node_modules\.bin\" />
+    <Folder Include="node_modules\gulp\node_modules\archy\examples\" />
+    <Folder Include="node_modules\gulp\node_modules\archy\test\" />
+    <Folder Include="node_modules\gulp\node_modules\chalk\node_modules\ansi-styles\" />
+    <Folder Include="node_modules\gulp\node_modules\chalk\node_modules\escape-string-regexp\" />
+    <Folder Include="node_modules\gulp\node_modules\chalk\node_modules\has-ansi\node_modules\ansi-regex\" />
+    <Folder Include="node_modules\gulp\node_modules\chalk\node_modules\strip-ansi\node_modules\ansi-regex\" />
+    <Folder Include="node_modules\gulp\node_modules\chalk\node_modules\supports-color\" />
+    <Folder Include="node_modules\gulp\node_modules\deprecated\test\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\lib\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\.bin\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\array-differ\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\array-uniq\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\beeper\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\bin\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\lib\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\get-stdin\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\camelcase-keys\node_modules\camelcase\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\camelcase-keys\node_modules\map-obj\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\loud-rejection\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\normalize-package-data\lib\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\normalize-package-data\node_modules\hosted-git-info\test\lib\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\normalize-package-data\node_modules\is-builtin-module\node_modules\builtin-modules\" />
+    <Folder Include="node_modules\gulp\node_modules\gulp-util\node_modules\dateformat\node_modules\meow\node_modules\normalize-package-data\node_modules\validate-npm-package-license\node_modules\spdx-correct\node_modules\" />
     <Folder Include="Styles\App_LocalResources\" />
+    <Folder Include="Theme\fonts\custom\" />
+    <Folder Include="Theme\javasripts\custom\" />
+    <Folder Include="Theme\stylesheets\mixins\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -330,11 +426,12 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57709</DevelopmentServerPort>
+          <DevelopmentServerPort>54324</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56576/</IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
