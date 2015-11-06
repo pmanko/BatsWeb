@@ -4,13 +4,13 @@
 	<link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
 	<script src="//vjs.zencdn.net/4.12/video.js"></script>
 
-	<link type="text/css" href="Styles/batstube.css" rel="stylesheet" />
+	<link type="text/css" href="/dist/styles/batstube.css" rel="stylesheet" />
 
 	<script>
 		var videoPaths = "<%= Session["video-paths"] %>".split(',');
 		var videoTitles = "<%= Session["video-titles"] %>".split(',');
 	</script>
-	<script src="Scripts/batstube_app.js"></script> 
+	<script src="/dist/scripts/batstube_app.js"></script> 
 
 </asp:Content>
 
