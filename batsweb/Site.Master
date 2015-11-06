@@ -4,15 +4,12 @@
 <html lang="'en">
 <head runat="server">
     <title></title>
-    <link type="text/css" href="Styles/bootstrap_original.css" rel="stylesheet" />
-    <link type="text/css" href="Styles/main.css" rel="stylesheet" />
 
+    <link type="text/css" href="/dist/styles/app.css" rel="stylesheet" />
+    <link type="text/css" href="/dist/styles/main.css" rel="stylesheet" />
+    <script type="text/javascript" src="/dist/scripts/vendor.bundle.min.js"></script>
+    <script type="text/javascript" src="/dist/scripts/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="Scripts/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
-    <script type="text/javascript" src="Scripts/angular.js"></script>
-    <script src="Scripts/angular-route.js"></script>
-    
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 

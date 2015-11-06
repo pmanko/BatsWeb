@@ -33,18 +33,18 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.currentVideo = null;
 
 
-    $scope.sentVideos = [];
-    for (var i = 0; i < videoPaths.length; i++) {
-        if (videoPaths[i] != "") {
-            $scope.sentVideos.push(
-                {
-                    path: videoPaths[i].trim().replace(/\s+/g, "/"),
-                    title: videoTitles[i]
-                }
-            );
+    $scope.sentVideos = $scope.videos;
+    //for (var i = 0; i < videoPaths.length; i++) {
+    //    if (videoPaths[i] != "") {
+    //        $scope.sentVideos.push(
+    //            {
+    //                path: videoPaths[i].trim().replace(/\s+/g, "/"),
+    //                title: videoTitles[i]
+    //            }
+    //        );
 
-        }
-    };
+    //    }
+    //};
 
 
     for (var i = 0; i < paths.length; i++) {
