@@ -17,6 +17,16 @@
 
            if self::IsPostBack
                exit method.
+               
+      *    Setup - from main menu                          
+           if   self::Session["batsw060data"] = null
+              set mydata to new batsweb.batsw060Data
+              invoke mydata::populateData
+              set self::Session["batsw060data"] to mydata
+           else
+               set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data.
+           
+              
 
            if  self::Session::Item("w060rununit") not = null
                set batsw060rununit to self::Session::Item("w060rununit")
@@ -28,7 +38,6 @@
                 set self::Session::Item("w060rununit") to  batsw060rununit.
 
            invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
-           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
 
            move "I" to BATSW060-ACTION

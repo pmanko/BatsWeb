@@ -35,9 +35,27 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="mainmenu.aspx">Main Menu<span class="sr-only">(current)</span></a></li>
-                    <li class="active"><a href="mainmenu.aspx">Full At-Bat</a></li>
-                    <li><a href="#">Videos</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Majors <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/gameSummary.aspx?league=MA">Games</a></li>
+                        <li><a href="/fullatbat.aspx?league=MA">Full At Bat</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/pitchervsbatter.aspx?league=MA">Pitcher vs. Batter At Bats</a></li>
+                        <li><a href="/breakdown.aspx?league=MA">Batter/Pitcher Breakdown</a></li>
+                      </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Minors <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="/gameSummary.aspx?league=MI">Games</a></li>
+                        <li><a href="/fullatbat.aspx?league=MI">Full At Bat</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="/EZvideo.aspx">EZ Video</a></li>
+                    <li><a href="#">Reload Games</a></li>
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
 

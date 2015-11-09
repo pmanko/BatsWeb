@@ -29,7 +29,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
               </label>
             </div>
-            <asp:Button ID="loginButton" runat="server" PostBackUrl="~/mainmenu.aspx" Text="Sign In" class="btn btn-lg btn-primary btn-block"/>
+            <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Sign In" class="btn btn-lg btn-primary btn-block"/>
 
 
 

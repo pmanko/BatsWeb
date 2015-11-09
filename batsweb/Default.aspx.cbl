@@ -108,4 +108,11 @@
            goback.
        end method.
 
+       method-id loginButton_Click protected.
+       procedure division using by value sender as object e as type System.EventArgs.
+       
+           invoke self::Response::Redirect("/mainmenu.aspx")
+
+       end method.
+
        end class.

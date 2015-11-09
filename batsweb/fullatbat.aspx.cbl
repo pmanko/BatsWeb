@@ -12,6 +12,21 @@
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
+                                         
+      * Setup using GET variables
+      *    Moved from mainmenu.aspx - Pages should be self-sufficient 
+           SET self::Session::Item("database") to self::Request::QueryString["league"]
+           
+           if   self::Session["bat666data"] = null
+               set mydata to new batsweb.bat666Data
+               invoke mydata::populateData
+               set self::Session["bat666data"] to mydata
+           else
+               set mydata to self::Session["bat666data"] as type batsweb.bat666Data.
+          
+       
+       
+        
       *     if (Request["__EVENTARGUMENT"] not = null and Request["__EVENTARGUMENT"] = "move")
       *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
            if self::IsPostBack
@@ -29,7 +44,7 @@
                set self::Session::Item("666rununit") to  bat666rununit.
 
            invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
-           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
+          
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
@@ -43,7 +58,7 @@
                set allEndRadioButton::Checked to true.
            set textBox1::Text to BAT666-GAME-DATE::ToString("00/00/00")
            set textBox4::Text to BAT666-END-GAME-DATE::ToString("00/00/00")
-           set pitcherTextBox::Text to BAT666-PITCHER
+      *     set pitcherTextBox::Text to BAT666-PITCHER
            set batterTextBox::Text to BAT666-BATTER
            set BAT666-PITCHER-TYPE-FLAG TO " "    
            set BAT666-BATTER-TYPE-FLAG TO " "    

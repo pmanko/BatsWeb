@@ -34,6 +34,17 @@
                                          param-e as type System.EventArgs.
            if self::IsPostBack
                exit method.
+               
+      *    Setup - from main menu
+           set self::Session::Item("database") to self::Request::QueryString["league"]
+           if   self::Session["bat766data"] = null
+              set mydata to new batsweb.bat766Data
+              invoke mydata::populateData
+              set self::Session["bat766data"] to mydata
+           else
+               set mydata to self::Session["bat766data"] as type batsweb.bat766Data
+               
+           
            if  self::Session::Item("766rununit") not = null
                set bat766rununit to self::Session::Item("766rununit")
                    as type RunUnit
@@ -43,7 +54,6 @@
                invoke bat766rununit::Add(BAT766WEBF)
                set self::Session::Item("766rununit") to  bat766rununit.
            invoke abListBox::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(abListBox, "move"))
-           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")

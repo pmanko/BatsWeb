@@ -18,9 +18,23 @@
 
            if self::IsPostBack
                exit method.
+               
       *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
       *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
       *      & 'window.onbeforeunload = HandleOnclose;', true)
+           
+      *    Setup - from main menu     
+           
+           SET self::Session::Item("database") to self::Request::QueryString["league"]
+           if   self::Session["bat360data"] = null
+              set mydata to new batsweb.bat360Data
+              invoke mydata::populateData
+              set self::Session["bat360data"] to mydata
+           else
+               set mydata to self::Session["bat360data"] as type batsweb.bat360Data.
+
+           
+           
            if  self::Session::Item("360rununit") not = null
                set bat360rununit to self::Session::Item("360rununit")
                    as type RunUnit
@@ -31,7 +45,6 @@
                 set self::Session::Item("360rununit") to  bat360rununit.
            invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
            invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            set label1::Text to label1::Text::Replace(" ", "&nbsp;")
            set gamesHeader::Text to gamesHeader::Text::Replace(" ", "&nbsp;")
