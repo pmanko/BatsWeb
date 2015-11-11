@@ -306,6 +306,7 @@
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="gulpfile.js" />
     <None Include="Images\1288A.mp4" />
     <None Include="Images\homeplateGREY.png" />
     <None Include="Images\logo.png" />
@@ -314,6 +315,7 @@
     <None Include="Images\szone1.bmp" />
     <None Include="Images\szone1.png" />
     <None Include="Images\szone2.png" />
+    <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\angular-route.js" />
     <None Include="Scripts\angular.js" />
@@ -343,6 +345,8 @@
     <None Include="Styles\main.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />
+    <None Include="Theme\stylesheets\custom.scss" />
+    <None Include="Theme\stylesheets\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="MicroFocus.COBOL.RuntimeServices" />
