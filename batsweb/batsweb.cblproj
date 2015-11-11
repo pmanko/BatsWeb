@@ -74,10 +74,12 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="summaryatbatdetail.aspx" />
     <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
     <Content Include="fullatbat.aspx" />
     <Content Include="gameSummary.aspx" />
+    <Content Include="gamesummaryszone.aspx" />
     <Content Include="mainmenu.aspx" />
     <Content Include="pitchervsbatter.aspx" />
     <Content Include="Styles\Site.css" />
@@ -86,6 +88,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="summaryrunners.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -203,6 +206,13 @@
     <Compile Include="Account\Register.aspx.designer.cbl">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="summaryatbatdetail.aspx.cbl">
+      <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summaryatbatdetail.aspx.designer.cbl">
+      <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="breakdown.aspx.cbl">
       <DependentUpon>breakdown.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,6 +248,13 @@
     <Compile Include="gameSummary.aspx.designer.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="gamesummaryszone.aspx.cbl">
+      <DependentUpon>gamesummaryszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gamesummaryszone.aspx.designer.cbl">
+      <DependentUpon>gamesummaryszone.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cbl">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -269,6 +286,13 @@
     <Compile Include="batstube.aspx.designer.cbl">
       <DependentUpon>batstube.aspx</DependentUpon>
     </Compile>
+    <Compile Include="summaryrunners.aspx.cbl">
+      <DependentUpon>summaryrunners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summaryrunners.aspx.designer.cbl">
+      <DependentUpon>summaryrunners.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -287,11 +311,15 @@
     <None Include="Images\logo.png" />
     <None Include="Images\Play.png" />
     <None Include="Images\SydexLogo.png" />
+    <None Include="Images\szone1.bmp" />
+    <None Include="Images\szone1.png" />
+    <None Include="Images\szone2.png" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\angular-route.js" />
     <None Include="Scripts\angular.js" />
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\summarycallatbat.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -320,6 +348,10 @@
     <Import Include="MicroFocus.COBOL.RuntimeServices" />
     <Import Include="System" />
     <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Drawing.Drawing2D" />
+    <Import Include="System.Drawing.Imaging" />
+    <Import Include="System.Drawing.Text" />
     <Import Include="System.Linq" />
     <Import Include="System.Web" />
     <Import Include="System.Web.Security" />

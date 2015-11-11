@@ -960,12 +960,15 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           MOVE "PG" to BAT360-ACTION
+           move "VA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
-           MOVE " " to SYD145WD-FILENAME
-           MOVE "S" to SYD145WD-PAGE-ORIENT
-           MOVE 1 to SYD145WD-COPIES
-           MOVE " " to SYD145WD-NOTEPAD
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
+      *     MOVE "PG" to BAT360-ACTION
+      *     invoke bat360rununit::Call("BAT360WEBF")
+      *     MOVE " " to SYD145WD-FILENAME
+      *     MOVE "S" to SYD145WD-PAGE-ORIENT
+      *     MOVE 1 to SYD145WD-COPIES
+      *     MOVE " " to SYD145WD-NOTEPAD
        end method.
 
        end class.

@@ -42,7 +42,7 @@
               invoke mydata::populateData
               set self::Session["bat766data"] to mydata
            else
-               set mydata to self::Session["bat766data"] as type batsweb.bat766Data
+               set mydata to self::Session["bat766data"] as type batsweb.bat766Data.
                
            
            if  self::Session::Item("766rununit") not = null
@@ -877,7 +877,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
        01  playerName      type String.
        01  aa              type Single.
        procedure division using by value prefixText as String,
-      *                    count as Int64
+                          #count as binary-long
                           returning GetNames as String occurs any.
            move 0 to aa.
            open input play-file.
