@@ -2,6 +2,7 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <script type="text/javascript" src="Scripts/fullatbat.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -185,6 +186,8 @@
                                 <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
                                 <asp:HiddenField ID="vid_paths" runat="server" />
                                 <asp:HiddenField ID="vid_titles" runat="server" />
+
+                                <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>
                                 <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
 
                             </div>

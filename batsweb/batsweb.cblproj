@@ -88,6 +88,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="summarypark.aspx" />
     <Content Include="summaryrunners.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -286,6 +287,13 @@
     <Compile Include="batstube.aspx.designer.cbl">
       <DependentUpon>batstube.aspx</DependentUpon>
     </Compile>
+    <Compile Include="summarypark.aspx.cbl">
+      <DependentUpon>summarypark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summarypark.aspx.designer.cbl">
+      <DependentUpon>summarypark.aspx</DependentUpon>
+    </Compile>
     <Compile Include="summaryrunners.aspx.cbl">
       <DependentUpon>summaryrunners.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -302,6 +310,24 @@
     <None Include="App_Data\TEMPmlb1.DAT" />
     <None Include="App_Data\TEMPmlb1.idx" />
     <None Include="App_Data\wininet.dll" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="dist\scripts\batstube_app.js" />
+    <None Include="dist\scripts\bootstrap.min.js" />
+    <None Include="dist\scripts\callBatstube.js" />
+    <None Include="dist\scripts\fullatbat.js" />
+    <None Include="dist\scripts\summarycallatbat.js" />
+    <None Include="dist\scripts\vendor.bundle.min.js" />
+    <None Include="dist\scripts\video.js" />
+    <None Include="dist\styles\app.css" />
+    <None Include="dist\styles\batstube.css" />
+    <None Include="dist\styles\BenStyleSheet.css" />
+    <None Include="dist\styles\main.css" />
+    <None Include="dist\styles\Site.css" />
+    <None Include="dist\styles\video-js.css" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />

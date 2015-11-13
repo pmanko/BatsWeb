@@ -110,13 +110,13 @@
       *>> </remarks>
        01 szoneImageButton type System.Web.UI.WebControls.ImageButton protected.
       *>> <summary>
-      *>> Label1 control.
+      *>> headerLabel control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Label1 type System.Web.UI.WebControls.Label protected.
+       01 headerLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> ListBox1 control.
       *>> </summary>
@@ -133,5 +133,125 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 runnersImage type System.Web.UI.WebControls.Image protected.
+      *>> <summary>
+      *>> Label1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Label1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> outsLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 outsLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> Label2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Label2 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> hitLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 hitLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> resultLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 resultLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> countLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 countLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> posLabel1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 posLabel1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> fieldedLabel1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 fieldedLabel1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> flagLabel1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 flagLabel1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> posLabel2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 posLabel2 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> fieldedLabel2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 fieldedLabel2 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> flagLabel2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 flagLabel2 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> rbiLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 rbiLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> catcherLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 catcherLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> parkImage control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 parkImage type System.Web.UI.WebControls.Image protected.
 
        end class.

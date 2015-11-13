@@ -425,6 +425,9 @@
        end method.
 
        method-id ListBox2_SelectedIndexChanged protected.
+       local-storage section.
+       01 ctrl             type Control.
+       01 atbatflag        pic x.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -438,7 +441,20 @@
            MOVE BAT360-AB-KEY(BAT360-SEL-AB) to BAT360-I-KEY
            MOVE "VD" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+      *     set printButton::Text to self::Request::Params::Get("__EVENTTARGET")
+      * looks through list of submitted controls to see if it was a button. if it is the correct button don't go to batstube
+      *     perform varying s as String through self::Request::Form
+      *         set ctrl to self::FindControl(s)
+      *         if self::printButton = ctrl
+      *             set atbatflag to "Y"
+      *         end-if
+      *     end-perform.
+      *     if self::Request::Params::Get("__EVENTTARGET") not = self::FindControl("printButton")::ToString
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox2"
+                   invoke self::batstube.
+      *     set atbatflag to " "
+               
        end method.
 
        method-id fromSelected_Click protected.

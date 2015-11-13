@@ -30,21 +30,21 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
         titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
 
     $scope.videos = [];
-    $scope.currentVideo = null;
+    $scope.model.currentVideo = null;
 
 
-    $scope.sentVideos = $scope.videos;
-    //for (var i = 0; i < videoPaths.length; i++) {
-    //    if (videoPaths[i] != "") {
-    //        $scope.sentVideos.push(
-    //            {
-    //                path: videoPaths[i].trim().replace(/\s+/g, "/"),
-    //                title: videoTitles[i]
-    //            }
-    //        );
+    $scope.sentVideos = [];
+    for (var i = 0; i < videoPaths.length; i++) {
+       if (videoPaths[i] != "") {
+           $scope.sentVideos.push(
+               {
+                   path: videoPaths[i].trim().replace(/\s+/g, "/"),
+                   title: videoTitles[i]
+               }
+           );
 
-    //    }
-    //};
+       }
+    };
 
 
     for (var i = 0; i < paths.length; i++) {

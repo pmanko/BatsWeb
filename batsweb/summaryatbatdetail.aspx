@@ -37,32 +37,118 @@
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <div class="col-lg-6">
+                            <div class="row">
+                            <div class="col-lg-1">
                                 <label>Pitcher:</label>
+                            </div>
+                            <div class="col-lg-2">
                                 <asp:TextBox ID="pitcherTextBox" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-1">
                                 <label>Batter:</label>
+                            </div>
+                            <div class="col-lg-2">
                                 <asp:TextBox ID="batterTextBox" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
+                            </div>
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="col-lg-4">
-                                <asp:ImageButton ID="szoneImageButton" runat="server" OnClick="szoneImageButton_Click" src="gamesummaryszone.aspx" alt="image could not be displayed refresh"/>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="row">
-                                <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="## Type Location K Vel * Vid" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <asp:ImageButton ID="szoneImageButton" runat="server" OnClick="szoneImageButton_Click" src="gamesummaryszone.aspx" alt="image could not be displayed refresh"/>
                                 </div>
-                                <div class="row">
-                                <asp:ListBox ID="ListBox1" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                                <div class="col-lg-4">
+                                    <div class="row">
+                                        <asp:Label ID="headerLabel" runat="server" BorderStyle="Groove" Text="## Type Location K Vel * Vid" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                    </div>
+                                    <div class="row">
+                                        <asp:ListBox ID="ListBox1" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="row">
+                                <div class="col-lg-4">
                                     <asp:Image ID="runnersImage" runat="server" src="summaryrunners.aspx" alt="image could not be displayed refresh"/>
                                 </div>
-                                <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <asp:Label ID="Label1" runat="server" Text="Outs:" style="text-align: right;" ReadOnly="true" Width="100px"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <asp:Label ID="outsLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <asp:Label ID="Label2" runat="server" Text="Hit Type:" style="text-align: right;" ReadOnly="true"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <asp:Label ID="hitLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Result:</label>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <asp:Label ID="resultLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Final Count:</label>
+                                        </div>
+                                        <div class="col-lg-5">
+                                            <asp:Label ID="countLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Fielded By(1):</label>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <asp:Label ID="posLabel1" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <asp:Label ID="fieldedLabel1" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <asp:Label ID="flagLabel1" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Fielded By(2):</label>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <asp:Label ID="posLabel2" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <asp:Label ID="fieldedLabel2" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <asp:Label ID="flagLabel2" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>RBI:</label>
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <asp:Label ID="rbiLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <label>Catcher:</label>
+                                        </div>
+                                        <div class="col-lg-3">
+                                            <asp:Label ID="catcherLabel" runat="server" class="form-control" ReadOnly="true"></asp:Label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
                                     <asp:Image ID="parkImage" runat="server" src="summarypark.aspx" alt="image could not be displayed refresh"/>
                                 </div>
                             </div>

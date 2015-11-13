@@ -3,7 +3,7 @@ var sass = require('gulp-sass');
 var browserify = require('gulp-browserify');
 var concat = require('gulp-concat');
 var minifyCSS = require('gulp-minify-css');
-// var watch = require('gulp-watch');
+var watch = require('gulp-watch');
 var del = require('del');
 var config = {
     bootstrapDir: './bower_components/bootstrap-sass',
@@ -20,13 +20,19 @@ gulp.task('vendor-scripts', function () {
     var vendorSources = {
         jquery: ['bower_components/jquery/dist/jquery.min.js',
 	            'bower_components/jquery-validation/dist/jquery.validate.min.js',
-	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js',
-                'bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js']
+	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'
+				],
+        angular: ['bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js']
     }
 
     gulp.src(vendorSources.jquery)
-		.pipe(concat('vendor.bundle.min.js'))
+		.pipe(concat('jquery.bundle.min.js'))
 		.pipe(gulp.dest(outputLocation + '/scripts/'));
+        
+    gulp.src(vendorSources.angular)
+        .pipe(concat('angular.bundle.min.js'))
+        .pipe(gulp.dest(outputLocation + '/scripts/'));
+
 });
 
 
@@ -61,8 +67,16 @@ gulp.task('bootstrap-scripts', function () {
     .pipe(gulp.dest(outputLocation + '/scripts/'));
 });
 
+
 gulp.task('bootstrap', ['bootstrap-stylesheets', 'bootstrap-fonts', 'bootstrap-scripts'], function () { });
 
-gulp.task('default', ['clean', 'vendor-scripts', 'styles', 'scripts', 'bootstrap'], function () { });
+gulp.task('default', ['vendor-scripts', 'styles', 'scripts', 'bootstrap'], function () { });
 
 
+
+gulp.task('watch', function () {
+	gulp.watch(config.customThemeDir + '/stylesheets/*.scss', [bootstrap-stylesheets]);
+	gulp.watch("Styles/*.css", [styles]);
+	gulp.watch("Scripts/**/*.js", [scripts]);
+
+});

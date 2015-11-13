@@ -27,13 +27,27 @@
            set battingTextBox::Text to BAT360-I-CURR-BATTING::ToString
            set pitcherTextBox::Text to BAT360-PITCHER::Trim
            set batterTextBox::Text to BAT360-BATTER::Trim
+           set outsLabel::Text to BAT360-I-OUTS::ToString
+           set hitLabel::Text to BAT360-I-HIT-DESC::Trim
+           set resultLabel::Text to BAT360-I-RES-DESC::Trim
+           set posLabel1::Text to BAT360-I-FIELDER-POS::Trim
+           set posLabel2::Text to BAT360-I-FIELDER2-POS::Trim
+           set fieldedLabel1::Text to BAT360-I-FIELDER-NAME::Trim
+           set fieldedLabel2::Text to BAT360-I-FIELDER2-NAME::Trim
+           set flagLabel1::Text to BAT360-I-FIELDER-FLAG::Trim
+           set flagLabel2::Text to BAT360-I-FIELDER2-FLAG::Trim
+           set countLabel::Text to BAT360-I-FINAL-COUNT::Trim
+           set rbiLabel::Text to BAT360-I-RBI::ToString
+           set catcherLabel::Text to BAT360-CATCHER
            move 1 to aa.
            invoke ListBox1::Items::Clear.
        pitch-loop.
            if aa > BAT360-NUM-PITCHES
                go to pitch-done.
-           invoke ListBox1::Items::Add("&nbsp;" & BAT360-P-NUM(aa) & "&nbsp;&nbsp;" & BAT360-P-TYPE(aa) & "&nbsp;&nbsp;" & BAT360-P-DESC(aa) &
-           "&nbsp;" & BAT360-P-RESULT(aa) & "&nbsp;" & BAT360-P-VEL(aa) & "&nbsp;" & BAT360-P-FLAG(aa) & BAT360-P-FLAG2(AA) & "&nbsp;&nbsp;" & BAT360-P-VIDEO(aa))
+           set dataline to (" " & BAT360-P-NUM(aa) & "  " & BAT360-P-TYPE(aa) & "  " & BAT360-P-DESC(aa) &
+           " " & BAT360-P-RESULT(aa) & " " & BAT360-P-VEL(aa) & " " & BAT360-P-FLAG(aa) & BAT360-P-FLAG2(AA) & "  " & BAT360-P-VIDEO(aa))
+           INSPECT dataline REPLACING ALL " " BY X'A0'
+           invoke ListBox1::Items::Add(dataline)
            add 1 to aa
            go to pitch-loop.
        pitch-done.

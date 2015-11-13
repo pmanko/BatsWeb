@@ -817,7 +817,9 @@
                as type RunUnit
 
            invoke bat766rununit::Call("BAT766WEBF")
-           invoke self::batstube.
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$abListBox"
+                   invoke self::batstube.
        end method.
 
        method-id batstube protected.
@@ -825,7 +827,7 @@
 PM     01 vidPaths type String. 
  PM    01 vidTitles type String.   
        linkage section.
-           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".      766Data
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".      
        procedure division.
            set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
