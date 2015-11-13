@@ -136,9 +136,6 @@
     <Compile Include="..\..\..\..\..\sydexsource\bats\BATSIPCA.CBL">
       <Link>BATSIPCA.CBL</Link>
     </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSMILWF.CBL">
-      <Link>BATSMILWF.CBL</Link>
-    </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\Batsw060SharedData.cbl">
       <Link>Batsw060SharedData.cbl</Link>
     </Compile>
