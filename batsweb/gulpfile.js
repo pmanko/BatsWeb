@@ -21,20 +21,35 @@ gulp.task('vendor-scripts', function () {
         jquery: ['bower_components/jquery/dist/jquery.min.js',
 	            'bower_components/jquery-validation/dist/jquery.validate.min.js',
 	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'
-				],
-        angular: ['bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js']
+        ],
+        angular: ['bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js'],
+        videojs: ['bower_components/video.js/dis/ie8/videojs-ie8.js', 'bower_components/video.js/dist/video.js'],
+        videojsflash: ["bower_components/video.js/dist/video-js.swf"],
+        videojscss: ["bower_components/video.js/dist/video-js.min.css"],
+        videojsfonts: ["bower_components/video.js/dist/font"]
     }
 
     gulp.src(vendorSources.jquery)
 		.pipe(concat('jquery.bundle.min.js'))
 		.pipe(gulp.dest(outputLocation + '/scripts/'));
-        
+
     gulp.src(vendorSources.angular)
         .pipe(concat('angular.bundle.min.js'))
         .pipe(gulp.dest(outputLocation + '/scripts/'));
 
-});
+    gulp.src(vendorSources.videojs)
+        .pipe(concat('videojs.bundle.min.js'))
+        .pipe(gulp.dest(outputLocation + '/scripts/'));
 
+    gulp.src(vendorSources.videojsflash)
+        .pipe(gulp.dest(outputLocation + '/swf/'));
+
+    gulp.src(vendorSources.videojscss)
+        .pipe(gulp.dest(outputLocation + '/styles/'))
+
+    gulp.src(vendorSources.videojsfonts + "/*")
+        .pipe(gulp.dest(outputLocation + '/styles/font/'))
+});
 
 
 gulp.task('scripts', function () {
@@ -67,16 +82,14 @@ gulp.task('bootstrap-scripts', function () {
     .pipe(gulp.dest(outputLocation + '/scripts/'));
 });
 
-
 gulp.task('bootstrap', ['bootstrap-stylesheets', 'bootstrap-fonts', 'bootstrap-scripts'], function () { });
 
-gulp.task('default', ['vendor-scripts', 'styles', 'scripts', 'bootstrap'], function () { });
-
-
+gulp.task('default', ['clean', 'vendor-scripts', 'styles', 'scripts', 'bootstrap'], function () { });
 
 gulp.task('watch', function () {
-	gulp.watch(config.customThemeDir + '/stylesheets/*.scss', [bootstrap-stylesheets]);
-	gulp.watch("Styles/*.css", [styles]);
-	gulp.watch("Scripts/**/*.js", [scripts]);
+    gulp.watch(config.customThemeDir + '/stylesheets/*scss', 'bootstrap-stylesheets');
+    gulp.watch('Styles/*.css', [styles]);
+    gulp.watch("Scripts/**/*.js", [scripts]);
 
 });
+

@@ -13,3 +13,7 @@
     max-height: 36em;
     overflow: auto;
 }
+
+#main_video {
+    margin-top: 85px;
+}

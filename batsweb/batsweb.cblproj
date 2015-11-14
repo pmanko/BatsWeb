@@ -307,6 +307,7 @@
     <None Include="App_Data\TEMPmlb1.DAT" />
     <None Include="App_Data\TEMPmlb1.idx" />
     <None Include="App_Data\wininet.dll" />
+    <None Include="bower.json" />
     <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
     <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />

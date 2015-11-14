@@ -1,11 +1,13 @@
 ﻿<%@ Page Title="" MasterPageFile="~/Site.Master" AutoEventWireup="true" Inherits="batsweb.batstube" Language="C#"%>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-	<link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
-	<script src="//vjs.zencdn.net/4.12/video.js"></script>
+
+    <link href="/dist/styles/video-js.min.css" rel="stylesheet" type="text/css">
 
 	<link type="text/css" href="/dist/styles/batstube.css" rel="stylesheet" />
 
+    <script src="/dist/scripts/videojs.bundle.min.js"></script>
+	
 	<script>
 		var videoPaths = "<%= Session["video-paths"] %>".split(',');
 		var videoTitles = "<%= Session["video-titles"] %>".split(',');
@@ -18,22 +20,16 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 	<div class="container body-content" ng-app="VidApp">
-		<div class="jumbotron">
-			<div class="input-group">
-				<input type="text" class="form-control input-lg" placeholder="Search videos..." ng-model="query">
-				<span class="input-group-btn">
-					<button class="btn btn-default btn-lg" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-				</span>
-			</div>
-		</div>
-        
+
+
+        <div id="main_video">
 		<div class='row' ng-controller="VideoCtrl">         
 			<div class='col-lg-9 col-lg-push-3'>
 				<div class='row'>
 					<div class='col-lg-12'>
 						<div class='embed-responsive embed-responsive-16by9'>
 							<video id="main_vid" class='embed-responsive-item video-js vjs-default-skin' controls>
-								<source src="{{currentVideo.path}}" type="video/mp4">
+								<source src="" type="video/mp4">
 								<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 							</video>
 						</div>
@@ -77,7 +73,7 @@
 				</div>
 			</div>
 		</div>
-
+		</div>
 	    <hr />
 	</div>
 </asp:Content>
