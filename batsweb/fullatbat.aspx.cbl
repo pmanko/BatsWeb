@@ -212,9 +212,9 @@ PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    set vid_paths::Value to getVidPaths
       *    set vid_titles::Value to getVidTitles
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox1"
-                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+      *    if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+      *        if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox1"
+      *            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
 
@@ -915,12 +915,12 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
 
        method-id showVideosButton_Click protected.
-      *linkage section.
-      *    COPY "Y:\sydexsource\BATS\bat666_dg.CPB".      
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".      
        procedure division using by value sender as object e as type System.EventArgs.
-      *    if listBox1::SelectedItem = null
-      *        invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
-      *    else    
-      *        invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+           if listBox1::SelectedItem = null
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
+           else    
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
        end class.
