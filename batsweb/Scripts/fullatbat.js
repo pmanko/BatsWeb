@@ -16,3 +16,9 @@ $(document).on("click", "#show_videos", function (event) {
 
     event.preventDefault();
 });
+
+$(document).on("click", "#click_test", function(event) {
+	alert("HI");
+	console.log("Sup");
+	$(this).closest(".panel").parent().hide();
+});

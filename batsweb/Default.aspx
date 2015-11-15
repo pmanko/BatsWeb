@@ -12,18 +12,22 @@
     <div class="container">
         <div id="sign-in">
             <h2>Please sign in</h2>
-            <label for="TextBox4" class="sr-only">Team:</label>
-            <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="Team"></asp:TextBox>
-            
-            <label for="TextBox4" class="sr-only">First Name:</label>
-            <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
-
-            <label for="TextBox4" class="sr-only">Last Name:</label>
-            <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
-
-            <label for="TextBox4" class="sr-only">Password:</label>
-            <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
-
+            <div class='form-group'>
+                <label for="TextBox4" class="sr-only">Team:</label>
+                <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="Team"></asp:TextBox>
+            </div>
+            <div class='form-group'>
+                <label for="TextBox4" class="sr-only">First Name:</label>
+                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
+            </div>
+            <div class='form-group'>
+                <label for="TextBox4" class="sr-only">Last Name:</label>
+                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
+            </div>
+            <div class='form-group'>
+                <label for="TextBox4" class="sr-only">Password:</label>
+                <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
+            </div>
             <div class="checkbox">
               <label>
                 <input type="checkbox" value="remember-me"> Remember me

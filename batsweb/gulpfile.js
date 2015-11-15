@@ -26,7 +26,9 @@ gulp.task('vendor-scripts', function () {
         videojs: ['bower_components/video.js/dis/ie8/videojs-ie8.js', 'bower_components/video.js/dist/video.js'],
         videojsflash: ["bower_components/video.js/dist/video-js.swf"],
         videojscss: ["bower_components/video.js/dist/video-js.min.css"],
-        videojsfonts: ["bower_components/video.js/dist/font"]
+        videojsfonts: ["bower_components/video.js/dist/font"],
+        fontawesomecss: ["bower_components/components-font-awesome/css/font-awesome.min.css"],
+        fontawesome: ["bower_components/components-font-awesome/fonts"]
     }
 
     gulp.src(vendorSources.jquery)
@@ -49,6 +51,13 @@ gulp.task('vendor-scripts', function () {
 
     gulp.src(vendorSources.videojsfonts + "/*")
         .pipe(gulp.dest(outputLocation + '/styles/font/'))
+        
+    gulp.src(vendorSources.fontawesomecss)
+        .pipe(gulp.dest(outputLocation + '/styles/'))  
+
+    gulp.src(vendorSources.fontawesome + "/*")
+        .pipe(gulp.dest(outputLocation + '/fonts/'))
+
 });
 
 

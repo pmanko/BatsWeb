@@ -2,11 +2,12 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="/Styles/fullatbat.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="Scripts/fullatbat.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container main-container">
+    <div id='fullatbat' class="container main-container">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:Panel ID="Panel6" runat="server" GroupingText="Report Settings">
@@ -19,16 +20,18 @@
                             <div class="list-group">
                                 <div class="list-group-item">
                                     <h4>Start Date</h4>
-                                    <asp:RadioButton ID="allStartRadioButton" runat="server" GroupName="startDate" Text="All Games" OnCheckedChanged="allStartRadioButton_CheckedChanged" />
-                                    <asp:RadioButton ID="startDateRadioButton" runat="server" GroupName="startDate" Text="Start Date:" OnCheckedChanged="startDateRadioButton_CheckedChanged" />
+
+
+                                    <div class='radio radio-primary'><asp:RadioButton ID="allStartRadioButton" runat="server" GroupName="startDate" text="All Games" OnCheckedChanged="allStartRadioButton_CheckedChanged" /></div>
+                                    <div class='radio radio-primary'><asp:RadioButton ID="startDateRadioButton" runat="server" GroupName="startDate" Text="Start Date:" OnCheckedChanged="startDateRadioButton_CheckedChanged" /></div>
                                     <asp:TextBox ID="TextBox1" runat="server" TextMode="DateTime" class="form-control"></asp:TextBox>
                                     <cc1:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" BehaviorID="TextBox1_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox1" />
                                     <cc1:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox1_CalendarExtender" TargetControlID="TextBox1" />
                                 </div>
                                 <div class="list-group-item">
                                     <h4>End Date</h4>
-                                    <asp:RadioButton ID="allEndRadioButton" runat="server" GroupName="endDate" Text="All Games" OnCheckedChanged="allEndRadioButton_CheckedChanged" />
-                                    <asp:RadioButton ID="endDateRadioButton" runat="server" GroupName="endDate" Text="End Date:" OnCheckedChanged="endDateRadioButton_CheckedChanged" />
+                                    <div class='radio radio-primary'><asp:RadioButton ID="allEndRadioButton" runat="server" GroupName="endDate" Text="All Games" OnCheckedChanged="allEndRadioButton_CheckedChanged" /></div>
+                                    <div class='radio radio-primary'><asp:RadioButton ID="endDateRadioButton" runat="server" GroupName="endDate" Text="End Date:" OnCheckedChanged="endDateRadioButton_CheckedChanged" /></div>
                                     <asp:TextBox ID="TextBox4" runat="server" TextMode="DateTime"  class="form-control"></asp:TextBox>
                                     <cc1:MaskedEditExtender ID="TextBox4_MaskedEditExtender" runat="server" BehaviorID="TextBox4_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox4" />
                                     <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
@@ -59,7 +62,7 @@
                             </div>
 
                             <div class="panel-body">            
-                                <div class="input-group">
+                                <div class="form-group">
                                     <asp:TextBox ID="batterTextBox" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
 
                                     <asp:Button ID="batterButton" runat="server" Text="Select Batter" class="btn btn-default"/>
@@ -76,14 +79,15 @@
                     <div class="col-lg-3">
                         <div class="panel panel-default">
                             <div class="panel-body">
-                                <div class="input-group">
-                                    <asp:CheckBox ID="maxAtBatsCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged" Text="Maximum At Bats:" />
+                                <div>
+                                    <div class='form-group'>
+                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged" Text="Maximum At Bats:" /></div>
                                     <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
+                                    </div>
                                     <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
-
-                                    <asp:CheckBox ID="sortByInningCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByInningCheckBox_CheckedChanged" Text="Sort At Bats by Inning" />
-                                    <asp:CheckBox ID="sortByBatterCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByBatterCheckBox_CheckedChanged" Text="Sort At Bats by Batter" />
-                                    <asp:CheckBox ID="sortByOldCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByOldCheckBox_CheckedChanged" Text="Sort At Bats Oldest - Newest" />
+                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="sortByInningCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByInningCheckBox_CheckedChanged" Text="Sort At Bats by Inning" /></div>
+                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="sortByBatterCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByBatterCheckBox_CheckedChanged" Text="Sort At Bats by Batter" /></div>
+                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="sortByOldCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="sortByOldCheckBox_CheckedChanged" Text="Sort At Bats Oldest - Newest" /></div>
                                 </div>
                             </div>
                             
@@ -203,6 +207,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Dates
+                        <button id='test' type='button' aria-label='Close' class='test-x'><span class='fa fa-times'></span></button>
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -260,14 +265,14 @@
                                 <div class="panel-body"> 
                                     <div class="row">
                                         <asp:TextBox ID="TextBox5" runat="server" Width="20px" style="margin-left: 25px" class="form-control"></asp:TextBox>
-                                        <asp:RadioButton ID="RadioButton1" runat="server" Text="Any Type" style="margin-left: 75px" />
-                                        <asp:RadioButton ID="RadioButton3" runat="server" Text="Custom" style="margin-left: 25px" />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton1" runat="server" Text="Any Type" style="margin-left: 75px" /></div>
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton3" runat="server" Text="Custom" style="margin-left: 25px" /></div>
                                     </div>
                                     <div class="row">
-                                        <asp:RadioButton ID="RadioButton2" runat="server" Text="Power" style="margin-left: 75px"/>
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton2" runat="server" Text="Power" style="margin-left: 75px"/></div>
                                     </div>
                                     <div class="row">
-                                        <asp:RadioButton ID="RadioButton4" runat="server" Text="Single" style="margin-left: 75px"/>
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton4" runat="server" Text="Single" style="margin-left: 75px"/></div>
                                     </div>
                                 </div>
                             </div>
@@ -337,14 +342,14 @@
                                 <div class="panel-body"> 
                                     <div class="row">  
                                         <asp:TextBox ID="TextBox6" runat="server" Width="23px" style="margin-left: 25px" class="form-control"></asp:TextBox>
-                                        <asp:RadioButton ID="RadioButton" runat="server" Text="Any Type" style="margin-left: 75px" />
-                                        <asp:RadioButton ID="RadioButton5" runat="server" Text="Custom" style="margin-left: 25px"  />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton" runat="server" Text="Any Type" style="margin-left: 75px" /></div>
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton5" runat="server" Text="Custom" style="margin-left: 25px"  /></div>
                                     </div>
                                     <div class="row">  
-                                        <asp:RadioButton ID="RadioButton6" runat="server" Text="Power" style="margin-left: 75px" />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton6" runat="server" Text="Power" style="margin-left: 75px" /></div>
                                     </div>
                                     <div class="row">  
-                                        <asp:RadioButton ID="RadioButton7" runat="server" Text="Single" style="margin-left: 75px"  />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButton7" runat="server" Text="Single" style="margin-left: 75px"  /></div>
                                     </div>
                                 </div>
                             </div>

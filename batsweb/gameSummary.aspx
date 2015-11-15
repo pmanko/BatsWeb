@@ -6,150 +6,155 @@
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/summarycallatbat.js"></script> 
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:Panel ID="gamesPanel" runat="server">
                 <div class="row">
-                <div class="col-lg-12">
-                <asp:Panel ID="gamesPanel" runat="server">
-                    <div class="row">
-                        <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                    <div class='col-md-12'>
+                    <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class='col-md-12'>
                         <asp:ListBox ID="ListBox1" runat="server" Height="238px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                        </div>
-                        <div class="col-lg-3">
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <div class='radio radio-primary'>
                             <asp:RadioButton ID="allRadioButton" runat="server" GroupName="Games" Text="All Games" AutoPostBack="True" OnCheckedChanged="allRadioButton_CheckedChanged" />
                         </div>
-                        <div class="col-lg-3">
-                            <asp:RadioButton ID="teamRadioButton" runat="server" GroupName="Games" Text="Team" AutoPostBack="True" OnCheckedChanged="teamRadioButton_CheckedChanged" />
-                            <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" class="form-control">
-                            </asp:DropDownList>
+                                                    
+                        <div class='form-group'>
+                        <label>Year:</label>
+                        <asp:DropDownList ID="yearDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="yearDropDownList_SelectedIndexChanged" class="form-control">
+                            <asp:ListItem>2020</asp:ListItem>
+                            <asp:ListItem>2019</asp:ListItem>
+                            <asp:ListItem>2018</asp:ListItem>
+                            <asp:ListItem>2017</asp:ListItem>
+                            <asp:ListItem>2016</asp:ListItem>
+                            <asp:ListItem>2015</asp:ListItem>
+                            <asp:ListItem>2014</asp:ListItem>
+                            <asp:ListItem>2013</asp:ListItem>
+                            <asp:ListItem>2012</asp:ListItem>
+                            <asp:ListItem>2011</asp:ListItem>
+                            <asp:ListItem>2010</asp:ListItem>
+                            <asp:ListItem>2009</asp:ListItem>
+                            <asp:ListItem>2008</asp:ListItem>
+                            <asp:ListItem>2007</asp:ListItem>
+                            <asp:ListItem>2006</asp:ListItem>
+                            <asp:ListItem>2005</asp:ListItem>
+                            <asp:ListItem>2004</asp:ListItem>
+                            <asp:ListItem>2003</asp:ListItem>
+                            <asp:ListItem>2002</asp:ListItem>
+                            <asp:ListItem>2001</asp:ListItem>
+                            <asp:ListItem>2000</asp:ListItem>
+                            <asp:ListItem>1999</asp:ListItem>
+                            <asp:ListItem>1998</asp:ListItem>
+                            <asp:ListItem>1997</asp:ListItem>
+                            <asp:ListItem>1996</asp:ListItem>
+                            <asp:ListItem>1995</asp:ListItem>
+                            <asp:ListItem>1994</asp:ListItem>
+                            <asp:ListItem>1993</asp:ListItem>
+                            <asp:ListItem>1992</asp:ListItem>
+                            <asp:ListItem>1991</asp:ListItem>
+                        </asp:DropDownList></div>
+
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+
+                        <div class='radio radio-primary'><asp:RadioButton ID="teamRadioButton" runat="server" GroupName="Games" Text="Team:" AutoPostBack="True" OnCheckedChanged="teamRadioButton_CheckedChanged" /></div>
+                        <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" class="form-control">
+                        </asp:DropDownList>
+                        
+                        <div class='radio radio-primary'>
+                            <asp:RadioButton ID="nlRadioButton" runat="server" GroupName="Games" Text="National League" AutoPostBack="True" OnCheckedChanged="nlRadioButton_CheckedChanged"
+                            />
                         </div>
-                        <div class="col-lg-3">
-                            <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-default" />
+                        <div class='radio radio-primary'>
+                            <asp:RadioButton ID="alRadioButton" runat="server" GroupName="Games" Text="American League" AutoPostBack="True" OnCheckedChanged="alRadioButton_CheckedChanged"
+                            />
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-3 col-md-offset-1">
+                        <div class='checkbox checkbox-primary'>
+                            <asp:CheckBox ID="pitchersCheckBox" runat="server" Text="Show Starting Pitchers" AutoPostBack="True" OnCheckedChanged="pitchersCheckBox_CheckedChanged"
+                            />
+                        </div>
+                        
+                        <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-default btn-block" />
+
+                        <asp:Button ID="printButton" runat="server" Text="Print Game List" OnClick="printButton_Click" class="btn btn-default btn-block" />
+
+                    </div>
+                </div>
+            </asp:Panel>
+            <br />
+
+            <asp:Panel ID="Panel1" runat="server">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Inning Summary
+                    </div>
+                    <div class="list-group"> 
+                        <div class="list-group-item">
+                            <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+
+                            <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
+                            <asp:HiddenField ID="vid_paths" runat="server" />
+                            <asp:HiddenField ID="vid_titles" runat="server" />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <label>Year:</label>
-                            <asp:DropDownList ID="yearDropDownList" runat="server" AutoPostBack="True" OnSelectedIndexChanged="yearDropDownList_SelectedIndexChanged" class="form-control">
-                                <asp:ListItem>2020</asp:ListItem>
-                                <asp:ListItem>2019</asp:ListItem>
-                                <asp:ListItem>2018</asp:ListItem>
-                                <asp:ListItem>2017</asp:ListItem>
-                                <asp:ListItem>2016</asp:ListItem>
-                                <asp:ListItem>2015</asp:ListItem>
-                                <asp:ListItem>2014</asp:ListItem>
-                                <asp:ListItem>2013</asp:ListItem>
-                                <asp:ListItem>2012</asp:ListItem>
-                                <asp:ListItem>2011</asp:ListItem>
-                                <asp:ListItem>2010</asp:ListItem>
-                                <asp:ListItem>2009</asp:ListItem>
-                                <asp:ListItem>2008</asp:ListItem>
-                                <asp:ListItem>2007</asp:ListItem>
-                                <asp:ListItem>2006</asp:ListItem>
-                                <asp:ListItem>2005</asp:ListItem>
-                                <asp:ListItem>2004</asp:ListItem>
-                                <asp:ListItem>2003</asp:ListItem>
-                                <asp:ListItem>2002</asp:ListItem>
-                                <asp:ListItem>2001</asp:ListItem>
-                                <asp:ListItem>2000</asp:ListItem>
-                                <asp:ListItem>1999</asp:ListItem>
-                                <asp:ListItem>1998</asp:ListItem>
-                                <asp:ListItem>1997</asp:ListItem>
-                                <asp:ListItem>1996</asp:ListItem>
-                                <asp:ListItem>1995</asp:ListItem>
-                                <asp:ListItem>1994</asp:ListItem>
-                                <asp:ListItem>1993</asp:ListItem>
-                                <asp:ListItem>1992</asp:ListItem>
-                                <asp:ListItem>1991</asp:ListItem>
-                            </asp:DropDownList>
+                    <div class='panel-body'>
+                        <div class='row'>
+                            <div class="col-md-3">
+                                <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" class="btn btn-default btn-block" />
+                            </div>
                         </div>
-                        <div class="col-lg-3">
-                            <asp:RadioButton ID="nlRadioButton" runat="server" GroupName="Games" Text="National League" AutoPostBack="True" OnCheckedChanged="nlRadioButton_CheckedChanged" />
-                        </div>
-                        <div class="col-lg-3">
-                            <asp:CheckBox ID="pitchersCheckBox" runat="server" Text="Show Starting Pitchers" AutoPostBack="True" OnCheckedChanged="pitchersCheckBox_CheckedChanged" />
+                        <br />
+                        <div class='row'>
+                            <div class="col-md-3">
+                                <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" class="btn btn-default btn-block" />
+                                <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel">
+                                </cc1:ModalPopupExtender>
+                                <asp:HiddenField ID="HiddenField1" runat="server" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="statsButton" runat="server" Text="View Game Stats" class="btn btn-default btn-block" />
+                                <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" PopupControlID="statsPanel" TargetControlID="statsButton">
+                                </cc1:PopupControlExtender>
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default btn-block" />
+                            </div>
+                            <div class="col-md-3">
+                                <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default btn-block" />
+                                <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel">
+                                </cc1:ModalPopupExtender>
+                                <asp:HiddenField ID="HiddenField2" runat="server" />
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                        </div>
-                        <div class="col-lg-3">
-                            <asp:RadioButton ID="alRadioButton" runat="server" GroupName="Games" Text="American League" AutoPostBack="True" OnCheckedChanged="alRadioButton_CheckedChanged" />
-                        </div>
-                        <div class="col-lg-3">
-                        </div>
-                        <div class="col-lg-3">
-                            <asp:Button ID="printButton" runat="server" Text="Print Game List" OnClick="printButton_Click" class="btn btn-default" />
-                        </div>
-                    </div>
-               </asp:Panel>
-               </div>
-               </div>
-                <div class="row">
-                <div class="col-lg-12">
-               <asp:Panel ID="Panel1" runat="server">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Inning Summary
-                        </div>
-                        <div class="panel-body"> 
-                            <div class="row">
-                                <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                            </div>
-                            <div class="row">
-                                <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
-                                <asp:HiddenField ID="vid_paths" runat="server" />
-                                <asp:HiddenField ID="vid_titles" runat="server" />
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" class="btn btn-default" />
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" class="btn btn-default" />
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" class="btn btn-default" />
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" class="btn btn-default" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" class="btn btn-default" />
-                                    <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel">
-                                    </cc1:ModalPopupExtender>
-                                    <asp:HiddenField ID="HiddenField1" runat="server" />
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="statsButton" runat="server" Text="View Game Stats" class="btn btn-default" />
-                                    <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" PopupControlID="statsPanel" TargetControlID="statsButton">
-                                    </cc1:PopupControlExtender>
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default" />
-                                </div>
-                                <div class="col-lg-3">
-                                    <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default" />
-                                    <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel">
-                                    </cc1:ModalPopupExtender>
-                                    <asp:HiddenField ID="HiddenField2" runat="server" />
-                                </div>
-                           </div>
-                       </div>
-                   </div>
-              </asp:Panel>
-                                   </div>
-               </div>
-        <asp:Panel ID="visPanel" runat="server" Height="203px" Width="800px">
+                    
+                </div>
+            </asp:Panel>
+
+            <asp:Panel ID="visPanel" runat="server" Height="203px" Width="800px">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     View All Clips for Visiting Player
