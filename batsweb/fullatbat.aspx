@@ -60,13 +60,11 @@
                             <div class="panel-heading">
                                 Current Batter
                             </div>
-
                             <div class="panel-body">            
                                 <div class="form-group">
                                     <asp:TextBox ID="batterTextBox" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
-
                                     <asp:Button ID="batterButton" runat="server" Text="Select Batter" class="btn btn-default"/>
-                                    <cc1:PopupControlExtender ID="batterButton_PopupControlExtender" runat="server" BehaviorID="batterButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectBatter" TargetControlID="batterButton" Position='Center'>
+                                    <cc1:PopupControlExtender ID="batterButton_PopupControlExtender" runat="server" BehaviorID="batterButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectBatter" TargetControlID="batterButton">
                                     </cc1:PopupControlExtender>
                                 </div>                
                             </div>
@@ -187,7 +185,7 @@
                                 List of At-Bats
                             </div>
                             <div class="panel-body">
-                                <asp:ListBox ID="ListBox1" runat="server" Height="444px" Width="923px" OnTextChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                <asp:ListBox ID="ListBox1" runat="server" Height="444px"  OnTextChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
                                 <asp:HiddenField ID="vid_paths" runat="server" />
                                 <asp:HiddenField ID="vid_titles" runat="server" />
 

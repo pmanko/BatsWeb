@@ -74,6 +74,8 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="breakdownpark.aspx" />
+    <Content Include="breakdownszone.aspx" />
     <Content Include="summaryatbatdetail.aspx" />
     <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
@@ -154,6 +156,9 @@
     <Compile Include="..\..\..\..\sydexsource\bats\Bat310SharedData.cbl">
       <Link>Bat310SharedData.cbl</Link>
     </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT310WEBF.CBL">
+      <Link>BAT310WEBF.CBL</Link>
+    </Compile>
     <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
       <Link>BAT766.CBL</Link>
     </Compile>
@@ -203,6 +208,20 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cbl">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdownpark.aspx.cbl">
+      <DependentUpon>breakdownpark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownpark.aspx.designer.cbl">
+      <DependentUpon>breakdownpark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdownszone.aspx.cbl">
+      <DependentUpon>breakdownszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownszone.aspx.designer.cbl">
+      <DependentUpon>breakdownszone.aspx</DependentUpon>
     </Compile>
     <Compile Include="summaryatbatdetail.aspx.cbl">
       <DependentUpon>summaryatbatdetail.aspx</DependentUpon>

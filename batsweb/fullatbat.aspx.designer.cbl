@@ -446,14 +446,6 @@
       *>> </remarks>
        01 pPlayerButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Panel11 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Panel11 type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
       *>> TextBox5 control.
       *>> </summary>
       *>> <remarks>
@@ -645,14 +637,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 bPlayerButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> Panel14 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Panel14 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
       *>> TextBox6 control.
       *>> </summary>

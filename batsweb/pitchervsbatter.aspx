@@ -89,9 +89,18 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Locate Player
-                                <asp:TextBox ID="locatePTextBox" runat="server" class="form-control"></asp:TextBox>
-                                <cc1:AutoCompleteExtender runat="server" ID="pitcherAutoComplete" TargetControlID="locatePTextBox" ServiceMethod="GetNames"  ServicePath=""> </cc1:AutoCompleteExtender>
+                                <div class="row">
+                                <div class="col-lg-2">
+                                    Locate Player
+                                </div>
+                                <div class="col-lg-8">
+                                    <asp:TextBox ID="locatePTextBox" runat="server" class="form-control"></asp:TextBox>
+                                    <cc1:AutoCompleteExtender runat="server" ID="pitcherAutoComplete" TargetControlID="locatePTextBox" ServiceMethod="GetNames"  ServicePath=""> </cc1:AutoCompleteExtender>
+                                </div>
+                                <div class="col-lg-2">
+                                    <asp:Button ID="backButton" Text="Back" runat="server" class="btn btn-danger"/>
+                                </div>
+                                </div>
                             </div>
                             <div class="panel-body">
                                 <div class="row">
