@@ -18,6 +18,7 @@
     <Title>batsweb</Title>
     <Product>batsweb</Product>
     <UseIISExpress>true</UseIISExpress>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -29,6 +30,7 @@
     <AdditionalDirectives>
     </AdditionalDirectives>
     <IncludeIisSettings>false</IncludeIisSettings>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -36,6 +38,7 @@
     <WarningLevel>2</WarningLevel>
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
@@ -377,8 +380,10 @@
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
     <None Include="Scripts\video.js" />
+    <None Include="Styles\app.scss" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
+    <None Include="Styles\custom_bootstrap.scss" />
     <None Include="Styles\main.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />
@@ -402,6 +407,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Styles\App_LocalResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ExcludeFromPackageFolders Include="node_modules">
+      <FromTarget>Project</FromTarget>
+    </ExcludeFromPackageFolders>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
