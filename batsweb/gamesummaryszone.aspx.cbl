@@ -38,12 +38,12 @@
                                          param-e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer                                                                       
-           set BAT360-SZONE-WIDTH  to 288
-           Set BAT360-SZONE-HEIGHT to 336
-           set dimx to 288
-           set dimy to 336
-           set dim2x to 288
-           set dim2y to 336
+           set BAT360-SZONE-WIDTH  to 231
+           Set BAT360-SZONE-HEIGHT to 242
+           set dimx to 231
+           set dimy to 242
+           set dim2x to 231
+           set dim2y to 242
            set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\szone2.png")) as type Bitmap
            set g to type Graphics::FromImage(drawArea)
            invoke g::Clear(type Color::White)

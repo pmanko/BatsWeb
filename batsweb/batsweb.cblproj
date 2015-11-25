@@ -87,9 +87,6 @@
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="summarypark.aspx" />
     <Content Include="summaryrunners.aspx" />
     <Content Include="Web.config" />
@@ -152,6 +149,21 @@
     </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
       <Link>BWEBFTP2.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT292V.CBL">
+      <Link>BAT292V.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT300.CBL">
+      <Link>BAT300.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat300SharedData.COB">
+      <Link>Bat300SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT300WEBF.CBL">
+      <Link>BAT300WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT310.CBL">
+      <Link>BAT310.CBL</Link>
     </Compile>
     <Compile Include="..\..\..\..\sydexsource\bats\Bat310SharedData.cbl">
       <Link>Bat310SharedData.cbl</Link>
@@ -360,31 +372,13 @@
     <None Include="Images\szone2.png" />
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
-    <None Include="Scripts\angular-route.js" />
-    <None Include="Scripts\angular.js" />
     <None Include="Scripts\batstube_app.js" />
-    <None Include="Scripts\bootstrap.js" />
     <None Include="Scripts\summarycallatbat.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-1.10.2.js" />
-    <None Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <None Include="Scripts\jquery.validate.js" />
-    <None Include="Scripts\jquery.validate.min.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <None Include="Scripts\modernizr-2.6.2.js" />
-    <None Include="Scripts\respond.js" />
-    <None Include="Scripts\respond.min.js" />
     <None Include="Scripts\video.js" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
-    <None Include="Styles\bootstrap_blue.css" />
-    <None Include="Styles\bootstrap_original.css" />
-    <None Include="Styles\bootstrap_superhero.css" />
     <None Include="Styles\main.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />

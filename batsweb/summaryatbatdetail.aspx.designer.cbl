@@ -30,61 +30,133 @@
       *>> </remarks>
        01 Panel6 type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
-      *>> dateTextBox control.
+      *>> gameDateAt control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 dateTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 gameDateAt type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> visTextBox control.
+      *>> inning control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 visTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 inning type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> visScoreTextBox control.
+      *>> homeTeam control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 visScoreTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 homeTeam type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> homeTextBox control.
+      *>> homeScore control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 homeTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 homeScore type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> homeScoreTextBox control.
+      *>> visTeam control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 homeScoreTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 visTeam type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> inningTextBox control.
+      *>> visScore control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 inningTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 visScore type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> battingTextBox control.
+      *>> currentlyBatting control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 battingTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 currentlyBatting type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> pitcher control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 pitcher type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> batter control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 batter type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> gameDateB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gameDateB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> visTeamB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 visTeamB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> visScoreB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 visScoreB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> homeTeamB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 homeTeamB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> homeScoreB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 homeScoreB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> inningB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 inningB type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> currentlyBattingB control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 currentlyBattingB type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
       *>> pitcherTextBox control.
       *>> </summary>
@@ -150,14 +222,6 @@
       *>> </remarks>
        01 outsLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> Label2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Label2 type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
       *>> hitLabel control.
       *>> </summary>
       *>> <remarks>
@@ -181,6 +245,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 countLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> rbiLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 rbiLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> posLabel1 control.
       *>> </summary>
@@ -229,14 +301,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 flagLabel2 type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
-      *>> rbiLabel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 rbiLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> catcherLabel control.
       *>> </summary>

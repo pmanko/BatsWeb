@@ -6,10 +6,13 @@
        01 bat360rununit         type RunUnit.
        01 BAT360WEBF                type BAT360WEBF.
        01 mydata type batsweb.bat360Data.
+       01 teststring type String protected.
+
 
        method-id Page_Load protected.
        local-storage section.
        01 dataLine         type String.
+
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat360_dg.CPB".
        procedure division using by value param-sender as object
@@ -18,15 +21,26 @@
                exit method.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set dateTextBox::Text to BAT360-GAME-DATE-DSP::ToString("00/00/00")
-           set visTextBox::Text to BAT360-I-VIS::Trim
-           set homeTextBox::Text to BAT360-I-HOME::Trim
-           set visScoreTextBox::Text to BAT360-I-VIS-SCORE::ToString
-           set homeScoreTextBox::Text to BAT360-I-HOME-SCORE::ToString
-           set inningTextBox::Text to BAT360-I-INNING::ToString
-           set battingTextBox::Text to BAT360-I-CURR-BATTING::ToString
+           set gameDateAt::Text to BAT360-GAME-DATE-DSP::ToString("00/00/00")
+           set visTeam::Text to BAT360-I-VIS::Trim
+           set homeTeam::Text to BAT360-I-HOME::Trim
+           set visScore::Text to BAT360-I-VIS-SCORE::ToString
+           set homeScore::Text to BAT360-I-HOME-SCORE::ToString
+           set inning::Text to BAT360-I-INNING::ToString
+           set currentlyBatting::Text to BAT360-I-CURR-BATTING::ToString
+           set pitcher::Text to BAT360-PITCHER::Trim
+           set batter::Text to BAT360-BATTER::Trim
+           
+           set gameDateB::Text to BAT360-GAME-DATE-DSP::ToString("00/00/00")
+           set visTeamB::Text to BAT360-I-VIS::Trim
+           set homeTeamB::Text to BAT360-I-HOME::Trim
+           set visScoreB::Text to BAT360-I-VIS-SCORE::ToString
+           set homeScoreB::Text to BAT360-I-HOME-SCORE::ToString
+           set inningB::Text to BAT360-I-INNING::ToString
+           set currentlyBattingB::Text to BAT360-I-CURR-BATTING::ToString       
+       
            set pitcherTextBox::Text to BAT360-PITCHER::Trim
-           set batterTextBox::Text to BAT360-BATTER::Trim
+           set batterTextBox::Text to BAT360-BATTER::Trim           
            set outsLabel::Text to BAT360-I-OUTS::ToString
            set hitLabel::Text to BAT360-I-HIT-DESC::Trim
            set resultLabel::Text to BAT360-I-RES-DESC::Trim

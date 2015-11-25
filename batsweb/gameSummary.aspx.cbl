@@ -439,6 +439,9 @@
            add 1 to BAT360-SEL-AB
            MOVE BAT360-SEL-AB to BAT360-AB-IP
            MOVE BAT360-AB-KEY(BAT360-SEL-AB) to BAT360-I-KEY
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox2"
+                   exit method.
            MOVE "VD" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
       *     set printButton::Text to self::Request::Params::Get("__EVENTTARGET")
@@ -450,9 +453,7 @@
       *         end-if
       *     end-perform.
       *     if self::Request::Params::Get("__EVENTTARGET") not = self::FindControl("printButton")::ToString
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox2"
-                   invoke self::batstube.
+           invoke self::batstube.
       *     set atbatflag to " "
                
        end method.
@@ -493,10 +494,14 @@ PM     01 vidPaths type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
+                   exit method.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
+           set BAT360-AB-IP to 0
            set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
            MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
            MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
@@ -972,10 +977,25 @@ PM         set self::Session::Item("video-titles") to vidTitles
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+      *     MOVE "PG" to BAT360-ACTION
+      *     invoke bat360rununit::Call("BAT360WEBF")
+      *     MOVE " " to SYD145WD-FILENAME
+      *     MOVE "S" to SYD145WD-PAGE-ORIENT
+      *     MOVE 1 to SYD145WD-COPIES
+      *     MOVE " " to SYD145WD-NOTEPAD
+       end method.
+
+       method-id detailButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer   
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
+           if BAT360-AB-IP = 0
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('No at bat is highlighted!');", true)
+               exit method.   
            move "VA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
@@ -986,5 +1006,5 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *     MOVE 1 to SYD145WD-COPIES
       *     MOVE " " to SYD145WD-NOTEPAD
        end method.
-
+       
        end class.

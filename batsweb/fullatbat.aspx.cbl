@@ -548,7 +548,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-           MOVE playerListBox::SelectedItem to BAT666-SEL-PLAYER
+      *    if team is changed instead of ok button
+           if playerListBox::SelectedItem = null
+               exit method.
+           MOVE playerListBox::SelectedItem to BAT666-SEL-PLAYER.
       *     SET selectedplayerlabel::Text to BAT666-SEL-PLAYER
            
            if BAT666-IND-PB-FLAG = "P" THEN
@@ -559,8 +562,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
 
        method-id pPlayerButton_Click protected.
-       local-storage section.
-       01  arg             type EventArgs.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.

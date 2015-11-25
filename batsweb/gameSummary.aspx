@@ -104,9 +104,21 @@
                     </div>
                     <div class="list-group"> 
                         <div class="list-group-item">
-                            <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
-
-                            <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
+                            <div class='row'>
+                                <div class="col-md-12">
+                                    <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col-md-12">
+                                    <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col-md-3">
+                                    <asp:Button ID="detailButton" runat="server" OnClick="detailButton_Click" Text="At Bat Detail" class="btn btn-default btn-block" />
+                                </div>
+                            </div>
                             <asp:HiddenField ID="vid_paths" runat="server" />
                             <asp:HiddenField ID="vid_titles" runat="server" />
                         </div>
