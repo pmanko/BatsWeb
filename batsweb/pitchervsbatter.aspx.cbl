@@ -60,27 +60,21 @@
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
-      *     set sb to new StringBuilder.
-      *     invoke sb::Append("<script>")
-      *     invoke sb::Append("var testArray = new Array;")
            CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
            open input play-file.
            initialize play-alt-key
            start play-file key > play-alt-key.
            move 1 to aa.     
-       110-loop.
+       5-loop.
            read play-file next
-               at end go to 110-done.
+               at end go to 10-done.
            move spaces to playerName
            string play-last-name, ", " play-first-name
                delimited "  " into playerName
            set nameArray to nameArray & playerName & ";"
-      *     invoke sb::Append("testArray.push('" & playerName & "');")
            add 1 to aa
-           go to 110-loop.
-       110-done.
-      *     invoke sb::Append("</script>")
-      *     invoke ClientScript::RegisterStartupScript(self::GetType(), "TestArrayScript", sb::ToString())
+           go to 5-loop.
+       10-done.
            close play-file.
 PM         set self::Session::Item("nameArray") to nameArray
            set headerLabel::Text to BAT766-LINE-HDR::Replace(" ", "&nbsp;")
@@ -90,15 +84,15 @@ PM         set self::Session::Item("nameArray") to nameArray
       *     set pTeamDropDownList::Text to BAT766-PITCHER-TEAM::Trim
            set textBox1::Text to BAT766-GAME-DATE::ToString("00/00/00")
            move 1 to aa.     
-       5-loop.
+       15-loop.
            if aa > BAT766-NUM-TEAMS
-               go to 10-done
+               go to 20-done
            else
                invoke pTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
                invoke bTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
            add 1 to aa
-           go to 5-loop.
-       10-done.    
+           go to 15-loop.
+       20-done.    
            invoke self::populatePitcher
            invoke self::populateBatter
            goback.
@@ -941,7 +935,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                as type RunUnit
            CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
            MOVE SPACES TO PLAY-ALT-KEY
-           unstring locatePitcherTextBox::Text delimited ", " into play-last-name, play-first-name
+           unstring locatePitcher::Text delimited ", " into play-last-name, play-first-name
            open input play-file
            if status-byte-1 not = zeroes
                set play-player-id to 4
@@ -970,7 +964,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                as type RunUnit
            CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
            MOVE SPACES TO PLAY-ALT-KEY
-      *     unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
+           unstring locateBatter::Text delimited ", " into play-last-name, play-first-name
            open input play-file
            if status-byte-1 not = zeroes
                set play-player-id to 4

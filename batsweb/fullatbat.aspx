@@ -1,10 +1,24 @@
-﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="fullatbat.aspx.cbl" Inherits="batsweb.fullatbat" %>
+﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="fullatbat.aspx.cbl" Inherits="batsweb.fullatbat" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <link href="/Styles/fullatbat.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="Scripts/fullatbat.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+    <script type="text/javascript">
+            $(document).ready(function () {
+                var names = "<%= Session["nameArray"] %>".split(";");
+            $("#MainContent_locatePlayerTextBox").autocomplete({
+                autoFocus: true,
+                source: function (request, response) {
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                    response($.grep(names, function (item) {
+                        return matcher.test(item);
+                    }));
+                }
+            });
+        });
+  </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id='fullatbat' class="container main-container">
@@ -352,8 +366,6 @@
                             <div class="panel panel-default">
                                 <asp:Label ID="Label1" runat="server" Text="Locate Player" Font-Size="Medium"></asp:Label>
                                 <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
-                                <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="locatePlayerTextBox" UseContextKey="true" ServicePath="" ServiceMethod="GetNames">
-                                </cc1:AutoCompleteExtender>
                             </div>
                         </div>
                     </div>

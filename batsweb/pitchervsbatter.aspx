@@ -5,13 +5,17 @@
 
 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
-      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var names = "<%= Session["nameArray"] %>".split(";");
-            $("#tags").autocomplete({
-                source: names
+            $("#MainContent_locateBatter, #MainContent_locatePitcher").autocomplete({
+                autoFocus: true,
+                source: function (request, response) {
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                    response($.grep(names, function (item) {
+                        return matcher.test(item);
+                    }));
+                }
             });
         });
   </script>
@@ -102,10 +106,13 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="row">
-                                <div class="col-lg-8">
-                                    <asp:TextBox ID="locatePitcherTextBox" runat="server" class="form-control"></asp:TextBox>
-                                    <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="locatePitcherTextBox" UseContextKey="true" ServicePath="" ServiceMethod="GetNames">
-                                    </cc1:AutoCompleteExtender>
+                                <div class="col-lg-2">
+                                    <asp:Label ID="locatePitcherLabel" runat="server" Font-Size="Medium" Text="Locate Player:"></asp:Label>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="ui-widget">
+                                        <asp:TextBox ID="locatePitcher" runat="server" class="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <asp:Button ID="locatePitcherButton" Text="OK" OnClick="locatePitcherButton_Click" runat="server" class="btn btn-primary"/>
@@ -181,12 +188,13 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <div class="row">
-                                <div class="col-lg-8">
+                                <div class="col-lg-2">
+                                    <asp:Label ID="locateBatterLabel" runat="server" Font-Size="Medium" Text="Locate Player:"></asp:Label>
+                                </div>
+                                <div class="col-lg-6">
                                     <div class="ui-widget">
-                                      <label for="tags">Tags: </label>
-                                      <input id="tags">
+                                        <asp:TextBox ID="locateBatter" runat="server" class="form-control"></asp:TextBox>
                                     </div>
-                                  
                                 </div>
                                 <div class="col-lg-2">
                                     <asp:Button ID="locateBatterButton" Text="OK" OnClick="locateBatterButton_Click" runat="server" class="btn btn-primary"/>

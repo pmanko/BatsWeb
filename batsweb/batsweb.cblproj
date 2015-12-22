@@ -417,6 +417,7 @@
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
     <None Include="Styles\custom_bootstrap.scss" />
+    <None Include="Styles\jquery-ui.css" />
     <None Include="Styles\main.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />

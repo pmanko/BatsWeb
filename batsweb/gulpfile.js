@@ -20,8 +20,10 @@ gulp.task('vendor-scripts', function () {
     var vendorSources = {
         jquery: ['bower_components/jquery/dist/jquery.min.js',
 	            'bower_components/jquery-validation/dist/jquery.validate.min.js',
-	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'
+	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js', 
+				'bower_components/jquery-ui/jquery-ui.js'
         ],
+		jquery_ui_styles: ['bower_components/jquery-ui/themes/ui-lightness'],
         angular: ['bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js'],
         videojs: ['bower_components/video.js/dis/ie8/videojs-ie8.js', 'bower_components/video.js/dist/video.js'],
         videojsflash: ["bower_components/video.js/dist/video-js.swf"],
@@ -47,16 +49,19 @@ gulp.task('vendor-scripts', function () {
         .pipe(gulp.dest(outputLocation + '/swf/'));
 
     gulp.src(vendorSources.videojscss)
-        .pipe(gulp.dest(outputLocation + '/styles/'))
+        .pipe(gulp.dest(outputLocation + '/styles/'));
+
+	gulp.src(vendorSources.jquery_ui_styles)
+		.pipe(gulp.dest(outputLocation + '/styles/'));
 
     gulp.src(vendorSources.videojsfonts + "/*")
-        .pipe(gulp.dest(outputLocation + '/styles/font/'))
+        .pipe(gulp.dest(outputLocation + '/styles/font/'));
         
     gulp.src(vendorSources.fontawesomecss)
-        .pipe(gulp.dest(outputLocation + '/styles/'))  
+        .pipe(gulp.dest(outputLocation + '/styles/'));
 
     gulp.src(vendorSources.fontawesome + "/*")
-        .pipe(gulp.dest(outputLocation + '/fonts/'))
+        .pipe(gulp.dest(outputLocation + '/fonts/'));
 
 });
 

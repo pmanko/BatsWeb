@@ -22,6 +22,8 @@
        01 mydata type batsweb.bat666Data.
        01 abnum        type Single.
        01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
+       01 playerName      type String.
+       01 nameArray      type String.
        method-id Page_Load protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
@@ -122,6 +124,23 @@
            add 1 to aa
            go to inning-loop.
        inning-done.
+           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
+           open input play-file.
+           initialize play-alt-key
+           start play-file key > play-alt-key.
+           move 1 to aa.     
+       5-loop.
+           read play-file next
+               at end go to 10-done.
+           move spaces to playerName
+           string play-last-name, ", " play-first-name
+               delimited "  " into playerName
+           set nameArray to nameArray & playerName & ";"
+           add 1 to aa
+           go to 5-loop.
+       10-done.
+           close play-file.
+PM         set self::Session::Item("nameArray") to nameArray
            goback.
        end method.
 

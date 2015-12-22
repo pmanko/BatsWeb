@@ -166,21 +166,21 @@
       *>> </remarks>
        01 selectPitcher type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
-      *>> locatePitcherTextBox control.
+      *>> locatePitcherLabel control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 locatePitcherTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 locatePitcherLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> AutoCompleteExtender1 control.
+      *>> locatePitcher control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 AutoCompleteExtender1 type AjaxControlToolkit.AutoCompleteExtender protected.
+       01 locatePitcher type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> locatePitcherButton control.
       *>> </summary>
@@ -445,6 +445,22 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 selectBatter type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> locateBatterLabel control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locateBatterLabel type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> locateBatter control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locateBatter type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> locateBatterButton control.
       *>> </summary>
