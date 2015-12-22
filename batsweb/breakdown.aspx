@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-lg-2">
                         <asp:Button ID="selectionButton" runat="server" Text="Change Selection" class="btn btn-lg btn-primary" />
-                        <cc1:ModalPopupExtender ID="selectionButton_ModalPopupExtender" runat="server" BehaviorID="selectionButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="changeSelectionPanel" TargetControlID="selectionButton">
+                        <cc1:ModalPopupExtender ID="selectionButton_ModalPopupExtender" runat="server" BehaviorID="selectionButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="changeSelectionPanel" TargetControlID="selectionButton" OkControlID="goButton">
                         </cc1:ModalPopupExtender>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -575,7 +575,7 @@
                                                     <div class="col-lg-4">
                                                         <asp:Button ID="batterteamButton" runat="server" Text="Team" OnClick="batterteamButton_Click" CssClass="btn btn-default" />
                                                         <asp:HiddenField ID="bHiddenField" runat="server" />
-                                                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField">
+                                                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" >
                                                         </cc1:ModalPopupExtender>
                                                     </div> 
                                                     <div class="col-lg-5">
@@ -649,7 +649,7 @@
                     </div>
                 </div>
             </asp:Panel>
-            <asp:Panel ID="datePanel" runat="server" Height="260px" style="margin-left: 0px" Width="175px">
+            <asp:Panel ID="datePanel" runat="server">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Dates
@@ -729,6 +729,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                            <asp:HiddenField ID="bTeamHiddenField" runat="server" />
                         </div>
                     </div>
                 </div>

@@ -50,6 +50,8 @@
        end method.
 
        method-id populate_listbox protected.
+       local-storage section.
+           01 dataLine             type String.
        linkage section.
             COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
        procedure division.
@@ -61,7 +63,9 @@
        vid-loop.
            if aa > BATSW060-NUM-VID
                go to vid-done.
-           invoke ListBox1::Items::Add(BATSW060-V-TEAM(aa) & " " & BATSW060-V-NAME(aa) & " " & BATSW060-V-DSP-DATE(aa)::ToString("0#/##/##") & " " & BATSW060-V-DESC(aa))
+           SET dataLine to (BATSW060-V-TEAM(aa) & " " & BATSW060-V-NAME(aa) & " " & BATSW060-V-DSP-DATE(aa)::ToString("0#/##/##") & " " & BATSW060-V-DESC(aa))
+           INSPECT dataLine REPLACING ALL " " BY X'A0'
+           invoke ListBox1::Items::Add(dataLine)
            add 1 to aa
            go to vid-loop.
        vid-done.
@@ -116,14 +120,14 @@
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
-           move "RG" to BATSW060-ACTION
-           set batsw060rununit to self::Session::Item("w060rununit") as
-               type RunUnit
-           invoke batsw060rununit::Call("BATSW060WEBF")
            invoke type System.Single::TryParse(TextBox1::Text::ToString::Replace("/", ""), by reference gmDate)
            set BATSW060-START-DATE to gmDate
            invoke type System.Single::TryParse(TextBox2::Text::ToString::Replace("/", ""), by reference gmDate)
            set BATSW060-END-DATE to gmDate
+           move "RG" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke batsw060rununit::Call("BATSW060WEBF")
            invoke self::populate_listbox().
 
        end method.
@@ -137,8 +141,6 @@ PM     01 vidPaths type String.
       *01 newListItem type ListItem.
        linkage section.
        COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
-
-
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
            set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
@@ -152,6 +154,9 @@ PM     01 vidPaths type String.
            add 1 to aa.
            go to videos-loop.
        videos-done.
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
+                   exit method.
            MOVE "PV" to BATSW060-ACTION
            set batsw060rununit to self::Session::Item("w060rununit") as
                type RunUnit
@@ -192,8 +197,31 @@ PM         set self::Session::Item("video-titles") to vidTitles
 
        method-id Button3_Click protected.
       * Play video Button
+       local-storage section.
+PM     01 vidPaths type String.
+ PM    01 vidTitles type String.
+       01 selected  type Int32[].
+       linkage section.
+       COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
+
        procedure division using by value sender as object e as type System.EventArgs.
       *    invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+                      set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
+           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
+           initialize BATSW060-SEL-VID-TBL
+           move 0 to aa.
+           set selected to ListBox1::GetSelectedIndices.
+       videos-loop.
+           if aa = selected::Count
+               go to videos-done.
+           MOVE "Y" TO BATSW060-SEL-VID-FLAG(selected[aa] + 1).
+           add 1 to aa.
+           go to videos-loop.
+       videos-done.
+           MOVE "PV" to BATSW060-ACTION
+           set batsw060rununit to self::Session::Item("w060rununit") as
+               type RunUnit
+           invoke batsw060rununit::Call("BATSW060WEBF")
            invoke self::batstube.
        end method.
 

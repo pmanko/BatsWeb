@@ -1,12 +1,27 @@
        class-id batsweb.fullatbat is partial
                 inherits type System.Web.UI.Page public.
-
+    
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+          SELECT PLAY-FILE ASSIGN LK-PLAYER-FILE
+              ORGANIZATION IS INDEXED
+              ACCESS IS DYNAMIC
+              RECORD KEY IS PLAY-KEY
+              ALTERNATE KEY IS PLAY-ALT-KEY WITH DUPLICATES
+              LOCK MANUAL
+              FILE STATUS IS STATUS-COMN.
+       DATA DIVISION.
+       FILE SECTION.
+       COPY "Y:\SYDEXSOURCE\FDS\FDPLAY.CBL".
+       
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
+       copy "y:\sydexsource\bats\WSBATF.CBL".
        01 bat666rununit         type RunUnit.
        01 BAT666WEBF                type BAT666WEBF.
        01 mydata type batsweb.bat666Data.
        01 abnum        type Single.
+       01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
        method-id Page_Load protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
@@ -44,6 +59,7 @@
                set self::Session::Item("666rununit") to  bat666rununit.
 
            invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
+           set abHeader::Text to abHeader::Text::Replace(" ", "&nbsp;")
           
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT666-ACTION
@@ -51,14 +67,16 @@
            if BAT666-GAME-FLAG = "D"
                set startDateRadioButton::Checked to true
            else
+               MOVE "A" to BAT666-GAME-FLAG
                set allStartRadioButton::Checked to true.
            if BAT666-END-GAME-FLAG = "D"
                set endDateRadioButton::Checked to true
            else
+               MOVE "A" to BAT666-END-GAME-FLAG
                set allEndRadioButton::Checked to true.
            set textBox1::Text to BAT666-GAME-DATE::ToString("00/00/00")
            set textBox4::Text to BAT666-END-GAME-DATE::ToString("00/00/00")
-      *     set pitcherTextBox::Text to BAT666-PITCHER
+           set pitcherTextBox::Text to BAT666-PITCHER
            set batterTextBox::Text to BAT666-BATTER
            set BAT666-PITCHER-TYPE-FLAG TO " "    
            set BAT666-BATTER-TYPE-FLAG TO " "    
@@ -151,6 +169,7 @@
        lines-loop.
            if aa > BAT666-NUM-AB
                go to lines-done.
+           INSPECT BAT666-T-LINE(AA) REPLACING ALL " " BY X'A0'
            invoke ListBox1::Items::Add(" " & BAT666-T-LINE(aa))
            set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
            add 1 to aa.
@@ -212,9 +231,9 @@ PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    set vid_paths::Value to getVidPaths
       *    set vid_titles::Value to getVidTitles
-      *    if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-      *        if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox1"
-      *            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox1"
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
 
@@ -527,6 +546,23 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
+           if playerListBox::SelectedItem = null
+                CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+               MOVE SPACES TO PLAY-ALT-KEY
+               unstring locatePlayerTextBox::Text delimited ", " into play-last-name, play-first-name
+               open input play-file
+               READ PLAY-FILE KEY PLAY-ALT-KEY
+               set BAT666-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
+               MOVE play-player-id to BAT666-LOCATE-SEL-ID
+               move "LP" to BAT668-ACTION
+               move "T" to BAT666-ACTION
+               invoke bat666rununit::Call("BAT666WEBF")
+               IF BAT666-IND-PB-FLAG = "P"  
+                   MOVE play-player-id to BAT666-SAVE-PITCHER-ID 
+               ELSE
+                   MOVE play-player-id to BAT666-SAVE-BATTER-ID 
+               end-if
+               CLOSE PLAY-FILE.
            if BAT666-IND-PB-FLAG = "P"
                move BAT666-SEL-TEAM to BAT666-PITCHER-ROSTER-TEAM  
                move BAT666-SEL-PLAYER to BAT666-PITCHER-DSP-NAME  
@@ -621,8 +657,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
-           set BAT666-RES-IDX2 to Result1::SelectedIndex
-           set BAT666-RESULT2 TO Result1::SelectedItem
+           set BAT666-RES-IDX2 to Result2::SelectedIndex
+           set BAT666-RESULT2 TO Result2::SelectedItem
            add 1 to BAT666-RES-IDX2
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
@@ -924,4 +960,37 @@ PM         set self::Session::Item("video-titles") to vidTitles
            else    
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
+       
+       method-id GetNames public static
+           attribute System.Web.Services.WebMethod()
+           attribute System.Web.Script.Services.ScriptMethod().
+       local-storage section.
+       01  names           type String[].
+       01  names2          type String[].
+       01  playerName      type String.
+       01  fn              type String.
+       01  aa              type Single.
+       01  bb              type Single.
+       procedure division using by value prefixText as String,
+                          #count as binary-long
+                          returning GetNames as String occurs any.
+           move 0 to aa, bb.
+           set fn to type HttpContext::Current::Server::MapPath("~/App_Data") & "\" & 
+               type HttpContext::Current::Session::SessionID & "names.txt"
+           set names to type File::ReadAllLines(fn)
+           set size of names2 to names::Length.
+       loop.
+           if names::Length = aa
+               go to done.
+           if names[aa]::StartsWith(prefixText::ToUpper)
+               set names2[bb] to names[aa]
+               add 1 to bb.
+           add 1 to aa.
+           go to loop.
+       done.
+           set GetNames to names2.
+           invoke type Array::Resize(GetNames, bb)
+           add 1 to aa.
+       end method.
+         
        end class.

@@ -7,6 +7,7 @@
 
     <link type="text/css" href="/dist/styles/app.css" rel="stylesheet" />
     <link type="text/css" href="/dist/styles/main.css" rel="stylesheet" />
+    <link type="text/css" href="/Styles/autocomplete.css" rel="stylesheet" />
     <script type="text/javascript" src="/dist/scripts/jquery.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/angular.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/bootstrap.min.js"></script>

@@ -19,22 +19,16 @@
                                           <tr>
                                               <th>Inning: <asp:Literal ID="inning" runat="server"></asp:Literal></th>
                                               <th>R</th>
-                                              <th>H</th>
-                                              <th>E</th>
                                           </tr>
                                       </thead>  
                                       <tbody>
                                           <tr>
                                             <th scope="row"><asp:Literal ID="homeTeam" runat="server"></asp:Literal></th>
                                             <td><asp:Literal ID="homeScore" runat="server"></asp:Literal></td>
-                                            <td></td>
-                                            <td></td>
                                           </tr>
                                           <tr>
                                             <th scope="row"><asp:Literal ID="visTeam" runat="server"></asp:Literal></th>
                                             <td><asp:Literal ID="visScore" runat="server"></asp:Literal></td>
-                                            <td></td>
-                                            <td></td>                                          
                                           </tr>
                                       </tbody>
                                     </table>
@@ -54,39 +48,7 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-md-3"><h4>Date: <asp:Literal ID="gameDateB" runat="server"></asp:Literal> </h4></div>
-                                <div class="col-md-5"><h4><asp:Literal ID="visTeamB" runat="server"></asp:Literal> (<asp:Literal ID="visScoreB" runat="server"></asp:Literal>) at <asp:Literal ID="homeTeamB" runat="server"></asp:Literal> (<asp:Literal ID="homeScoreB" runat="server"></asp:Literal>)</h4></div>
-                                <div class="col-md-2">
-                                    <dl class="dl-horizontal">
-                                        <dt>Inning:</dt>
-                                        <dd><asp:Literal runat="server" id="inningB"></asp:Literal></dd>
-                                        <dt>Currently Batting:</dt>
-                                        <dd><asp:Literal runat="server" ID="currentlyBattingB"></asp:Literal></dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div> 
-                    
-                    </div>
-
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <div class='form-horizontal'>
-                                <div class='row'>
-
-                                    <label class='control-label col-md-2'>Pitcher:</label>
-                                    <div class='col-md-4'> <asp:TextBox ID="pitcherTextBox" runat="server" class="form-control" ReadOnly="true"></asp:TextBox></div>                                    
-                                    <label class='control-label col-md-2'>Batter:</label>
-                                    <div class='col-md-4'> <asp:TextBox ID="batterTextBox" runat="server" class="form-control" ReadOnly="true"></asp:TextBox></div>
-                                </div>
-                            </div>                            
-
-                        </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-4">

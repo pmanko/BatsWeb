@@ -216,9 +216,9 @@
            invoke myfont::Dispose()
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
-           invoke Response::End()
            invoke drawArea::Dispose
            invoke g::Dispose()
+           invoke Response::End()
 
 
            goback.

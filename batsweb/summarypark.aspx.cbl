@@ -41,13 +41,14 @@
            COMPUTE WS-Y2 ROUNDED = BAT360-HITLOC-Y / 488 * 240.
 
            invoke g::DrawLine(mypen, ws-x, ws-y, ws-x2, ws-y2)
+           invoke mypen::Dispose().
+       SKIP-LINE.               
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
            invoke Response::End()
-           invoke drawArea::Dispose
-           invoke mypen::Dispose()
-           invoke g::Dispose().
-       SKIP-LINE.               
+           invoke g::Dispose()
+           invoke drawArea::Dispose.
+
            goback.
        end method.
  

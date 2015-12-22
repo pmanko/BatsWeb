@@ -166,21 +166,29 @@
       *>> </remarks>
        01 selectPitcher type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
-      *>> locatePTextBox control.
+      *>> locatePitcherTextBox control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 locatePTextBox type System.Web.UI.WebControls.TextBox protected.
+       01 locatePitcherTextBox type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
-      *>> pitcherAutoComplete control.
+      *>> AutoCompleteExtender1 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 pitcherAutoComplete type AjaxControlToolkit.AutoCompleteExtender protected.
+       01 AutoCompleteExtender1 type AjaxControlToolkit.AutoCompleteExtender protected.
+      *>> <summary>
+      *>> locatePitcherButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locatePitcherButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> backButton control.
       *>> </summary>
@@ -437,6 +445,22 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 selectBatter type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> locateBatterButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locateBatterButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> backButton2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 backButton2 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button31 control.
       *>> </summary>

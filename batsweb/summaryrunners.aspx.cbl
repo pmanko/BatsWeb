@@ -42,12 +42,12 @@
            invoke g::DrawString(BAT360-3-RUNNER::Trim, myfont, mybrushblack, rect1, sf)
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
-           invoke Response::End()
            invoke mybrushblack::Dispose()
            invoke drawArea::Dispose
            invoke myfont::Dispose()
            invoke g::Dispose()
            invoke sf::Dispose()
+           invoke Response::End()
            goback.
        end method.
  

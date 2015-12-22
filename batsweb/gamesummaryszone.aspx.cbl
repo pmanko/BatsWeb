@@ -38,13 +38,9 @@
                                          param-e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer                                                                       
-           set BAT360-SZONE-WIDTH  to 231
-           Set BAT360-SZONE-HEIGHT to 242
-           set dimx to 231
-           set dimy to 242
-           set dim2x to 231
-           set dim2y to 242
            set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\szone2.png")) as type Bitmap
+           set BAT360-SZONE-WIDTH, dimx, dim2x to drawArea::Width
+           set BAT360-SZONE-HEIGHT, dimy, dim2y to drawArea::Height
            set g to type Graphics::FromImage(drawArea)
            invoke g::Clear(type Color::White)
            invoke g::DrawImageUnscaled(type Bitmap::FromFile(Server::MapPath("Images\\szone2.png")) as type Bitmap, 0, 0)
@@ -106,14 +102,13 @@
     
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
-           invoke Response::End()
            invoke mybrush::Dispose()
            invoke drawArea::Dispose
            invoke mybrushred::Dispose()
            invoke mypen::Dispose()
            invoke myfont::Dispose()
            invoke g::Dispose()
-
+           invoke Response::End()
 
            goback.
        end method.

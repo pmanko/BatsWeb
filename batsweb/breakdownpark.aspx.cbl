@@ -94,10 +94,10 @@
        040-DONE.
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
-           invoke Response::End()
            invoke drawArea::Dispose
            invoke mypen::Dispose()
-           invoke g::Dispose().
+           invoke g::Dispose()
+           invoke Response::End().
        SKIP-LINE.               
            goback.
        end method.

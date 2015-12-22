@@ -31,16 +31,16 @@
            set pitcher::Text to BAT360-PITCHER::Trim
            set batter::Text to BAT360-BATTER::Trim
            
-           set gameDateB::Text to BAT360-GAME-DATE-DSP::ToString("00/00/00")
-           set visTeamB::Text to BAT360-I-VIS::Trim
-           set homeTeamB::Text to BAT360-I-HOME::Trim
-           set visScoreB::Text to BAT360-I-VIS-SCORE::ToString
-           set homeScoreB::Text to BAT360-I-HOME-SCORE::ToString
-           set inningB::Text to BAT360-I-INNING::ToString
-           set currentlyBattingB::Text to BAT360-I-CURR-BATTING::ToString       
+      *     set gameDateB::Text to BAT360-GAME-DATE-DSP::ToString("00/00/00")
+      *     set visTeamB::Text to BAT360-I-VIS::Trim
+      *     set homeTeamB::Text to BAT360-I-HOME::Trim
+      *     set visScoreB::Text to BAT360-I-VIS-SCORE::ToString
+      *     set homeScoreB::Text to BAT360-I-HOME-SCORE::ToString
+      *     set inningB::Text to BAT360-I-INNING::ToString
+      *     set currentlyBattingB::Text to BAT360-I-CURR-BATTING::ToString       
        
-           set pitcherTextBox::Text to BAT360-PITCHER::Trim
-           set batterTextBox::Text to BAT360-BATTER::Trim           
+      *     set pitcherTextBox::Text to BAT360-PITCHER::Trim
+      *     set batterTextBox::Text to BAT360-BATTER::Trim           
            set outsLabel::Text to BAT360-I-OUTS::ToString
            set hitLabel::Text to BAT360-I-HIT-DESC::Trim
            set resultLabel::Text to BAT360-I-RES-DESC::Trim
@@ -84,7 +84,7 @@
            invoke self::batstube.
        end method.
        
-        method-id batstube protected.
+       method-id batstube protected.
        local-storage section.
 PM     01 vidPaths type String. 
  PM    01 vidTitles type String.

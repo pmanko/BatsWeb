@@ -89,9 +89,6 @@
                         </div>
                         
                         <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-default btn-block" />
-
-                        <asp:Button ID="printButton" runat="server" Text="Print Game List" OnClick="printButton_Click" class="btn btn-default btn-block" />
-
                     </div>
                 </div>
             </asp:Panel>
@@ -142,7 +139,7 @@
                         <div class='row'>
                             <div class="col-md-3">
                                 <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" class="btn btn-default btn-block" />
-                                <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel">
+                                <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
                                 </cc1:ModalPopupExtender>
                                 <asp:HiddenField ID="HiddenField1" runat="server" />
                             </div>
@@ -156,7 +153,7 @@
                             </div>
                             <div class="col-md-3">
                                 <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default btn-block" />
-                                <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel">
+                                <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
                                 </cc1:ModalPopupExtender>
                                 <asp:HiddenField ID="HiddenField2" runat="server" />
                             </div>
@@ -166,99 +163,136 @@
                 </div>
             </asp:Panel>
 
-            <asp:Panel ID="visPanel" runat="server" Height="203px" Width="800px">
+            <asp:Panel ID="visPanel" runat="server">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    View All Clips for Visiting Player
+                    <div class="row">
+                        <div class="col-lg-10">
+                            View All Clips for Visiting Player
+                        </div>
+                        <div class="col-lg-2">
+                            <asp:Button ID="backButton" Text="Back" runat="server" class="btn btn-danger"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <asp:Button ID="Button1" runat="server" Text="Button" Visible="False" OnClick="Button1_Click" width="155px" class="btn btn-default" />
-                        <asp:Button ID="Button2" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button2_Click" class="btn btn-default" />
-                        <asp:Button ID="Button3" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button3_Click" class="btn btn-default" />
-                        <asp:Button ID="Button4" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button4_Click" class="btn btn-default" />
-                        <asp:Button ID="Button5" runat="server" Text="Button" Visible="False" Width="155px" OnClick="Button5_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button1" runat="server" Text="Button" Visible="False" OnClick="Button1_Click" width="155px" class="btn btn-default" />
+                            <asp:Button ID="Button2" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button2_Click" class="btn btn-default" />
+                            <asp:Button ID="Button3" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button3_Click" class="btn btn-default" />
+                            <asp:Button ID="Button4" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button4_Click" class="btn btn-default" />
+                            <asp:Button ID="Button5" runat="server" Text="Button" Visible="False" Width="155px" OnClick="Button5_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button6" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button6_Click" class="btn btn-default" />
-                        <asp:Button ID="Button7" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button7_Click" class="btn btn-default" />
-                        <asp:Button ID="Button8" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button8_Click" class="btn btn-default" />
-                        <asp:Button ID="Button9" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button9_Click" class="btn btn-default" />
-                        <asp:Button ID="Button10" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button10_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button6" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button6_Click" class="btn btn-default" />
+                            <asp:Button ID="Button7" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button7_Click" class="btn btn-default" />
+                            <asp:Button ID="Button8" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button8_Click" class="btn btn-default" />
+                            <asp:Button ID="Button9" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button9_Click" class="btn btn-default" />
+                            <asp:Button ID="Button10" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button10_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button11" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button11_Click" class="btn btn-default" />
-                        <asp:Button ID="Button12" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button12_Click" class="btn btn-default" />
-                        <asp:Button ID="Button13" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button13_Click" class="btn btn-default" />
-                        <asp:Button ID="Button14" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button14_Click" class="btn btn-default" />
-                        <asp:Button ID="Button15" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button15_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button11" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button11_Click" class="btn btn-default" />
+                            <asp:Button ID="Button12" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button12_Click" class="btn btn-default" />
+                            <asp:Button ID="Button13" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button13_Click" class="btn btn-default" />
+                            <asp:Button ID="Button14" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button14_Click" class="btn btn-default" />
+                            <asp:Button ID="Button15" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button15_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button16" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button16_Click" class="btn btn-default" />
-                        <asp:Button ID="Button17" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button17_Click" class="btn btn-default" />
-                        <asp:Button ID="Button18" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button18_Click" class="btn btn-default" />
-                        <asp:Button ID="Button19" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button19_Click" class="btn btn-default" />
-                        <asp:Button ID="Button20" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button20_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button16" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button16_Click" class="btn btn-default" />
+                            <asp:Button ID="Button17" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button17_Click" class="btn btn-default" />
+                            <asp:Button ID="Button18" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button18_Click" class="btn btn-default" />
+                            <asp:Button ID="Button19" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button19_Click" class="btn btn-default" />
+                            <asp:Button ID="Button20" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button20_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button21" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button21_Click" class="btn btn-default" />
-                        <asp:Button ID="Button22" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button22_Click" class="btn btn-default" />
-                        <asp:Button ID="Button23" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button23_Click" class="btn btn-default" />
-                        <asp:Button ID="Button24" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button24_Click" class="btn btn-default" />
-                        <asp:Button ID="Button25" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button25_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button21" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button21_Click" class="btn btn-default" />
+                            <asp:Button ID="Button22" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button22_Click" class="btn btn-default" />
+                            <asp:Button ID="Button23" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button23_Click" class="btn btn-default" />
+                            <asp:Button ID="Button24" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button24_Click" class="btn btn-default" />
+                            <asp:Button ID="Button25" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button25_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button26" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button26_Click" class="btn btn-default" />
-                        <asp:Button ID="Button27" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button27_Click" class="btn btn-default" />
-                        <asp:Button ID="Button28" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button28_Click" class="btn btn-default" />
-                        <asp:Button ID="Button29" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button29_Click" class="btn btn-default" />
-                        <asp:Button ID="Button30" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button30_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button26" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button26_Click" class="btn btn-default" />
+                            <asp:Button ID="Button27" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button27_Click" class="btn btn-default" />
+                            <asp:Button ID="Button28" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button28_Click" class="btn btn-default" />
+                            <asp:Button ID="Button29" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button29_Click" class="btn btn-default" />
+                            <asp:Button ID="Button30" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button30_Click" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
             </div>
         </asp:Panel>
-        <asp:Panel ID="homePanel" runat="server" Height="203px" Width="800px">
+        <asp:Panel ID="homePanel" runat="server">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    View All Clips for Home Player
+                    <div class="row">
+                        <div class="col-lg-10">
+                            View All Clips for Home Player
+                        </div>
+                        <div class="col-lg-2">
+                            <asp:Button ID="backButton2" Text="Back" runat="server" class="btn btn-danger"/>
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <asp:Button ID="Button31" runat="server" Text="Button" Visible="False" OnClick="Button31_Click" width="155px" class="btn btn-default" />
-                        <asp:Button ID="Button32" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button32_Click" class="btn btn-default" />
-                        <asp:Button ID="Button33" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button33_Click" class="btn btn-default" />
-                        <asp:Button ID="Button34" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button34_Click" class="btn btn-default" />
-                        <asp:Button ID="Button35" runat="server" Text="Button" Visible="False" Width="155px" OnClick="Button35_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button31" runat="server" Text="Button" Visible="False" OnClick="Button31_Click" width="155px" class="btn btn-default" />
+                            <asp:Button ID="Button32" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button32_Click" class="btn btn-default" />
+                            <asp:Button ID="Button33" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button33_Click" class="btn btn-default" />
+                            <asp:Button ID="Button34" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button34_Click" class="btn btn-default" />
+                            <asp:Button ID="Button35" runat="server" Text="Button" Visible="False" Width="155px" OnClick="Button35_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button36" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button36_Click" class="btn btn-default" />
-                        <asp:Button ID="Button37" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button37_Click" class="btn btn-default" />
-                        <asp:Button ID="Button38" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button38_Click" class="btn btn-default" />
-                        <asp:Button ID="Button39" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button39_Click" class="btn btn-default" />
-                        <asp:Button ID="Button40" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button40_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button36" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button36_Click" class="btn btn-default" />
+                            <asp:Button ID="Button37" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button37_Click" class="btn btn-default" />
+                            <asp:Button ID="Button38" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button38_Click" class="btn btn-default" />
+                            <asp:Button ID="Button39" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button39_Click" class="btn btn-default" />
+                            <asp:Button ID="Button40" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button40_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button41" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button41_Click" class="btn btn-default" />
-                        <asp:Button ID="Button42" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button42_Click" class="btn btn-default" />
-                        <asp:Button ID="Button43" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button43_Click" class="btn btn-default" />
-                        <asp:Button ID="Button44" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button44_Click" class="btn btn-default" />
-                        <asp:Button ID="Button45" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button45_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button41" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button41_Click" class="btn btn-default" />
+                            <asp:Button ID="Button42" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button42_Click" class="btn btn-default" />
+                            <asp:Button ID="Button43" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button43_Click" class="btn btn-default" />
+                            <asp:Button ID="Button44" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button44_Click" class="btn btn-default" />
+                            <asp:Button ID="Button45" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button45_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button46" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button46_Click" class="btn btn-default" />
-                        <asp:Button ID="Button47" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button47_Click" class="btn btn-default" />
-                        <asp:Button ID="Button48" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button48_Click" class="btn btn-default" />
-                        <asp:Button ID="Button49" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button49_Click" class="btn btn-default" />
-                        <asp:Button ID="Button50" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button50_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button46" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button46_Click" class="btn btn-default" />
+                            <asp:Button ID="Button47" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button47_Click" class="btn btn-default" />
+                            <asp:Button ID="Button48" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button48_Click" class="btn btn-default" />
+                            <asp:Button ID="Button49" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button49_Click" class="btn btn-default" />
+                            <asp:Button ID="Button50" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button50_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="Button51" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button51_Click" class="btn btn-default" />
-                        <asp:Button ID="Button52" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button52_Click" class="btn btn-default" />
-                        <asp:Button ID="Button53" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button53_Click" class="btn btn-default" />
-                        <asp:Button ID="Button54" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button54_Click" class="btn btn-default" />
-                        <asp:Button ID="Button55" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button55_Click" class="btn btn-default" />
+                        <div class="col-lg-12">
+                            <asp:Button ID="Button51" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button51_Click" class="btn btn-default" />
+                            <asp:Button ID="Button52" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button52_Click" class="btn btn-default" />
+                            <asp:Button ID="Button53" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button53_Click" class="btn btn-default" />
+                            <asp:Button ID="Button54" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button54_Click" class="btn btn-default" />
+                            <asp:Button ID="Button55" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button55_Click" class="btn btn-default" />
+                        </div>
                     </div>
                     <div class="row">
+                        <div class="col-lg-12">
                         <asp:Button ID="Button56" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button56_Click" class="btn btn-default" />
                         <asp:Button ID="Button57" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button57_Click" class="btn btn-default" />
                         <asp:Button ID="Button58" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button58_Click" class="btn btn-default" />
@@ -268,17 +302,21 @@
                 </div>
             </div>
         </asp:Panel>
-        <asp:Panel ID="statsPanel" runat="server" Width="1000px">
+        <asp:Panel ID="statsPanel" runat="server">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Current Game Stats
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                          <asp:ListBox ID="ListBox3" runat="server" Height="245px" Font-Names="consolas" class="form-control"></asp:ListBox>
+                        <div class="col-md-12">
+                            <asp:ListBox ID="ListBox3" runat="server" Height="245px" Font-Names="consolas" class="form-control"></asp:ListBox>
+                        </div>
                     </div>
                     <div class="row">
-                        <asp:Button ID="printStatsButton" runat="server" Text="Print Report" class="btn btn-default" />
+                        <div class="col-md-12">
+                            <%--<asp:Button ID="printStatsButton" runat="server" Text="Print Report" class="btn btn-default" />--%>
+                        </div>
                     </div>
                 </div>
             </div>

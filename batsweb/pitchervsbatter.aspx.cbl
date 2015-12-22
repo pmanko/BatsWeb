@@ -15,18 +15,21 @@
               ALTERNATE KEY IS PLAY-ALT-KEY WITH DUPLICATES
               LOCK MANUAL
               FILE STATUS IS STATUS-COMN.
-
        DATA DIVISION.
        FILE SECTION.
        COPY "Y:\SYDEXSOURCE\FDS\FDPLAY.CBL".
-       
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
+       copy "y:\sydexsource\bats\WSBATF.CBL".
        01 bat766rununit         type RunUnit.
        01 BAT766WEBF                type BAT766WEBF.
        01 mydata type batsweb.bat766Data.
        01 abnum        type Single.
-       
+       01 fn           type String.
+       01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
+       01 sb           type StringBuilder.
+       01 playerName      type String.
+       01 nameArray      type String.
        method-id Page_Load protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
@@ -57,7 +60,30 @@
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
-           set headerLabel::Text to headerLabel::Text::Replace(" ", "&nbsp;")
+      *     set sb to new StringBuilder.
+      *     invoke sb::Append("<script>")
+      *     invoke sb::Append("var testArray = new Array;")
+           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
+           open input play-file.
+           initialize play-alt-key
+           start play-file key > play-alt-key.
+           move 1 to aa.     
+       110-loop.
+           read play-file next
+               at end go to 110-done.
+           move spaces to playerName
+           string play-last-name, ", " play-first-name
+               delimited "  " into playerName
+           set nameArray to nameArray & playerName & ";"
+      *     invoke sb::Append("testArray.push('" & playerName & "');")
+           add 1 to aa
+           go to 110-loop.
+       110-done.
+      *     invoke sb::Append("</script>")
+      *     invoke ClientScript::RegisterStartupScript(self::GetType(), "TestArrayScript", sb::ToString())
+           close play-file.
+PM         set self::Session::Item("nameArray") to nameArray
+           set headerLabel::Text to BAT766-LINE-HDR::Replace(" ", "&nbsp;")
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
@@ -65,13 +91,13 @@
            set textBox1::Text to BAT766-GAME-DATE::ToString("00/00/00")
            move 1 to aa.     
        5-loop.
-          if aa > BAT766-NUM-TEAMS
+           if aa > BAT766-NUM-TEAMS
                go to 10-done
-          else
+           else
                invoke pTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
                invoke bTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
-          add 1 to aa
-          go to 5-loop.
+           add 1 to aa
+           go to 5-loop.
        10-done.    
            invoke self::populatePitcher
            invoke self::populateBatter
@@ -769,8 +795,8 @@
            if aa > BAT766-NUM-AB
                go to 10-done
            else
-               invoke abListBox::Items::Add(" " & BAT766-T-LINE(aa))
-               set BAT766-T-LINE(aa) to BAT766-T-LINE(aa)::Replace(" ", "&nbsp;").
+               INSPECT BAT766-T-LINE(AA) REPLACING ALL " " BY X'A0'
+               invoke abListBox::Items::Add(" " & BAT766-T-LINE(aa)).
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -854,7 +880,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if abListBox::SelectedItem = null
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
            else    
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+               invoke self::batstube.
        end method.
        
        method-id allButton_Click protected.
@@ -876,27 +902,91 @@ PM         set self::Session::Item("video-titles") to vidTitles
            attribute System.Web.Script.Services.ScriptMethod().
        local-storage section.
        01  names           type String[].
+       01  names2           type String[].
        01  playerName      type String.
+       01  fn                type String.
        01  aa              type Single.
+       01  bb              type Single.
        procedure division using by value prefixText as String,
                           #count as binary-long
                           returning GetNames as String occurs any.
-           move 0 to aa.
-           open input play-file.
-      *     initialize play-alt-key
-      *     start play-file key > play-alt-key.
-       15-loop.
-           read play-file next
-               at end go to 20-done.
-           move spaces to playerName
-      *     string play-last-name, ", " play-first-name
-      *         delimited "  " into playerName
-           set names[aa] to playerName
-           add 1 to aa
-           go to 15-loop.
-       20-done.
-           close play-file.
-      *     return names.
+           move 0 to aa, bb.
+           set fn to type HttpContext::Current::Server::MapPath("~/App_Data") & "\" & 
+               type HttpContext::Current::Session::SessionID & "names.txt"
+           set names to type File::ReadAllLines(fn)
+           set size of names2 to names::Length.
+       loop.
+           if names::Length = aa
+               go to done.
+           if names[aa]::StartsWith(prefixText::ToUpper)
+               set names2[bb] to names[aa]
+               add 1 to bb.
+           add 1 to aa.
+           go to loop.
+       done.
+           set GetNames to names2.
+           
+           invoke type Array::Resize(GetNames, bb)
+           add 1 to aa.
+
        end method.
+         
+       method-id locatePitcherButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
+           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
+           set bat766rununit to self::Session::Item("766rununit")
+               as type RunUnit
+           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+           MOVE SPACES TO PLAY-ALT-KEY
+           unstring locatePitcherTextBox::Text delimited ", " into play-last-name, play-first-name
+           open input play-file
+           if status-byte-1 not = zeroes
+               set play-player-id to 4
+           end-if
+           READ PLAY-FILE KEY PLAY-ALT-KEY
+           set BAT766-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
+           MOVE play-player-id to BAT766-LOCATE-SEL-ID
+           move "LP" to BAT766-ACTION
+           invoke bat766rununit::Call("BAT766WEBF")
+           CLOSE PLAY-FILE.
+           MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-PITCHER-ID
+           MOVE BAT766-SEL-TEAM TO BAT766-PITCHER-TEAM
+           MOVE BAT766-SEL-PLAYER TO BAT766-PITCHER-DSP-NAME
+           MOVE "DT" TO BAT766-ACTION
+           invoke bat766rununit::Call("BAT766WEBF")
+           set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.
+       end method.     
        
+       method-id locateBatterButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
+           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
+           set bat766rununit to self::Session::Item("766rununit")
+               as type RunUnit
+           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+           MOVE SPACES TO PLAY-ALT-KEY
+      *     unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
+           open input play-file
+           if status-byte-1 not = zeroes
+               set play-player-id to 4
+           end-if
+           READ PLAY-FILE KEY PLAY-ALT-KEY
+           set BAT766-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
+           MOVE play-player-id to BAT766-LOCATE-SEL-ID
+           move "LP" to BAT766-ACTION
+           invoke bat766rununit::Call("BAT766WEBF")
+           CLOSE PLAY-FILE.
+           MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-BATTER-ID
+           MOVE BAT766-SEL-TEAM TO BAT766-BATTER-TEAM
+           MOVE BAT766-SEL-PLAYER TO BAT766-BATTER-DSP-NAME
+           MOVE "DT" TO BAT766-ACTION
+           invoke bat766rununit::Call("BAT766WEBF")
+           set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
+      *     set bTeamDropDownList::SelectedItem to BAT766-BATTER-TEAM::Trim
+       end method.     
        end class.

@@ -22,7 +22,7 @@
                                 <cc1:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox1_CalendarExtender" TargetControlID="TextBox1" />
                             </div>
                          </div>
-                     </div>
+                    </div>
                     <div class="col-lg-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -62,13 +62,19 @@
                             </div>
                             <div class="panel-body">   
                                 <div class="row">
-                                    <asp:RadioButton ID="RadioButtonTeam" runat="server" Text="Team" AutoPostBack="True" OnCheckedChanged="RadioButtonTeam_CheckedChanged" GroupName="sort" />
+                                    <div class="col-lg-12">
+                                        <asp:RadioButton ID="RadioButtonTeam" runat="server" Text="Team" AutoPostBack="True" OnCheckedChanged="RadioButtonTeam_CheckedChanged" GroupName="sort" />
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <asp:RadioButton ID="RadioButtonName" runat="server" Text="Name" AutoPostBack="True" OnCheckedChanged="RadioButtonName_CheckedChanged" GroupName="sort" />
+                                    <div class="col-lg-12">
+                                        <asp:RadioButton ID="RadioButtonName" runat="server" Text="Name" AutoPostBack="True" OnCheckedChanged="RadioButtonName_CheckedChanged" GroupName="sort" />
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <asp:RadioButton ID="RadioButtonDate" runat="server" Text="Newest Date" AutoPostBack="True" OnCheckedChanged="RadioButtonDate_CheckedChanged" GroupName="sort" />
+                                    <div class="col-lg-12">
+                                        <asp:RadioButton ID="RadioButtonDate" runat="server" Text="Newest Date" AutoPostBack="True" OnCheckedChanged="RadioButtonDate_CheckedChanged" GroupName="sort" />
+                                    </div>
                                 </div>
                             </div>
                          </div>
@@ -78,32 +84,46 @@
                     </div>
                 </div>
             </asp:Panel>
-            <asp:Panel ID="Panel3" runat="server" Height="260px" style="margin-left: 0px" Width="175px">
+            <asp:Panel ID="Panel3" runat="server" >
                <div class="panel panel-default">
                     <div class="panel-heading">
                         Dates
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                         <div class="row">
-                            <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                            <div class="col-lg-12">
+                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="125px" class="btn btn-default"/>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -734,6 +734,7 @@
            invoke bat310rununit::Call("BAT300WEBF")
            SET batterSelectionTextBox::Text to BAT300-BATTER::Trim
            set batterTextBox::Text to BAT300-BATTER
+      *     invoke bHiddenFieldTeam_ModalPopupExtender::Hide
        end method.
    
        method-id pitcherteamButton_Click protected.

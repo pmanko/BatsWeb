@@ -106,7 +106,23 @@
        end method.
 
        method-id inningsButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           if ListBox1::SelectedItem = null
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a game');", true)
+               exit method.
+           move BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+           move BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
+
+
+           MOVE "RA" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke self::loadLines.
        end method.
 
        method-id allRadioButton_CheckedChanged protected.
@@ -481,6 +497,29 @@ PM     01 vidPaths type String.
        end method.
 
        method-id ListBox1_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+           set BAT360-AB-IP to 0
+           set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
+           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
+                   exit method.
+           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
+           MOVE "RA" to BAT360-ACTION
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+
+           invoke bat360rununit::Call("BAT360WEBF")
+           invoke self::loadLines
+       end method.
+       
+       method-id loadLines protected.
        local-storage section.
        01 WS-DATA-LINE.
            05  WS-DATA-L PIC X(39).
@@ -492,24 +531,10 @@ PM     01 vidPaths type String.
            05  WS2-ASTERISK PIC X.
            05  WS2-DATA-R PIC X(39).
        linkage section.
-           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
-                   exit method.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".      
+       procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit
-           set BAT360-AB-IP to 0
-           set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
-           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
-           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
-           MOVE "RA" to BAT360-ACTION
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit
-
-           invoke bat360rununit::Call("BAT360WEBF")
            invoke listbox2::Items::Clear.
 
            move 1 to aa.
@@ -524,11 +549,11 @@ PM     01 vidPaths type String.
       *        END-IF
                invoke listbox2::Items::Add(WS-DATA-LINE).
       *        IF AA > 1
-                   IF WS2-DATA-L = SPACES
-                       invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
-                   ELSE
-                       Invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
-                   END-IF
+      *             IF WS2-DATA-L = SPACES
+      *                 invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
+      *             ELSE
+      *                 Invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
+      *             END-IF
       *        END-IF   
            add 1 to aa
            go to ab-loop.
@@ -967,7 +992,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           MOVE aa to BAT360-V-SEL-BUTTON
+           MOVE aa to BAT360-H-SEL-BUTTON
            MOVE "PH" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::batstube.
@@ -999,12 +1024,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            move "VA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
-      *     MOVE "PG" to BAT360-ACTION
-      *     invoke bat360rununit::Call("BAT360WEBF")
-      *     MOVE " " to SYD145WD-FILENAME
-      *     MOVE "S" to SYD145WD-PAGE-ORIENT
-      *     MOVE 1 to SYD145WD-COPIES
-      *     MOVE " " to SYD145WD-NOTEPAD
        end method.
        
        end class.

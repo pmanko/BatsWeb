@@ -36,8 +36,8 @@
                                     <cc1:MaskedEditExtender ID="TextBox4_MaskedEditExtender" runat="server" BehaviorID="TextBox4_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox4" />
                                     <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
                                     <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" CssClass="btn btn-default btn-sm" />
-                                    <cc1:PopupControlExtender ID="dateButton_PopupControlExtender" runat="server" BehaviorID="dateButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="Panel12" TargetControlID="dateButton">
-                                    </cc1:PopupControlExtender>
+                                    <cc1:ModalPopupExtender ID="dateButton_ModalPopupExtender" runat="server" BehaviorID="dateButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="Panel12" TargetControlID="dateButton">
+                                    </cc1:ModalPopupExtender>
                                 </div>
                             </div>
                         </div>
@@ -185,13 +185,24 @@
                                 List of At-Bats
                             </div>
                             <div class="panel-body">
-                                <asp:ListBox ID="ListBox1" runat="server" Height="444px"  OnTextChanged="ListBox1_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                <asp:HiddenField ID="vid_paths" runat="server" />
-                                <asp:HiddenField ID="vid_titles" runat="server" />
-
-                                <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>
-                                <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
-
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text=" Game    Inn Batter                 Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <asp:ListBox ID="ListBox1" runat="server" Height="444px"  OnTextChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                    <asp:HiddenField ID="vid_paths" runat="server" />
+                                    <asp:HiddenField ID="vid_titles" runat="server" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class='col-md-12'>
+                            <%--     <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>--%>
+                                    <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -201,7 +212,7 @@
             </asp:Panel>
 
 
-            <asp:Panel ID="Panel12" runat="server" Height="260px" style="margin-left: 0px" Width="175px">
+            <asp:Panel ID="Panel12" runat="server" >
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Dates
@@ -210,37 +221,37 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" style="margin-left: 25px" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="125px" class="btn btn-default"/>
                             </div>
                         </div>
                     </div>
@@ -323,7 +334,7 @@
                         </cc1:ModalPopupExtender>
                         <asp:HiddenField ID="ipHiddenField" runat="server" />
                         <asp:HiddenField ID="pHiddenField" runat="server" />
-                        <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField">
+                        <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField" BackgroundCssClass="ModalPopupBackgroundCssClass">
                         </cc1:ModalPopupExtender>
                         </div>
                     </div>
@@ -336,6 +347,16 @@
                     Select Player 
                 </div>
                 <div class="panel-body"> 
+                    <div class="row">
+                        <div class='col-md-12'>
+                            <div class="panel panel-default">
+                                <asp:Label ID="Label1" runat="server" Text="Locate Player" Font-Size="Medium"></asp:Label>
+                                <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
+                                <cc1:AutoCompleteExtender ID="AutoCompleteExtender1" runat="server" TargetControlID="locatePlayerTextBox" UseContextKey="true" ServicePath="" ServiceMethod="GetNames">
+                                </cc1:AutoCompleteExtender>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class='col-md-12'>
                         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -432,7 +453,7 @@
                         <div class='col-md-12'>
                         <asp:Button ID="batterOKButton" runat="server" Text="OK" class="btn btn-primary btn-block" />
                         <asp:HiddenField ID="bHiddenField" runat="server" />
-                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField">
+                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" BackgroundCssClass="ModalPopupBackgroundCssClass">
                         </cc1:ModalPopupExtender>
                         </div>
                     </div>

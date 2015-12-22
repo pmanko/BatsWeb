@@ -32,6 +32,18 @@
     <IncludeIisSettings>false</IncludeIisSettings>
     <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>bin\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <DefineConstants>DEBUG</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <AdditionalDirectives />
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+    <IntermediatePath>.\obj\x86\Debug\</IntermediatePath>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
     <DebugSymbols>false</DebugSymbols>
@@ -39,6 +51,16 @@
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
     <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <WarningLevel>2</WarningLevel>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+    <IntermediatePath>.\obj\x86\Release\</IntermediatePath>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
@@ -79,6 +101,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="breakdownpark.aspx" />
     <Content Include="breakdownszone.aspx" />
+    <Content Include="ErrorPages\timeout.aspx" />
     <Content Include="summaryatbatdetail.aspx" />
     <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
@@ -92,7 +115,9 @@
     <Content Include="Global.asax" />
     <Content Include="summarypark.aspx" />
     <Content Include="summaryrunners.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -238,6 +263,13 @@
     <Compile Include="breakdownszone.aspx.designer.cbl">
       <DependentUpon>breakdownszone.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="summaryatbatdetail.aspx.cbl">
       <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,6 +413,7 @@
     <None Include="Scripts\fullatbat.js" />
     <None Include="Scripts\video.js" />
     <None Include="Styles\app.scss" />
+    <None Include="Styles\autocomplete.css" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
     <None Include="Styles\custom_bootstrap.scss" />
@@ -398,7 +431,9 @@
     <Import Include="System.Drawing.Drawing2D" />
     <Import Include="System.Drawing.Imaging" />
     <Import Include="System.Drawing.Text" />
+    <Import Include="System.IO" />
     <Import Include="System.Linq" />
+    <Import Include="System.Text" />
     <Import Include="System.Web" />
     <Import Include="System.Web.Security" />
     <Import Include="System.Web.SessionState" />

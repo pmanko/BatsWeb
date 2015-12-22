@@ -54,6 +54,14 @@
       *>> </remarks>
        01 allRadioButton type System.Web.UI.WebControls.RadioButton protected.
       *>> <summary>
+      *>> yearDropDownList control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 yearDropDownList type System.Web.UI.WebControls.DropDownList protected.
+      *>> <summary>
       *>> teamRadioButton control.
       *>> </summary>
       *>> <remarks>
@@ -70,22 +78,6 @@
       *>> </remarks>
        01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
-      *>> inningsButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 inningsButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> yearDropDownList control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 yearDropDownList type System.Web.UI.WebControls.DropDownList protected.
-      *>> <summary>
       *>> nlRadioButton control.
       *>> </summary>
       *>> <remarks>
@@ -93,14 +85,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 nlRadioButton type System.Web.UI.WebControls.RadioButton protected.
-      *>> <summary>
-      *>> pitchersCheckBox control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pitchersCheckBox type System.Web.UI.WebControls.CheckBox protected.
       *>> <summary>
       *>> alRadioButton control.
       *>> </summary>
@@ -110,13 +94,21 @@
       *>> </remarks>
        01 alRadioButton type System.Web.UI.WebControls.RadioButton protected.
       *>> <summary>
-      *>> printButton control.
+      *>> pitchersCheckBox control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 printButton type System.Web.UI.WebControls.Button protected.
+       01 pitchersCheckBox type System.Web.UI.WebControls.CheckBox protected.
+      *>> <summary>
+      *>> inningsButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 inningsButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Panel1 control.
       *>> </summary>
@@ -141,6 +133,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 ListBox2 type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
+      *>> detailButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 detailButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> vid_paths control.
       *>> </summary>
@@ -269,6 +269,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 visPanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> backButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 backButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button1 control.
       *>> </summary>
@@ -517,6 +525,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 homePanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> backButton2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 backButton2 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button31 control.
       *>> </summary>
@@ -773,13 +789,5 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 ListBox3 type System.Web.UI.WebControls.ListBox protected.
-      *>> <summary>
-      *>> printStatsButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 printStatsButton type System.Web.UI.WebControls.Button protected.
 
        end class.

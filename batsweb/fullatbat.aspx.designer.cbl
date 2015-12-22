@@ -118,13 +118,13 @@
       *>> </remarks>
        01 dateButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> dateButton_PopupControlExtender control.
+      *>> dateButton_ModalPopupExtender control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 dateButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
+       01 dateButton_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
       *>> <summary>
       *>> pitcherTextBox control.
       *>> </summary>
@@ -277,6 +277,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 resetButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> abHeader control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 abHeader type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> ListBox1 control.
       *>> </summary>
@@ -533,6 +541,30 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 playerPanel type System.Web.UI.WebControls.Panel protected.
+      *>> <summary>
+      *>> Label1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Label1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> locatePlayerTextBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locatePlayerTextBox type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
+      *>> AutoCompleteExtender1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 AutoCompleteExtender1 type AjaxControlToolkit.AutoCompleteExtender protected.
       *>> <summary>
       *>> UpdatePanel1 control.
       *>> </summary>
