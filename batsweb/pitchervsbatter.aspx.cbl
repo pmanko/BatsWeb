@@ -27,7 +27,6 @@
        01 abnum        type Single.
        01 fn           type String.
        01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
-       01 sb           type StringBuilder.
        01 playerName      type String.
        01 nameArray      type String.
        method-id Page_Load protected.
@@ -56,10 +55,13 @@
                set BAT766WEBF to new BAT766WEBF
                invoke bat766rununit::Add(BAT766WEBF)
                set self::Session::Item("766rununit") to  bat766rununit.
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test1!');", true)
            invoke abListBox::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(abListBox, "move"))
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test2!');", true)
            invoke bat766rununit::Call("BAT766WEBF")
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test3!');", true)
            CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
            open input play-file.
            initialize play-alt-key
@@ -77,6 +79,7 @@
        10-done.
            close play-file.
 PM         set self::Session::Item("nameArray") to nameArray
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test4!');", true)
            set headerLabel::Text to BAT766-LINE-HDR::Replace(" ", "&nbsp;")
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
