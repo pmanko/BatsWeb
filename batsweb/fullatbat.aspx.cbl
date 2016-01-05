@@ -66,6 +66,9 @@
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            if BAT666-GAME-FLAG = "D"
                set startDateRadioButton::Checked to true
            else
@@ -124,7 +127,7 @@
            add 1 to aa
            go to inning-loop.
        inning-done.
-           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
+           SET LK-PLAYER-FILE TO BAT666-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
            start play-file key > play-alt-key.
@@ -166,9 +169,14 @@ PM         set self::Session::Item("nameArray") to nameArray
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
-
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            MOVE "RA" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            invoke self::loadList.
        end method.
        
@@ -227,7 +235,9 @@ PM     01 vidPaths type String.
            set bat666rununit to self::Session::Item("666rununit") as type RunUnit
 
            invoke bat666rununit::Call("BAT666WEBF")
-           
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
 PM         set vidPaths to ""
 PM         set vidTitles to ""
       *    invoke BulletedList2::Items::Clear
@@ -411,7 +421,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
-
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -431,6 +443,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -450,7 +465,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
-
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -470,6 +487,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -489,6 +509,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -508,6 +531,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE "D" to BAT666-GAME-FLAG
            MOVE "D" to BAT666-END-GAME-FLAG
            set startDateRadioButton::Checked to true
@@ -544,6 +570,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit") as
                type RunUnit
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke playerListBox::Items::Clear.
            move 1 to aa.
        5-loop.
@@ -576,6 +605,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
                move "LP" to BAT668-ACTION
                move "T" to BAT666-ACTION
                invoke bat666rununit::Call("BAT666WEBF")
+               if ERROR-FIELD NOT = SPACES
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   move spaces to ERROR-FIELD
+               END-IF    
                IF BAT666-IND-PB-FLAG = "P"  
                    MOVE play-player-id to BAT666-SAVE-PITCHER-ID 
                ELSE
@@ -592,6 +625,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            move "TI" to BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE " " to BAT666-IND-PB-FLAG   
            set pitcherTextBox::Text to BAT666-PITCHER
            set batterTextBox::Text to BAT666-BATTER
@@ -629,6 +665,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "RP" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE " " TO BAT666-SEL-TEAM
            invoke self::populateTeam.     
            invoke pitcherOKButton_ModalPopupExtender::Show.
@@ -647,6 +686,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "RP" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            MOVE " " TO BAT666-SEL-TEAM
            invoke self::populateTeam.     
            invoke pitcherOKButton_ModalPopupExtender::Show.
@@ -665,6 +707,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to BAT666-RES-IDX
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList.       
        end method.
 
@@ -681,6 +726,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to BAT666-RES-IDX2
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList.     
        end method.
 
@@ -697,6 +745,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to DIALOG-RUN-IDX
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList.  
        end method.
 
@@ -713,6 +764,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to DIALOG-INN-IDX
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList.  
        end method.
 
@@ -729,6 +783,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to DIALOG-OUT-IDX
            MOVE "RA" to BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList.
        end method.
 
@@ -757,6 +814,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set DIALOG-INN-IDX to (Outs::SelectedIndex + 1)
            MOVE "RA" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            INVOKE self::loadList.   
        end method.
 
@@ -772,6 +832,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
@@ -788,6 +851,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
@@ -804,6 +870,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
@@ -820,6 +889,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
@@ -836,6 +908,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
@@ -852,6 +927,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" TO BAT668-ACTION  
            MOVE "T" TO BAT666-ACTION  
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
@@ -890,6 +968,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "T" to BAT666-ACTION
            MOVE "TI" to BAT668-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
@@ -936,6 +1017,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "T" to BAT666-ACTION
            MOVE "TI" to BAT668-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.

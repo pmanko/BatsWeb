@@ -1,14 +1,12 @@
-﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="pitchervsbatter.aspx.cbl" Inherits="batsweb.pitchervsbatter"%>
+﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="pitchervsbatter.aspx.cbl" Inherits="batsweb.pitchervsbatter" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-
-
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript">
-        $(document).ready(function () {
-            var names = "<%= Session["nameArray"] %>".split(";");
-            $("#MainContent_locateBatter, #MainContent_locatePitcher").autocomplete({
+          $(document).ready(function () {
+              var names = "<%= Session["nameArray"] %>".split(";");
+            $("#MainContent_locateBatterTextBox, #MainContent_locatePitcherTextBox").autocomplete({
                 autoFocus: true,
                 source: function (request, response) {
                     var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
@@ -111,7 +109,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="ui-widget">
-                                        <asp:TextBox ID="locatePitcher" runat="server" class="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="locatePitcherTextBox" runat="server" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
@@ -193,7 +191,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="ui-widget">
-                                        <asp:TextBox ID="locateBatter" runat="server" class="form-control"></asp:TextBox>
+                                        <asp:TextBox ID="locateBatterTextBox" runat="server" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="col-lg-2">

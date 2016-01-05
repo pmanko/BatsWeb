@@ -174,13 +174,13 @@
       *>> </remarks>
        01 locatePitcherLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> locatePitcher control.
+      *>> locatePitcherTextBox control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 locatePitcher type System.Web.UI.WebControls.TextBox protected.
+       01 locatePitcherTextBox type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> locatePitcherButton control.
       *>> </summary>
@@ -454,13 +454,13 @@
       *>> </remarks>
        01 locateBatterLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> locateBatter control.
+      *>> locateBatterTextBox control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 locateBatter type System.Web.UI.WebControls.TextBox protected.
+       01 locateBatterTextBox type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> locateBatterButton control.
       *>> </summary>

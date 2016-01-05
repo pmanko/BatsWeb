@@ -28,7 +28,7 @@
        01 fn           type String.
        01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
        01 playerName      type String.
-       01 nameArray      type String.
+       01 nameArray      type String.       
        method-id Page_Load protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
@@ -55,14 +55,14 @@
                set BAT766WEBF to new BAT766WEBF
                invoke bat766rununit::Add(BAT766WEBF)
                set self::Session::Item("766rununit") to  bat766rununit.
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test1!');", true)
            invoke abListBox::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(abListBox, "move"))
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test2!');", true)
            invoke bat766rununit::Call("BAT766WEBF")
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test3!');", true)
-           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG.
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert(ERROR-FIELD);", true)
+               move spaces to ERROR-FIELD.
+           SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
            start play-file key > play-alt-key.
@@ -79,7 +79,6 @@
        10-done.
            close play-file.
 PM         set self::Session::Item("nameArray") to nameArray
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('test4!');", true)
            set headerLabel::Text to BAT766-LINE-HDR::Replace(" ", "&nbsp;")
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
@@ -88,13 +87,13 @@ PM         set self::Session::Item("nameArray") to nameArray
            set textBox1::Text to BAT766-GAME-DATE::ToString("00/00/00")
            move 1 to aa.     
        15-loop.
-           if aa > BAT766-NUM-TEAMS
+          if aa > BAT766-NUM-TEAMS
                go to 20-done
-           else
+          else
                invoke pTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
                invoke bTeamDropDownList::Items::Add(BAT766-TEAM-NAME(aa)).
-           add 1 to aa
-           go to 15-loop.
+          add 1 to aa
+          go to 15-loop.
        20-done.    
            invoke self::populatePitcher
            invoke self::populateBatter
@@ -120,7 +119,10 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            SET BAT766-PITCHER-TEAM TO pTeamDropDownList::SelectedItem
            MOVE "RP" to BAT766-ACTION
-           invoke bat766rununit::Call("BAT766WEBF")     
+           invoke bat766rununit::Call("BAT766WEBF")  
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            if BAT766-P-ROSTER-NAME(1) not = spaces
                set Button1::Visible to true
                set Button1::Text to BAT766-P-ROSTER-NAME(1)::Trim
@@ -435,6 +437,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE aa to BAT766-SEL-P-BUTTON
            MOVE "GP" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.
       *     set pTeamDropDownList::SelectedItem to BAT766-PITCHER-TEAM::Trim
        end method.
@@ -458,6 +463,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            SET BAT766-BATTER-TEAM TO bTeamDropDownList::SelectedItem
            MOVE "RB" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")     
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert(ERROR-FIELD);", true)
+               move spaces to ERROR-FIELD.           
            if BAT766-B-ROSTER-NAME(1) not = spaces
                set Button31::Visible to true
                set Button31::Text to BAT766-B-ROSTER-NAME(1)::Trim
@@ -772,6 +780,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE aa to BAT766-SEL-B-BUTTON
            MOVE "GB" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
        end method.
@@ -813,6 +824,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set BAT766-GAME-DATE to gmDate
            MOVE "DT" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::Load_List.
        end method.
     
@@ -840,6 +854,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
 
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
                if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$abListBox"
                    invoke self::batstube.
@@ -891,6 +908,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "0000000000000" to BAT766-I-KEY
            MOVE "VA" TO BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::batstube.
        end method.
        
@@ -922,7 +942,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            go to loop.
        done.
            set GetNames to names2.
-           
            invoke type Array::Resize(GetNames, bb)
            add 1 to aa.
 
@@ -936,9 +955,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
                as type RunUnit
-           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+           SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            MOVE SPACES TO PLAY-ALT-KEY
-           unstring locatePitcher::Text delimited ", " into play-last-name, play-first-name
+           unstring locatePitcherTextBox::Text delimited ", " into play-last-name, play-first-name
            open input play-file
            if status-byte-1 not = zeroes
                set play-player-id to 4
@@ -948,12 +967,18 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE play-player-id to BAT766-LOCATE-SEL-ID
            move "LP" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            CLOSE PLAY-FILE.
            MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-PITCHER-ID
            MOVE BAT766-SEL-TEAM TO BAT766-PITCHER-TEAM
            MOVE BAT766-SEL-PLAYER TO BAT766-PITCHER-DSP-NAME
            MOVE "DT" TO BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.
        end method.     
        
@@ -967,7 +992,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                as type RunUnit
            CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
            MOVE SPACES TO PLAY-ALT-KEY
-           unstring locateBatter::Text delimited ", " into play-last-name, play-first-name
+           unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
            open input play-file
            if status-byte-1 not = zeroes
                set play-player-id to 4
@@ -977,12 +1002,18 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE play-player-id to BAT766-LOCATE-SEL-ID
            move "LP" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            CLOSE PLAY-FILE.
            MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-BATTER-ID
            MOVE BAT766-SEL-TEAM TO BAT766-BATTER-TEAM
            MOVE BAT766-SEL-PLAYER TO BAT766-BATTER-DSP-NAME
            MOVE "DT" TO BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
       *     set bTeamDropDownList::SelectedItem to BAT766-BATTER-TEAM::Trim
        end method.     

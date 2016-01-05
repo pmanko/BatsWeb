@@ -49,8 +49,10 @@
            set label1::Text to label1::Text::Replace(" ", "&nbsp;")
            set gamesHeader::Text to gamesHeader::Text::Replace(" ", "&nbsp;")
            move "I" to BAT360-ACTION
-           move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            if BAT360-GAMES-CHOICE = " "
                set allRadioButton::Checked to true
            else if BAT360-GAMES-CHOICE = "N"
@@ -122,6 +124,9 @@
 
            MOVE "RA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadLines.
        end method.
 
@@ -136,6 +141,9 @@
            MOVE " " to BAT360-GAMES-CHOICE
            MOVE "RG" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames.
        end method.
 
@@ -153,6 +161,9 @@
                exit method.
            MOVE "RG" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames.
        end method.
 
@@ -167,6 +178,9 @@
            MOVE "N" to BAT360-GAMES-CHOICE
            MOVE "RG" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames.
        end method.
 
@@ -181,6 +195,9 @@
            MOVE "M" to BAT360-GAMES-CHOICE
            MOVE "RG" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames.
        end method.
 
@@ -196,6 +213,10 @@
            if BAT360-GAMES-CHOICE = "T"
                MOVE "RG" to BAT360-ACTION
                invoke bat360rununit::Call("BAT360WEBF")
+               if ERROR-FIELD NOT = SPACES
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   move spaces to ERROR-FIELD
+               end-if    
                invoke self::loadGames.
        end method.
 
@@ -214,6 +235,9 @@
                MOVE "N" to BAT360-STARTING-PITCHERS
                MOVE "RG" to BAT360-ACTION.
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames
        end method.
 
@@ -231,6 +255,9 @@
            set BAT360-GAME-SEL-YR to seasonYear
            MOVE "RG" to BAT360-ACTION.
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::loadGames
        end method.
 
@@ -244,6 +271,9 @@
                as type RunUnit
            MOVE "SV" to BAT360-ACTION.
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            if BAT360-V-ROSTER-NAME(1) not = spaces
                set Button1::Visible to true
                set Button1::Text to BAT360-V-ROSTER-NAME(1)::Trim. 
@@ -347,6 +377,9 @@
                as type RunUnit
            MOVE "SH" to BAT360-ACTION.
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            if BAT360-H-ROSTER-NAME(1) not = spaces
                set Button31::Visible to true
                set Button31::Text to BAT360-H-ROSTER-NAME(1)::Trim. 
@@ -460,17 +493,10 @@
                    exit method.
            MOVE "VD" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
-      *     set printButton::Text to self::Request::Params::Get("__EVENTTARGET")
-      * looks through list of submitted controls to see if it was a button. if it is the correct button don't go to batstube
-      *     perform varying s as String through self::Request::Form
-      *         set ctrl to self::FindControl(s)
-      *         if self::printButton = ctrl
-      *             set atbatflag to "Y"
-      *         end-if
-      *     end-perform.
-      *     if self::Request::Params::Get("__EVENTTARGET") not = self::FindControl("printButton")::ToString
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                      
            invoke self::batstube.
-      *     set atbatflag to " "
                
        end method.
 
@@ -493,6 +519,9 @@ PM     01 vidPaths type String.
                exit method.      
            MOVE "VS" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
 
@@ -516,6 +545,9 @@ PM     01 vidPaths type String.
                as type RunUnit
 
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::loadLines
        end method.
        
@@ -584,6 +616,9 @@ PM     01 vidPaths type String.
                as type RunUnit
            MOVE "VV" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
 
@@ -596,7 +631,10 @@ PM     01 vidPaths type String.
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
            MOVE "VH" to BAT360-ACTION
-           invoke bat360rununit::Call("BAT360WEBF")               
+           invoke bat360rununit::Call("BAT360WEBF")   
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
 
@@ -610,6 +648,9 @@ PM     01 vidPaths type String.
                as type RunUnit
            MOVE "VX" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
 
@@ -830,6 +871,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE aa to BAT360-V-SEL-BUTTON
            MOVE "PV" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
        
@@ -995,6 +1039,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE aa to BAT360-H-SEL-BUTTON
            MOVE "PH" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::batstube.
        end method.
        
@@ -1023,6 +1070,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
                exit method.   
            move "VA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.               
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
        end method.
        

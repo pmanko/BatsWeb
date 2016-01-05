@@ -334,24 +334,24 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <asp:ImageButton ID="ImageButton2" runat="server" src="breakdownszone.aspx" alt="image could not be displayed refresh"/>
+                        <asp:Image ID="parkImage" runat="server" src="breakdownpark.aspx" alt="image could not be displayed refresh"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" class="btn btn-primary"/>
+                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" OnClick="resultsButton_Click" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="typesButton" runat="server" Text="Pitch Types" class="btn btn-primary"/>
+                        <asp:Button ID="typesButton" runat="server" Text="Pitch Types" OnClick="typesButton_Click" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="videosButton" runat="server" Text="Compare Videos" class="btn btn-primary"/>
+                        <asp:Button ID="videosButton" runat="server" Text="Compare Videos" OnClick="videosButton_Click" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="prevButton" runat="server" Text="Prev. Pitch" class="btn btn-primary"/>
+                        <asp:Button ID="prevButton" runat="server" Text="Prev. Pitch" OnClick="prevButton_Click" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="nextButton" runat="server" Text="Next Pitch" class="btn btn-primary"/>
+                        <asp:Button ID="nextButton" runat="server" Text="Next Pitch" OnClick="nextButton_Click" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
                         <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary"/>

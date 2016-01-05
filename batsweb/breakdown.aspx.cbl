@@ -5,7 +5,6 @@
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01 bat310rununit         type RunUnit.
        01 BAT310WEBF                type BAT310WEBF.
-       01 BAT300WEBF                type BAT300WEBF.
        01 mydata type batsweb.bat310Data.
        01 mydata300 type batsweb.bat300Data.
 
@@ -35,7 +34,7 @@
                set self::Session::Item("310rununit") to  bat310rununit.              
                
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
-          INITIALIZE BAT310-DIALOG-FIELDS
+           INITIALIZE BAT310-DIALOG-FIELDS
            MOVE "I" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
       *show and hide batter based on L or R handedness
@@ -128,7 +127,7 @@
            set outsdd::SelectedIndex to 0
            set runnersdd::SelectedIndex to 0
            if catcherdd::Items::Count not = 0
-                 set catcherdd::SelectedIndex to 0.
+               set catcherdd::SelectedIndex to 0.
            set countdd::SelectedIndex to 0
            set pitchLocdd::SelectedIndex to 0
            set pitchTypedd::SelectedIndex to 0
@@ -308,8 +307,8 @@
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
-           set DIALOG-RES-IDX2 to result1dd::SelectedIndex
-           set DIALOG-RES-MASTER2 TO result1dd::SelectedItem
+           set DIALOG-RES-IDX2 to result2dd::SelectedIndex
+           set DIALOG-RES-MASTER2 TO result2dd::SelectedItem
            add 1 to DIALOG-RES-IDX2
            invoke self::Recalc.
        end method.
@@ -425,7 +424,7 @@
            set DIALOG-RES-MASTER TO result1dd::SelectedItem
            move 0 to result2dd::SelectedIndex
            set DIALOG-RES-IDX2 to (result2dd::SelectedIndex + 1)
-           set DIALOG-RES-MASTER TO result2dd::SelectedItem
+           set DIALOG-RES-MASTER2 TO result2dd::SelectedItem
            move 0 to runnersdd::SelectedIndex
            set DIALOG-RUN-MASTER to outsdd::SelectedItem
            set DIALOG-RUN-IDX to (outsdd::SelectedIndex + 1)           
@@ -1113,6 +1112,66 @@ PM         set self::Session::Item("video-titles") to vidTitles
                move "Y" to BAT300-TEAM-ONLY-FLAG
             else
                move "N" to BAT300-TEAM-ONLY-FLAG.
+       end method.
+  
+       method-id typesButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           move "T" to BAT310-DISPLAY-TYPE
+           INVOKE self::Recalc
+       end method.
+
+       method-id resultsButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           move "R" to BAT310-DISPLAY-TYPE
+           INVOKE self::Recalc
+       end method.
+
+       method-id videosButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           MOVE "SC" TO BAT310-ACTION
+           CALL "BAT310WINF"
+      *     set ComparePlaysForm to new type BatterPitcherBreakdown.ComparePlaysForm
+      *     invoke ComparePlaysForm::Show
+       end method.
+  
+       method-id btnPrevious_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           IF DIALOG-CNT-IDX < 3 or DIALOG-CNT-IDX > 13
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
+               exit method
+           Else
+      *         set PrevPitchForm to new type BatterPitcherBreakdown.PrevPitchForm
+      *         invoke PrevPitchForm::Show
+       end method.
+
+       method-id btnNext_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           IF DIALOG-CNT-IDX < 2 or DIALOG-CNT-IDX > 13
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
+               exit method
+           Else
+      *         set NextPitchForm to new type BatterPitcherBreakdown.NextPitchForm
+      *         invoke NextPitchForm::Show.
        end method.
 
        end class.
