@@ -78,6 +78,14 @@
       *>> </remarks>
        01 selectionButton_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
       *>> <summary>
+      *>> btnConfirm control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 btnConfirm type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
       *>> countdd control.
       *>> </summary>
       *>> <remarks>
@@ -406,13 +414,13 @@
       *>> </remarks>
        01 allButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> ImageButton2 control.
+      *>> parkImage control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 ImageButton2 type System.Web.UI.WebControls.ImageButton protected.
+       01 parkImage type System.Web.UI.WebControls.Image protected.
       *>> <summary>
       *>> resultsButton control.
       *>> </summary>
@@ -1054,6 +1062,14 @@
       *>> </remarks>
        01 bTeamOKButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> bTeamHiddenField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 bTeamHiddenField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> playerPanel control.
       *>> </summary>
       *>> <remarks>
@@ -1093,5 +1109,13 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 playerOKButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> TextBox1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 TextBox1 type System.Web.UI.WebControls.TextBox protected.
 
        end class.

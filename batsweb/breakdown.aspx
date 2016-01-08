@@ -1,8 +1,37 @@
-﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="breakdown.aspx.cbl" Inherits="batsweb.breakdown" %>
+﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="breakdown.aspx.cbl" Inherits="batsweb.breakdown" %>
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+        <script type="text/javascript">
+        function ShowYesNo() {
+            $(function () {
+                $('#rangeDialog').dialog({
+                    modal: true,
+                    width: 'auto',
+                    resizable: false,
+                    draggable: false,
+                    close: function (event, ui) { $('body').find('#rangeDialog').remove(); },
+                    buttons: {
+                        'OK': function () { $(this).dialog('close'); }
+                    }
+                })
+            }).dialog("open");
+        }
+    </script>
+    <script type = "text/javascript">
+        function Confirm() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to save data?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -40,6 +69,7 @@
                         <asp:Button ID="selectionButton" runat="server" Text="Change Selection" class="btn btn-lg btn-primary" />
                         <cc1:ModalPopupExtender ID="selectionButton_ModalPopupExtender" runat="server" BehaviorID="selectionButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="changeSelectionPanel" TargetControlID="selectionButton" OkControlID="goButton">
                         </cc1:ModalPopupExtender>
+                         <asp:Button ID="btnConfirm" runat="server" OnClick = "OnConfirm" Text = "Raise Confirm" OnClientClick = "Confirm()"/>
                     </div>
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
@@ -334,12 +364,12 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <asp:Image ID="parkImage" runat="server" src="breakdownpark.aspx" alt="image could not be displayed refresh"/>
+                        <asp:Image ID="parkImage" runat="server" src="breakdownszone.aspx" alt="image could not be displayed refresh"/>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" OnClick="resultsButton_Click" class="btn btn-primary"/>
+                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" class="btn btn-primary"/>
                     </div>
                     <div class="col-lg-2">
                         <asp:Button ID="typesButton" runat="server" Text="Pitch Types" OnClick="typesButton_Click" class="btn btn-primary"/>
@@ -553,8 +583,8 @@
                                             <div class="panel-heading">
                                                 Batter Choices
                                             </div> 
-                                            <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true">
-                                            <ContentTemplate>
+                                   <!--         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true">
+                                            <ContentTemplate> -->
                                             <div class="panel-body">
                                                 <div class="row">
                                                     <div class="col-lg-12">
@@ -629,8 +659,8 @@
                                                     </div> 
                                                 </div> 
                                             </div> 
-                                            </ContentTemplate>
-                                            </asp:UpdatePanel>
+                                   <!--         </ContentTemplate>
+                                            </asp:UpdatePanel> -->
                                         </div> 
                                     </div>
                                 </div>
@@ -760,6 +790,11 @@
                 </div>
             </div>
         </asp:Panel>
+        <div id="rangeDialog" style="display: none;" title="Total out of range">
+  <p>
+       hahahahaah  <!--                                                       <asp:TextBox ID="TextBox1" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox> -->
+  </p>
+</div>
         </form>
     </div>
 </asp:Content>

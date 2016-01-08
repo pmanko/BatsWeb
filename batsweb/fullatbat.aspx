@@ -132,6 +132,7 @@
                                     <asp:ListItem>RBI</asp:ListItem>
                                     <asp:ListItem>SAC</asp:ListItem>
                                     <asp:ListItem>NO IBB</asp:ListItem>
+                                    <asp:ListItem>NO BB</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                             <div class="col-lg-4">
@@ -171,6 +172,7 @@
                                     <asp:ListItem>RBI</asp:ListItem>
                                     <asp:ListItem>SAC</asp:ListItem>
                                     <asp:ListItem>NO IBB</asp:ListItem>
+                                    <asp:ListItem>NO BB</asp:ListItem>
                                 </asp:DropDownList>
 
                             </div>

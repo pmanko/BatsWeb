@@ -43,11 +43,11 @@
            invoke outsdd::Items::Clear.
            invoke inndd::Items::Clear.
            invoke countdd::Items::Clear.
-           invoke pitchLocdd::Items::Clear
+           invoke pitchlocdd::Items::Clear
            invoke catcherdd::Items::Clear.
            invoke result1dd::Items::Clear.
            invoke result2dd::Items::Clear.
-           invoke pitchTypedd::Items::Clear.
+           invoke pitchtypedd::Items::Clear.
 
            move 1 to aa.
        runners-loop.
@@ -85,7 +85,7 @@
        location-loop.
            if aa > DIALOG-PLO-NUM-ENTRIES
                go to location-done.
-           invoke pitchLocdd::Items::Add(DIALOG-PLO(AA)::Trim)
+           invoke pitchlocdd::Items::Add(DIALOG-PLO(AA)::Trim)
            add 1 to aa
            go to location-loop.
        location-done.
@@ -117,7 +117,7 @@
        pitchtype-loop.
            if aa > DIALOG-PTY-NUM-ENTRIES
                go to pitchtype-done.
-           invoke pitchTypedd::Items::Add(DIALOG-PTY(AA)::Trim)
+           invoke pitchtypedd::Items::Add(DIALOG-PTY(AA)::Trim)
            add 1 to aa
            go to pitchtype-loop.
        pitchtype-done.
@@ -129,8 +129,8 @@
            if catcherdd::Items::Count not = 0
                set catcherdd::SelectedIndex to 0.
            set countdd::SelectedIndex to 0
-           set pitchLocdd::SelectedIndex to 0
-           set pitchTypedd::SelectedIndex to 0
+           set pitchlocdd::SelectedIndex to 0
+           set pitchtypedd::SelectedIndex to 0
 
       *     attach method self::MouseDownploc to szonebox::MouseDown
       *     attach method self::MouseUpploc to szonebox::MouseUp
@@ -369,7 +369,7 @@
            invoke self::Recalc.
        end method.  
        
-       method-id pitchTypedd_SelectedIndexChanged protected.
+       method-id pitchtypedd_SelectedIndexChanged protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -377,13 +377,13 @@
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
-           set DIALOG-PTY-IDX to pitchTypedd::SelectedIndex
-           set DIALOG-PTY-MASTER TO pitchTypedd::SelectedItem
+           set DIALOG-PTY-IDX to pitchtypedd::SelectedIndex
+           set DIALOG-PTY-MASTER TO pitchtypedd::SelectedItem
            add 1 to DIALOG-PTY-IDX
            invoke self::Recalc.
        end method.  
        
-       method-id pitchLocdd_SelectedIndexChanged protected.
+       method-id pitchlocdd_SelectedIndexChanged protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -391,8 +391,8 @@
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
-           set DIALOG-PLO-IDX to pitchLocdd::SelectedIndex
-           set DIALOG-PLO-MASTER TO pitchLocdd::SelectedItem
+           set DIALOG-PLO-IDX to pitchlocdd::SelectedIndex
+           set DIALOG-PLO-MASTER TO pitchlocdd::SelectedItem
            add 1 to DIALOG-PLO-IDX
            invoke self::Recalc.
        end method.  
@@ -906,7 +906,22 @@
            invoke bat310rununit::Call("BAT300WEBF")
            set batterSelectionTextBox::Text to BAT300-BATTER::Trim
        end method.
-        
+       
+       method-id OnConfirm protected.
+       local-storage section.
+       01  confirmValue        Type String.       
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set confirmValue to Request::Form["confirm_value"]
+           if (confirmValue = "Yes")
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "alert('You clicked YES!')", true)
+           else
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "alert('You clicked NO!')", true).
+      *     set TextBox1::Text to "hal"
+      *     invoke self::ClientScript::RegisterClientScriptBlock(self::GetType(), "dlgOutOfRange",
+      *     "ShowYesNo();", true);
+       end method.
        method-id resetselectionButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
@@ -933,6 +948,10 @@
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+      *     set TextBox1::Text to "hal"
+      *     invoke self::ClientScript::RegisterClientScriptBlock(self::GetType(), "dlgOutOfRange",
+      *     "ShowYesNo();", true);
+      *     exit method.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -1146,7 +1165,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *     invoke ComparePlaysForm::Show
        end method.
   
-       method-id btnPrevious_Click protected.
+       method-id prevButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -1160,7 +1179,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *         invoke PrevPitchForm::Show
        end method.
 
-       method-id btnNext_Click protected.
+       method-id nextButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
