@@ -907,21 +907,6 @@
            set batterSelectionTextBox::Text to BAT300-BATTER::Trim
        end method.
        
-       method-id OnConfirm protected.
-       local-storage section.
-       01  confirmValue        Type String.       
-       linkage section.
-           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set confirmValue to Request::Form["confirm_value"]
-           if (confirmValue = "Yes")
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "alert('You clicked YES!')", true)
-           else
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "alert('You clicked NO!')", true).
-      *     set TextBox1::Text to "hal"
-      *     invoke self::ClientScript::RegisterClientScriptBlock(self::GetType(), "dlgOutOfRange",
-      *     "ShowYesNo();", true);
-       end method.
        method-id resetselectionButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
@@ -948,10 +933,6 @@
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-      *     set TextBox1::Text to "hal"
-      *     invoke self::ClientScript::RegisterClientScriptBlock(self::GetType(), "dlgOutOfRange",
-      *     "ShowYesNo();", true);
-      *     exit method.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as

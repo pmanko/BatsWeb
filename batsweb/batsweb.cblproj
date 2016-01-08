@@ -100,8 +100,10 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="breakdownpark.aspx" />
+    <Content Include="breakdownparkdetail.aspx" />
     <Content Include="breakdownszone.aspx" />
     <Content Include="ErrorPages\timeout.aspx" />
+    <Content Include="parkdetailpark.aspx" />
     <Content Include="summaryatbatdetail.aspx" />
     <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
@@ -256,6 +258,13 @@
     <Compile Include="breakdownpark.aspx.designer.cbl">
       <DependentUpon>breakdownpark.aspx</DependentUpon>
     </Compile>
+    <Compile Include="breakdownparkdetail.aspx.cbl">
+      <DependentUpon>breakdownparkdetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownparkdetail.aspx.designer.cbl">
+      <DependentUpon>breakdownparkdetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="breakdownszone.aspx.cbl">
       <DependentUpon>breakdownszone.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -269,6 +278,13 @@
     </Compile>
     <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
       <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="parkdetailpark.aspx.cbl">
+      <DependentUpon>parkdetailpark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="parkdetailpark.aspx.designer.cbl">
+      <DependentUpon>parkdetailpark.aspx</DependentUpon>
     </Compile>
     <Compile Include="summaryatbatdetail.aspx.cbl">
       <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
@@ -408,6 +424,7 @@
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\batstube_app.js" />
+    <None Include="Scripts\breakdowncallpark.js" />
     <None Include="Scripts\summarycallatbat.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
