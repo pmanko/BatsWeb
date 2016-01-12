@@ -32,6 +32,8 @@
                                          
       * Setup using GET variables
       *    Moved from mainmenu.aspx - Pages should be self-sufficient 
+           if self::IsPostBack
+               exit method.
            SET self::Session::Item("database") to self::Request::QueryString["league"]
            
            if   self::Session["bat666data"] = null
@@ -46,8 +48,7 @@
         
       *     if (Request["__EVENTARGUMENT"] not = null and Request["__EVENTARGUMENT"] = "move")
       *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-           if self::IsPostBack
-               exit method.
+
       *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
       *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
       *      & 'window.onbeforeunload = HandleOnclose;', true)

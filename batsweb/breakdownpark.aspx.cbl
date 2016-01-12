@@ -30,8 +30,12 @@
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer     
            set sz to new Size(298.5, 240)
-           set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap
-           set drawArea to new Bitmap(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)), sz)
+           if BAT310-BPARK-BITMAP = spaces
+               set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\OFINPUT.png")) as type Bitmap
+               set drawArea to new Bitmap(type Bitmap::FromFile(Server::MapPath("Images\\OFINPUT.png")), sz)
+           else    
+               set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap
+               set drawArea to new Bitmap(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)), sz).
            set dimx to drawArea::Width
            set dimy to drawArea::Height
            set g to type Graphics::FromImage(drawArea)

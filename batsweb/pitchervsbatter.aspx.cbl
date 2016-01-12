@@ -990,7 +990,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
                as type RunUnit
-           CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+           SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            MOVE SPACES TO PLAY-ALT-KEY
            unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
            open input play-file
