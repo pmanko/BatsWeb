@@ -94,9 +94,9 @@
                                 <asp:TextBox ID="TextBox4" runat="server" TextMode="DateTime"  class="form-control"></asp:TextBox>
                                 <cc1:MaskedEditExtender ID="TextBox4_MaskedEditExtender" runat="server" BehaviorID="TextBox4_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox4" />
                                 <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
-                                <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" CssClass="btn btn-default btn-sm" />
-                                <cc1:ModalPopupExtender ID="dateButton_ModalPopupExtender" runat="server" BehaviorID="dateButton_ModalPopupExtender" DynamicServicePath="" PopupControlID="Panel12" TargetControlID="dateButton">
-                                </cc1:ModalPopupExtender>
+                                
+                                <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-default btn-sm">Test</a>
+                                <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" data-toggle="modal" data-target="#showDatesModal" CssClass="btn btn-default btn-sm" />
                             </div>
                         </div>
                     </div>
@@ -123,11 +123,6 @@
                         <!-- Collapsible Pitcher Selection Panel -->
                         <div class="collapse" id="selectPitcherPanel">
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class='col-md-12'>
-                                        <asp:TextBox ID="pCurrentSelection" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class='col-md-4'>
                                         <asp:Button ID="pAllLeftButton" runat="server" OnClick="pAllLeftButton_Click" Text="All Left" class="btn btn-default btn-block" />
@@ -225,11 +220,6 @@
                         <div class="collapse" id="selectBatterPanel">
 
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class='col-md-12'>
-                                        <asp:TextBox ID="bCurrentSelection" runat="server" class="form-control" ReadOnly="True"></asp:TextBox>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class='col-md-4'>
                                         <asp:Button ID="bAllLeftButton" runat="server" OnClick="bAllLeftButton_Click" Text="All Left" class="btn btn-default btn-block" />
@@ -446,13 +436,15 @@
         </asp:Panel>
 
 
-            <asp:Panel ID="Panel12" runat="server" >
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Dates
-                        <button id='test' type='button' aria-label='Close' class='test-x'><span class='fa fa-times'></span></button>
-                    </div>
-                    <div class="panel-body">
+        <!-- PTeam Selection Modal -->
+        <div class="modal" id="showDatesModal" tabindex="-1" role="dialog" aria-labelledby="ShowDatesModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="H3">Dates</h4>
+                    </div>            
+                    <div class="modal-body"> 
                         <div class="row">
                             <div class="col-lg-12">
                                 <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="125px" class="btn btn-default"/>
@@ -490,70 +482,58 @@
                         </div>
                     </div>
                 </div>
-            </asp:Panel>
+            </div>
+        </div>
 
 
-
-        <asp:Panel ID="SelectPitcher" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Select Pitcher
-                </div>
-                <p>Deprecated - using Collapse</p>
-             </div>
-        </asp:Panel>
-
-        
-        <asp:Panel ID="selectBatter" class='popup-test' runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Select Batter
-                </div>
-                
-             </div>
-        </asp:Panel>
-        
-        <br />
-        <asp:Panel ID="pTeamPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Which pitcher team?
-                </div>
-                <div class="panel-body">     
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
-                            </asp:DropDownList>
+        <!-- PTeam Selection Modal -->
+        <div class="modal" id="showPTeamModal" tabindex="-1" role="dialog" aria-labelledby="ShowPTeamModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="H1">Which pitcher team?</h4>
+                    </div>            
+                    <div class="modal-body"> 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
+                                </asp:DropDownList>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </asp:Panel>
-        <asp:Panel ID="bTeamPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Which batter team?
-                </div>
-                <div class="panel-body">     
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
-                            </asp:DropDownList>
+        </div>
+        <!-- BTeam Selection Modal -->
+        <div class="modal" id="showBTeamModal" tabindex="-1" role="dialog" aria-labelledby="ShowBTeamModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="H2">Which batter team?</h4>
+                    </div>            
+                    <div class="modal-body"> 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
+                                </asp:DropDownList>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </asp:Panel>
+        </div>
         </form>
     </div>
 </asp:Content>

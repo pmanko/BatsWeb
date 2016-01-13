@@ -54,14 +54,6 @@
       *>> </remarks>
        01 pitcherButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> pitcherButton_PopupExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pitcherButton_PopupExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
       *>> bTeamDropDownList control.
       *>> </summary>
       *>> <remarks>
@@ -157,14 +149,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 selectedButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> selectPitcher control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 selectPitcher type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
       *>> locatePitcherLabel control.
       *>> </summary>

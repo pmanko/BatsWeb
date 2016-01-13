@@ -166,14 +166,6 @@
       *>> </remarks>
        01 dateButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> dateButton_ModalPopupExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 dateButton_ModalPopupExtender type AjaxControlToolkit.ModalPopupExtender protected.
-      *>> <summary>
       *>> pitcherTextBox control.
       *>> </summary>
       *>> <remarks>
@@ -197,14 +189,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 pitcherButton_PopupExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
-      *>> pCurrentSelection control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pCurrentSelection type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> pAllLeftButton control.
       *>> </summary>
@@ -365,14 +349,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 batterButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
-      *>> bCurrentSelection control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 bCurrentSelection type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
       *>> bAllLeftButton control.
       *>> </summary>
@@ -638,14 +614,6 @@
       *>> </remarks>
        01 showVideosButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Panel12 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Panel12 type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
       *>> allGamesButton control.
       *>> </summary>
       *>> <remarks>
@@ -702,30 +670,6 @@
       *>> </remarks>
        01 threeMonthsButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> SelectPitcher control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 SelectPitcher type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> selectBatter control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 selectBatter type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> pTeamPanel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pTeamPanel type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
       *>> pTeamDropDownList control.
       *>> </summary>
       *>> <remarks>
@@ -741,14 +685,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 pTeamOKButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> bTeamPanel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 bTeamPanel type System.Web.UI.WebControls.Panel protected.
       *>> <summary>
       *>> bTeamDropDownList control.
       *>> </summary>

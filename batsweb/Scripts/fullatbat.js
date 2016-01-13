@@ -17,8 +17,15 @@ $(document).on("click", "#show_videos", function (event) {
 function openModal() {
     $("#showPlayerModal").modal();
 }
-
-
+function openPTeamModal() {
+    $("#showPTeamModal").modal();
+}
+function openBTeamModal() {
+    $("#showBTeamModal").modal();
+}
+function openDatesModal() {
+    $("#showDatesModal").modal();
+}
 // Collapse Status Icon Behavior
 $(document).on('shown.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', function () {
     $(this).prev().find('.fa').removeClass("fa-caret-right").addClass("fa-caret-down");

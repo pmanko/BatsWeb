@@ -97,6 +97,7 @@ PM         set self::Session::Item("nameArray") to nameArray
        20-done.    
            invoke self::populatePitcher
            invoke self::populateBatter
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPitcherModal" ,"openPitcherModal();", true);
            goback.
        end method.
        
@@ -951,48 +952,30 @@ PM         set self::Session::Item("video-titles") to vidTitles
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
-           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
-           set bat766rununit to self::Session::Item("766rununit")
-               as type RunUnit
-           SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
-           MOVE SPACES TO PLAY-ALT-KEY
-           unstring locatePitcherTextBox::Text delimited ", " into play-last-name, play-first-name
-           open input play-file
-           if status-byte-1 not = zeroes
-               set play-player-id to 4
-           end-if
-           READ PLAY-FILE KEY PLAY-ALT-KEY
-           set BAT766-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
-           MOVE play-player-id to BAT766-LOCATE-SEL-ID
-           move "LP" to BAT766-ACTION
-           invoke bat766rununit::Call("BAT766WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           CLOSE PLAY-FILE.
-           MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-PITCHER-ID
-           MOVE BAT766-SEL-TEAM TO BAT766-PITCHER-TEAM
-           MOVE BAT766-SEL-PLAYER TO BAT766-PITCHER-DSP-NAME
-           MOVE "DT" TO BAT766-ACTION
-           invoke bat766rununit::Call("BAT766WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.
+           invoke self::locatePlayer("P").
        end method.     
        
        method-id locateBatterButton_Click protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
+           invoke self::locatePlayer("B").
+       end method.     
+       
+       method-id locatePlayer private.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
+       procedure division using by value playerFlag as String.    
            set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
                as type RunUnit
            SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            MOVE SPACES TO PLAY-ALT-KEY
-           unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
+           if playerFlag = "B"
+               unstring locateBatterTextBox::Text delimited ", " into play-last-name, play-first-name
+           else
+               unstring locatePitcherTextBox::Text delimited ", " into play-last-name, play-first-name.
            open input play-file
            if status-byte-1 not = zeroes
                set play-player-id to 4
@@ -1006,15 +989,22 @@ PM         set self::Session::Item("video-titles") to vidTitles
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
            CLOSE PLAY-FILE.
-           MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-BATTER-ID
-           MOVE BAT766-SEL-TEAM TO BAT766-BATTER-TEAM
-           MOVE BAT766-SEL-PLAYER TO BAT766-BATTER-DSP-NAME
+           if playerFlag = "B"
+               MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-BATTER-ID
+               MOVE BAT766-SEL-TEAM TO BAT766-BATTER-TEAM
+               MOVE BAT766-SEL-PLAYER TO BAT766-BATTER-DSP-NAME
+           else
+               MOVE BAT766-LOCATE-SEL-ID TO BAT766-SAVE-PITCHER-ID
+               MOVE BAT766-SEL-TEAM TO BAT766-PITCHER-TEAM
+               MOVE BAT766-SEL-PLAYER TO BAT766-PITCHER-DSP-NAME.
            MOVE "DT" TO BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
-      *     set bTeamDropDownList::SelectedItem to BAT766-BATTER-TEAM::Trim
-       end method.     
+           if playerFlag = "B"
+               set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
+           else
+               set pitcherTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.       
+       end method.
        end class.

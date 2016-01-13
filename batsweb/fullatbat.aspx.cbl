@@ -596,7 +596,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
            if playerListBox::SelectedItem = null
-                CALL "BATSFIL2" USING LK-FILE-NAMES, WS-NETWORK-FLAG
+               SET LK-PLAYER-FILE TO BAT666-WF-LK-PLAYER-FILE
                MOVE SPACES TO PLAY-ALT-KEY
                unstring locatePlayerTextBox::Text delimited ", " into play-last-name, play-first-name
                open input play-file
@@ -804,7 +804,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
 
@@ -823,7 +822,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
 
@@ -842,7 +840,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
 
@@ -861,7 +858,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
 
@@ -880,7 +876,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
 
@@ -899,7 +894,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
 
@@ -912,7 +906,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "T " to BAT666-PITCHER-FLAG
-           invoke pHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPTeamModal" ,"openPTeamModal();", true);
        end method.
 
        method-id pTeamDropDownList_SelectedIndexChanged protected.
@@ -940,7 +934,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET pCurrentSelection::Text to BAT666-PITCHER::Trim
            set pitcherTextBox::Text to BAT666-PITCHER
        end method.
 
@@ -951,7 +944,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "TL" to BAT666-PITCHER-FLAG
-           invoke pHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPTeamModal" ,"openPTeamModal();", true);
        end method.
 
        method-id pTeamRightButton_Click protected.
@@ -961,7 +954,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "TR" to BAT666-PITCHER-FLAG
-           invoke pHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPTeamModal" ,"openPTeamModal();", true);
        end method.
 
        method-id bTeamDropDownList_SelectedIndexChanged protected.
@@ -989,7 +982,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           SET bCurrentSelection::Text to BAT666-BATTER::Trim
            set batterTextBox::Text to BAT666-BATTER
        end method.
 
@@ -1000,7 +992,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "T " to BAT666-BATTER-FLAG
-           invoke bHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openBTeamModal" ,"openBTeamModal();", true);
        end method.
        
        method-id bTeamLeftButton_Click protected.
@@ -1010,7 +1002,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "TL" to BAT666-BATTER-FLAG
-           invoke bHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openBTeamModal" ,"openBTeamModal();", true);
        end method.
 
        method-id bTeamRightButton_Click protected.
@@ -1020,7 +1012,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            MOVE "TR" to BAT666-BATTER-FLAG
-           invoke bHiddenFieldTeam_ModalPopupExtender::Show
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openBTeamModal" ,"openBTeamModal();", true);
        end method.
 
        method-id showVideosButton_Click protected.
