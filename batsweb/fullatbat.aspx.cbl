@@ -653,46 +653,14 @@ PM         set self::Session::Item("video-titles") to vidTitles
            END-IF.
        end method.
 
-       method-id pPlayerButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
+       method-id pPlayerButton_Click protected
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
-           set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-           set bat666rununit to self::Session::Item("666rununit")
-               as type RunUnit
-           MOVE "I " TO BAT666-PITCHER-FLAG  
-           MOVE "P" TO BAT666-IND-PB-FLAG  
-           MOVE "RP" TO BAT668-ACTION  
-           MOVE "T" TO BAT666-ACTION
-           invoke bat666rununit::Call("BAT666WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           MOVE " " TO BAT666-SEL-TEAM
-           invoke self::populateTeam.     
-           invoke pitcherOKButton_ModalPopupExtender::Show.
+           invoke self::ShowPlayerPanel("P").
        end method.
 
        method-id bPlayerButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
-           set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-           set bat666rununit to self::Session::Item("666rununit")
-               as type RunUnit
-           MOVE "I " TO BAT666-BATTER-FLAG  
-           MOVE "B" TO BAT666-IND-PB-FLAG  
-           MOVE "RP" TO BAT668-ACTION  
-           MOVE "T" TO BAT666-ACTION
-           invoke bat666rununit::Call("BAT666WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           MOVE " " TO BAT666-SEL-TEAM
-           invoke self::populateTeam.     
-           invoke pitcherOKButton_ModalPopupExtender::Show.
+           invoke self::ShowPlayerPanel("B").     
        end method.
 
        method-id Result1_SelectedIndexChanged protected.
@@ -1065,6 +1033,35 @@ PM         set self::Session::Item("video-titles") to vidTitles
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
        
+       
+      * Helper Methods
+       method-id ShowPlayerPanel private.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
+       procedure division using by value playerFlag as String.
+           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
+           set address of BAT666-DIALOG-FIELDS to myData::tablePointer
+           set bat666rununit to self::Session::Item("666rununit")
+               as type RunUnit
+               
+           if playerFlag = "B"
+               move "I" to BAT666-BATTER-FLAG
+           else
+               move "I" to BAT666-PITCHER-FLAG
+               
+           MOVE playerFlag TO BAT666-IND-PB-FLAG  
+           MOVE "RP" TO BAT668-ACTION  
+           MOVE "T" TO BAT666-ACTION
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
+           MOVE " " TO BAT666-SEL-TEAM
+           invoke self::populateTeam.     
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openModal" ,"openModal();", true);
+       end method.
+       
+      * Deprecated
        method-id GetNames public static
            attribute System.Web.Services.WebMethod()
            attribute System.Web.Script.Services.ScriptMethod().

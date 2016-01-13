@@ -1,4 +1,5 @@
-﻿$(document).on("click", "#show_videos", function (event) {
+﻿// Batstube - Open Window
+$(document).on("click", "#show_videos", function (event) {
 	if($("#MainContent_ListBox1").val() == null)
 	{
 		alert("Please select an at-bat");
@@ -12,8 +13,17 @@
     event.preventDefault();
 });
 
-// $(document).on("click", "#click_test", function(event) {
-// 	alert("HI");
-// 	console.log("Sup");
-// 	$(this).closest(".panel").parent().hide();
-// });
+// Open Player Selection Modal
+function openModal() {
+    $("#showPlayerModal").modal();
+}
+
+
+// Collapse Status Icon Behavior
+$(document).on('shown.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', function () {
+    $(this).prev().find('.fa').removeClass("fa-caret-right").addClass("fa-caret-down");
+});
+
+$(document).on('hidden.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', function () {
+    $(this).prev().find('.fa').removeClass("fa-caret-down").addClass("fa-caret-right");
+});

@@ -425,6 +425,7 @@
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\breakdowncallpark.js" />
+    <None Include="Scripts\modals.js" />
     <None Include="Scripts\summarycallatbat.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
