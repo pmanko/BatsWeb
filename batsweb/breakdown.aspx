@@ -53,8 +53,8 @@
                                                 <cc1:CalendarExtender ID="endDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="endDateTextBox_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="endDateTextBox" />
 
                                             </div>
-                                            <a class="btn btn-lg btn-info btn-block" data-toggle="modal" data-target="#oneClickDateModal">One-Click Dates</a>
                                         </div>
+                                        <a class="btn btn-md btn-info btn-block" data-toggle="modal" data-target="#oneClickDateModal">One-Click Dates</a>
                                     </div>
                                 </div>                            
                                 <div class="col-lg-4">
@@ -356,6 +356,156 @@
 
             <!----------------------->
 
+        <!-- More Click Modal -->
+            <div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="moreModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Additional Options</h4>
+                        </div>
+                        <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">    
+                                        Velocity          
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class='checkbox checkbox-primary'><asp:CheckBox ID="rangeCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="rangeCheckBox_CheckedChanged" Text="Check this range only" /></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-2">
+                                                <label>From(Low):</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <asp:TextBox ID="lowTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
+                                                <cc1:MaskedEditExtender ID="lowTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="lowTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <label>To(Low):</label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <asp:TextBox ID="highTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
+                                                <cc1:MaskedEditExtender ID="highTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="highTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <asp:Button ID="rangeGoButton" runat="server" OnClick="rangeGoButton_Click" Text="Go" class="btn btn-lg btn-block btn-primary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Score:</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <asp:DropDownList ID="scoredd" runat="server" OnSelectedIndexChanged="scoredd_SelectedIndexChanged" AutoPostBack="True" class="form-control">
+                                    <asp:ListItem>All</asp:ListItem>
+                                    <asp:ListItem>Even</asp:ListItem>
+                                    <asp:ListItem>+/- 1</asp:ListItem>
+                                    <asp:ListItem>+/- 2</asp:ListItem>
+                                    <asp:ListItem>+/- 3</asp:ListItem>
+                                    <asp:ListItem>Over 3</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label>Fielding:</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <asp:DropDownList ID="fieldingdd" runat="server" OnSelectedIndexChanged="fieldingdd_SelectedIndexChanged" AutoPostBack="True" class="form-control">
+                                    <asp:ListItem>All</asp:ListItem>
+                                    <asp:ListItem>Highlight</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">    
+                                        Team Selection          
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class='checkbox checkbox-primary'><asp:CheckBox ID="thisTeamCheckBox" runat="server" AutoPostBack="True" OnCheckedChanged="thisTeamCheckBox_CheckedChanged" Text="Check this range only" /></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                            <div class='radio radio-primary radio-inline'><asp:RadioButton ID="pitcherRadioButton" runat="server" GroupName="this" text="Pitcher" OnCheckedChanged="pitcherRadioButton_CheckedChanged"/></div>
+                                            <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batterRadioButton" runat="server" GroupName="this" text="Batter" OnCheckedChanged="batterRadioButton_CheckedChanged"/></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <label>Team:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <asp:DropDownList ID="thisTeamdd" runat="server" OnSelectedIndexChanged="thisTeamdd_SelectedIndexChanged" AutoPostBack="True" class="form-control">
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <asp:Button ID="teamGoButton" runat="server" OnClick="teamGoButton_Click" Text="Go" class="btn btn-lg btn-block btn-primary"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <!----------------------->
+
+            <asp:Panel ID="playerPanel" runat="server">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Select Player 
+                    </div>
+                    <div class="panel-body"> 
+                        <div class="row">
+                            <div class='col-md-12'>
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
+                                </asp:DropDownList> 
+                                <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>
+                            </ContentTemplate>
+                            </asp:UpdatePanel>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class='col-md-12'>
+                                <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK"  class="btn btn-primary btn-block" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+
+
+
+
+
+
+
+
+
+
             <asp:Panel ID="selectionPanel" runat="server" GroupingText="Report Settings">
                 <div class="row">
                     <div class="col-lg-9">
@@ -444,7 +594,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <asp:Button ID="moreButton" runat="server" Text="More" class="btn btn-primary"/>
+                                        <a class="btn btn-md btn-info btn-block" data-toggle="modal" data-target="#moreModal">More</a>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Result2:</label>
@@ -663,8 +813,20 @@
                             <asp:Button ID="allButton" runat="server" Text="All" OnClick="allButton_Click" class="btn btn-primary"/>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <asp:Image ID="parkImage" runat="server" src="breakdownszone.aspx" alt="image could not be displayed refresh"/>
+                    <div class="col-lg-4">
+                        <asp:Image ID="parkImage" runat="server" src="breakdownpark.aspx" alt="image could not be displayed refresh"/>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="ifButton" runat="server" Text="Infield" OnClick="ifButton_Click" class="btn btn-primary"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary"/>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -725,31 +887,6 @@
                         <div class="col-lg-12">
                             <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
                             <asp:HiddenField ID="bTeamHiddenField" runat="server" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </asp:Panel>
-        <asp:Panel ID="playerPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Select Player 
-                </div>
-                <div class="panel-body"> 
-                    <div class="row">
-                        <div class='col-md-12'>
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
-                            </asp:DropDownList> 
-                            <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>
-                        </ContentTemplate>
-                        </asp:UpdatePanel>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class='col-md-12'>
-                            <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK"  class="btn btn-primary btn-block" />
                         </div>
                     </div>
                 </div>

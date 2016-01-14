@@ -70,22 +70,6 @@
       *>> </remarks>
        01 batterTextBox type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
-      *>> batterButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 batterButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> batterButton_PopupControlExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 batterButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
       *>> TextBox1 control.
       *>> </summary>
       *>> <remarks>
@@ -173,14 +157,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 locatePitcherButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> backButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 backButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button1 control.
       *>> </summary>
@@ -422,14 +398,6 @@
       *>> </remarks>
        01 Button30 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> selectBatter control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 selectBatter type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
       *>> locateBatterLabel control.
       *>> </summary>
       *>> <remarks>
@@ -453,14 +421,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 locateBatterButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> backButton2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 backButton2 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> Button31 control.
       *>> </summary>

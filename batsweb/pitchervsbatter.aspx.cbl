@@ -97,7 +97,6 @@ PM         set self::Session::Item("nameArray") to nameArray
        20-done.    
            invoke self::populatePitcher
            invoke self::populateBatter
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPitcherModal" ,"openPitcherModal();", true);
            goback.
        end method.
        
@@ -1005,6 +1004,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            if playerFlag = "B"
                set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
            else
-               set pitcherTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.       
+               set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.       
        end method.
        end class.

@@ -32,7 +32,7 @@
 
         <!-- Player Selection Modal -->
         <div class="modal" id="showPlayerModal" tabindex="-1" role="dialog" aria-labelledby="ShowPlayerModalLabel">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class='col-md-12'>
                                 <div class="panel panel-default">
-                                    <asp:Label ID="Label1" runat="server" Text="Locate Player" Font-Size="Medium"></asp:Label>
+                                    <label>Locate Player:</label>
                                     <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
                                 </div>
                             </div>
@@ -95,8 +95,8 @@
                                 <cc1:MaskedEditExtender ID="TextBox4_MaskedEditExtender" runat="server" BehaviorID="TextBox4_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox4" />
                                 <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
                                 
-                                <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-default btn-sm">Test</a>
-                                <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" data-toggle="modal" data-target="#showDatesModal" CssClass="btn btn-default btn-sm" />
+                                <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-default btn-sm">Date One-Clicks</a>
+                           <!--     <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" data-toggle="modal" data-target="#showDatesModal" CssClass="btn btn-default btn-sm" />-->
                             </div>
                         </div>
                     </div>
@@ -447,37 +447,37 @@
                     <div class="modal-body"> 
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="125px" class="btn btn-default"/>
+                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                     </div>

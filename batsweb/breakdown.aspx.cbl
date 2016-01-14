@@ -314,6 +314,7 @@
           if aa > BAT300-NUM-TEAMS
                go to 10-done
           else
+               invoke thisTeamdd::Items::Add(BAT300-TEAM-NAME(aa))
                invoke teamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke bTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke pTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa)).
@@ -1117,5 +1118,127 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
       * ######################## 
 
+      * #### Player Selection ####
+
+      * ######################## 
+        
+       method-id rangeCheckBox_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           if maxAtBatsCheckBox::Checked
+               set BAT310-VEL-FLAG to "Y"
+           else
+               set BAT310-VEL-FLAG to "N".
+       end method.
+       
+       method-id rangeGoButton_Click protected.
+       local-storage section.
+       01  vel         type Single.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           invoke type System.Single::TryParse(lowTextBox::Text::ToString, by reference vel)
+           set BAT310-VEL-LO to vel
+           invoke type System.Single::TryParse(highTextBox::Text::ToString, by reference vel)
+           set BAT310-VEL-HI to vel
+           invoke self::Recalc
+       end method.
+        
+       method-id scoredd_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           set BAT310-SCR-IDX to scoredd::SelectedIndex
+           set BAT310-SCR-HDR TO scoredd::SelectedItem
+           add 1 to BAT310-SCR-IDX
+           invoke self::Recalc.
+       end method.         
+       
+       method-id fieldingdd_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           set BAT310-FIELDING-IDX to pitchtypedd::SelectedIndex
+           set BAT310-FIELDING-MASTER TO scoredd::SelectedItem
+           add 1 to BAT310-FIELDING-IDX
+           invoke self::Recalc.
+       end method.
+       
+       method-id thisTeamCheckBox_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           if thisTeamCheckBox::Checked
+               set BAT310-CHECK-TEAM-FLAG to "Y"
+           else
+               set BAT310-CHECK-TEAM-FLAG to "N".
+       end method. 
+       
+       method-id pitcherRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           if pitcherRadioButton::Checked
+               set BAT310-CHOOSE-TEAM-FLAG to "P".
+       end method. 
+
+       method-id batterRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           if batterRadioButton::Checked
+               set BAT310-CHOOSE-TEAM-FLAG to "B".
+       end method. 
+
+       method-id thisTeamdd_SelectedIndexChanged protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           set BAT310-CHOOSE-TEAM TO thisTeamdd::SelectedItem
+       end method.
+    
+       method-id teamGoButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           invoke self::Recalc
+       end method. 
+       
+       method-id ifButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+       end method.    
+              
+       method-id hlButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+       end method.  
        end class.
        

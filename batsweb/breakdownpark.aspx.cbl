@@ -41,9 +41,13 @@
            set g to type Graphics::FromImage(drawArea)
            invoke g::Clear(type Color::White)
            set rect to new Rectangle(0, 0, 298.5, 240)
-           invoke g::DrawImage(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap, rect)      
+           if BAT310-BPARK-BITMAP = spaces
+               invoke g::DrawImage(type Bitmap::FromFile(Server::MapPath("Images\\OFINPUT.png")) as type Bitmap, rect)      
+           else
+               invoke g::DrawImage(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap, rect).      
       *     IF BAT360-HITLOC-X = 0 AND BAT360-HITLOC-Y= 0
       *         GO TO SKIP-LINE.                                                                        
+           set mypen to new Pen(type Brushes::Black)
                     MOVE 1 TO AA.
        030-LOOP.
             IF BAT310-HIT-LOC-X(AA) = 0 AND BAT310-HIT-LOC-Y(AA) = 0
