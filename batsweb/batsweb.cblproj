@@ -424,6 +424,7 @@
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\batstube_app.js" />
+    <None Include="Scripts\breakdown.js" />
     <None Include="Scripts\breakdowncallpark.js" />
     <None Include="Scripts\modals.js" />
     <None Include="Scripts\pitchervsbatter.js" />
