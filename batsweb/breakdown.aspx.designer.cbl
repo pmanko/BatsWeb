@@ -262,14 +262,6 @@
       *>> </remarks>
        01 startinningsRadioButton type System.Web.UI.WebControls.RadioButton protected.
       *>> <summary>
-      *>> UpdatePanel2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 UpdatePanel2 type System.Web.UI.UpdatePanel protected.
-      *>> <summary>
       *>> batterSelectionTextBox control.
       *>> </summary>
       *>> <remarks>
@@ -318,14 +310,6 @@
       *>> </remarks>
        01 selectbatterButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> batsrightRadioButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 batsrightRadioButton type System.Web.UI.WebControls.RadioButton protected.
-      *>> <summary>
       *>> batsleftRadioButton control.
       *>> </summary>
       *>> <remarks>
@@ -341,6 +325,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 batseitherRadioButton type System.Web.UI.WebControls.RadioButton protected.
+      *>> <summary>
+      *>> batsrightRadioButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 batsrightRadioButton type System.Web.UI.WebControls.RadioButton protected.
       *>> <summary>
       *>> batteroptionsTextBox control.
       *>> </summary>

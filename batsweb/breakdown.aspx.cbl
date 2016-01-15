@@ -859,6 +859,10 @@
       *         set self::DialogResult to type DialogResult::OK.
            invoke self::reloadCatchers
            invoke self::Recalc
+           
+           set callbackReturn to "hi"
+           invoke self::Response::Redirect(self::Request::RawUrl)
+
        end method.
        
        method-id allButton_Click protected.

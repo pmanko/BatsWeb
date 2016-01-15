@@ -184,90 +184,83 @@
                                                 <div class="panel-heading">
                                                     Batter Choices
                                                 </div> 
-                                        <!--         <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" ChildrenAsTriggers="true">
-                                                <ContentTemplate> -->
                                                 <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-lg-12">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-heading">
-                                                                    Current Batter Selection
-                                                                </div> 
-                                                                <div class="panel-body">
-                                                                    <asp:TextBox ID="batterSelectionTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
-                                                                </div> 
+                                                    <h5>Current Batter Selection</h5>
+                                                    <asp:TextBox ID="batterSelectionTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
+                                                    <br />
+
+                                                    <div class="btn-toolbar">
+                                                        <asp:Button ID="batterallButton" runat="server" Text="All" OnClick="batterallButton_Click" CssClass="btn btn-default" />
+                                                        <asp:Button ID="batterteamButton" runat="server" Text="Team" OnClick="batterteamButton_Click" CssClass="btn btn-default" />
+                                                        <asp:HiddenField ID="bHiddenField" runat="server" />
+                                                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" >
+                                                        </cc1:ModalPopupExtender>
+                                                        <asp:Button ID="selectbatterButton" runat="server" Text="Select Player" OnClick="selectbatterButton_Click" CssClass="btn btn-default" />
+
+                                                    </div> 
+                                                        
+                                                </div> 
+
+
+
+                                                <div class="list-group">
+
+                                                    <div class="list-group-item">                                                        
+                                                        <h5>Bats</h5>                                                        
+                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left"  /></div>
+                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either"  /></div>
+                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right"  /></div>
+                                                    </div> 
+                                                </div> 
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="batterOptionsPanel">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" href="#additionalBatterOptions" aria-expanded="false" aria-controls="additionalBatterOptions">
+                                                            <i class="fa fa-caret-right pull-left"></i>
+                                                            Additional Batter Options                                                
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div class="panel-collapse collapse" id="additionalBatterOptions">
+                                                    <div class="panel-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-2">
+                                                                <asp:TextBox ID="batteroptionsTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
+                                                            </div> 
+                                                            <div class="col-lg-5">
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="batteranyRadioButton" runat="server" GroupName="battertype" text="Any Type"  /></div>
+                                                            </div> 
+                                                            <div class="col-lg-5">
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="battercustomRadioButton" runat="server" GroupName="battertype" text="Custom"  /></div>
                                                             </div> 
                                                         </div> 
-                                                    </div> 
-                                                    <div class="row">
-                                                        <div class="col-lg-3">
-                                                            <asp:Button ID="batterallButton" runat="server" Text="All" OnClick="batterallButton_Click" CssClass="btn btn-default" />
-                                                        </div> 
-                                                        <div class="col-lg-4">
-                                                            <asp:Button ID="batterteamButton" runat="server" Text="Team" OnClick="batterteamButton_Click" CssClass="btn btn-default" />
-                                                            <asp:HiddenField ID="bHiddenField" runat="server" />
-                                                            <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" >
-                                                            </cc1:ModalPopupExtender>
-                                                        </div> 
-                                                        <div class="col-lg-5">
-                                                            <asp:Button ID="selectbatterButton" runat="server" Text="Select Player" OnClick="selectbatterButton_Click" CssClass="btn btn-default" />
-                                                        </div> 
-                                                    </div> 
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">
-                                                            Bats
-                                                        </div> 
-                                                        <div class="list-group">
-                                                            <div class='radio radio-primary'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right"  /></div>
-                                                            <div class='radio radio-primary'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left"  /></div>
-                                                            <div class='radio radio-primary'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either"  /></div>
-                                                        </div> 
-                                                    </div> 
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">
-                                                            Additional Batter Options
-                                                        </div> 
-                                                        <div class="panel-body">
-                                                            <div class="row">
-                                                                <div class="col-lg-2">
-                                                                    <asp:TextBox ID="batteroptionsTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                    <div class='radio radio-primary'><asp:RadioButton ID="batteranyRadioButton" runat="server" GroupName="battertype" text="Any Type"  /></div>
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                    <div class='radio radio-primary'><asp:RadioButton ID="battercustomRadioButton" runat="server" GroupName="battertype" text="Custom"  /></div>
-                                                                </div> 
+                                                        <div class="row">
+                                                            <div class="col-lg-2">
                                                             </div> 
-                                                            <div class="row">
-                                                                <div class="col-lg-2">
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                    <div class='radio radio-primary'><asp:RadioButton ID="batterpowerRadioButton" runat="server" GroupName="battertype" text="Power"  /></div>
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                </div> 
+                                                            <div class="col-lg-5">
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="batterpowerRadioButton" runat="server" GroupName="battertype" text="Power"  /></div>
                                                             </div> 
-                                                            <div class="row">
-                                                                <div class="col-lg-2">
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                    <div class='radio radio-primary'><asp:RadioButton ID="battersingleRadioButton" runat="server" GroupName="battertype" text="Single"  /></div>
-                                                                </div> 
-                                                                <div class="col-lg-5">
-                                                                </div> 
+                                                            <div class="col-lg-5">
+                                                            </div> 
+                                                        </div> 
+                                                        <div class="row">
+                                                            <div class="col-lg-2">
+                                                            </div> 
+                                                            <div class="col-lg-5">
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="battersingleRadioButton" runat="server" GroupName="battertype" text="Single"  /></div>
+                                                            </div> 
+                                                            <div class="col-lg-5">
                                                             </div> 
                                                         </div> 
                                                     </div> 
                                                 </div> 
-                                        <!--         </ContentTemplate>
-                                                </asp:UpdatePanel> -->
                                             </div> 
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="panel panel-default">
