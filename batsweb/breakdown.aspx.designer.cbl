@@ -574,6 +574,46 @@
       *>> </remarks>
        01 teamGoButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> previousSzoneImage control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 previousSzoneImage type System.Web.UI.WebControls.Image protected.
+      *>> <summary>
+      *>> previousListBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 previousListBox type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
+      *>> previousPitchesButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 previousPitchesButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> previousResultsButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 previousResultsButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> previousTypesButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 previousTypesButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
       *>> playerPanel control.
       *>> </summary>
       *>> <remarks>

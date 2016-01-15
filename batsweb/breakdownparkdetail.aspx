@@ -31,7 +31,7 @@
                                 <div class="col-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:Image ID="Image1" runat="server" src="Images\\HLKey2.png" alt="image could not be displayed refresh"/>
+                                            <asp:Image ID="Image1" runat="server" src="Images/HLKey2.png" alt="image could not be displayed refresh"/>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -63,7 +63,7 @@
                                             <label>3B:</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <asp:Label ID="3bLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                            <asp:Label ID="b3Label" runat="server" ReadOnly="true" class="form-control"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -79,7 +79,7 @@
                                             <label>2B:</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <asp:Label ID="2bLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                            <asp:Label ID="b2Label" runat="server" ReadOnly="true" class="form-control"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -87,12 +87,12 @@
                                             <label>1B:</label>
                                         </div>
                                         <div class="col-lg-8">
-                                            <asp:Label ID="1bLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                            <asp:Label ID="b1Label" runat="server" ReadOnly="true" class="form-control"></asp:Label>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:Button ID="infieldButton" runat="server" Text="Show Infield" class="btn btn-primary"/>
+                                            <asp:Button ID="infieldButton" runat="server" Text="Show Infield" OnClick="infieldButton_Click" class="btn btn-primary"/>
                                         </div>
                                     </div>
                                     <div class="row">

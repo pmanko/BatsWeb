@@ -51,13 +51,13 @@
            set avg to BAT310-LOC-PCT(3)
            set rfLabel::Text to avg::ToString & "%"
            set avg to BAT310-LOC-PCT(4)
-           set 3bLabel::Text to avg::ToString & "%"   
+           set b3Label::Text to avg::ToString & "%"   
            set avg to BAT310-LOC-PCT(5)
            set ssLabel::Text to avg::ToString & "%"
            set avg to BAT310-LOC-PCT(6)
-           set 2bLabel::Text to avg::ToString & "%"
+           set b2Label::Text to avg::ToString & "%"
            set avg to BAT310-LOC-PCT(7)
-           set 1bLabel::Text to avg::ToString & "%"                
+           set b1Label::Text to avg::ToString & "%"                
        end method.
        
        method-id parkDropDownList_SelectedIndexChanged protected.
@@ -72,5 +72,37 @@
            MOVE "FB" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
            invoke self::Recalc
-       end method.         
+       end method.      
+       
+       method-id parkImageButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+       end method.
+       
+       
+       method-id infieldButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit   
+
+           if BAT310-INFIELD-IP = "Y"
+               move " " to BAT310-INFIELD-IP
+               set infieldButton::Text to "Show Infield"
+               MOVE "FB" TO BAT310-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")
+               else
+               move "Y" to BAT310-INFIELD-IP
+               set infieldButton::Text to "Show Outfield".
+
+
+           invoke self::Recalc.
+
+       end method.
+
+
        end class.

@@ -101,6 +101,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="breakdownpark.aspx" />
     <Content Include="breakdownparkdetail.aspx" />
+    <Content Include="breakdownpreviousszone.aspx" />
     <Content Include="breakdownszone.aspx" />
     <Content Include="ErrorPages\timeout.aspx" />
     <Content Include="parkdetailpark.aspx" />
@@ -264,6 +265,13 @@
     </Compile>
     <Compile Include="breakdownparkdetail.aspx.designer.cbl">
       <DependentUpon>breakdownparkdetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdownpreviousszone.aspx.cbl">
+      <DependentUpon>breakdownpreviousszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownpreviousszone.aspx.designer.cbl">
+      <DependentUpon>breakdownpreviousszone.aspx</DependentUpon>
     </Compile>
     <Compile Include="breakdownszone.aspx.cbl">
       <DependentUpon>breakdownszone.aspx</DependentUpon>

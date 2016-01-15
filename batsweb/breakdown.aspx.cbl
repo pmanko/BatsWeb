@@ -147,6 +147,8 @@
            set countdd::SelectedIndex to 0
            set pitchlocdd::SelectedIndex to 0
            set pitchtypedd::SelectedIndex to 0
+           set scoredd::SelectedIndex to 0
+           set fieldingdd::SelectedIndex to 0
 
       *     attach method self::MouseDownploc to szonebox::MouseDown
       *     attach method self::MouseUpploc to szonebox::MouseUp
@@ -156,12 +158,12 @@
       *    CHECK IF WE HAVE A TEMP FILE TO PROCESS
            move "FC" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           move "IN" to BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
            IF BAT310-BYPASS-FLAG = "Y"
       *        invoke selectionButton_ModalPopupExtender::Show
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openModal" ,"var showModal = 1;", true);
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openModal" ,"var showModal = 1;", true)
            else
-               move "IN" to BAT310-ACTION
-               invoke bat310rununit::Call("BAT310WEBF")
                invoke self::Recalc.
            invoke self::bat300
            goback.
@@ -444,8 +446,8 @@
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
-           set DIALOG-CNT-IDX to outsdd::SelectedIndex
-           set DIALOG-COUNT-MASTER TO outsdd::SelectedItem
+           set DIALOG-CNT-IDX to countdd::SelectedIndex
+           set DIALOG-COUNT-MASTER TO countdd::SelectedItem
            add 1 to DIALOG-CNT-IDX
            invoke self::Recalc.
        end method.  
@@ -860,9 +862,23 @@
            invoke self::reloadCatchers
            invoke self::Recalc
            
-           set callbackReturn to "hi"
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
 
+       end method.
+       
+       method-id szoneImageButton_Click protected.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           set MOUSEX to e::X
+           set MOUSEY to e::Y
+           move "MO" to BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube.
        end method.
        
        method-id allButton_Click protected.
@@ -1068,8 +1084,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
                exit method
            Else
-      *         set PrevPitchForm to new type BatterPitcherBreakdown.PrevPitchForm
-      *         invoke PrevPitchForm::Show
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPreviousModal" ,"openPreviousModal();", true).
        end method.
 
        method-id nextButton_Click protected.
@@ -1120,6 +1135,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            
                set startEndDates to BAT300-GAME-DATE::ToString("##/##/##") & ";" & BAT300-END-GAME-DATE::ToString("##/##/##").
        end method.
+       
       * ######################## 
 
       * #### Player Selection ####
@@ -1236,13 +1252,90 @@ PM         set self::Session::Item("video-titles") to vidTitles
        method-id ifButton_Click protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division using by value sender as object e as type System.EventArgs.  
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit       
+           if BAT310-INFIELD-IP = "Y"
+               set ifButton::Text to "Infield"
+               move " " to BAT310-INFIELD-IP
+               MOVE "FB" TO BAT310-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")
+           else
+               set ifButton::Text to "Outfield"
+               move "Y" to BAT310-INFIELD-IP.
+           invoke self::Recalc.
        end method.    
               
        method-id hlButton_Click protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.     
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callparkdetail", "callparkdetail();", true).
+       end method.  
+       
+       method-id previousPitchesButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "PX" TO BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+       end method.  
+
+       method-id withNextButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "PP" TO BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+       end method.  
+   
+       method-id previousResultsButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "R" TO BAT310-PV-DISPLAY-TYPE
+           invoke self::Recalc
+       end method.  
+
+       method-id previousTypesButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "T" TO BAT310-PV-DISPLAY-TYPE
+           invoke self::Recalc
+       end method.  
+       
+       method-id previousLb_Load private.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".       
+       procedure division.
+           invoke previousListBox::Items::Clear
+           move 1 to aa.
+       5-loop.
+           if aa > BAT310-PV-NUM-PITCH-LIST
+               go to 10-done.
+           invoke previousListBox::Items::Add(BAT310-PV-PITCH-DESC(AA))
+           add 1 to aa.
+           go to 5-loop.
+       10-done.       
        end method.  
        end class.
        

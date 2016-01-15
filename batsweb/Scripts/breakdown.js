@@ -5,6 +5,17 @@
 	
 });
 
+function openPreviousModal() {
+    $("#previousModal").modal();
+}
+
+function callparkdetail() {
+    var url = 'breakdownparkdetail.aspx';
+    var win = window.open(url, '_blank');
+    win.focus();
+    //   event.preventDefault();
+}
+
 $(document).on("click", "#oneClickDate button", function(event) {
 	console.log($(this).data('dateFlag'));
 

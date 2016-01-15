@@ -34,15 +34,17 @@
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
-           set address of BAT310-DIALOG-FIELDS to myData::tablePointer     
-           set sz to new Size(298.5, 240)
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer  
+           IF BAT310-INFIELD-IP = "Y"
+                  MOVE "if1.png" TO BAT310-BPARK-BITMAP.
+           set sz to new Size(597, 480)
            set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap
            set drawArea to new Bitmap(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)), sz)
            set dimx to drawArea::Width
            set dimy to drawArea::Height
            set g to type Graphics::FromImage(drawArea)
            invoke g::Clear(type Color::White)
-           set rect to new Rectangle(0, 0, 298.5, 240)
+           set rect to new Rectangle(0, 0, 597, 480)
            invoke g::DrawImage(type Bitmap::FromFile(Server::MapPath("Images\\" & BAT310-BPARK-BITMAP)) as type Bitmap, rect)      
 
            set mypen to new Pen(type Brushes::Red, 1.5).

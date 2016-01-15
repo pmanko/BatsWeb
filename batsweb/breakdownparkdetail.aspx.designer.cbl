@@ -86,13 +86,13 @@
       *>> </remarks>
        01 rfLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> 3bLabel control.
+      *>> b3Label control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 3bLabel type System.Web.UI.WebControls.Label protected.
+       01 b3Label type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> ssLabel control.
       *>> </summary>
@@ -102,21 +102,21 @@
       *>> </remarks>
        01 ssLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> 2bLabel control.
+      *>> b2Label control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 2bLabel type System.Web.UI.WebControls.Label protected.
+       01 b2Label type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> 1bLabel control.
+      *>> b1Label control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 1bLabel type System.Web.UI.WebControls.Label protected.
+       01 b1Label type System.Web.UI.WebControls.Label protected.
       *>> <summary>
       *>> infieldButton control.
       *>> </summary>
