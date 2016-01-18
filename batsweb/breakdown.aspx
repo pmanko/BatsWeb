@@ -488,6 +488,7 @@
                                             <asp:Button ID="previousPitchesButton" runat="server" OnClick="previousPitchesButton_Click" Text="These Pitches"  class="btn btn-primary" />
                                         </div>
                                         <div class="col-lg-6">
+                                            <asp:Button ID="withNextButton" runat="server" OnClick="withNextButton_Click" Text="With Next Pitch"  class="btn btn-primary" />
                                         </div>
                                     </div>
                                 </div>

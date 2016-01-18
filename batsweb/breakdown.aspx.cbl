@@ -1084,6 +1084,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
                exit method
            Else
+               invoke self::previousLb_Load
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPreviousModal" ,"openPreviousModal();", true).
        end method.
 
@@ -1285,6 +1286,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "PX" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube
        end method.  
 
        method-id withNextButton_Click protected.
@@ -1297,6 +1299,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "PP" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube
        end method.  
    
        method-id previousResultsButton_Click protected.
@@ -1327,11 +1330,14 @@ PM         set self::Session::Item("video-titles") to vidTitles
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".       
        procedure division.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer       
            invoke previousListBox::Items::Clear
            move 1 to aa.
        5-loop.
            if aa > BAT310-PV-NUM-PITCH-LIST
                go to 10-done.
+           INSPECT BAT310-PV-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
            invoke previousListBox::Items::Add(BAT310-PV-PITCH-DESC(AA))
            add 1 to aa.
            go to 5-loop.
