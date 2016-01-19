@@ -5,6 +5,20 @@
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/breakdowncallpark.js"></script> 
     <script type="text/javascript" src="Scripts/breakdown.js"></script> 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var names = "<%= Session["nameArray"] %>".split(";");
+                $("#MainContent_locatePlayerTextBox").autocomplete({
+                    autoFocus: true,
+                    source: function (request, response) {
+                        var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                        response($.grep(names, function (item) {
+                            return matcher.test(item);
+                        }));
+                    }
+                });
+            });
+  </script>
 </asp:Content>
 
 
@@ -460,9 +474,21 @@
                             <h4 class="modal-title">Select Player</h4>
                         </div>
                         <div class="modal-body">
-                            <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
-                            <br />
-                            <select id="playerList" size="15" class="form-control"></select>
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <div class="panel panel-default">
+                                        <label>Locate Player:</label>
+                                        <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
+                                    <br />
+                                    <select id="playerList" size="15" class="form-control"></select>
+                                </div>
+                            </div>
                             <%--<asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>--%>                        
                         </div>
                         <div class="modal-footer">
@@ -486,7 +512,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:Image ID="previousSzoneImage" runat="server" src="breakdownszone.aspx?hi=1" alt="image could not be displayed refresh"/>
+                                    <asp:Image ID="previousSzoneImage" runat="server" src="breakdownpreviousszone.aspx" alt="image could not be displayed refresh"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
@@ -520,13 +546,50 @@
             </div>
             <!----------------------->
 
-
-
-
-
-
-
-
+            <!-- Next Pitch Modal -->
+            <div class="modal fade" id="nextModal" tabindex="-1" role="dialog" aria-labelledby="NextModal">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Next Pitch</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <asp:Image ID="Image1" runat="server" src="breakdownnextszone.aspx" alt="image could not be displayed refresh"/>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <asp:ListBox ID="nextListBox" runat="server" Height="320px" Font-Names="consolas" class="form-control" ></asp:ListBox>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <asp:Button ID="nextPitchesButton" runat="server" OnClick="nextPitchesButton_Click" Text="These Pitches"  class="btn btn-primary" />
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <asp:Button ID="withPreviousButton" runat="server" OnClick="withPreviousButton_Click" Text="With Previous Pitch"  class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <a href="#" class="btn btn-primary" id="nextResultsButton">Pitch Results</a>
+                                </div>
+                                <div class="col-lg-4">
+                                    <a href="#" class="btn btn-primary" id="nextTypesButton">Pitch Types</a>
+                                </div>
+                                <div class="col-lg-4">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!----------------------->
 
 
             <asp:Panel ID="selectionPanel" runat="server" GroupingText="Report Settings">

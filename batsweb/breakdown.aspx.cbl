@@ -2,15 +2,30 @@
                 inherits type System.Web.UI.Page
                 implements type System.Web.UI.ICallbackEventHandler
                 public.
-                 
+  
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+          SELECT PLAY-FILE ASSIGN LK-PLAYER-FILE
+              ORGANIZATION IS INDEXED
+              ACCESS IS DYNAMIC
+              RECORD KEY IS PLAY-KEY
+              ALTERNATE KEY IS PLAY-ALT-KEY WITH DUPLICATES
+              LOCK MANUAL
+              FILE STATUS IS STATUS-COMN.
+       DATA DIVISION.
+       FILE SECTION.
+       COPY "Y:\SYDEXSOURCE\FDS\FDPLAY.CBL".        
+       
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
+       copy "y:\sydexsource\bats\WSBATF.CBL".
        01 bat310rununit         type RunUnit.
        01 BAT310WEBF                type BAT310WEBF.
        01 mydata type batsweb.bat310Data.
        01 mydata300 type batsweb.bat300Data.
        01 callbackReturn type String.
-
+       01 playerName      type String.
+       01 nameArray      type String.
        method-id Page_Load protected.
        local-storage section.
        01 cm type ClientScriptManager.
@@ -147,14 +162,14 @@
            if self::Session::Item("countdd") = null
                set countdd::SelectedIndex to DIALOG-CNT-IDX - 1
            else
-               set countdd::SelectedIndex to self::Session::Item("countdd") as binary-long.
+               set countdd::SelectedIndex to self::Session::Item("countdd") as binary-long
                set DIALOG-CNT-IDX TO countdd::SelectedIndex + 1
-               set DIALOG-COUNT-MASTER TO countdd::SelectedItem
+               set DIALOG-COUNT-MASTER TO countdd::SelectedItem.
            set pitchlocdd::SelectedIndex to 0
            set pitchtypedd::SelectedIndex to 0
            set scoredd::SelectedIndex to 0
            set fieldingdd::SelectedIndex to 0
-
+       
       *     attach method self::MouseDownploc to szonebox::MouseDown
       *     attach method self::MouseUpploc to szonebox::MouseUp
       *     attach method self::MouseMoveloc to szonebox::MouseMove
@@ -246,9 +261,25 @@
            INITIALIZE BAT300-DIALOG-FIELDS
            MOVE "IN" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF").
-           MOVE "N" TO BAT300-ACTION
+           MOVE "I" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF").
-           
+            SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
+           open input play-file.
+           initialize play-alt-key
+           start play-file key > play-alt-key.
+           move 1 to aa.     
+       5-loop.
+           read play-file next
+               at end go to 10-done.
+           move spaces to playerName
+           string play-last-name, ", " play-first-name
+               delimited "  " into playerName
+           set nameArray to nameArray & playerName & ";"
+           add 1 to aa
+           go to 5-loop.
+       10-done.
+           close play-file.
+PM         set self::Session::Item("nameArray") to nameArray          
            
            set batterSelectionTextBox::Text to BAT300-BATTER::Trim
            set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
@@ -353,17 +384,17 @@
            set startDateTextBox::Text to BAT300-GAME-DATE::ToString("00/00/00")
            set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("00/00/00")
            move 1 to aa. 
-       5-loop.
+       15-loop.
           if aa > BAT300-NUM-TEAMS
-               go to 10-done
+               go to 20-done
           else
                invoke thisTeamdd::Items::Add(BAT300-TEAM-NAME(aa))
                invoke teamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
       *        invoke bTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke pTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa)).
           add 1 to aa
-          go to 5-loop.
-       10-done.    
+          go to 15-loop.
+       20-done.    
            
        end method.
   
@@ -753,7 +784,7 @@
                go to 10-done
            else
       *        invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
-               set teamList to teamList & aa & "," & BAT300-ROSTER-NAME(aa)::Trim & "," & BAT300-ROSTER-POS(aa)::Trim & ";"
+               set teamList to teamList & aa & "," & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa) & ";"
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -800,6 +831,26 @@
          
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
+           if playerListBox::SelectedItem = null
+               SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
+               MOVE SPACES TO PLAY-ALT-KEY
+               unstring locatePlayerTextBox::Text delimited ", " into play-last-name, play-first-name
+               open input play-file
+               READ PLAY-FILE KEY PLAY-ALT-KEY
+               set BAT300-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
+               MOVE play-player-id to BAT300-LOCATE-SEL-ID
+               move "LP" to BAT300-ACTION
+               invoke bat310rununit::Call("BAT300WEBF")
+               if ERROR-FIELD NOT = SPACES
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   move spaces to ERROR-FIELD
+               END-IF    
+               IF BAT300-IND-PB-FLAG = "P"  
+                   MOVE play-player-id to BAT300-SAVE-PITCHER-ID 
+               ELSE
+                   MOVE play-player-id to BAT300-SAVE-BATTER-ID 
+               end-if
+               CLOSE PLAY-FILE.               
            if BAT300-IND-PB-FLAG = "P"
                move BAT300-SEL-TEAM to BAT300-PITCHER-ROSTER-TEAM  
                move BAT300-SEL-PLAYER to BAT300-PITCHER-DSP-NAME  
@@ -1410,8 +1461,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit           
                
                
-           MOVE "R" TO BAT310-DISPLAY-TYPE
-      *    MOVE "T" TO BAT310-PV-DISPLAY-TYPE
+           MOVE "R" TO BAT310-PV-DISPLAY-TYPE
            
       *    invoke self::Recalc
        end method.  
@@ -1425,8 +1475,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
                
-           MOVE "T" TO BAT310-DISPLAY-TYPE
-      *    MOVE "T" TO BAT310-PV-DISPLAY-TYPE
+           MOVE "T" TO BAT310-PV-DISPLAY-TYPE
            
       *    invoke self::Recalc
        end method.  
@@ -1450,5 +1499,81 @@ PM         set self::Session::Item("video-titles") to vidTitles
            go to 5-loop.
        10-done.       
        end method.  
+       
+       method-id nextPitchesButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "NX" TO BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube
+       end method.  
+
+       method-id withPreviousButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit                
+           MOVE "NN" TO BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube
+       end method.  
+   
+       method-id nextResultsButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+               
+               
+           MOVE "R" TO BAT310-NP-DISPLAY-TYPE
+           
+      *    invoke self::Recalc
+       end method.  
+
+       method-id nextTypesButton_Click protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division.     
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+               
+           MOVE "T" TO BAT310-NP-DISPLAY-TYPE
+           
+      *    invoke self::Recalc
+       end method.  
+       
+       method-id nextLb_Load private.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".       
+       procedure division returning lbItems as String.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer       
+
+           move 1 to aa.
+       5-loop.
+           if aa > BAT310-NP-NUM-PITCH-LIST
+               go to 10-done.
+           INSPECT BAT310-NP-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
+           
+           set lbItems to lbItems & BAT310-NP-PITCH-DESC(AA) & ';'
+           
+           add 1 to aa.
+           go to 5-loop.
+       10-done.       
+       end method.  
+       
        end class.
        

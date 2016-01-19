@@ -209,7 +209,7 @@ function batterAllSelectionSuccess(batterVal) {
 }
 
 function playerListRefreshSuccess(players) {
-    // console.log(splitArgs[1].split(';'))
+    console.log(players.split(';'))
     $("#playerList").empty();
     $.each(players.split(';'), function(i, playerString) {
         console.log(playerString);

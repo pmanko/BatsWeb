@@ -1,4 +1,4 @@
-       class-id batsweb.breakdownpreviousszone is partial 
+       class-id batsweb.breakdownnextszone is partial 
                 inherits type System.Web.UI.Page public.
                  
        working-storage section.
@@ -45,10 +45,10 @@
         01  pfc    type PrivateFontCollection.
         01  pfc2    type PrivateFontCollection.  
        linkage section.
-           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".        
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".           
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
-                                         
+                                    
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer      
            IF BAT310-SZONE-BMP = "SZONE1"
@@ -91,7 +91,7 @@
       ** set mystringformat::LineAlignment to type StringAlignment::Center
             move 1 to aa, bb.
        test-loop.
-            IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL SPACES
+            IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL SPACES
                 GO TO 100-LOOP-BACK.
 
             COMPUTE ws-x ROUNDED = (bb - 3)
@@ -100,30 +100,30 @@
                                     * (dimY / 21)
             COMPUTE ws-x2 ROUNDED = (dimx / 36)
             COMPUTE ws-y2 ROUNDED = (dimy / 21)
-            IF BAT310-PV-DISPLAY-TYPE NOT = "T"
+            IF BAT310-NP-DISPLAY-TYPE NOT = "T"
                 subtract 1 from ws-x2, ws-y2.
-            IF BAT310-PRINT-PV-RESULT(AA,BB) = "B"
+            IF BAT310-PRINT-NP-RESULT(AA,BB) = "B"
                MOVE "b" TO mytext
                else
-               move BAT310-PRINT-PV-RESULT(AA,BB) TO mytext.
+               move BAT310-PRINT-NP-RESULT(AA,BB) TO mytext.
 
-            IF BAT310-PV-DISPLAY-TYPE = "T"
+            IF BAT310-NP-DISPLAY-TYPE = "T"
                GO TO 150-PITCH-TYPES.
 
 
-            IF BAT310-PV-DISPLAY-TYPE = " " OR "R"
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "B"
+            IF BAT310-NP-DISPLAY-TYPE = " " OR "R"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "B"
                 NEXT SENTENCE
               Else
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "T" OR "S" OR "F"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "T" OR "S" OR "F"
                 invoke g::FillRectangle(mylemonbrush, ws-x, ws-y, ws-x2, ws-y2)
                 Else
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "H" OR "O" OR "K"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "H" OR "O" OR "K"
                 invoke g::FillRectangle(mygreenbrush, ws-x, ws-y, ws-x2, ws-y2).
 
 
-            IF BAT310-PV-DISPLAY-TYPE = " " OR "R"
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "B"
+            IF BAT310-NP-DISPLAY-TYPE = " " OR "R"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "B"
       *          if ws-x > 1
       *          subtract 1 from ws-x
       *          end-if
@@ -131,12 +131,12 @@
       *          set myfont to new Font("dotumche", 8)
                 invoke g::DrawString(mytext, myfont2, myroyalbluebrush, ws-x, ws-y)
               END-IF
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "T" OR "S" OR "F"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "T" OR "S" OR "F"
       *          add 2 to ws-y
       *          set myfont to new Font("dotumche", 7.5)
                 invoke g::DrawString(mytext, myfont, myredbrush, ws-x, ws-y)
               END-IF
-              IF BAT310-PRINT-PV-RESULT (AA,BB) EQUAL "H" OR "O" OR "K"
+              IF BAT310-PRINT-NP-RESULT (AA,BB) EQUAL "H" OR "O" OR "K"
       *          add 1 to ws-y
                 if ws-x > 2
                       subtract 2 from ws-x
@@ -157,17 +157,17 @@
 
         150-PITCH-TYPES.
 
-            IF BAT310-PRINT-PV-TYPE(AA,BB) EQUAL "F" OR "T" OR "N"
+            IF BAT310-PRINT-NP-TYPE(AA,BB) EQUAL "F" OR "T" OR "N"
                invoke g::FillRectangle(myredbrush, ws-x, ws-y, ws-x2, ws-y2)
                ELSE
                invoke g::FillRectangle(mycyanbrush, ws-x, ws-y, ws-x2, ws-y2).
 
 
-            move BAT310-PRINT-PV-TYPE(AA,BB) TO mytext.
+            move BAT310-PRINT-NP-TYPE(AA,BB) TO mytext.
             IF WS-X > 1
                    SUBTRACT 1 FROM WS-X.
             add 1 to ws-y.
-            IF BAT310-PRINT-PV-TYPE(AA,BB) EQUAL "F" OR "T" OR "N"
+            IF BAT310-PRINT-NP-TYPE(AA,BB) EQUAL "F" OR "T" OR "N"
       *         set myfont to new Font("dotumche", 10, type FontStyle::Bold)
                invoke g::DrawString(mytext, myfont, mywhitebrush, ws-x, ws-y)
                ELSE
@@ -201,8 +201,7 @@
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
            invoke drawArea::Dispose
            invoke g::Dispose()
-           invoke Response::End()
-
+           invoke Response::End()                                                                        
            goback.
        end method.
  

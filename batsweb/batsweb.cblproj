@@ -99,6 +99,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="breakdownnextszone.aspx" />
     <Content Include="breakdownpark.aspx" />
     <Content Include="breakdownparkdetail.aspx" />
     <Content Include="breakdownpreviousszone.aspx" />
@@ -251,6 +252,13 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cbl">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdownnextszone.aspx.cbl">
+      <DependentUpon>breakdownnextszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownnextszone.aspx.designer.cbl">
+      <DependentUpon>breakdownnextszone.aspx</DependentUpon>
     </Compile>
     <Compile Include="breakdownpark.aspx.cbl">
       <DependentUpon>breakdownpark.aspx</DependentUpon>
@@ -420,6 +428,8 @@
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\ZURCHBXC.TTF" />
+    <None Include="fonts\ZURCHLXC.TTF" />
     <None Include="gulpfile.js" />
     <None Include="Images\1288A.mp4" />
     <None Include="Images\homeplateGREY.png" />

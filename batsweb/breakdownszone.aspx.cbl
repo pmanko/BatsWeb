@@ -22,6 +22,7 @@
        01  mywhitebrush     type Brush.
        01  mycyanbrush     type Brush.
        01  myfont      type Font.
+       01  myfont2      type Font.
        01  mystringformat type StringFormat.
        01  myrectangle  type Rectangle.
        01  ws-x        pic 9(4).
@@ -43,6 +44,8 @@
        01  Downlocy              pic 9(4).
        01  Uplocx              pic 9(4).
        01  Uplocy              pic 9(4).
+       01  pfc    type PrivateFontCollection.
+       01  pfc2    type PrivateFontCollection.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value param-sender as object
@@ -63,7 +66,11 @@
                invoke g::DrawImageUnscaled(type Bitmap::FromFile(Server::MapPath("Images\\szone1c.png")) as type Bitmap, 0, 0).
             set mypen to new Pen(type Brushes::Blue, 1)
       **    following lines set background and foreground color for the numbers
-
+            set pfc to new PrivateFontCollection()
+            set pfc2 to new PrivateFontCollection()
+            invoke pfc2::AddFontFile(Server::MapPath("fonts\\ZURCHLXC.TTF")).
+            invoke pfc::AddFontFile(Server::MapPath("fonts\\ZURCHBXC.TTF")).
+            
             set mylemonbrush to new SolidBrush(type Color::LemonChiffon)
             set mybrightgreenbrush to new SolidBrush(type Color::Chartreuse)
             set mygreenbrush to new SolidBrush(type Color::Green)
@@ -73,7 +80,8 @@
             set myblackbrush to new SolidBrush(type Color::Black)
             set myyellowbrush to new SolidBrush(type Color::Yellow)
             set mywhitebrush to new SolidBrush(type Color::White)
-            set myfont to new Font("Consolas", 9)
+            set myfont to new Font(pfc::Families[0], 10)
+            set myfont2 to new Font(pfc2::Families[0], 8)
 
             move 1 to aa, bb.
        test-loop.
@@ -126,28 +134,36 @@
 
             IF BAT310-DISPLAY-TYPE = " " OR "R"
               IF BAT310-PRINT-RESULT (AA,BB) EQUAL "B"
-                if ws-x > 1
-                subtract 1 from ws-x
-                end-if
-                add 2 to ws-y
-                set myfont to new Font("dotumche", 8)
-                invoke g::DrawString(mytext, myfont, myroyalbluebrush, ws-x, ws-y)
+      *          if ws-x > 1
+      *          subtract 1 from ws-x
+      *          end-if
+      *          add 2 to ws-y
+      *          set myfont to new Font("dotumche", 8)
+                invoke g::DrawString(mytext, myfont2, myroyalbluebrush, ws-x, ws-y)
               END-IF
               IF BAT310-PRINT-RESULT (AA,BB) EQUAL "T" OR "S" OR "F"
-                add 2 to ws-y
-                set myfont to new Font("dotumche", 7.5)
+      *          add 2 to ws-y
+      *          set myfont to new Font("dotumche", 7.5)
                 invoke g::DrawString(mytext, myfont, myredbrush, ws-x, ws-y)
               END-IF
               IF BAT310-PRINT-RESULT (AA,BB) EQUAL "H" OR "O" OR "K"
-                add 1 to ws-y
+      *          add 1 to ws-y
                 if ws-x > 2
                       subtract 2 from ws-x
                 end-if
+      *          IF WS-X > 1
+      *             SUBTRACT 1 FROM WS-X
+      *              end-if
+      *          END-IF
                 IF BAT310-VIDFOUND(AA,BB) = "Y"
-                   set myfont to new Font("dotumche", 10, type FontStyle::Bold)
+      *             set myfont to new Font("pfc::Families[0]", 7, type FontStyle::Bold)
+      *             set myfont to new Font("pfc::Families[0]", 10)
+
                    invoke g::DrawString(mytext, myfont, myblackbrush, ws-x, ws-y)
                    else
-                   set myfont to new Font("dotumche", 10, type FontStyle::Bold)
+      *             set myfont to new Font("pfc::Families[0]", 7, type FontStyle::Bold)
+      *             set myfont to new Font("pfc::Families[0]", 10)
+
                    invoke g::DrawString(mytext, myfont, myyellowbrush, ws-x, ws-y).
 
         100-LOOP-BACK.
@@ -169,14 +185,14 @@
 
 
              move BAT310-PRINT-TYPE(AA,BB) TO mytext.
-             IF WS-X > 2
-                    SUBTRACT 2 FROM WS-X.
-             add 1 to ws-y.
+      *       IF WS-X > 2
+      *              SUBTRACT 2 FROM WS-X.
+      *       add 1 to ws-y.
              IF BAT310-PRINT-TYPE(AA,BB) EQUAL "F" OR "T" OR "N"
-                set myfont to new Font("dotumche", 10, type FontStyle::Bold)
+      *          set myfont to new Font("dotumche", 10, type FontStyle::Bold)
                 invoke g::DrawString(mytext, myfont, mywhitebrush, ws-x, ws-y)
                 ELSE
-                set myfont to new Font("dotumche", 10, type FontStyle::Bold)
+      *          set myfont to new Font("dotumche", 10, type FontStyle::Bold)
                 invoke g::DrawString(mytext, myfont, myblackbrush, ws-x, ws-y).
 
             ADD 1 TO BB.

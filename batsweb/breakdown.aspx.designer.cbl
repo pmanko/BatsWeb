@@ -486,6 +486,14 @@
       *>> </remarks>
        01 teamGoButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> locatePlayerTextBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 locatePlayerTextBox type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
       *>> teamDropDownList control.
       *>> </summary>
       *>> <remarks>
@@ -525,6 +533,38 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 withNextButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> Image1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Image1 type System.Web.UI.WebControls.Image protected.
+      *>> <summary>
+      *>> nextListBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 nextListBox type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
+      *>> nextPitchesButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 nextPitchesButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> withPreviousButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 withPreviousButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> selectionPanel control.
       *>> </summary>
