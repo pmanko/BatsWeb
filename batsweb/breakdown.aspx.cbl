@@ -144,7 +144,12 @@
            set runnersdd::SelectedIndex to 0
            if catcherdd::Items::Count not = 0
                set catcherdd::SelectedIndex to 0.
-           set countdd::SelectedIndex to 0
+           if self::Session::Item("countdd") = null
+               set countdd::SelectedIndex to DIALOG-CNT-IDX - 1
+           else
+               set countdd::SelectedIndex to self::Session::Item("countdd") as binary-long.
+               set DIALOG-CNT-IDX TO countdd::SelectedIndex + 1
+               set DIALOG-COUNT-MASTER TO countdd::SelectedItem
            set pitchlocdd::SelectedIndex to 0
            set pitchtypedd::SelectedIndex to 0
            set scoredd::SelectedIndex to 0
@@ -173,17 +178,53 @@
       *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
        
        method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+
        procedure division using by value eventArgument as String.
-       
-       
-           set callbackReturn to self::SetGameDates(eventArgument).
-       
+           set actionFlag to eventArgument(1:2)
+           set methodArg to eventArgument(3:)
+           
+           if actionFlag = "od"
+               set callbackReturn to actionFlag & "|" & self::SetGameDates(methodArg)
+           else if actionFlag = "pt"
+               set callbackReturn to actionFlag & "|" & self::pTeamOKButton_Click(methodArg)
+           else if actionFlag = "bt"
+               set callbackReturn to actionFlag & "|" & self::bTeamOKButton_Click(methodArg)
+           else if actionFlag = "pa"
+               set callbackReturn to actionFlag & "|" & self::pitcherallButton_Click()
+           else if actionFlag = "ba"
+               set callbackReturn to actionFlag & "|" & self::batterallButton_Click()
+           else if actionFlag = "sp"
+               invoke self::selectpitcherButton_Click()
+               set callbackReturn to actionFlag & "|"
+           else if actionFlag = "sb"
+               invoke self::selectbatterButton_Click()
+               set callbackReturn to actionFlag & "|"
+           else if actionFlag = 'lr'
+               set callbackReturn to actionFlag & "|" & self::populateTeamAsync(methodArg)
+           else if actionFlag = 'lc'
+               invoke  self::playerListBox_SelectedIndexChanged(methodArg)
+               set callbackReturn to ""
+           else if actionFlag = 'po'
+               set callbackReturn to actionFlag & "|" & self::playerOKButton_Click()
+           
+      *    Pitch Buttons
+           else if actionFlag = "pb"
+               set callbackReturn to actionFlag & "|" & self::prevButton_Click()
+           else if actionFlag = "tr"
+               invoke self::previousResultsButton_Click()
+               set callbackReturn to actionFlag & "|"
+           else if actionFlag = "tt"
+               invoke self::previousTypesButton_Click()
+               set callbackReturn to actionFlag & "|"
        end method.
        
        method-id GetCallbackResult public.
-       procedure division returning aStringValue as String.
+       procedure division returning returnToClient as String.
        
-           set aStringValue to callbackReturn.
+           set returnToClient to callbackReturn.
        
        end method.
 
@@ -318,7 +359,7 @@
           else
                invoke thisTeamdd::Items::Add(BAT300-TEAM-NAME(aa))
                invoke teamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
-               invoke bTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
+      *        invoke bTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke pTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa)).
           add 1 to aa
           go to 5-loop.
@@ -447,9 +488,13 @@
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
            set DIALOG-CNT-IDX to countdd::SelectedIndex
+           set self::Session::Item("countdd") to countdd::SelectedIndex as binary-long
            set DIALOG-COUNT-MASTER TO countdd::SelectedItem
            add 1 to DIALOG-CNT-IDX
            invoke self::Recalc.
+           
+           invoke self::Response::Redirect(self::Request::RawUrl)
+
        end method.  
        
        method-id resetButton_Click protected.
@@ -600,83 +645,16 @@
            INVOKE self::Recalc
        end method.
 
-       method-id batterteamButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           MOVE "T " to BAT300-BATTER-SEL-FLAG
-           invoke bHiddenFieldTeam_ModalPopupExtender::Show
-       end method. 
+       
 
-       method-id bTeamDropDownList_SelectedIndexChanged protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           set BAT300-BATTER-TEAM to bTeamDropDownList::SelectedItem.
-       end method.
-     
-       method-id pTeamDropDownList_SelectedIndexChanged protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           set BAT300-PITCHER-TEAM to pTeamDropDownList::SelectedItem.
-       end method. 
        
-       method-id bTeamOKButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           set bat310rununit to self::Session::Item("310rununit")
-               as type RunUnit
-           if BAT300-BATTER-TEAM = spaces
-               set BAT300-BATTER-TEAM to bTeamDropDownList::SelectedItem.
-           MOVE "T" to BAT300-ACTION
-           MOVE "TI" to BAT300-ACTION
-           invoke bat310rununit::Call("BAT300WEBF")
-           SET batterSelectionTextBox::Text to BAT300-BATTER::Trim
-           set batterTextBox::Text to BAT300-BATTER
-      *     invoke bHiddenFieldTeam_ModalPopupExtender::Hide
-       end method.
-   
-       method-id pitcherteamButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           MOVE "T " to BAT300-PITCHER-SEL-FLAG
-           invoke pHiddenFieldTeam_ModalPopupExtender::Show
-       end method. 
        
-       method-id pTeamOKButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           set bat310rununit to self::Session::Item("310rununit")
-               as type RunUnit
-           if BAT300-PITCHER-TEAM = spaces
-               set BAT300-PITCHER-TEAM to pTeamDropDownList::SelectedItem.
-           MOVE "T" to BAT300-ACTION
-           MOVE "TI" to BAT300-ACTION
-           invoke bat310rununit::Call("BAT300WEBF")
-           SET pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
-           set pitcherTextBox::Text to BAT300-PITCHER
-       end method.
+       
   
-       method-id selectpitcherButton_Click protected.
+       method-id selectpitcherButton_Click private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
@@ -684,16 +662,19 @@
            MOVE "P" to BAT300-IND-PB-FLAG
            MOVE "I" to BAT300-PITCHER-SEL-FLAG
            MOVE "RP" to BAT300-ACTION
+           
            invoke bat310rununit::Call("BAT300WEBF")
            move " " to BAT300-SEL-TEAM
-           invoke self::populateTeam.     
-           invoke ipHiddenField_ModalPopupExtender::Show
+           
+      * Called Client-Side    
+      *    set teamList to self::populateTeamAsync(selectedTeam)     
+      *    invoke ipHiddenField_ModalPopupExtender::Show
        end method.    
     
-       method-id selectbatterButton_Click protected.
+       method-id selectbatterButton_Click private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
@@ -701,19 +682,15 @@
            MOVE "B" to BAT300-IND-PB-FLAG
            MOVE "I" to BAT300-PITCHER-SEL-FLAG
            MOVE "RB" to BAT300-ACTION
+           
            invoke bat310rununit::Call("BAT300WEBF")
            move " " to BAT300-SEL-TEAM
-           invoke self::populateTeam.     
-           invoke ipHiddenField_ModalPopupExtender::Show
+      
+      * Called Client-Side:
+      *    invoke self::populateTeam.     
+      *    invoke ipHiddenField_ModalPopupExtender::Show
        end method.    
          
-       method-id teamDropDownList_SelectedIndexChanged protected.
-       linkage section.
-           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           invoke self::populateTeam.     
-       end method. 
-
        method-id populateTeam protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
@@ -733,41 +710,91 @@
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
            invoke bat310rununit::Call("BAT300WEBF")
-           invoke playerListBox::Items::Clear.
+      *    invoke playerListBox::Items::Clear.
            move 1 to aa.
        5-loop.
            if aa > BAT300-ROSTER-NUM-ENTRIES
                go to 10-done
            else
-               invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
+      *        invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
            add 1 to aa.
            go to 5-loop.
        10-done.
       *     set playernamelb::TopIndex to playernamelb::Items::Count - 1.
        end method.
-
-       method-id playerListBox_SelectedIndexChanged protected.
+       
+       
+       method-id populateTeamAsync private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division using by value selectedTeam as String
+                          returning teamList as String.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set BAT300-SEL-TEAM to selectedTeam
+           
+           if BAT300-IND-PB-FLAG = "P"
+               MOVE BAT300-SEL-TEAM TO BAT300-PITCHER-ROSTER-TEAM
+               MOVE "RP" TO BAT300-ACTION  
+           else
+               MOVE BAT300-SEL-TEAM TO BAT300-BATTER-ROSTER-TEAM
+               MOVE "RB" TO BAT300-ACTION  
+           end-if.
+         
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+           
+      *    invoke playerListBox::Items::Clear.
+           set teamList to ""
+           move 1 to aa.
+       5-loop.
+           if aa > BAT300-ROSTER-NUM-ENTRIES
+               go to 10-done
+           else
+      *        invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
+               set teamList to teamList & aa & "," & BAT300-ROSTER-NAME(aa)::Trim & "," & BAT300-ROSTER-POS(aa)::Trim & ";"
+           add 1 to aa.
+           go to 5-loop.
+       10-done.
+
+       end method.
+
+       method-id playerListBox_SelectedIndexChanged protected.
+       local-storage section.
+       01 playerName type String.
+       01 playerIdStr type String.
+       01 playerId type Single.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value playerInfo as String.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+      
       *    if team is changed instead of ok button
-           if playerListBox::SelectedItem = null
-               exit method.
-           MOVE playerListBox::SelectedItem to BAT300-SEL-PLAYER
+      *    if playerListBox::SelectedItem = null
+      *        exit method.
+               
+           unstring playerInfo
+               delimited by ","
+               into playerIdStr, playerName
+           end-unstring.
+           
+           set playerIdStr to playerId
+           
+           MOVE playerName to BAT300-SEL-PLAYER
            
            if BAT300-IND-PB-FLAG = "P" THEN
-               MOVE BAT300-ROSTER-ID(playerListBox::SelectedIndex + 1) TO BAT300-SAVE-PITCHER-ID
+               MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-PITCHER-ID
            ELSE
-               MOVE BAT300-ROSTER-ID(playerListBox::SelectedIndex + 1) TO BAT300-SAVE-BATTER-ID
+               MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-BATTER-ID
            END-IF.
        end method.
       
        method-id playerOKButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning playerNames as String.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
          
@@ -784,15 +811,20 @@
            end-if.
            MOVE "TI" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-           MOVE " " to BAT300-IND-PB-FLAG   
-           set pitcherTextBox::Text to BAT300-PITCHER
-           set batterTextBox::Text to BAT300-BATTER
+           MOVE " " to BAT300-IND-PB-FLAG  
+           
+      *    
+      *    set pitcherTextBox::Text to BAT300-PITCHER
+      *    set batterTextBox::Text to BAT300-BATTER
+           
+           
+           set playerNames to BAT300-PITCHER & ';' & BAT300-BATTER
        end method.  
    
-       method-id pitcherallButton_Click protected.
+       method-id pitcherallButton_Click private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".   
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning pitcherSelection as String.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -800,13 +832,17 @@
            MOVE "A" to BAT300-PITCHER-SEL-FLAG
            MOVE "TI" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-           set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
+           
+      *    Called on client side:     
+      *    set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
+           
+           set pitcherSelection to BAT300-PITCHER::Trim
        end method.
 
-       method-id batterallButton_Click protected.
+       method-id batterallButton_Click private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".   
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning batterSelection as String.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -814,7 +850,11 @@
            MOVE "A" to BAT300-BATTER-SEL-FLAG
            MOVE "TI" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-           set batterSelectionTextBox::Text to BAT300-BATTER::Trim
+           
+      *    Called on client side:     
+      *    set batterSelectionTextBox::Text to BAT300-BATTER::Trim
+           
+           set batterSelection to BAT300-BATTER::Trim
        end method.
        
        method-id resetselectionButton_Click protected.
@@ -862,7 +902,7 @@
            invoke self::reloadCatchers
            invoke self::Recalc
            
-      *    invoke self::Response::Redirect(self::Request::RawUrl)
+           invoke self::Response::Redirect(self::Request::RawUrl)
 
        end method.
        
@@ -1077,15 +1117,16 @@ PM         set self::Session::Item("video-titles") to vidTitles
        method-id prevButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning prevListBoxItems as String.
+       
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           
            IF DIALOG-CNT-IDX < 3 or DIALOG-CNT-IDX > 13
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
+               set prevListBoxItems to "error|You must select a pitch count!"
                exit method
            Else
-               invoke self::previousLb_Load
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openPreviousModal" ,"openPreviousModal();", true).
+               set prevListBoxItems to self::previousLb_Load()
        end method.
 
        method-id nextButton_Click protected.
@@ -1138,10 +1179,67 @@ PM         set self::Session::Item("video-titles") to vidTitles
        end method.
        
       * ######################## 
-
       * #### Player Selection ####
-
       * ######################## 
+        
+      * ########################
+      * #### Team Selection ####
+      * ########################   
+       method-id pTeamOKButton_Click private.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
+       procedure division using by value teamName as String
+                          returning pitcherTeam as String.
+                          
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           
+           set BAT300-PITCHER-TEAM to teamName.
+           
+           MOVE "T " to BAT300-PITCHER-SEL-FLAG
+           MOVE "T" to BAT300-ACTION
+           MOVE "TI" to BAT300-ACTION
+           
+           invoke bat310rununit::Call("BAT300WEBF")
+      
+      *    Called on client side: 
+      *    set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
+      *    set pitcherTextBox::Text to BAT300-PITCHER
+           
+           set pitcherTeam to BAT300-PITCHER::Trim
+           
+       end method.
+       
+       method-id bTeamOKButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".  
+       procedure division using by value teamName as String
+                          returning batterTeam as String.
+                          
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           
+           set BAT300-BATTER-TEAM to teamName.
+               
+           MOVE "T " to BAT300-BATTER-SEL-FLAG
+           MOVE "T" to BAT300-ACTION
+           MOVE "TI" to BAT300-ACTION
+           
+           invoke bat310rununit::Call("BAT300WEBF")
+           
+      * Called Client-Side    
+      *    SET batterSelectionTextBox::Text to BAT300-BATTER::Trim
+      *    set batterTextBox::Text to BAT300-BATTER
+      *    invoke bHiddenFieldTeam_ModalPopupExtender::Hide
+            
+           set batterTeam to BAT300-BATTER::Trim
+       end method.
+       
+      * ########################   
         
        method-id rangeCheckBox_CheckedChanged protected.
        linkage section.
@@ -1305,40 +1403,49 @@ PM         set self::Session::Item("video-titles") to vidTitles
        method-id previousResultsButton_Click protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division.     
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
-               type RunUnit                
-           MOVE "R" TO BAT310-PV-DISPLAY-TYPE
-           invoke self::Recalc
+               type RunUnit           
+               
+               
+           MOVE "R" TO BAT310-DISPLAY-TYPE
+      *    MOVE "T" TO BAT310-PV-DISPLAY-TYPE
+           
+      *    invoke self::Recalc
        end method.  
 
        method-id previousTypesButton_Click protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division.     
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
-               type RunUnit                
-           MOVE "T" TO BAT310-PV-DISPLAY-TYPE
-           invoke self::Recalc
+               type RunUnit
+               
+           MOVE "T" TO BAT310-DISPLAY-TYPE
+      *    MOVE "T" TO BAT310-PV-DISPLAY-TYPE
+           
+      *    invoke self::Recalc
        end method.  
        
        method-id previousLb_Load private.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".       
-       procedure division.
+       procedure division returning lbItems as String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer       
-           invoke previousListBox::Items::Clear
+
            move 1 to aa.
        5-loop.
            if aa > BAT310-PV-NUM-PITCH-LIST
                go to 10-done.
            INSPECT BAT310-PV-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
-           invoke previousListBox::Items::Add(BAT310-PV-PITCH-DESC(AA))
+           
+           set lbItems to lbItems & BAT310-PV-PITCH-DESC(AA) & ';'
+           
            add 1 to aa.
            go to 5-loop.
        10-done.       

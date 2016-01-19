@@ -37,7 +37,7 @@
                                         </div>
                                         <div class="list-group">
                                             <div class="list-group-item">
-                                                <h4>Start Date</h4>
+                                                <h5>Start Date</h5>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="allStartRadioButton" runat="server" GroupName="startDate" text="All Games"  OnCheckedChanged="allStartRadioButton_CheckedChanged"/></div>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="startDateRadioButton" runat="server" GroupName="startDate" Text="Start Date:"  OnCheckedChanged="startDateRadioButton_CheckedChanged"/></div>
                                                 <asp:TextBox ID="startDateTextBox" runat="server" TextMode="DateTime" class="form-control"></asp:TextBox>
@@ -45,7 +45,7 @@
                                                 <cc1:CalendarExtender ID="startDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="startDateTextBox_CalendarExtender" TargetControlID="startDateTextBox" />
                                             </div>
                                             <div class="list-group-item">
-                                                <h4>End Date</h4>
+                                                <h5>End Date</h5>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="allEndRadioButton" runat="server" GroupName="endDate" Text="All Games" OnCheckedChanged="allEndRadioButton_CheckedChanged"/></div>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="endDateRadioButton" runat="server" GroupName="endDate" Text="End Date:" OnCheckedChanged="endDateRadioButton_CheckedChanged"/></div>
                                                 <asp:TextBox ID="endDateTextBox" runat="server" TextMode="DateTime"  class="form-control"></asp:TextBox>
@@ -53,8 +53,39 @@
                                                 <cc1:CalendarExtender ID="endDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="endDateTextBox_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="endDateTextBox" />
 
                                             </div>
+                                            <a class="list-group-item list-group-item-info" href="#" data-toggle="modal" data-target="#oneClickDateModal">One-Click Dates</a>
+
                                         </div>
-                                        <a class="btn btn-md btn-info btn-block" data-toggle="modal" data-target="#oneClickDateModal">One-Click Dates</a>
+                                    </div>
+
+                                    <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                Other Selections
+                                            </div>
+
+                                            <div class="list-group">
+                                                <div class="list-group-item">
+                                                    <h5>Location</h5>
+                                                    <div class='radio radio-primary'><asp:RadioButton ID="allLocRadioButton" runat="server" GroupName="location" text="All Locations" OnCheckedChanged="allLocRadioButton_CheckedChanged" /></div>
+                                                    <div class='radio radio-primary'><asp:RadioButton ID="pitchHomeRadioButton" runat="server" GroupName="location" text="Pitcher Home/Batter Away" OnCheckedChanged="pitchHomeRadioButton_CheckedChanged" /></div>
+                                                    <div class='radio radio-primary'><asp:RadioButton ID="pitchAwayRadioButton" runat="server" GroupName="location" text="Pitcher Away/Batter Home" OnCheckedChanged="pitchAwayRadioButton_CheckedChanged" /></div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <h5>Game Time</h5>
+                                                    <div class='radio radio-primary radio-inline'><asp:RadioButton ID="allTimeRadioButton" runat="server" GroupName="time" text="All" OnCheckedChanged="allTimeRadioButton_CheckedChanged"/></div>
+                                                    <div class='radio radio-primary radio-inline'><asp:RadioButton ID="dayRadioButton" runat="server" GroupName="time" text="Day" OnCheckedChanged="dayRadioButton_CheckedChanged"/></div>
+                                                    <div class='radio radio-primary radio-inline'><asp:RadioButton ID="nightRadioButton" runat="server" GroupName="time" text="Night" OnCheckedChanged="nightRadioButton_CheckedChanged"/></div>
+                                                </div>
+                                                <div class="list-group-item">
+                                                    <div class='form-group'>
+                                                        <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" AutoPostBack="True" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
+                                                        <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
+                                                        <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
+                                                    </div>
+                                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" AutoPostBack="True" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
+                                                </div>
+                                            </div>
+                                        
                                     </div>
                                 </div>                            
                                 <div class="col-lg-4">
@@ -67,28 +98,18 @@
                                             <asp:TextBox ID="pitcherSelectionTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
                                             <br />
                                             <div class="btn-toolbar" role="toolbar">
-                                                <div class="btn-group"><asp:Button ID="pitcherallButton" runat="server" Text="All" OnClick="pitcherallButton_Click" CssClass="btn btn-default" /></div>
-                                                <div class="btn-group">
-                                                    <asp:Button ID="pitcherteamButton" runat="server" Text="Team" OnClick="pitcherteamButton_Click" CssClass="btn btn-default" />
-                                                    <asp:HiddenField ID="pHiddenField" runat="server" />
-                                                    <cc1:ModalPopupExtender ID="pHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="pHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="pTeamPanel" TargetControlID="pHiddenField">
-                                                    </cc1:ModalPopupExtender>
-                                                </div>
-                                                <div class="btn-group">
-                                                    <asp:Button ID="selectpitcherButton" runat="server" Text="Select Player" OnClick="selectpitcherButton_Click"  CssClass="btn btn-default" />
-                                                    <asp:HiddenField ID="ipHiddenField" runat="server" />
-                                                    <cc1:ModalPopupExtender ID="ipHiddenField_ModalPopupExtender" runat="server" BehaviorID="ipHiddenField_ModalPopupExtender" DynamicServicePath="" PopupControlID="playerPanel" TargetControlID="ipHiddenField">
-                                                    </cc1:ModalPopupExtender>
-                                                </div>
+                                                <a href="#" class="btn btn-default" id="pitcherAllButton" data-player-type="p">All</a>
+                                                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#teamSelectionModal" data-modal-type="pitcher">Team</a>
+                                                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#playerSelectionModal" data-modal-type="pitcher">Select Player</a>                                                                                                
                                             </div>
 
                                         </div>
                                         <div class="list-group">
                                             <div class="list-group-item">
                                                 <h5>Throw Selection</h5>
-                                                <div class='radio radio-primary radio-inline'><asp:RadioButton ID="throwsleftRadioButton" runat="server" GroupName="throws" text="Left"  /></div>
-                                                <div class='radio radio-primary radio-inline'><asp:RadioButton ID="throwseitherRadioButton" runat="server" GroupName="throws" text="Either"  /></div>
-                                                <div class='radio radio-primary radio-inline'><asp:RadioButton ID="throwsrightRadioButton" runat="server" GroupName="throws" text="Right"  /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsrightRadioButton" runat="server" GroupName="throws" text="Right"  /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsleftRadioButton" runat="server" GroupName="throws" text="Left"  /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwseitherRadioButton" runat="server" GroupName="throws" text="Either"  /></div>
 
                                             </div>
                                         </div>
@@ -177,6 +198,7 @@
                                         
                                                   
                                 </div>
+
                                 <div class="col-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -190,26 +212,20 @@
                                                     <br />
 
                                                     <div class="btn-toolbar">
-                                                        <asp:Button ID="batterallButton" runat="server" Text="All" OnClick="batterallButton_Click" CssClass="btn btn-default" />
-                                                        <asp:Button ID="batterteamButton" runat="server" Text="Team" OnClick="batterteamButton_Click" CssClass="btn btn-default" />
-                                                        <asp:HiddenField ID="bHiddenField" runat="server" />
-                                                        <cc1:ModalPopupExtender ID="bHiddenFieldTeam_ModalPopupExtender" runat="server" BehaviorID="bHiddenFieldTeam_ModalPopupExtender" DynamicServicePath="" PopupControlID="bTeamPanel" TargetControlID="bHiddenField" >
-                                                        </cc1:ModalPopupExtender>
-                                                        <asp:Button ID="selectbatterButton" runat="server" Text="Select Player" OnClick="selectbatterButton_Click" CssClass="btn btn-default" />
-
+                                                        <a href="#" class="btn btn-default" id="batterAllButton" data-player-type="b">All</a>
+                                                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#teamSelectionModal" data-modal-type="batter">Team</a>
+                                                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#playerSelectionModal" data-modal-type="batter">Select Player</a> 
                                                     </div> 
                                                         
                                                 </div> 
-
-
 
                                                 <div class="list-group">
 
                                                     <div class="list-group-item">                                                        
                                                         <h5>Bats</h5>                                                        
-                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left"  /></div>
-                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either"  /></div>
-                                                        <div class='radio radio-primary radio-inline'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either"  /></div>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -260,56 +276,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            Location
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class='radio radio-primary'><asp:RadioButton ID="allLocRadioButton" runat="server" GroupName="location" text="All Locations" OnCheckedChanged="allLocRadioButton_CheckedChanged" /></div>
-                                            <div class='radio radio-primary'><asp:RadioButton ID="pitchHomeRadioButton" runat="server" GroupName="location" text="Pitcher Home/Batter Away" OnCheckedChanged="pitchHomeRadioButton_CheckedChanged" /></div>
-                                            <div class='radio radio-primary'><asp:RadioButton ID="pitchAwayRadioButton" runat="server" GroupName="location" text="Pitcher Away/Batter Home" OnCheckedChanged="pitchAwayRadioButton_CheckedChanged" /></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            Game Time
-                                        </div>
-                                        <div class="panel-body">
-                                            <div class='radio radio-primary radio-inline'><asp:RadioButton ID="allTimeRadioButton" runat="server" GroupName="time" text="All" OnCheckedChanged="allTimeRadioButton_CheckedChanged"/></div>
-                                            <div class='radio radio-primary radio-inline'><asp:RadioButton ID="dayRadioButton" runat="server" GroupName="time" text="Day" OnCheckedChanged="dayRadioButton_CheckedChanged"/></div>
-                                            <div class='radio radio-primary radio-inline'><asp:RadioButton ID="nightRadioButton" runat="server" GroupName="time" text="Night" OnCheckedChanged="nightRadioButton_CheckedChanged"/></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            Other Options
-                                        </div>
-                                        <div class="panel-body">
-
-                                            <div class='form-group'>
-                                                <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" AutoPostBack="True" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
-                                                <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
-                                                <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
-                                            </div>
-                                            <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" AutoPostBack="True" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
-                                
-                                        </div>
-                                    </div>
-                                </div>
-                                                
-                                                
-                                                
-                                                
-                            </div>
-
+                                                     
                             <div class="row">
                                 <div class="col-md-3 col-md-offset-1">
                                     <asp:Button ID="resetselectionButton" runat="server" OnClick="resetselectionButton_Click" Text="Reset All Selections" CssClass="btn btn-danger btn-lg btn-block" />
@@ -346,10 +313,31 @@
                 </div>
               </div>
             </div>
-
+            <!----------------------->
+            
+            <!-- Team Selection Modal -->
+            <div class="modal fade" id="teamSelectionModal" tabindex="-1" role="dialog" aria-labelledby="teamSelectionModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Which <span id="modalType"></span> team?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <asp:DropDownList ID="pTeamDropDownList" runat="server" class="form-control"></asp:DropDownList>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" id="teamSelectionOkButton">OK</a>
+                            <%--<asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />--%>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
             <!----------------------->
 
-        <!-- More Click Modal -->
+            <!-- More Click Modal -->
             <div class="modal fade" id="moreModal" tabindex="-1" role="dialog" aria-labelledby="moreModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -461,7 +449,30 @@
                     </div>
                 </div>
             </div>
+            <!----------------------->
 
+            <!-- Player Selection Modal -->
+            <div class="modal fade" id="playerSelectionModal" tabindex="-1" role="dialog" aria-labelledby="playerSelectionModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Select Player</h4>
+                        </div>
+                        <div class="modal-body">
+                            <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
+                            <br />
+                            <select id="playerList" size="15" class="form-control"></select>
+                            <%--<asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>--%>                        
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                            <a href="#" class="btn btn-primary" id="selectPlayerButton">OK</a>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>            
             <!----------------------->
 
             <!-- Previous Pitch Modal -->
@@ -475,7 +486,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:Image ID="previousSzoneImage" runat="server" src="breakdownszone.aspx" alt="image could not be displayed refresh"/>
+                                    <asp:Image ID="previousSzoneImage" runat="server" src="breakdownszone.aspx?hi=1" alt="image could not be displayed refresh"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
@@ -495,10 +506,10 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <asp:Button ID="previousResultsButton" runat="server" OnClick="previousResultsButton_Click" Text="Pitch Results"  class="btn btn-primary" />
+                                    <a href="#" class="btn btn-primary" id="previousResultsButton">Pitch Results</a>
                                 </div>
                                 <div class="col-lg-4">
-                                    <asp:Button ID="previousTypesButton" runat="server" OnClick="previousTypesButton_Click" Text="Pitch Types"  class="btn btn-primary" />
+                                    <a href="#" class="btn btn-primary" id="previousTypesButton">Pitch Types</a>
                                 </div>
                                 <div class="col-lg-4">
                                 </div>
@@ -507,34 +518,7 @@
                     </div>
                 </div>
             </div>
-
             <!----------------------->
-
-            <asp:Panel ID="playerPanel" runat="server">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Select Player 
-                    </div>
-                    <div class="panel-body"> 
-                        <div class="row">
-                            <div class='col-md-12'>
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                                <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
-                                </asp:DropDownList> 
-                                <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>
-                            </ContentTemplate>
-                            </asp:UpdatePanel>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class='col-md-12'>
-                                <asp:Button ID="playerOKButton" runat="server" OnClick="playerOKButton_Click" Text="OK"  class="btn btn-primary btn-block" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </asp:Panel>
 
 
 
@@ -870,67 +854,25 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" OnClick="resultsButton_Click" class="btn btn-primary"/>
+                        <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" OnClick="resultsButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="typesButton" runat="server" Text="Pitch Types" OnClick="typesButton_Click" class="btn btn-primary"/>
+                        <asp:Button ID="typesButton" runat="server" Text="Pitch Types" OnClick="typesButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="videosButton" runat="server" Text="Compare Videos" OnClick="videosButton_Click" class="btn btn-primary"/>
+                        <asp:Button ID="videosButton" runat="server" Text="Compare Videos" OnClick="videosButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="prevButton" runat="server" Text="Prev. Pitch" OnClick="prevButton_Click" class="btn btn-primary"/>
+                        <a href="#" class="btn btn-primary btn-block" id="previousButton">Prev. Pitch</a>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="nextButton" runat="server" Text="Next Pitch" OnClick="nextButton_Click" class="btn btn-primary"/>
+                        <asp:Button ID="nextButton" runat="server" Text="Next Pitch" OnClick="nextButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                     <div class="col-lg-2">
                         <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary"/>
                     </div>
                 </div>
-            </asp:Panel>
-
-            <asp:Panel ID="pTeamPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Which pitcher team?
-                </div>
-                <div class="panel-body">     
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </asp:Panel>
-        <asp:Panel ID="bTeamPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Which batter team?
-                </div>
-                <div class="panel-body">     
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
-                            <asp:HiddenField ID="bTeamHiddenField" runat="server" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </asp:Panel>
+            </asp:Panel>                   
         </form>
     </div>
 </asp:Content>
