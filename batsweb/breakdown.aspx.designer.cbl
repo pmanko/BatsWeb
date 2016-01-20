@@ -502,14 +502,6 @@
       *>> </remarks>
        01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
-      *>> playerListBox control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playerListBox type System.Web.UI.WebControls.ListBox protected.
-      *>> <summary>
       *>> previousSzoneImage control.
       *>> </summary>
       *>> <remarks>
@@ -678,14 +670,6 @@
       *>> </remarks>
        01 result1dd type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
-      *>> resetButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 resetButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> result2dd control.
       *>> </summary>
       *>> <remarks>
@@ -693,6 +677,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 result2dd type System.Web.UI.WebControls.DropDownList protected.
+      *>> <summary>
+      *>> resetButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 resetButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> plListBox control.
       *>> </summary>

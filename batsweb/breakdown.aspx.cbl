@@ -38,6 +38,10 @@
            
        
        if self::IsPostBack
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};";
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true);
            exit method.
            
       * #### ICallback Implementation ####
@@ -159,10 +163,10 @@
            set runnersdd::SelectedIndex to 0
            if catcherdd::Items::Count not = 0
                set catcherdd::SelectedIndex to 0.
-           if self::Session::Item("countdd") = null
-               set countdd::SelectedIndex to DIALOG-CNT-IDX - 1
+           if self::Session::Item("DIALOG-CNT-IDX") = null
+               set countdd::SelectedIndex to 0
            else
-               set countdd::SelectedIndex to self::Session::Item("countdd") as binary-long
+               set countdd::SelectedIndex to self::Session::Item("DIALOG-CNT-IDX") as binary-long
                set DIALOG-CNT-IDX TO countdd::SelectedIndex + 1
                set DIALOG-COUNT-MASTER TO countdd::SelectedItem.
            set pitchlocdd::SelectedIndex to 0
@@ -411,9 +415,12 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-RES-IDX to result1dd::SelectedIndex
            set DIALOG-RES-MASTER TO result1dd::SelectedItem
+           set self::Session::Item("DIALOG-RES-IDX") to result1dd::SelectedIndex as binary-long
+           
            add 1 to DIALOG-RES-IDX
+           
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id result2dd_SelectedIndexChanged protected.
@@ -426,9 +433,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-RES-IDX2 to result2dd::SelectedIndex
            set DIALOG-RES-MASTER2 TO result2dd::SelectedItem
+           set self::Session::Item("DIALOG-RES-IDX2") to result2dd::SelectedIndex as binary-long
+
            add 1 to DIALOG-RES-IDX2
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
               
        method-id inndd_SelectedIndexChanged protected.
@@ -441,9 +450,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-INN-IDX to inndd::SelectedIndex
            set DIALOG-INN-MASTER TO inndd::SelectedItem
+           set self::Session::Item("DIALOG-INN-IDX") to inndd::SelectedIndex as binary-long
+
            add 1 to DIALOG-INN-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id outsdd_SelectedIndexChanged protected.
@@ -456,9 +467,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-OUT-IDX to outsdd::SelectedIndex
            set DIALOG-OUT-MASTER TO outsdd::SelectedItem
+           set self::Session::Item("DIALOG-OUT-IDX") to outsdd::SelectedIndex as binary-long
+
            add 1 to DIALOG-OUT-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id catcherdd_SelectedIndexChanged protected.
@@ -471,9 +484,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-CAT-IDX to catcherdd::SelectedIndex
            set DIALOG-CAT-MASTER TO catcherdd::SelectedItem
-           add 1 to DIALOG-OUT-IDX
+           set self::Session::Item("DIALOG-CAT-IDX") to catcherdd::SelectedIndex as binary-long
+
+           add 1 to DIALOG-CAT-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.       
        
        method-id runnersdd_SelectedIndexChanged protected.
@@ -486,9 +501,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-RUN-IDX to runnersdd::SelectedIndex
            set DIALOG-RUN-MASTER TO runnersdd::SelectedItem
+           set self::Session::Item("DIALOG-RUN-IDX") to runnersdd::SelectedIndex as binary-long
+
            add 1 to DIALOG-RUN-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id pitchtypedd_SelectedIndexChanged protected.
@@ -501,9 +518,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-PTY-IDX to pitchtypedd::SelectedIndex
            set DIALOG-PTY-MASTER TO pitchtypedd::SelectedItem
+           set self::Session::Item("DIALOG-PTY-IDX") to pitchtypedd::SelectedIndex as binary-long
+
            add 1 to DIALOG-PTY-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id pitchlocdd_SelectedIndexChanged protected.
@@ -520,7 +539,7 @@ PM         set self::Session::Item("nameArray") to nameArray
 
            add 1 to DIALOG-PLO-IDX
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *    invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id countdd_SelectedIndexChanged protected.

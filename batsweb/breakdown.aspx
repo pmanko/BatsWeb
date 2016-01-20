@@ -1,5 +1,5 @@
-﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="breakdown.aspx.cbl" Inherits="batsweb.breakdown" %>
-<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
+﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" Language="C#" CodeBehind="breakdown.aspx.cbl" Inherits="batsweb.breakdown" EnableEventValidation="false" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %> 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
@@ -73,9 +73,15 @@
                                     </div>
 
                                     <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                Other Selections
-                                            </div>
+                                        <div class="panel-heading" role="tab" id="OtherSelPanel">
+                                            <h4 class="panel-title">
+                                                <a class="collapsed" role="button" data-toggle="collapse" href="#otherSelections" aria-expanded="false" aria-controls="otherSelections">
+                                                    <i class="fa fa-caret-right pull-left"></i>
+                                                    Other Selections                                                
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div class="panel-collapse collapse" id="otherSelections">
 
                                             <div class="list-group">
                                                 <div class="list-group-item">
@@ -99,6 +105,7 @@
                                                     <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" AutoPostBack="True" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
                                                 </div>
                                             </div>
+                                        </div>
                                         
                                     </div>
                                 </div>                            
@@ -485,7 +492,7 @@
                                 <div class='col-md-12'>
                                     <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
                                     <br />
-                                    <asp:ListBox ID="playerListBox" runat="server" Rows="10" class="form-control" ></asp:ListBox>                       
+                                    <select ID="MainContent_playerListBox" size="14" class="form-control" ></select>                       
                                 </div>
                             </div>
                             
@@ -606,6 +613,7 @@
                                         <asp:TextBox ID="batterTextBox" runat="server" ReadOnly="true" class="form-control"></asp:TextBox>
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label>Games:</label>
@@ -645,6 +653,7 @@
                                         </asp:DropDownList>
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <label>Pitch Loc:</label>
@@ -662,6 +671,7 @@
                                         </asp:DropDownList>
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <label>Pitch Type:</label>
@@ -674,12 +684,11 @@
                                         </asp:DropDownList>
                                     </div>
                                     <div class="col-lg-4">
-                                        <asp:Button ID="resetButton" runat="server" Text="Reset" class="btn btn-danger"/>
                                     </div>
                                 </div>
+                                <br />
                                 <div class="row">
                                     <div class="col-lg-4">
-                                        <a class="btn btn-md btn-info btn-block" data-toggle="modal" data-target="#moreModal">More</a>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Result2:</label>
@@ -689,6 +698,13 @@
                                     <div class="col-lg-4">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="pull-right">
+                                <a class="btn btn-info btn-md" data-toggle="modal" data-target="#moreModal">More</a>
+                                <asp:Button ID="resetButton" runat="server" Text="Reset" class="btn btn-danger btn-md"/>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
@@ -705,7 +721,7 @@
                     <div class="col-lg-6">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                Statistics
+                                <div class="panel-title">Statistics</div> 
                             </div>
                             <div class="panel-body">
                                 <div class="row">
@@ -713,19 +729,19 @@
                                         <label>G:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="gLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="gLabel" runat="server"></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>SAC:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="sacLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="sacLabel" runat="server"></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>FB:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="fbLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="fbLabel" runat="server"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -733,19 +749,19 @@
                                         <label>AB:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="abLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="abLabel" runat="server"></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>DP:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="dpLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="dpLabel" runat="server"></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>GB:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="gbLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="gbLabel" runat="server"></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -753,19 +769,19 @@
                                         <label>H:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="hLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="hLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>HBP:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="hbpLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="hbpLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>LD:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="ldLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="ldLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -773,19 +789,19 @@
                                         <label>2B:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="doubleLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="doubleLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>TPA:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="tpaLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="tpaLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>PU:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="puLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="puLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -793,7 +809,7 @@
                                         <label>3B:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="tripleLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="tripleLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2">
                                     </div>
@@ -803,7 +819,7 @@
                                         <label>BU:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="buLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="buLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -811,13 +827,13 @@
                                         <label>HR:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="hrLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="hrLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>AVG:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="avgLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="avgLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-4">
                                     </div>
@@ -827,19 +843,19 @@
                                         <label>RBI:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="rbiLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="rbiLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>OBP:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="obpLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="obpLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>Hard:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="hardLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="hardLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -847,19 +863,19 @@
                                         <label>BB:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="bbLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="bbLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>SLG:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="slgLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="slgLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>Med:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="medLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="medLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -867,53 +883,49 @@
                                         <label>K:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="kLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="kLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>OPS:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="opsLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="opsLabel" runat="server" ></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>Soft:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="softLabel" runat="server" ReadOnly="true" class="form-control"></asp:Label>
+                                        <asp:Label ID="softLabel" runat="server" ></asp:Label>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="col-lg-4">
-                            <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary"/>
-                        </div>
-                        <div class="col-lg-4">
-                            <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary"/>
-                        </div>
-                        <div class="col-lg-4">
-                            <asp:Button ID="allButton" runat="server" Text="All" OnClick="allButton_Click" class="btn btn-primary"/>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary btn-block"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary btn-block"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <asp:Button ID="allButton" runat="server" Text="All" OnClick="allButton_Click" class="btn btn-primary btn-block"/>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
                         <asp:Image ID="parkImage" runat="server" src="breakdownpark.aspx" alt="image could not be displayed refresh"/>
                     </div>
                     <div class="col-lg-2">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="ifButton" runat="server" Text="Infield" OnClick="ifButton_Click" class="btn btn-primary"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary"/>
-                            </div>
-                        </div>
+                        <asp:Button ID="ifButton" runat="server" Text="Infield" OnClick="ifButton_Click" class="btn btn-primary btn-block"/>
+                        <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-lg-2">
                         <asp:Button ID="resultsButton" runat="server" Text="Pitch Results" OnClick="resultsButton_Click" class="btn btn-primary btn-block"/>
@@ -931,7 +943,7 @@
                         <asp:Button ID="nextButton" runat="server" Text="Next Pitch" OnClick="nextButton_Click" class="btn btn-primary btn-block"/>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary"/>
+                        <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/>
                     </div>
                 </div>
             </asp:Panel>                   
