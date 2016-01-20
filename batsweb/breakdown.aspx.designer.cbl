@@ -534,13 +534,13 @@
       *>> </remarks>
        01 withNextButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Image1 control.
+      *>> nextSzoneImage control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Image1 type System.Web.UI.WebControls.Image protected.
+       01 nextSzoneImage type System.Web.UI.WebControls.Image protected.
       *>> <summary>
       *>> nextListBox control.
       *>> </summary>
@@ -973,14 +973,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 videosButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> nextButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 nextButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> printButton control.
       *>> </summary>

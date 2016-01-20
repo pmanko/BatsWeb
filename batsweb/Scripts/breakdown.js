@@ -67,8 +67,14 @@ function GetServerData(arg, context) {
     else if (actionFlag == 'tt' || actionFlag == 'tr') {        
         $("#MainContent_previousSzoneImage").attr("src", "/breakdownpreviousszone.aspx?timestamp=" + new Date().getTime());
     }
+    else if (actionFlag == 'nt' || actionFlag == 'nr') {
+        $("#MainContent_nextSzoneImage").attr("src", "/breakdownnextszone.aspx?timestamp=" + new Date().getTime());
+    }
     else if (actionFlag == 'pb') {        
         openPreviousModalSuccess(splitArgs[1]);
+    }
+    else if (actionFlag == 'nb') {
+        openNextModalSuccess(splitArgs[1]);
     }
     else if (actionFlag == 'po') {
         playerSelectedSuccess(splitArgs[1]);
@@ -211,6 +217,19 @@ $(document).on("click", "#previousTypesButton", function(event){
     CallServer("tt");
 });
 
+$(document).on("click", "#nextResultsButton", function (event) {
+
+    CallServer("nr");
+});
+
+$(document).on("click", "#nextButton", function (event) {
+
+    CallServer("nb");
+});
+
+$(document).on("click", "#nextTypesButton", function (event) {
+    CallServer("nt");
+});
 // Success Callbacks
 function teamSelectionSuccess(selectedTeam, typeFlag) {
     console.log("CLOSE: " + selectedTeam);
@@ -247,6 +266,15 @@ function openPreviousModalSuccess(listData) {
     
 
     $("#previousModal").modal();
+}
+
+function openNextModalSuccess(listData) {
+    $.each(listData.split(';'), function (i, listItem) {
+        $('#MainContent_nextListBox').append($('<option></option>').val(listItem).html(listItem));
+    });
+
+
+    $("#nextModal").modal();
 }
 
 function playerSelectedSuccess(players) {

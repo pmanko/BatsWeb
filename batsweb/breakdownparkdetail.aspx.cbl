@@ -78,9 +78,54 @@
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+
+           set MOUSEX-BF, MOUSEX2-BF to e::X
+           set MOUSEY-BF, MOUSEY2-BF to e::Y.
+
+           COMPUTE BAT292V-DOWN-X ROUNDED = MOUSEX-BF * 597 / 597
+           COMPUTE BAT292V-DOWN-Y ROUNDED = MOUSEY-BF * 480 / 480
+           COMPUTE BAT292V-UP-X ROUNDED = MOUSEX2-BF * 597 / 597
+           COMPUTE BAT292V-UP-Y ROUNDED = MOUSEY2-BF * 480 / 480
+           SUBTRACT 3 FROM BAT292V-DOWN-X
+           SUBTRACT 3 FROM BAT292V-DOWN-Y
+           ADD 3 TO BAT292V-UP-X
+           ADD 3 TO BAT292V-UP-Y
+           move "M2" to BAT310-ACTION
+           invoke bat310rununit::Call("BAT310WEBF")
+           invoke self::batstube
        end method.
        
-       
+       method-id batstube protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer   
+           set vidPaths to ""
+PM         set vidTitles to ""
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT310-WF-VID-COUNT
+               go to lines-done.
+           
+PM         set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-A(aa) & ","
+PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+PM         set self::Session::Item("video-paths") to vidPaths
+PM         set self::Session::Item("video-titles") to vidTitles
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
+       end method.
+             
        method-id infieldButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".

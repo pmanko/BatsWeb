@@ -232,12 +232,20 @@
       *    Pitch Buttons
            else if actionFlag = "pb"
                set callbackReturn to actionFlag & "|" & self::prevButton_Click()
+           else if actionFlag = "nb"
+               set callbackReturn to actionFlag & "|" & self::nextButton_Click()
            else if actionFlag = "tr"
                invoke self::previousResultsButton_Click()
                set callbackReturn to actionFlag & "|"
+           else if actionFlag = "nr"
+               invoke self::nextResultsButton_Click()
+               set callbackReturn to actionFlag & "|"               
            else if actionFlag = "tt"
                invoke self::previousTypesButton_Click()
                set callbackReturn to actionFlag & "|"
+           else if actionFlag = "nt"
+               invoke self::nextTypesButton_Click()
+               set callbackReturn to actionFlag & "|".               
        end method.
        
        method-id GetCallbackResult public.
@@ -1031,8 +1039,8 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
-           set MOUSEX to e::X
-           set MOUSEY to e::Y
+           set MOUSEX, MOUSEX2 to e::X
+           set MOUSEY, MOUSEY2 to e::Y
            move "MO" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            invoke self::batstube.
@@ -1243,21 +1251,20 @@ PM         set self::Session::Item("video-titles") to vidTitles
                set prevListBoxItems to "error|You must select a pitch count!"
                exit method
            Else
-               set prevListBoxItems to self::previousLb_Load()
+               set prevListBoxItems to self::previousLb_Load().
        end method.
 
        method-id nextButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning nextListBoxItems as String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            IF DIALOG-CNT-IDX < 2 or DIALOG-CNT-IDX > 13
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a count!');", true)
+               set nextListBoxItems to "error|You must select a pitch count!"
                exit method
            Else
-      *         set NextPitchForm to new type BatterPitcherBreakdown.NextPitchForm
-      *         invoke NextPitchForm::Show.
+               set nextListBoxItems to self::nextLb_Load().
        end method.
        
       * ########################

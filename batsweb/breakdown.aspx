@@ -563,7 +563,7 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <asp:Image ID="Image1" runat="server" src="breakdownnextszone.aspx" alt="image could not be displayed refresh"/>
+                                    <asp:Image ID="nextSzoneImage" runat="server" src="breakdownnextszone.aspx" alt="image could not be displayed refresh"/>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="row">
@@ -907,13 +907,13 @@
                     <div class="col-lg-6">
                         <div class="row">
                             <div class="col-lg-4">
-                                <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary btn-block"/>
-                            </div>
-                            <div class="col-lg-4">
-                                <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary btn-block"/>
-                            </div>
-                            <div class="col-lg-4">
+                <!--                <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary btn-block"/> -->
                                 <asp:Button ID="allButton" runat="server" Text="All" OnClick="allButton_Click" class="btn btn-primary btn-block"/>
+                            </div>
+                            <div class="col-lg-4">
+                <!--                <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary btn-block"/> -->
+                            </div>
+                            <div class="col-lg-4">
                             </div>
                         </div>
                     </div>
@@ -940,7 +940,7 @@
                         <a href="#" class="btn btn-primary btn-block" id="previousButton">Prev. Pitch</a>
                     </div>
                     <div class="col-lg-2">
-                        <asp:Button ID="nextButton" runat="server" Text="Next Pitch" OnClick="nextButton_Click" class="btn btn-primary btn-block"/>
+                        <a href="#" class="btn btn-primary btn-block" id="nextButton">Next Pitch</a>
                     </div>
                     <div class="col-lg-2">
                         <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/>
