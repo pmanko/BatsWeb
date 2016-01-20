@@ -6,7 +6,7 @@
     <title></title>
 
     <link type="text/css" href="/dist/styles/app.css" rel="stylesheet" />
-    <link type="text/css" href="/dist/styles/main.css" rel="stylesheet" />
+    <link type="text/css" href="/Styles/main.css" rel="stylesheet" />
     <link type="text/css" href="/Styles/jquery-ui.css" rel="stylesheet" />
     <link type="text/css" href="/Styles/autocomplete.css" rel="stylesheet" />
     <script type="text/javascript" src="/dist/scripts/jquery.bundle.min.js"></script>

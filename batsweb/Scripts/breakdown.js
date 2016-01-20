@@ -65,10 +65,13 @@ function GetServerData(arg, context) {
         playerListRefreshSuccess(splitArgs[1]);
     }
     else if (actionFlag == 'tt' || actionFlag == 'tr') {        
-        $("#MainContent_previousSzoneImage").attr("src", "/breakdownszone.aspx?timestamp=" + new Date().getTime());
+        $("#MainContent_previousSzoneImage").attr("src", "/breakdownpreviousszone.aspx?timestamp=" + new Date().getTime());
     }
     else if (actionFlag == 'pb') {        
         openPreviousModalSuccess(splitArgs[1]);
+    }
+    else if (actionFlag == 'po') {
+        playerSelectedSuccess(splitArgs[1]);
     }
 	
 	
@@ -154,13 +157,13 @@ $(document).on('change', "#MainContent_teamDropDownList", function(event) {
     CallServer('lr'+$(this).val())    
 });
 
-$(document).on('change', "#playerList", function(event) {
-    var type = $("#playerSelectionModal").data("type");
-    console.log(type);
-    console.log($(this).val() + " | " + $(this).find("option:selected").text());
-    
-    CallServer('pp'+$(this).val())    
-});
+// $(document).on('change', "#MainContent_playerListBox", function(event) {
+//     var type = $("#playerSelectionModal").data("type");
+//     console.log(type);
+//     console.log($(this).val() + " | " + $(this).find("option:selected").text());
+//     
+//     CallServer('lc'+$(this).val()+','+$(this).find("option:selected").text());    
+// });
 
 $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
   // Set Modal Type - either pitcher or batter
@@ -171,8 +174,26 @@ $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
   var modal = $(this);
   modal.data("type", type);
 
+  if(type == 'pitcher')
+    CallServer('sp');
+  else
+    CallServer('sb');
+    
   CallServer('lr'+$("#MainContent_teamDropDownList").val())
   
+});
+
+$(document).on('click', "#selectPlayerButton", function(event){
+    var selectedPlayerInfo;
+    
+    // Deceide which player value to select
+    if($("#MainContent_playerListBox").val() == null) {
+        selectedPlayerInfo = "located;" + $("#MainContent_locatePlayerTextBox").val()       
+    } else {
+        selectedPlayerInfo = "selected;" + $("#MainContent_playerListBox").val()+','+$("#MainContent_playerListBox").find("option:selected").text()
+    }
+    
+    CallServer("po"+ selectedPlayerInfo); 
 });
 
 // Pitch Buttons
@@ -210,12 +231,12 @@ function batterAllSelectionSuccess(batterVal) {
 
 function playerListRefreshSuccess(players) {
     console.log(players.split(';'))
-    $("#playerList").empty();
+    $("#MainContent_playerListBox").empty();
     $.each(players.split(';'), function(i, playerString) {
         console.log(playerString);
         var splitPlayer = playerString.split(',');
         if(splitPlayer.length > 1)
-            $('#playerList').append( $('<option></option>').val(splitPlayer[0]).html(splitPlayer[1] + '  (' + splitPlayer[2] + ")"));
+            $('#MainContent_playerListBox').append( $('<option></option>').val(splitPlayer[0]).html(unescape(splitPlayer[1].replace(/ /g, "%A0"))));
     });
 }
 
@@ -226,4 +247,13 @@ function openPreviousModalSuccess(listData) {
     
 
     $("#previousModal").modal();
+}
+
+function playerSelectedSuccess(players) {
+    console.log(players.split(';'))
+    var playersSplit = players.split(';')
+    $("#MainContent_pitcherSelectionTextBox").val(playersSplit[0]);
+    $("#MainContent_batterSelectionTextBox").val(playersSplit[1]);
+ 
+    $("#playerSelectionModal").modal('hide');   
 }

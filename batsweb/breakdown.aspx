@@ -476,20 +476,19 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class='col-md-12'>
-                                    <div class="panel panel-default">
-                                        <label>Locate Player:</label>
-                                        <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
-                                    </div>
+                                    <label>Locate Player:</label>
+                                    <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
                                 </div>
                             </div>
+                            <hr />
                             <div class="row">
                                 <div class='col-md-12'>
                                     <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
                                     <br />
-                                    <select id="playerList" size="15" class="form-control"></select>
+                                    <asp:ListBox ID="playerListBox" runat="server" Rows="10" class="form-control" ></asp:ListBox>                       
                                 </div>
                             </div>
-                            <%--<asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>--%>                        
+                            
                         </div>
                         <div class="modal-footer">
                             <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>

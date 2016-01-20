@@ -220,10 +220,10 @@
            else if actionFlag = 'lr'
                set callbackReturn to actionFlag & "|" & self::populateTeamAsync(methodArg)
            else if actionFlag = 'lc'
-               invoke  self::playerListBox_SelectedIndexChanged(methodArg)
+      *        invoke  self::playerListBox_SelectedIndexChanged(methodArg)
                set callbackReturn to ""
            else if actionFlag = 'po'
-               set callbackReturn to actionFlag & "|" & self::playerOKButton_Click()
+               set callbackReturn to actionFlag & "|" & self::playerOKButton_Click(methodArg)
            
       *    Pitch Buttons
            else if actionFlag = "pb"
@@ -390,14 +390,17 @@ PM         set self::Session::Item("nameArray") to nameArray
           else
                invoke thisTeamdd::Items::Add(BAT300-TEAM-NAME(aa))
                invoke teamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
-      *        invoke bTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke pTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa)).
           add 1 to aa
           go to 15-loop.
        20-done.    
            
        end method.
-  
+      
+      
+      * #######################################
+      * Select Boxes for Pitch Modifiers
+      * ####################################### 
        method-id result1dd_SelectedIndexChanged protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
@@ -410,6 +413,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-RES-MASTER TO result1dd::SelectedItem
            add 1 to DIALOG-RES-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id result2dd_SelectedIndexChanged protected.
@@ -424,6 +428,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-RES-MASTER2 TO result2dd::SelectedItem
            add 1 to DIALOG-RES-IDX2
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
               
        method-id inndd_SelectedIndexChanged protected.
@@ -438,6 +443,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-INN-MASTER TO inndd::SelectedItem
            add 1 to DIALOG-INN-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id outsdd_SelectedIndexChanged protected.
@@ -452,6 +458,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-OUT-MASTER TO outsdd::SelectedItem
            add 1 to DIALOG-OUT-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id catcherdd_SelectedIndexChanged protected.
@@ -466,6 +473,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-CAT-MASTER TO catcherdd::SelectedItem
            add 1 to DIALOG-OUT-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.       
        
        method-id runnersdd_SelectedIndexChanged protected.
@@ -480,6 +488,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-RUN-MASTER TO runnersdd::SelectedItem
            add 1 to DIALOG-RUN-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id pitchtypedd_SelectedIndexChanged protected.
@@ -494,6 +503,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-PTY-MASTER TO pitchtypedd::SelectedItem
            add 1 to DIALOG-PTY-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id pitchlocdd_SelectedIndexChanged protected.
@@ -506,8 +516,11 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            set DIALOG-PLO-IDX to pitchlocdd::SelectedIndex
            set DIALOG-PLO-MASTER TO pitchlocdd::SelectedItem
+           set self::Session::Item("DIALOG-PLO-IDX") to pitchlocdd::SelectedIndex as binary-long
+
            add 1 to DIALOG-PLO-IDX
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.  
        
        method-id countdd_SelectedIndexChanged protected.
@@ -518,16 +531,20 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
+               
            set DIALOG-CNT-IDX to countdd::SelectedIndex
-           set self::Session::Item("countdd") to countdd::SelectedIndex as binary-long
            set DIALOG-COUNT-MASTER TO countdd::SelectedItem
+           set self::Session::Item("DIALOG-CNT-IDX") to countdd::SelectedIndex as binary-long
            add 1 to DIALOG-CNT-IDX
+
            invoke self::Recalc.
            
            invoke self::Response::Redirect(self::Request::RawUrl)
 
        end method.  
-       
+      * #######################################
+        
+        
        method-id resetButton_Click protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
@@ -554,6 +571,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "RA" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            invoke self::Recalc.
+           invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id Recalc protected.
@@ -711,7 +729,8 @@ PM         set self::Session::Item("nameArray") to nameArray
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
            MOVE "B" to BAT300-IND-PB-FLAG
-           MOVE "I" to BAT300-PITCHER-SEL-FLAG
+      *    MOVE "I" to BAT300-PITCHER-SEL-FLAG
+           MOVE "I" to BAT300-BATTER-SEL-FLAG
            MOVE "RB" to BAT300-ACTION
            
            invoke bat310rununit::Call("BAT300WEBF")
@@ -811,7 +830,7 @@ PM         set self::Session::Item("nameArray") to nameArray
                into playerIdStr, playerName
            end-unstring.
            
-           set playerIdStr to playerId
+           set playerId to type Single::Parse(playerIdStr)
            
            MOVE playerName to BAT300-SEL-PLAYER
            
@@ -823,18 +842,31 @@ PM         set self::Session::Item("nameArray") to nameArray
        end method.
       
        method-id playerOKButton_Click protected.
+       local-storage section.
+       01 selectedPlayer type String.
+       01 selectionType type String.
+       01 playerName type String.
+       01 playerIdStr type String.
+       01 playerId type Single.
+       
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division returning playerNames as String.
+       procedure division using by value selectedPlayerInfo as String 
+                          returning playerNames as String.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
          
+           unstring selectedPlayerInfo delimited ";" into selectionType, selectedPlayer
+           
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
-           if playerListBox::SelectedItem = null
+               
+               
+           if selectionType = "located"
+      *        Player is selected using autofill textbox
                SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
                MOVE SPACES TO PLAY-ALT-KEY
-               unstring locatePlayerTextBox::Text delimited ", " into play-last-name, play-first-name
+               unstring selectedPlayer delimited ", " into play-last-name, play-first-name
                open input play-file
                READ PLAY-FILE KEY PLAY-ALT-KEY
                set BAT300-SEL-PLAYER to play-first-name::Trim & " " & play-last-name 
@@ -842,15 +874,31 @@ PM         set self::Session::Item("nameArray") to nameArray
                move "LP" to BAT300-ACTION
                invoke bat310rununit::Call("BAT300WEBF")
                if ERROR-FIELD NOT = SPACES
-                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   set playerNames to "er|" & ERROR-FIELD
+      *            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                    move spaces to ERROR-FIELD
+                   exit method
                END-IF    
                IF BAT300-IND-PB-FLAG = "P"  
                    MOVE play-player-id to BAT300-SAVE-PITCHER-ID 
                ELSE
                    MOVE play-player-id to BAT300-SAVE-BATTER-ID 
                end-if
-               CLOSE PLAY-FILE.               
+               CLOSE PLAY-FILE
+           else 
+      *        Player is selected using list box    
+               unstring selectedPlayer delimited by "," into playerIdStr, playerName
+           
+               set playerId to type Single::Parse(playerIdStr)
+           
+               MOVE playerName to BAT300-SEL-PLAYER
+           
+               if BAT300-IND-PB-FLAG = "P" THEN
+                   MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-PITCHER-ID
+               ELSE
+                   MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-BATTER-ID
+               END-IF.        .
+           
            if BAT300-IND-PB-FLAG = "P"
                move BAT300-SEL-TEAM to BAT300-PITCHER-ROSTER-TEAM  
                move BAT300-SEL-PLAYER to BAT300-PITCHER-DSP-NAME  
@@ -867,7 +915,6 @@ PM         set self::Session::Item("nameArray") to nameArray
       *    
       *    set pitcherTextBox::Text to BAT300-PITCHER
       *    set batterTextBox::Text to BAT300-BATTER
-           
            
            set playerNames to BAT300-PITCHER & ';' & BAT300-BATTER
        end method.  
@@ -1330,7 +1377,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set BAT310-SCR-IDX to scoredd::SelectedIndex
            set BAT310-SCR-HDR TO scoredd::SelectedItem
            add 1 to BAT310-SCR-IDX
-           invoke self::Recalc.
+           invoke self::Recalc
        end method.         
        
        method-id fieldingdd_SelectedIndexChanged protected.
@@ -1344,7 +1391,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set BAT310-FIELDING-IDX to pitchtypedd::SelectedIndex
            set BAT310-FIELDING-MASTER TO scoredd::SelectedItem
            add 1 to BAT310-FIELDING-IDX
-           invoke self::Recalc.
+           invoke self::Recalc
        end method.
        
        method-id thisTeamCheckBox_CheckedChanged protected.
@@ -1415,7 +1462,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            else
                set ifButton::Text to "Outfield"
                move "Y" to BAT310-INFIELD-IP.
-           invoke self::Recalc.
+           invoke self::Recalc
        end method.    
               
        method-id hlButton_Click protected.

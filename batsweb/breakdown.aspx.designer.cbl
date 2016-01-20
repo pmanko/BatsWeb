@@ -502,6 +502,14 @@
       *>> </remarks>
        01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
+      *>> playerListBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playerListBox type System.Web.UI.WebControls.ListBox protected.
+      *>> <summary>
       *>> previousSzoneImage control.
       *>> </summary>
       *>> <remarks>
