@@ -67,7 +67,7 @@
                                                 <cc1:CalendarExtender ID="endDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="endDateTextBox_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="endDateTextBox" />
 
                                             </div>
-                                            <a class="list-group-item list-group-item-info" href="#" data-toggle="modal" data-target="#oneClickDateModal">One-Click Dates</a>
+                                            <a class="list-group-item list-group-item-info" href="#" data-toggle="modal" data-target="#oneClickDateModal">Date One-Clicks</a>
 
                                         </div>
                                     </div>
@@ -98,11 +98,11 @@
                                                 </div>
                                                 <div class="list-group-item">
                                                     <div class='form-group'>
-                                                        <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" AutoPostBack="True" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
+                                                        <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
                                                         <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
                                                         <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
                                                     </div>
-                                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" AutoPostBack="True" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
+                                                    <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,9 +128,9 @@
                                         <div class="list-group">
                                             <div class="list-group-item">
                                                 <h5>Throw Selection</h5>
-                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsrightRadioButton" runat="server" GroupName="throws" text="Right"  /></div>
-                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsleftRadioButton" runat="server" GroupName="throws" text="Left"  /></div>
-                                                <div class='radio radio-primary'><asp:RadioButton ID="throwseitherRadioButton" runat="server" GroupName="throws" text="Either"  /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsrightRadioButton" runat="server" GroupName="throws" text="Right" OnCheckedChanged="throwsrightRadioButton_CheckedChanged" /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwsleftRadioButton" runat="server" GroupName="throws" text="Left" OnCheckedChanged="throwsleftRadioButton_CheckedChanged" /></div>
+                                                <div class='radio radio-primary'><asp:RadioButton ID="throwseitherRadioButton" runat="server" GroupName="throws" text="Either" OnCheckedChanged="throwseitherRadioButton_CheckedChanged" /></div>
 
                                             </div>
                                         </div>
@@ -153,27 +153,27 @@
                                                         <asp:TextBox ID="pitcheroptionsTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcheranyRadioButton" runat="server" GroupName="pitchertype" text="Any Type"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcheranyRadioButton" runat="server" GroupName="pitchertype" text="Any Type" OnCheckedChanged="pitcheranyRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcherbreakingRadioButton" runat="server" GroupName="pitchertype" text="Breaking Ball"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcherbreakingRadioButton" runat="server" GroupName="pitchertype" text="Breaking Ball" OnCheckedChanged="pitcherbreakingRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                 </div> 
                                                 <div class="row">
                                                     <div class="col-lg-2">
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcherpowerRadioButton" runat="server" GroupName="pitchertype" text="Power"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitcherpowerRadioButton" runat="server" GroupName="pitchertype" text="Power" OnCheckedChanged="pitcherpowerRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitchercustomRadioButton" runat="server" GroupName="pitchertype" text="Custom"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitchercustomRadioButton" runat="server" GroupName="pitchertype" text="Custom" OnCheckedChanged="pitchercustomRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                 </div> 
                                                 <div class="row">
                                                     <div class="col-lg-2">
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitchercontrolRadioButton" runat="server" GroupName="pitchertype" text="Control"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="pitchercontrolRadioButton" runat="server" GroupName="pitchertype" text="Control" OnCheckedChanged="pitchercontrolRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                     <div class="col-lg-5">
                                                     </div> 
@@ -198,17 +198,17 @@
                                                     <div class="col-lg-2">
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="allinningsRadioButton" runat="server" GroupName="innings" text="All Innings"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="allinningsRadioButton" runat="server" GroupName="innings" text="All Innings" OnCheckedChanged="allinningsRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="reliefRadioButton" runat="server" GroupName="innings" text="Relief Only"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="reliefRadioButton" runat="server" GroupName="innings" text="Relief Only" OnCheckedChanged="reliefRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                 </div> 
                                                 <div class="row">
                                                     <div class="col-lg-2">
                                                     </div> 
                                                     <div class="col-lg-5">
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="startinningsRadioButton" runat="server" GroupName="innings" text="Start Only"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="startinningsRadioButton" runat="server" GroupName="innings" text="Start Only" OnCheckedChanged="startinningsRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                 </div>
                                             </div>
@@ -244,9 +244,9 @@
 
                                                     <div class="list-group-item">                                                        
                                                         <h5>Bats</h5>                                                        
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right"  /></div>
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left"  /></div>
-                                                        <div class='radio radio-primary'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either"  /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsrightRadioButton" runat="server" GroupName="bats" text="Right" OnCheckedChanged="batsrightRadioButton_CheckedChanged" /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batsleftRadioButton" runat="server" GroupName="bats" text="Left" OnCheckedChanged="batsleftRadioButton_CheckedChanged" /></div>
+                                                        <div class='radio radio-primary'><asp:RadioButton ID="batseitherRadioButton" runat="server" GroupName="bats" text="Either" OnCheckedChanged="batseitherRadioButton_CheckedChanged" /></div>
                                                     </div> 
                                                 </div> 
                                             </div>
@@ -266,17 +266,17 @@
                                                                 <asp:TextBox ID="batteroptionsTextBox" runat="server" style="text-align: left" class="form-control"></asp:TextBox>
                                                             </div> 
                                                             <div class="col-lg-5">
-                                                                <div class='radio radio-primary'><asp:RadioButton ID="batteranyRadioButton" runat="server" GroupName="battertype" text="Any Type"  /></div>
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="batteranyRadioButton" runat="server" GroupName="battertype" text="Any Type" OnCheckedChanged="batteranyRadioButton_CheckedChanged" /></div>
                                                             </div> 
                                                             <div class="col-lg-5">
-                                                                <div class='radio radio-primary'><asp:RadioButton ID="battercustomRadioButton" runat="server" GroupName="battertype" text="Custom"  /></div>
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="battercustomRadioButton" runat="server" GroupName="battertype" text="Custom" OnCheckedChanged="battercustomRadioButton_CheckedChanged" /></div>
                                                             </div> 
                                                         </div> 
                                                         <div class="row">
                                                             <div class="col-lg-2">
                                                             </div> 
                                                             <div class="col-lg-5">
-                                                                <div class='radio radio-primary'><asp:RadioButton ID="batterpowerRadioButton" runat="server" GroupName="battertype" text="Power"  /></div>
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="batterpowerRadioButton" runat="server" GroupName="battertype" text="Power" OnCheckedChanged="batterpowerRadioButton_CheckedChanged" /></div>
                                                             </div> 
                                                             <div class="col-lg-5">
                                                             </div> 
@@ -285,7 +285,7 @@
                                                             <div class="col-lg-2">
                                                             </div> 
                                                             <div class="col-lg-5">
-                                                                <div class='radio radio-primary'><asp:RadioButton ID="battersingleRadioButton" runat="server" GroupName="battertype" text="Single"  /></div>
+                                                                <div class='radio radio-primary'><asp:RadioButton ID="battersingleRadioButton" runat="server" GroupName="battertype" text="Single" OnCheckedChanged="battersingleRadioButton_CheckedChanged" /></div>
                                                             </div> 
                                                             <div class="col-lg-5">
                                                             </div> 

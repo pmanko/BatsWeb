@@ -72,6 +72,9 @@
            INITIALIZE BAT310-DIALOG-FIELDS
            MOVE "I" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.         
       *show and hide batter based on L or R handedness
 
            invoke runnersdd::Items::Clear.
@@ -182,8 +185,14 @@
       *    CHECK IF WE HAVE A TEMP FILE TO PROCESS
            move "FC" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
            move "IN" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                    
            IF BAT310-BYPASS-FLAG = "Y"
       *        invoke selectionButton_ModalPopupExtender::Show
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openModal" ,"var showModal = 1;", true)
@@ -273,9 +282,15 @@
            INITIALIZE BAT300-DIALOG-FIELDS
            MOVE "IN" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF").
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                    
            MOVE "I" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF").
-            SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                    
+           SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
            start play-file key > play-alt-key.
@@ -600,6 +615,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set DIALOG-INN-IDX to (outsdd::SelectedIndex + 1)
            MOVE "RA" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                    
            invoke self::Recalc.
            invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
@@ -628,41 +646,43 @@ PM         set self::Session::Item("nameArray") to nameArray
                as type RunUnit
            move "RE" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
-
-                  set batterTextBox::Text to DIALOG-BATTER::Trim
-                  set pitcherTextBox::Text to DIALOG-PITCHER::Trim
-                  set gamesTextBox::Text to DIALOG-GAME-RANGE::Trim
-                  set locationTextBox::Text to DIALOG-GAME-LOC::Trim
-                  set gLabel::Text to BAT310-G::ToString
-                  set abLabel::Text to BAT310-AB::ToString
-                  set hLabel::Text to BAT310-H::ToString
-                  set doubleLabel::Text to BAT310-2B::ToString
-                  set tripleLabel::Text to BAT310-3B::ToString
-                  set hrLabel::Text to BAT310-HR::ToString
-                  set rbiLabel::Text to BAT310-RBI::ToString
-                  set bbLabel::Text to BAT310-BB::ToString
-                  set kLabel::Text to BAT310-K::ToString
-                  set sacLabel::Text to BAT310-SAC::ToString
-                  set dpLabel::Text to BAT310-DP::ToString
-                  set hbpLabel::Text to BAT310-HBP::ToString
-                  set tpaLabel::Text to BAT310-TPA::ToString
-                  set avg to BAT310-BA
-                  set avgLabel::Text to avg::ToString("#.000")
-                  set avg to BAT310-SP
-                  set slgLabel::Text to avg::ToString("#.000")
-                  set avg to BAT310-OBP
-                  set obpLabel::Text to avg::ToString("#.000")
-                  set avg to BAT310-OPS
-                  set opsLabel::Text to avg::ToString("#.000")
-                  set fbLabel::Text to BAT310-FB::ToString
-                  set gbLabel::Text to BAT310-GB::ToString
-                  set ldLabel::Text to BAT310-LD::ToString
-                  set puLabel::Text to BAT310-PU::ToString
-                  set buLabel::Text to BAT310-BU::ToString
-                  set hardLabel::Text to BAT310-HARD::Trim
-                  set medLabel::Text to BAT310-MEDIUM::Trim
-                  set softLabel::Text to BAT310-SOFT::Trim
-
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.         
+               
+           set batterTextBox::Text to DIALOG-BATTER::Trim
+           set pitcherTextBox::Text to DIALOG-PITCHER::Trim
+           set gamesTextBox::Text to DIALOG-GAME-RANGE::Trim
+           set locationTextBox::Text to DIALOG-GAME-LOC::Trim
+           set gLabel::Text to BAT310-G::ToString
+           set abLabel::Text to BAT310-AB::ToString
+           set hLabel::Text to BAT310-H::ToString
+           set doubleLabel::Text to BAT310-2B::ToString
+           set tripleLabel::Text to BAT310-3B::ToString
+           set hrLabel::Text to BAT310-HR::ToString
+           set rbiLabel::Text to BAT310-RBI::ToString
+           set bbLabel::Text to BAT310-BB::ToString
+           set kLabel::Text to BAT310-K::ToString
+           set sacLabel::Text to BAT310-SAC::ToString
+           set dpLabel::Text to BAT310-DP::ToString
+           set hbpLabel::Text to BAT310-HBP::ToString
+           set tpaLabel::Text to BAT310-TPA::ToString
+           set avg to BAT310-BA
+           set avgLabel::Text to avg::ToString("#.000")
+           set avg to BAT310-SP
+           set slgLabel::Text to avg::ToString("#.000")
+           set avg to BAT310-OBP
+           set obpLabel::Text to avg::ToString("#.000")
+           set avg to BAT310-OPS
+           set opsLabel::Text to avg::ToString("#.000")
+           set fbLabel::Text to BAT310-FB::ToString
+           set gbLabel::Text to BAT310-GB::ToString
+           set ldLabel::Text to BAT310-LD::ToString
+           set puLabel::Text to BAT310-PU::ToString
+           set buLabel::Text to BAT310-BU::ToString
+           set hardLabel::Text to BAT310-HARD::Trim
+           set medLabel::Text to BAT310-MEDIUM::Trim
+           set softLabel::Text to BAT310-SOFT::Trim
            invoke plListBox::Items::Clear
            move 1 to aa.
        5-loop.
@@ -702,8 +722,7 @@ PM         set self::Session::Item("nameArray") to nameArray
        catcher-done.
            set catcherdd::SelectedIndex to 0
        end method.      
-     
-
+    
        method-id btnPitchTypes_Click final private.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
@@ -723,12 +742,6 @@ PM         set self::Session::Item("nameArray") to nameArray
            move "R" to BAT310-DISPLAY-TYPE
            INVOKE self::Recalc
        end method.
-
-       
-
-       
-       
-       
   
        method-id selectpitcherButton_Click private.
        linkage section.
@@ -743,6 +756,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "RP" to BAT300-ACTION
            
            invoke bat310rununit::Call("BAT300WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
            move " " to BAT300-SEL-TEAM
            
       * Called Client-Side    
@@ -764,6 +780,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "RB" to BAT300-ACTION
            
            invoke bat310rununit::Call("BAT300WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
            move " " to BAT300-SEL-TEAM
       
       * Called Client-Side:
@@ -790,6 +809,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
            invoke bat310rununit::Call("BAT300WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
       *    invoke playerListBox::Items::Clear.
            move 1 to aa.
        5-loop.
@@ -824,7 +846,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
            invoke bat310rununit::Call("BAT300WEBF")
-           
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
       *    invoke playerListBox::Items::Clear.
            set teamList to ""
            move 1 to aa.
@@ -940,6 +964,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            end-if.
            MOVE "TI" TO BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                         
            MOVE " " to BAT300-IND-PB-FLAG  
            
       *    
@@ -961,7 +988,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "A" to BAT300-PITCHER-SEL-FLAG
            MOVE "TI" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-           
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                         
       *    Called on client side:     
       *    set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
            
@@ -979,7 +1008,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "A" to BAT300-BATTER-SEL-FLAG
            MOVE "TI" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-           
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                         
       *    Called on client side:     
       *    set batterSelectionTextBox::Text to BAT300-BATTER::Trim
            
@@ -1026,12 +1057,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                
            MOVE "GO" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
-      *     if ERROR-FOUND = "Y" 
-      *         MOVE " " TO ERROR-FOUND
-      *         MOVE " " TO BAT300-ACTION
-      *         call "BAT300WINF"
-      *     else
-      *         set self::DialogResult to type DialogResult::OK.
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.              
            invoke self::reloadCatchers
            invoke self::Recalc
            
@@ -1051,6 +1079,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set MOUSEY, MOUSEY2 to e::Y
            move "MO" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                 
            invoke self::batstube.
        end method.
        
@@ -1064,6 +1095,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                type RunUnit
            MOVE "VA" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                 
            invoke self::batstube.
        end method.
        
@@ -1127,7 +1161,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           MOVE "A" to BAT300-END-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
        end method.
        
        method-id allLocRadioButton_CheckedChanged protected.
@@ -1209,10 +1243,273 @@ PM         set self::Session::Item("video-titles") to vidTitles
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-            if myCheckBox::Checked
+           if myCheckBox::Checked
                move "Y" to BAT300-TEAM-ONLY-FLAG
             else
                move "N" to BAT300-TEAM-ONLY-FLAG.
+       end method.
+ 
+
+       method-id throwsrightRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if throwsrightRadioButton::Checked 
+               MOVE "R" to BAT300-PITCHER-THROWS-FLAG
+               MOVE "TI" to BAT300-ACTION  
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim.
+       end method.
+
+       method-id throwsleftRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if throwsleftRadioButton::Checked
+               MOVE "L" to BAT300-PITCHER-THROWS-FLAG
+               MOVE "TI" to BAT300-ACTION  
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim.
+       end method.
+
+       method-id throwseitherRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if throwseitherRadioButton::Checked
+               MOVE " " to BAT300-PITCHER-THROWS-FLAG
+               MOVE "TI" to BAT300-ACTION  
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim.
+       end method.
+       
+       method-id pitcheranyRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if pitcheranyRadioButton::Checked
+               MOVE "A" TO BAT300-PITCHER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
+               SET pitcheroptionsTextBox::Text to BAT300-PITCHER-TYPE-FLAG::Trim.
+       end method.
+
+       method-id pitcherpowerRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if pitcherpowerRadioButton::Checked
+               MOVE "P" TO BAT300-PITCHER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER
+               SET pitcheroptionsTextBox::Text to BAT300-PITCHER-TYPE-FLAG::Trim.
+       end method.
+
+       method-id pitchercontrolRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if pitchercontrolRadioButton::Checked
+               MOVE "C" TO BAT300-PITCHER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER
+               SET pitcheroptionsTextBox::Text to BAT300-PITCHER-TYPE-FLAG::Trim.
+       end method.
+
+       method-id pitcherbreakingRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if pitcherbreakingRadioButton::Checked
+               MOVE "B" TO BAT300-PITCHER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER
+               SET pitcheroptionsTextBox::Text to BAT300-PITCHER-TYPE-FLAG::Trim.
+       end method.
+
+       method-id pitchercustomRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit
+           if pitchercustomRadioButton::Checked
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               SET pitcherSelectionTextBox::Text to BAT300-PITCHER
+               SET pitcheroptionsTextBox::Text to BAT300-PITCHER-TYPE-FLAG::Trim.
+       end method.
+
+       method-id allinningsRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           if allinningsRadioButton::Checked
+               MOVE "A" TO BAT300-START-R-FLAG.
+       end method.
+
+       method-id reliefRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           if reliefRadioButton::Checked
+               MOVE "S" TO BAT300-START-R-FLAG.
+       end method.
+
+       method-id startinningsRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           if startinningsRadioButton::Checked
+               MOVE "R" TO BAT300-START-R-FLAG.
+       end method.
+ 
+       method-id batsrightRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+           if batsrightRadioButton::Checked
+               MOVE "R" TO BAT300-BATTER-BATS-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id batsleftRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+            if batsleftRadioButton::Checked
+               MOVE "L" TO BAT300-BATTER-BATS-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id batseitherRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+            if batseitherRadioButton::Checked
+               MOVE " " TO BAT300-BATTER-BATS-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id batteranyRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+           if batteranyRadioButton::Checked
+               MOVE "A" TO BAT300-BATTER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batteroptionsTextBox::Text to BAT300-BATTER-TYPE-FLAG::Trim
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id batterpowerRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+           if batterpowerRadioButton::Checked
+               MOVE "P" TO BAT300-BATTER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batteroptionsTextBox::Text to BAT300-BATTER-TYPE-FLAG::Trim
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id battersingleRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+           if battersingleRadioButton::Checked
+               MOVE "S" TO BAT300-BATTER-TYPE-FLAG
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batteroptionsTextBox::Text to BAT300-BATTER-TYPE-FLAG::Trim
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
+       end method.
+
+       method-id battercustomRadioButton_CheckedChanged protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           set bat310rununit to self::Session::Item("310rununit") as
+               type RunUnit           
+           if battercustomRadioButton::Checked
+               MOVE "TI" TO BAT300-ACTION
+               invoke bat310rununit::Call("BAT310WEBF")            
+               set batteroptionsTextBox::Text to BAT300-BATTER-TYPE-FLAG::Trim
+               set batterSelectionTextBox::Text to BAT300-BATTER::Trim.
        end method.
   
        method-id typesButton_Click protected.
@@ -1242,7 +1539,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            MOVE "SC" TO BAT310-ACTION
-           CALL "BAT310WINF"
+           invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                 
       *     set ComparePlaysForm to new type BatterPitcherBreakdown.ComparePlaysForm
       *     invoke ComparePlaysForm::Show
        end method.
@@ -1421,7 +1721,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
                           
            set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           
+               set bat310rununit to self::Session::Item("310rununit")
+                   as type RunUnit           
            if dateChoiceFlag = "A"
                MOVE "A" to BAT300-DATE-CHOICE-FLAG
                MOVE "A" to BAT300-GAME-FLAG
@@ -1429,16 +1730,14 @@ PM         set self::Session::Item("video-titles") to vidTitles
                set startEndDates to "ALL"
            else
                MOVE dateChoiceFlag to BAT300-DATE-CHOICE-FLAG
-               MOVE "DC" to BAT300-ACTION
-           
-               set bat310rununit to self::Session::Item("310rununit")
-                   as type RunUnit
-               
-               invoke bat310rununit::Call("BAT300WEBF")
-           
                MOVE "D" to BAT300-GAME-FLAG
                MOVE "D" to BAT300-END-GAME-FLAG
-           
+               MOVE "DC" to BAT300-ACTION
+               invoke bat310rununit::Call("BAT300WEBF")
+               if ERROR-FIELD NOT = SPACES
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   move spaces to ERROR-FIELD
+               end-if    
                set startEndDates to BAT300-GAME-DATE::ToString("##/##/##") & ";" & BAT300-END-GAME-DATE::ToString("##/##/##").
        end method.
        
@@ -1467,7 +1766,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" to BAT300-ACTION
            
            invoke bat310rununit::Call("BAT300WEBF")
-      
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
       *    Called on client side: 
       *    set pitcherSelectionTextBox::Text to BAT300-PITCHER::Trim
       *    set pitcherTextBox::Text to BAT300-PITCHER
@@ -1494,7 +1795,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "TI" to BAT300-ACTION
            
            invoke bat310rununit::Call("BAT300WEBF")
-           
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
       * Called Client-Side    
       *    SET batterSelectionTextBox::Text to BAT300-BATTER::Trim
       *    set batterTextBox::Text to BAT300-BATTER
@@ -1625,6 +1928,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
                move " " to BAT310-INFIELD-IP
                MOVE "FB" TO BAT310-ACTION
                invoke bat310rununit::Call("BAT310WEBF")
+               if ERROR-FIELD NOT = SPACES
+                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+                   move spaces to ERROR-FIELD
+               end-if    
            else
                set ifButton::Text to "Outfield"
                move "Y" to BAT310-INFIELD-IP.
@@ -1648,6 +1955,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "PX" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
            invoke self::batstube
        end method.  
 
@@ -1661,6 +1971,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "PP" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
            invoke self::batstube
        end method.  
    
@@ -1723,6 +2036,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "NX" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
            invoke self::batstube
        end method.  
 
@@ -1736,6 +2052,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
                type RunUnit                
            MOVE "NN" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
            invoke self::batstube
        end method.  
    
