@@ -1274,7 +1274,139 @@ PM         set self::Session::Item("video-titles") to vidTitles
            Else
                set nextListBoxItems to self::nextLb_Load().
        end method.
-       
+      * ########################
+      * One Click Dates
+      * ########################
+       method-id allGamesButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "A" to BAT300-DATE-CHOICE-FLAG
+           MOVE "A" to BAT300-GAME-FLAG
+           MOVE "A" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to false
+           set endDateRadioButton::Checked to false
+           set allStartRadioButton::Checked to true
+           set allEndRadioButton::Checked to true
+       end method.
+
+       method-id currentYearButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat310data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "C" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method.
+
+       method-id pastYearButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "P" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method.
+
+       method-id twoWeeksButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "W" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method.
+
+       method-id currentMonthButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "M" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method.
+
+       method-id twoMonthsButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "2" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method.
+
+       method-id threeMonthsButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat300_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           MOVE "3" to BAT300-DATE-CHOICE-FLAG
+           MOVE "DC" to BAT300-ACTION
+           set bat310rununit to self::Session::Item("310rununit")
+               as type RunUnit
+           invoke bat310rununit::Call("BAT300WEBF")
+           MOVE "D" to BAT300-GAME-FLAG
+           MOVE "D" to BAT300-END-GAME-FLAG
+           set startDateRadioButton::Checked to true
+           set endDateRadioButton::Checked to true.
+           set startDateTextBox::Text to BAT300-GAME-DATE::ToString("##/##/##").
+           set endDateTextBox::Text to BAT300-END-GAME-DATE::ToString("##/##/##").
+       end method. 
       * ########################
       * #### Helper Methods ####
       * ########################
