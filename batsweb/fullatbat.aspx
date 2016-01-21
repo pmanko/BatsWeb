@@ -32,7 +32,7 @@
 
         <!-- Player Selection Modal -->
         <div class="modal" id="showPlayerModal" tabindex="-1" role="dialog" aria-labelledby="ShowPlayerModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -41,12 +41,11 @@
                     <div class="modal-body"> 
                         <div class="row">
                             <div class='col-md-12'>
-                                <div class="panel panel-default">
-                                    <label>Locate Player:</label>
-                                    <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
-                                </div>
+                                <label>Locate Player:</label>
+                                <asp:TextBox ID="locatePlayerTextBox" runat="server" class="form-control"></asp:TextBox>
                             </div>
                         </div>
+                        <br />
                         <div class="row">
                             <div class='col-md-12'>
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -95,7 +94,7 @@
                                 <cc1:MaskedEditExtender ID="TextBox4_MaskedEditExtender" runat="server" BehaviorID="TextBox4_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox4" />
                                 <cc1:CalendarExtender ID="TextBox4_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox4_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="TextBox4" />
                                 
-                                <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-default btn-sm">Date One-Clicks</a>
+                                <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-block btn-info">Date One-Clicks</a>
                            <!--     <asp:Button ID="dateButton" runat="server" Text="Date One-Clicks" data-toggle="modal" data-target="#showDatesModal" CssClass="btn btn-default btn-sm" />-->
                             </div>
                         </div>
@@ -436,7 +435,7 @@
         </asp:Panel>
 
 
-        <!-- PTeam Selection Modal -->
+        <!-- Date Selection Modal -->
         <div class="modal" id="showDatesModal" tabindex="-1" role="dialog" aria-labelledby="ShowDatesModalLabel">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
@@ -488,24 +487,22 @@
 
         <!-- PTeam Selection Modal -->
         <div class="modal" id="showPTeamModal" tabindex="-1" role="dialog" aria-labelledby="ShowPTeamModalLabel">
-            <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="H1">Which pitcher team?</h4>
                     </div>            
                     <div class="modal-body"> 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
-                            </div>
-                        </div>
+                       
+                        <asp:DropDownList ID="pTeamDropDownList" runat="server" OnSelectedIndexChanged="pTeamDropDownList_SelectedIndexChanged" class="form-control">
+                        </asp:DropDownList>
+                            
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                        <asp:Button ID="pTeamOKButton" runat="server" OnClick="pTeamOKButton_Click" Text="OK" class="btn btn-primary" />
                     </div>
                 </div>
             </div>
@@ -519,17 +516,14 @@
                         <h4 class="modal-title" id="H2">Which batter team?</h4>
                     </div>            
                     <div class="modal-body"> 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" style="margin-left: 60px" class="btn btn-default" />
-                            </div>
-                        </div>
+                        
+                        <asp:DropDownList ID="bTeamDropDownList" runat="server" OnSelectedIndexChanged="bTeamDropDownList_SelectedIndexChanged" class="form-control">
+                        </asp:DropDownList>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                        <asp:Button ID="bTeamOKButton" runat="server" OnClick="bTeamOKButton_Click" Text="OK" class="btn btn-primary" />
                     </div>
                 </div>
             </div>

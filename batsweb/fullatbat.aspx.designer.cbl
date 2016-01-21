@@ -22,14 +22,6 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
-      *>> Label1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Label1 type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
       *>> locatePlayerTextBox control.
       *>> </summary>
       *>> <remarks>

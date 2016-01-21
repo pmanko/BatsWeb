@@ -385,11 +385,14 @@ PM         set self::Session::Item("nameArray") to nameArray
       *         set btnLAPitcher::Visible to true.
                
       *radio buttons for Start/End dates or 'All' dates
-           if BAT300-DATE-CHOICE-FLAG = "A"
+           if BAT300-GAME-FLAG = "A"
                SET allstartRadioButton::Checked to true    
+           else
+               set startDateRadioButton::Checked to true.
+           
+           if BAT300-END-GAME-FLAG = "A"
                SET allendRadioButton::Checked to true
            else
-               set startDateRadioButton::Checked to true
                set endDateRadioButton::Checked to true.
  
            
@@ -954,6 +957,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
+           
            MOVE "A" to BAT300-PITCHER-SEL-FLAG
            MOVE "TI" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
@@ -1012,10 +1016,14 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
+               
+           
            invoke type System.Single::TryParse(startDateTextBox::Text::ToString::Replace("/", ""), by reference gmDate)
-           set BAT300-GAME-DATE to gmDate 
+           set BAT300-GAME-DATE to gmDate.
+               
            invoke type System.Single::TryParse(endDateTextBox::Text::ToString::Replace("/", ""), by reference gmDate)
-           set BAT300-END-GAME-DATE to gmDate
+           set BAT300-END-GAME-DATE to gmDate.
+               
            MOVE "GO" to BAT300-ACTION
            invoke bat310rununit::Call("BAT300WEBF")
       *     if ERROR-FOUND = "Y" 
