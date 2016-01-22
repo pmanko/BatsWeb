@@ -40,7 +40,6 @@
                       <ul class="dropdown-menu">
                         <li><a href="/gameSummary.aspx?league=MA">Games</a></li>
                         <li><a href="/fullatbat.aspx?league=MA">Full At Bat</a></li>
-                        <li role="separator" class="divider"></li>
                         <li><a href="/pitchervsbatter.aspx?league=MA">Pitcher vs. Batter At Bats</a></li>
                         <li><a href="/breakdown.aspx?league=MA">Batter/Pitcher Breakdown</a></li>
                       </ul>
@@ -51,6 +50,8 @@
                       <ul class="dropdown-menu">
                         <li><a href="/gameSummary.aspx?league=MI">Games</a></li>
                         <li><a href="/fullatbat.aspx?league=MI">Full At Bat</a></li>
+                        <li><a href="/pitchervsbatter.aspx?league=MI">Pitcher vs. Batter At Bats</a></li>
+                        <li><a href="/breakdown.aspx?league=MI">Batter/Pitcher Breakdown</a></li>
                       </ul>
                     </li>
                     <li><a href="/EZvideo.aspx">EZ Video</a></li>

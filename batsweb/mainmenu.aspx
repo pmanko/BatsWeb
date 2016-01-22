@@ -34,9 +34,9 @@
                     <h2>MINORS</h2>     
                     <a href="/gameSummary.aspx?league=MI" class="btn btn-default btn-block">Games</a>    
                     <a href="/fullatbat.aspx?league=MI" class="btn btn-default btn-block">Full At Bat</a>
+                    <a href="/pitchervsbatter.aspx?league=MI" class="btn btn-default btn-block">Pitcher vs Batter At Bats</a>
+                    <a href="/breakdown.aspx?league=MI" class="btn btn-default btn-block">Batter/Pitcher Breakdown</a>
                         
-                    <asp:Button ID="Button10" runat="server" Text="Button" CssClass="btn btn-default btn-block"  />
-                    <asp:Button ID="Button9" runat="server" Text="Button" CssClass="btn btn-default btn-block"  />
                         
         <%--                        <asp:Button ID="Button7" runat="server" Text="Games" OnClick="Button7_Click" Width="200px" CssClass="btn btn-default"  />--%>
                             <%--<asp:Button ID="Button11" runat="server" Text="Button" OnClick="Button11_Click" Width="200px" CssClass="btn btn-default"  />--%>
