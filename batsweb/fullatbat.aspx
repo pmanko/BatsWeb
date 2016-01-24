@@ -410,7 +410,7 @@
                         <div class="panel-body">
                         <div class="row">
                             <div class='col-md-12'>
-                                <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text=" Game    Inn Batter                 Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text="Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
                             </div>
                         </div>
                         <div class="row">

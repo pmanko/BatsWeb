@@ -14,7 +14,7 @@
             <asp:Panel ID="gamesPanel" runat="server">
                 <div class="row">
                     <div class='col-md-12'>
-                    <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date        Vis                         Home                     Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                        <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date      Vis                      Home                   Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
                     </div>
                 </div>
                 <div class="row">
@@ -103,7 +103,7 @@
                         <div class="list-group-item">
                             <div class='row'>
                                 <div class="col-md-12">
-                                    <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text=" Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                    <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
                                 </div>
                             </div>
                             <div class='row'>
