@@ -2,6 +2,7 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %> 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link type="text/css" href="/Styles/breakdown.css" rel="stylesheet" />
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/breakdowncallpark.js"></script> 
     <script type="text/javascript" src="Scripts/breakdown.js"></script> 
@@ -24,6 +25,20 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
+<%--        <br />
+        <br />
+        <h1>TEST AREA</h1>
+        <div class="row">
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+
+        <br />
+        <br />--%>
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -710,7 +725,16 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="panel panel-default">
-                            <asp:ListBox ID="plListBox" runat="server" Height="320px" Font-Names="consolas" class="form-control" ></asp:ListBox>
+                            <div class="panel-heading">
+                                <div class="panel-title">Pitch List</div>
+                            </div>
+                            <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_pitchListValueField" data-postback="false" data-multiple="true">           
+                                <tbody id="pitchListTableBody" runat="server"></tbody>
+
+                            </table>
+                            <asp:HiddenField ID="pitchListValueField" runat="server" onvaluechanged="testCallback" />
+
+                            
                         </div>
                     </div>
                 </div>

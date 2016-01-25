@@ -3,6 +3,7 @@
 	 $("#changeSelectionModal").modal('show');
     };
 	
+    makeServerRequest('reload-pitch-list')
 });
 
 
@@ -13,6 +14,10 @@ function callparkdetail() {
     //   event.preventDefault();
 }
 
+function makeServerRequest(requestType, args) {
+    CallServer(requestType + "|" + args, "");
+    
+}
 
 
 // -----------------------------
@@ -79,6 +84,10 @@ function GetServerData(arg, context) {
     else if (actionFlag == 'po') {
         playerSelectedSuccess(splitArgs[1]);
     }
+    else if (actionFlag == 'reload-pitch-list') {
+        populateListboxTable("#pitchListTable", splitArgs[1])
+
+    }
 	
 	
 };
@@ -91,7 +100,7 @@ function GetServerData(arg, context) {
 $(document).on("click", "#pitcherAllButton,#batterAllButton", function(event){
    // Selects all pitchers
    var requestFlag = $(this).data("playerType")+"a";
-   CallServer(requestFlag, ""); 
+   makeServerRequest(requestFlag, ""); 
 });
 
 // Batter - select all
@@ -102,7 +111,7 @@ $(document).on("click", "#oneClickDate button", function(event) {
     // Calls server with one-click date parameter and request type flag
 	// console.log($(this).data('dateFlag'));
     var requestFlag = "od";
-	CallServer(requestFlag + $(this).data('dateFlag'), "");
+	makeServerRequest(requestFlag, $(this).data('dateFlag'));
 
 });
 
@@ -143,7 +152,7 @@ $(document).on("click", "#teamSelectionOkButton", function(event) {
     else if (modalType=="batter")
         requestFlag = 'bt';
         
-	CallServer(requestFlag + $('#MainContent_pTeamDropDownList :selected').text(), "");
+	makeServerRequest(requestFlag, $('#MainContent_pTeamDropDownList :selected').text());
 
 });
 
@@ -160,7 +169,7 @@ $(document).on('show.bs.modal', '#teamSelectionModal', function (event) {
 
 // Player Selection
 $(document).on('change', "#MainContent_teamDropDownList", function(event) {
-    CallServer('lr'+$(this).val())    
+    makeServerRequest('lr',$(this).val())    
 });
 
 // $(document).on('change', "#MainContent_playerListBox", function(event) {
@@ -181,11 +190,11 @@ $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
   modal.data("type", type);
 
   if(type == 'pitcher')
-    CallServer('sp');
+    makeServerRequest('sp');
   else
-    CallServer('sb');
+    makeServerRequest('sb');
     
-  CallServer('lr'+$("#MainContent_teamDropDownList").val())
+  makeServerRequest('lr',$("#MainContent_teamDropDownList").val())
   
 });
 
@@ -199,36 +208,36 @@ $(document).on('click', "#selectPlayerButton", function(event){
         selectedPlayerInfo = "selected;" + $("#MainContent_playerListBox").val()+','+$("#MainContent_playerListBox").find("option:selected").text()
     }
     
-    CallServer("po"+ selectedPlayerInfo); 
+    makeServerRequest("po", selectedPlayerInfo); 
 });
 
 // Pitch Buttons
 $(document).on("click", "#previousResultsButton", function(event){
 
-    CallServer("tr");
+    makeServerRequest("tr");
 });
 
 $(document).on("click", "#previousButton", function(event){
 
-    CallServer("pb");
+    makeServerRequest("pb");
 });
 
 $(document).on("click", "#previousTypesButton", function(event){
-    CallServer("tt");
+    makeServerRequest("tt");
 });
 
 $(document).on("click", "#nextResultsButton", function (event) {
 
-    CallServer("nr");
+    makeServerRequest("nr");
 });
 
 $(document).on("click", "#nextButton", function (event) {
 
-    CallServer("nb");
+    makeServerRequest("nb");
 });
 
 $(document).on("click", "#nextTypesButton", function (event) {
-    CallServer("nt");
+    makeServerRequest("nt");
 });
 // Success Callbacks
 function teamSelectionSuccess(selectedTeam, typeFlag) {

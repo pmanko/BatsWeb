@@ -686,13 +686,21 @@
       *>> </remarks>
        01 resetButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> plListBox control.
+      *>> pitchListTableBody control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 plListBox type System.Web.UI.WebControls.ListBox protected.
+       01 pitchListTableBody type System.Web.UI.HtmlControls.HtmlGenericControl protected.
+      *>> <summary>
+      *>> pitchListValueField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 pitchListValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> szoneImageButton control.
       *>> </summary>
@@ -910,14 +918,6 @@
       *>> </remarks>
        01 clearButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> selectedButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 selectedButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> allButton control.
       *>> </summary>
       *>> <remarks>
@@ -925,6 +925,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 allButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> selectedButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 selectedButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> parkImage control.
       *>> </summary>

@@ -9,9 +9,11 @@
     <link type="text/css" href="/Styles/main.css" rel="stylesheet" />
     <link type="text/css" href="/Styles/jquery-ui.css" rel="stylesheet" />
     <link type="text/css" href="/Styles/autocomplete.css" rel="stylesheet" />
+    <link type="text/css" href="/Styles/listbox-replacement.css" rel="stylesheet" />
     <script type="text/javascript" src="/dist/scripts/jquery.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/angular.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/listbox-replacement.js"></script>
 
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>

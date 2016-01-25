@@ -1,0 +1,32 @@
+﻿/* ListBox Replacement - make scss when finalized */
+.listbox-replacement thead {
+  width: 97%;
+}
+.listbox-replacement tbody {
+  overflow-y: auto;
+  width: 100%;
+  display: block;
+}
+
+.listbox-replacement tr {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.listbox-replacement tr.selected, .listbox-replacement tr.selected:hover {
+  background-color: #337ab7;
+}
+
+table.listbox-replacement > tbody > tr > td {
+  display: block;
+  float: left;
+  width: 100%;
+
+  border-bottom-width: 0;
+}
+
+input.listbox-replacement-val {
+    display: none;
+}

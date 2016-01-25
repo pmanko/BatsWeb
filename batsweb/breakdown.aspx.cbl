@@ -30,7 +30,8 @@
        local-storage section.
        01 cm type ClientScriptManager.
        01 cbReference type String.
-       01 callbackScript type String.       
+       01 callbackScript type String.
+       01 js type System.Web.Script.Serialization.JavaScriptSerializer.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
        procedure division using by value param-sender as object
@@ -211,8 +212,10 @@
        01 methodArg type String.       
 
        procedure division using by value eventArgument as String.
-           set actionFlag to eventArgument(1:2)
-           set methodArg to eventArgument(3:)
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
            
            if actionFlag = "od"
                set callbackReturn to actionFlag & "|" & self::SetGameDates(methodArg)
@@ -232,9 +235,6 @@
                set callbackReturn to actionFlag & "|"
            else if actionFlag = 'lr'
                set callbackReturn to actionFlag & "|" & self::populateTeamAsync(methodArg)
-           else if actionFlag = 'lc'
-      *        invoke  self::playerListBox_SelectedIndexChanged(methodArg)
-               set callbackReturn to ""
            else if actionFlag = 'po'
                set callbackReturn to actionFlag & "|" & self::playerOKButton_Click(methodArg)
            
@@ -254,14 +254,18 @@
                set callbackReturn to actionFlag & "|"
            else if actionFlag = "nt"
                invoke self::nextTypesButton_Click()
-               set callbackReturn to actionFlag & "|".               
+               set callbackReturn to actionFlag & "|"    
+      
+      *    List Box Re-Engineering
+           else if actionFlag = 'reload-pitch-list'
+               set callbackReturn to actionFlag & "|" & self::printPitchList().
        end method.
        
        method-id GetCallbackResult public.
        procedure division returning returnToClient as String.
        
            set returnToClient to callbackReturn.
-       
+           
        end method.
 
       *##### Event Callbacks #####
@@ -683,17 +687,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set hardLabel::Text to BAT310-HARD::Trim
            set medLabel::Text to BAT310-MEDIUM::Trim
            set softLabel::Text to BAT310-SOFT::Trim
-           invoke plListBox::Items::Clear
-           move 1 to aa.
-       5-loop.
-           if aa > BAT310-NUM-PITCH-LIST
-               go to 10-done.
-           INSPECT BAT310-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
-           invoke plListBox::Items::Add(BAT310-PITCH-DESC(AA))
-           add 1 to aa.
-           go to 5-loop.
-       10-done.
-
+      
+           invoke printPitchList()
+           
            IF BAT310-INFIELD-IP = "Y"
                   MOVE "if1.png" TO BAT310-BPARK-BITMAP.
 
@@ -703,6 +699,38 @@ PM         set self::Session::Item("nameArray") to nameArray
       *          invoke HitLocationsform::Recalc.
 
 
+       end method.
+       
+       method-id printPitchList final private.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division returning pitchList as String.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set pitchList to ""
+           
+      *    invoke plListBox::Items::Clear
+
+           move 1 to aa.
+       5-loop.
+           if aa > BAT310-NUM-PITCH-LIST
+               go to 10-done.
+           INSPECT BAT310-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
+      *    invoke plListBox::Items::Add(BAT310-PITCH-DESC(AA))
+           set pitchList to pitchlist & BAT310-PITCH-DESC(AA) & ';'
+           add 1 to aa.
+           go to 5-loop.
+       10-done.
+       
+       end method.
+       
+       method-id testCallback final protected.
+       local-storage section.
+       01 temp type String.
+       procedure division using by value sender as object e as type System.EventArgs.
+                                                                        
+           set temp to pitchListValueField::Value
+           set temp to ""
        end method.
        
        method-id reloadCatchers final private.
@@ -789,42 +817,6 @@ PM         set self::Session::Item("nameArray") to nameArray
       *    invoke self::populateTeam.     
       *    invoke ipHiddenField_ModalPopupExtender::Show
        end method.    
-         
-       method-id populateTeam protected.
-       linkage section.
-           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-           set BAT300-SEL-TEAM to teamDropDownList::SelectedItem
-           
-         if BAT300-IND-PB-FLAG = "P"
-            MOVE BAT300-SEL-TEAM TO BAT300-PITCHER-ROSTER-TEAM
-            MOVE "RP" TO BAT300-ACTION  
-         else
-            MOVE BAT300-SEL-TEAM TO BAT300-BATTER-ROSTER-TEAM
-            MOVE "RB" TO BAT300-ACTION  
-         end-if.
-         
-           set bat310rununit to self::Session::Item("310rununit") as
-               type RunUnit
-           invoke bat310rununit::Call("BAT300WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.              
-      *    invoke playerListBox::Items::Clear.
-           move 1 to aa.
-       5-loop.
-           if aa > BAT300-ROSTER-NUM-ENTRIES
-               go to 10-done
-           else
-      *        invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
-           add 1 to aa.
-           go to 5-loop.
-       10-done.
-      *     set playernamelb::TopIndex to playernamelb::Items::Count - 1.
-       end method.
-       
        
        method-id populateTeamAsync private.
        linkage section.
@@ -849,50 +841,17 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.              
-      *    invoke playerListBox::Items::Clear.
            set teamList to ""
            move 1 to aa.
        5-loop.
            if aa > BAT300-ROSTER-NUM-ENTRIES
                go to 10-done
            else
-      *        invoke playerListBox::Items::Add(" " & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa)).
                set teamList to teamList & aa & "," & BAT300-ROSTER-NAME(aa) & " " & BAT300-ROSTER-POS(aa) & ";"
            add 1 to aa.
            go to 5-loop.
        10-done.
 
-       end method.
-
-       method-id playerListBox_SelectedIndexChanged protected.
-       local-storage section.
-       01 playerName type String.
-       01 playerIdStr type String.
-       01 playerId type Single.
-       linkage section.
-           COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".
-       procedure division using by value playerInfo as String.
-           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
-           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
-      
-      *    if team is changed instead of ok button
-      *    if playerListBox::SelectedItem = null
-      *        exit method.
-               
-           unstring playerInfo
-               delimited by ","
-               into playerIdStr, playerName
-           end-unstring.
-           
-           set playerId to type Single::Parse(playerIdStr)
-           
-           MOVE playerName to BAT300-SEL-PLAYER
-           
-           if BAT300-IND-PB-FLAG = "P" THEN
-               MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-PITCHER-ID
-           ELSE
-               MOVE BAT300-ROSTER-ID(playerId) TO BAT300-SAVE-BATTER-ID
-           END-IF.
        end method.
       
        method-id playerOKButton_Click protected.
@@ -2107,5 +2066,5 @@ PM         set self::Session::Item("video-titles") to vidTitles
        10-done.       
        end method.  
        
-       end class.
+
        
