@@ -438,6 +438,7 @@
                                     <asp:HiddenField ID="vid_paths" runat="server" />
                                     <asp:HiddenField ID="vid_titles" runat="server" />      
                                 </div>
+                            </div>
                                                       
 
                         </div>

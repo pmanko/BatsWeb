@@ -82,14 +82,31 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <asp:Label ID="headerLabel" runat="server" BorderStyle="Groove" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                    <div class="col-md-12">
+                                        <asp:Label ID="headerLabel" runat="server" BorderStyle="Groove" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <asp:ListBox ID="abListBox" runat="server"  Height="444px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" OnSelectedIndexChanged="abListBox_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                    <div class="col-md-12">
+                                        <asp:ListBox ID="abListBox" runat="server"  Height="444px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" OnSelectedIndexChanged="abListBox_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                    </div>
                                 </div>
                                 <div class="row">
-                                    <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-lg btn-primary"/>
-                                    <asp:Button ID="selectedButton" runat="server" Text="Play Selected" OnClick="selectedButton_Click" class="btn btn-lg btn-primary"/>
+                                    <div class="col-md-12">
+                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="true">
+                                        <asp:TableHeaderRow TableSection="TableHeader">
+                                            <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
+                                        </asp:TableHeaderRow>
+                                
+                                    </asp:Table>
+                                    <asp:HiddenField ID="atBatTableValue" runat="server"  />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-lg btn-primary"/>
+                                        <asp:Button ID="selectedButton" runat="server" Text="Play Selected" OnClick="selectedButton_Click" class="btn btn-lg btn-primary"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +130,7 @@
                                     <asp:Button ID="locatePitcherButton" Text="OK" OnClick="locatePitcherButton_Click" runat="server" class="btn btn-primary"/>
                                 </div>
                                 <div class="col-lg-2">
-                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 </div>
                             </div>
                         </div>

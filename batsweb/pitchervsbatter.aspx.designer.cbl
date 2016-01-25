@@ -118,6 +118,22 @@
       *>> </remarks>
        01 abListBox type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
+      *>> atBatTable control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atBatTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> atBatTableValue control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.       
+      *>> <summary>
       *>> allButton control.
       *>> </summary>
       *>> <remarks>

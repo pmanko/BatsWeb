@@ -46,6 +46,22 @@
       *>> </remarks>
        01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
+      *>> gamesTable control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gamesTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> gamesTableValue control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gamesTableValue type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> allRadioButton control.
       *>> </summary>
       *>> <remarks>
@@ -125,6 +141,22 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 Label1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> atBatTable control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atBatTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> atBatTableValue control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> ListBox2 control.
       *>> </summary>

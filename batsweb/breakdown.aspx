@@ -728,11 +728,13 @@
                             <div class="panel-heading">
                                 <div class="panel-title">Pitch List</div>
                             </div>
-                            <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_pitchListValueField" data-postback="false" data-multiple="true">           
+                            
+                            <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_pitchListValueField" data-postback="true" data-multiple="true">           
                                 
                                 <tbody id="pitchListTableBody" runat="server"></tbody>
 
                             </table>
+
                             <asp:HiddenField ID="pitchListValueField" runat="server" onvaluechanged="testCallback" />
 
                             

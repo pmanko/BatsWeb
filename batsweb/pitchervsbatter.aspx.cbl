@@ -786,6 +786,24 @@ PM         set self::Session::Item("nameArray") to nameArray
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
        end method.
+  
+       method-id addTableRow private.
+       local-storage section.
+       01 tRow type System.Web.UI.WebControls.TableRow.
+       01 td type System.Web.UI.WebControls.TableCell.
+       procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
+                          by value rowContent as type String.
+           
+           set td to type System.Web.UI.WebControls.TableCell::New()
+           set tRow to type System.Web.UI.WebControls.TableRow::New()
+
+           set td::Text to rowContent
+           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           
+    
+           invoke tRow::Cells::Add(td)
+           invoke targetTable::Rows::Add(tRow)
+       end method.
        
        method-id Load_List protected.
        linkage section.
@@ -798,13 +816,15 @@ PM         set self::Session::Item("nameArray") to nameArray
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
       *     set pTeamDropDownList::Text to BAT766-PITCHER-TEAM::Trim
            invoke abListBox::Items::Clear.
+           invoke atBatTable::Rows::Clear()
            move 1 to aa.
        5-loop.
            if aa > BAT766-NUM-AB
                go to 10-done
            else
                INSPECT BAT766-T-LINE(AA) REPLACING ALL " " BY X'A0'
-               invoke abListBox::Items::Add(" " & BAT766-T-LINE(aa)).
+               invoke abListBox::Items::Add(" " & BAT766-T-LINE(aa))
+               invoke self::addTableRow(atBatTable, " " & BAT766-T-LINE(aa)).
            add 1 to aa.
            go to 5-loop.
        10-done.

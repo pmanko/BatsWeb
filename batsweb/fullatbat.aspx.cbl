@@ -181,6 +181,29 @@ PM         set self::Session::Item("nameArray") to nameArray
            invoke self::loadList.
        end method.
        
+       method-id addTableRow private.
+       local-storage section.
+       01 tRow type System.Web.UI.WebControls.TableRow.
+       01 td type System.Web.UI.WebControls.TableCell.
+       procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
+                          by value rowContent as type String.
+           
+           set td to type System.Web.UI.WebControls.TableCell::New()
+           set tRow to type System.Web.UI.WebControls.TableRow::New()
+
+           set td::Text to rowContent
+           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           
+    
+           invoke tRow::Cells::Add(td)
+           invoke targetTable::Rows::Add(tRow)
+       end method.
+           
+       
+                          
+       
+       
+       
        method-id loadList protected.
        local-storage section.
        01 getVidPaths type String.
@@ -194,6 +217,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            invoke ListBox1::Items::Clear.
+           invoke atBatTable::Rows::Clear()
            
            move 1 to aa.
        lines-loop.
@@ -201,20 +225,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                go to lines-done.
            INSPECT BAT666-T-LINE(AA) REPLACING ALL " " BY X'A0'
            
-           set td to type System.Web.UI.WebControls.TableCell::New()
-           set tRow to type System.Web.UI.WebControls.TableRow::New()
-
-           set td::Text to " " & BAT666-T-LINE(aa)
-           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
-           
-    
-           invoke tRow::Cells::Add(td)
-           invoke atBatTable::Rows::Add(tRow)
-           
-           
-           
-           
+           invoke self::addTableRow(atBatTable, " " & BAT666-T-LINE(aa))
            invoke ListBox1::Items::Add(" " & BAT666-T-LINE(aa))
+
            set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
            add 1 to aa.
            go to lines-loop.
@@ -232,8 +245,6 @@ PM     01 vidPaths type String.
       *01 newListItem type ListItem.
        linkage section.
        COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
-       
-       
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer

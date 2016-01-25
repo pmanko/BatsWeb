@@ -36,6 +36,8 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
 
 });
 
+
+
 function populateListboxTable(tableId, rowData) {
   
     $.each(rowData.split(";"), function(i, row){

@@ -22,6 +22,17 @@
                         <asp:ListBox ID="ListBox1" runat="server" Height="238px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
                     </div>
                 </div>
+                <div class="row">
+                    <div class='col-md-12'>
+                        <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_gamesTableValue" data-postback="false" data-multiple="false">
+                            <asp:TableHeaderRow TableSection="TableHeader">
+                                <asp:TableHeaderCell>Date      Vis                      Home                   Time Video</asp:TableHeaderCell>
+                            </asp:TableHeaderRow>
+                                
+                        </asp:Table>
+                        <asp:HiddenField ID="gamesTableValue" runat="server"  />
+                    </div>
+                </div>
                 <br />
                 <div class="row">
                     <div class="col-md-3">
@@ -104,6 +115,17 @@
                             <div class='row'>
                                 <div class="col-md-12">
                                     <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class="col-md-12">
+                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="false">
+                                        <asp:TableHeaderRow TableSection="TableHeader">
+                                            <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
+                                        </asp:TableHeaderRow>
+                                
+                                    </asp:Table>
+                                    <asp:HiddenField ID="atBatTableValue" runat="server"  />
                                 </div>
                             </div>
                             <div class='row'>
@@ -293,11 +315,12 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                        <asp:Button ID="Button56" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button56_Click" class="btn btn-default" />
-                        <asp:Button ID="Button57" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button57_Click" class="btn btn-default" />
-                        <asp:Button ID="Button58" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button58_Click" class="btn btn-default" />
-                        <asp:Button ID="Button59" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button59_Click" class="btn btn-default" />
-                        <asp:Button ID="Button60" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button60_Click" class="btn btn-default" />
+                            <asp:Button ID="Button56" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button56_Click" class="btn btn-default" />
+                            <asp:Button ID="Button57" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button57_Click" class="btn btn-default" />
+                            <asp:Button ID="Button58" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button58_Click" class="btn btn-default" />
+                            <asp:Button ID="Button59" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button59_Click" class="btn btn-default" />
+                            <asp:Button ID="Button60" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button60_Click" class="btn btn-default" />
+                        </div>
                     </div>
                 </div>
             </div>
