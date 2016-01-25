@@ -2,6 +2,10 @@
 .listbox-replacement thead {
   width: 97%;
 }
+.listbox-replacement thead > tr > th {
+  white-space: pre;
+}
+
 .listbox-replacement tbody {
   overflow-y: auto;
   width: 100%;
@@ -27,6 +31,30 @@ table.listbox-replacement > tbody > tr > td {
   border-bottom-width: 0;
 }
 
+table.listbox-replacement > thead > tr > th {
+  display: block;
+  float: left;
+  width: 100%;
+
+  border-width: 0;
+}
+
 input.listbox-replacement-val {
     display: none;
+}
+
+
+table.listbox-replacement tbody, table.listbox-replacement thead {
+    font-family: "Lucida Console", Monaco, monospace;
+    background: white;   
+}
+
+table.table-no-grid tr {
+    border-width: 0;
+}
+
+table.table-no-grid tbody td {
+    padding-top: 0;
+    padding-bottom: 0;
+    border: none;
 }

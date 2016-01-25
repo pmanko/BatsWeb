@@ -184,6 +184,8 @@ PM         set self::Session::Item("nameArray") to nameArray
        method-id loadList protected.
        local-storage section.
        01 getVidPaths type String.
+       01 tRow type System.Web.UI.WebControls.TableRow.
+       01 td type System.Web.UI.WebControls.TableCell.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division.
@@ -198,6 +200,20 @@ PM         set self::Session::Item("nameArray") to nameArray
            if aa > BAT666-NUM-AB
                go to lines-done.
            INSPECT BAT666-T-LINE(AA) REPLACING ALL " " BY X'A0'
+           
+           set td to type System.Web.UI.WebControls.TableCell::New()
+           set tRow to type System.Web.UI.WebControls.TableRow::New()
+
+           set td::Text to " " & BAT666-T-LINE(aa)
+           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           
+    
+           invoke tRow::Cells::Add(td)
+           invoke atBatTable::Rows::Add(tRow)
+           
+           
+           
+           
            invoke ListBox1::Items::Add(" " & BAT666-T-LINE(aa))
            set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
            add 1 to aa.
@@ -208,7 +224,7 @@ PM         set self::Session::Item("nameArray") to nameArray
      
        end method.
        
-       method-id ListBox1_SelectedIndexChanged protected.
+       method-id atBat_Selected protected.
        local-storage section.
 PM     01 vidPaths type String. 
  PM    01 vidTitles type String.

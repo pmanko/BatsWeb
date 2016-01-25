@@ -1,7 +1,7 @@
 ﻿// -----------------------------
 // List Box Replacement
 // -----------------------------
-$(document).on('click', 'table.listbox-replacement-clickable tr', function(event){
+$(document).on('click', 'table.listbox-replacement-clickable tbody tr', function(event){
     var myTable = $(this).closest("table");
     var lbVal = $(this).find("td:first").html();
     var lbField = $(myTable.data("targetField"));

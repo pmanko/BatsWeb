@@ -408,24 +408,49 @@
                             List of At-Bats
                         </div>
                         <div class="panel-body">
-                        <div class="row">
-                            <div class='col-md-12'>
-                                <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text="Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text="Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class='col-md-12'>
-                                <asp:ListBox ID="ListBox1" runat="server" Height="444px"  OnTextChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                <asp:HiddenField ID="vid_paths" runat="server" />
-                                <asp:HiddenField ID="vid_titles" runat="server" />
+                            <div class="row">
+                                <div class='col-md-12'>
+                                    <asp:ListBox ID="ListBox1" runat="server" Height="444px" Font-Names="consolas" Font-Size="Medium" class="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                
+                                
+                                
+                                </div>
+                                
                             </div>
+                            <br />
+                            <hr />
+                            <div class="row">
+
+                                <div class="col-md-offset-1 col-md-10">
+                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="true">
+                                        <asp:TableHeaderRow TableSection="TableHeader">
+                                            <asp:TableHeaderCell>Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid</asp:TableHeaderCell>
+                                        </asp:TableHeaderRow>
+                                    
+                                    </asp:Table>
+                                    <asp:HiddenField ID="atBatTableValue" runat="server"  />
+
+                                    <asp:HiddenField ID="vid_paths" runat="server" />
+                                    <asp:HiddenField ID="vid_titles" runat="server" />      
+                                </div>
+                                                      
+
                         </div>
-                        <div class="row">
-                            <div class='col-md-12'>
-                        <%--     <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>--%>
-                                <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
+
+                        
+
+                        <div class="panel-footer">
+                            <div class="row">
+                                <div class='col-md-12'>
+                            <%--     <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>--%>
+                                    <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
