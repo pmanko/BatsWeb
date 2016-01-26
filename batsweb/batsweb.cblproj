@@ -441,6 +441,7 @@
     <None Include="Images\szone2.png" />
     <None Include="package.json" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
+    <None Include="Scripts\async.js" />
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\breakdown.js" />
     <None Include="Scripts\breakdowncallpark.js" />
@@ -456,6 +457,7 @@
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
     <None Include="Styles\custom_bootstrap.scss" />
+    <None Include="Styles\fullatbat.css" />
     <None Include="Styles\jquery-ui.css" />
     <None Include="Styles\listbox-replacement.css" />
     <None Include="Styles\main.css" />

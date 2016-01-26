@@ -1,16 +1,24 @@
-﻿// Batstube - Open Window
-$(document).on("click", "#show_videos", function (event) {
-	if($("#MainContent_ListBox1").val() == null)
+﻿// atBat Selection
+function atBatUpdate () {
+    console.log($("#MainContent_atBatIndexField").val())
+    makeServerRequest("update-at-bat", $("#MainContent_atBatIndexField").val());
+}
+
+// Batstube and atBat List Box
+function openBatsTube() {
+    if($("#MainContent_atBatTable tbody tr.selected").length == 0)
 	{
-		alert("Please select an at-bat");
+		alert("Please select an at-bat!");
 	}
 	else
 	{
 		batstubeWindow = window.open("batstube.aspx", '_blank');
 		batstubeWindow.focus();
 	}
+}
 
-    event.preventDefault();
+$(document).on("click", "#showVideosButton", function(){
+   openBatsTube(); 
 });
 
 // Open Player Selection Modal
@@ -34,3 +42,28 @@ $(document).on('shown.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', f
 $(document).on('hidden.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', function () {
     $(this).prev().find('.fa').removeClass("fa-caret-down").addClass("fa-caret-right");
 });
+
+// -----------------------------
+// Server Asynchronious Callback 
+// -----------------------------
+
+// -----------------------------
+// Returns Data from Server after GetCallbackResult code behind function
+function GetServerData(arg, context) {
+    var splitArgs = arg.split("|");
+    var actionFlag = splitArgs[0];
+    
+    if(splitArgs.length > 2) {
+        alert(splitArgs[2]);
+        return;
+    }
+    
+    switch(actionFlag) {
+      case "update-at-bat":   
+        console.log("UPDATED!");
+        break;
+      default: 
+        console.log("Default!");
+    };	
+};
+// -----------------------------

@@ -1,4 +1,5 @@
        class-id batsweb.fullatbat is partial
+                implements type System.Web.UI.ICallbackEventHandler
                 inherits type System.Web.UI.Page public.
     
        INPUT-OUTPUT SECTION.
@@ -24,16 +25,35 @@
        01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
        01 playerName      type String.
        01 nameArray      type String.
+       01 callbackReturn type String.
+
        method-id Page_Load protected.
+       local-storage section.
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
-                                         
-      * Setup using GET variables
-      *    Moved from mainmenu.aspx - Pages should be self-sufficient 
+
+      * #### ICallback Implementation ####
            if self::IsPostBack
+               set cm to self::ClientScript
+               set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+               set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+               invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
                exit method.
+           
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####                 
+               
+                                               
+      * Setup using GET variables
+      *    Moved from mainmenu.aspx - Pages should be self-sufficient          
            SET self::Session::Item("database") to self::Request::QueryString["league"]
            
            if   self::Session["bat666data"] = null
@@ -42,16 +62,7 @@
                set self::Session["bat666data"] to mydata
            else
                set mydata to self::Session["bat666data"] as type batsweb.bat666Data.
-          
        
-       
-        
-      *     if (Request["__EVENTARGUMENT"] not = null and Request["__EVENTARGUMENT"] = "move")
-      *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-
-      *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
-      *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
-      *      & 'window.onbeforeunload = HandleOnclose;', true)
            if  self::Session::Item("666rununit") not = null
                set bat666rununit to self::Session::Item("666rununit")
                    as type RunUnit
@@ -61,8 +72,8 @@
                invoke bat666rununit::Add(BAT666WEBF)
                set self::Session::Item("666rununit") to  bat666rununit.
 
-           invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
-           set abHeader::Text to abHeader::Text::Replace(" ", "&nbsp;")
+      *     invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
+      *     set abHeader::Text to abHeader::Text::Replace(" ", "&nbsp;")
           
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT666-ACTION
@@ -147,6 +158,34 @@
 PM         set self::Session::Item("nameArray") to nameArray
            goback.
        end method.
+      
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+      *####################################################################
+ 
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if actionFlag = "update-at-bat"
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
+           
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+      *####################################################################
 
        method-id Button5_Click protected.
        local-storage section.
@@ -180,30 +219,7 @@ PM         set self::Session::Item("nameArray") to nameArray
                move spaces to ERROR-FIELD.
            invoke self::loadList.
        end method.
-       
-       method-id addTableRow private.
-       local-storage section.
-       01 tRow type System.Web.UI.WebControls.TableRow.
-       01 td type System.Web.UI.WebControls.TableCell.
-       procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
-                          by value rowContent as type String.
-           
-           set td to type System.Web.UI.WebControls.TableCell::New()
-           set tRow to type System.Web.UI.WebControls.TableRow::New()
-
-           set td::Text to rowContent
-           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
-           
-    
-           invoke tRow::Cells::Add(td)
-           invoke targetTable::Rows::Add(tRow)
-       end method.
-           
-       
-                          
-       
-       
-       
+                  
        method-id loadList protected.
        local-storage section.
        01 getVidPaths type String.
@@ -216,8 +232,6 @@ PM         set self::Session::Item("nameArray") to nameArray
 
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-           invoke ListBox1::Items::Clear.
-           invoke atBatTable::Rows::Clear()
            
            move 1 to aa.
        lines-loop.
@@ -226,31 +240,32 @@ PM         set self::Session::Item("nameArray") to nameArray
            INSPECT BAT666-T-LINE(AA) REPLACING ALL " " BY X'A0'
            
            invoke self::addTableRow(atBatTable, " " & BAT666-T-LINE(aa))
-           invoke ListBox1::Items::Add(" " & BAT666-T-LINE(aa))
-
            set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
+           
            add 1 to aa.
            go to lines-loop.
        lines-done.     
-      *     set ListBox1::TopIndex to ListBox1::Items::Count - 1.
            set self::Session::Item("testing") to getVidPaths
      
        end method.
        
        method-id atBat_Selected protected.
        local-storage section.
-PM     01 vidPaths type String. 
- PM    01 vidTitles type String.
+       01 vidPaths type String. 
+       01 vidTitles type String.
        01 selected  type Int32[].
-      *01 newListItem type ListItem.
        linkage section.
        COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division using by value indexString as type String 
+                          returning atBatReturn as type String.
+       
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            initialize BAT666-T-AB-SEL-TBL
            move 0 to aa.
-           set selected to ListBox1::GetSelectedIndices.
+
+           set selected to self::getSelectedIndeces(indexString).
+                      
        videos-loop.
            if aa = selected::Count
                go to videos-done.
@@ -258,49 +273,35 @@ PM     01 vidPaths type String.
            add 1 to aa.
            go to videos-loop.
        videos-done.
+       
            MOVE "               00000000000" TO BAT666-I-KEY.
            MOVE "VS" to BAT666-ACTION
            set bat666rununit to self::Session::Item("666rununit") as type RunUnit
 
            invoke bat666rununit::Call("BAT666WEBF")
+           
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-PM         set vidPaths to ""
-PM         set vidTitles to ""
-      *    invoke BulletedList2::Items::Clear
+               set atBatReturn to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.           
+               
+           set vidPaths to ""
+           set vidTitles to ""
            move 1 to aa.
+
        lines-loop.
            if aa > BAT666-WF-VID-COUNT
                go to lines-done.
-      *    set newListItem to new ListItem
-      *    set newListItem::Text to BAT666-WF-VIDEO-TITL(AA) & " | " & BAT666-WF-VIDEO-A(aa) & ":" & BAT666-WF-VIDEO-B(aa) & ":" & BAT666-WF-VIDEO-C(aa) & ":" & BAT666-WF-VIDEO-D(aa)
-      *    invoke newListItem::Attributes::Add("class", "list-group-item")
-      *    invoke BulletedList2::Items::Add(newListItem)
            
-PM         set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
-PM         set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
+           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
            
            add 1 to aa.
            go to lines-loop.
        lines-done.
-PM         set self::Session::Item("video-paths") to vidPaths
-PM         set self::Session::Item("video-titles") to vidTitles
-      *    set vid_paths::Value to getVidPaths
-      *    set vid_titles::Value to getVidTitles
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$ListBox1"
-                   invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-       end method.
-
-
-       method-id Button1_Click protected.
-       local-storage section.
-       01 confirmMessage type String.
-       procedure division using by value sender as object e as type System.EventArgs.
-      *         invoke ClientScript::RegisterStartupScript(self::GetType, "myalert", "alert(confirmMessage)", true).
-      *    declare mymsg = "This is a message!"
-      *    invoke type System.Web.UI.ScriptManager::RegisterStartupScript(self, type of self, "yourMessage", "window.onload = function(){alert('" & mymsg & "');}", true)
+       
+           set self::Session::Item("video-paths") to vidPaths
+           set self::Session::Item("video-titles") to vidTitles
 
        end method.
 
@@ -611,7 +612,7 @@ PM         set self::Session::Item("video-titles") to vidTitles
            add 1 to aa.
            go to 5-loop.
        10-done.
-      *     set playernamelb::TopIndex to playernamelb::Items::Count - 1.
+
        end method.
 
        method-id playerOKButton_Click protected.
@@ -1042,18 +1043,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openBTeamModal" ,"openBTeamModal();", true);
        end method.
 
-       method-id showVideosButton_Click protected.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat666_dg.CPB".      
-       procedure division using by value sender as object e as type System.EventArgs.
-           if listBox1::SelectedItem = null
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
-           else    
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-       end method.
        
-       
+      * ######################################################
       * Helper Methods
+      * ######################################################
        method-id ShowPlayerPanel private.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
@@ -1079,38 +1072,72 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::populateTeam.     
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "openModal" ,"openModal();", true);
        end method.
-       
-      * Deprecated
-       method-id GetNames public static
-           attribute System.Web.Services.WebMethod()
-           attribute System.Web.Script.Services.ScriptMethod().
+      * ######################################################
+        
+      * ###################################################### 
+      * ######### List Box Replacement Table Methods #########
+      * ######################################################
+       method-id addTableRow private.
        local-storage section.
-       01  names           type String[].
-       01  names2          type String[].
-       01  playerName      type String.
-       01  fn              type String.
-       01  aa              type Single.
-       01  bb              type Single.
-       procedure division using by value prefixText as String,
-                          #count as binary-long
-                          returning GetNames as String occurs any.
-           move 0 to aa, bb.
-           set fn to type HttpContext::Current::Server::MapPath("~/App_Data") & "\" & 
-               type HttpContext::Current::Session::SessionID & "names.txt"
-           set names to type File::ReadAllLines(fn)
-           set size of names2 to names::Length.
-       loop.
-           if names::Length = aa
-               go to done.
-           if names[aa]::StartsWith(prefixText::ToUpper)
-               set names2[bb] to names[aa]
-               add 1 to bb.
-           add 1 to aa.
-           go to loop.
-       done.
-           set GetNames to names2.
-           invoke type Array::Resize(GetNames, bb)
-           add 1 to aa.
+       01 tRow type System.Web.UI.WebControls.TableRow.
+       01 td type System.Web.UI.WebControls.TableCell.
+       procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
+                          by value rowContent as type String.
+           
+           set td to type System.Web.UI.WebControls.TableCell::New()
+           set tRow to type System.Web.UI.WebControls.TableRow::New()
+
+           set td::Text to rowContent
+           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           
+    
+           invoke tRow::Cells::Add(td)
+           invoke targetTable::Rows::Add(tRow)
        end method.
+           
+       method-id getSelectedIndeces private.
+       local-storage section.
+       01 i type Int32.
+       01 strArray type String[].
+       procedure division using by value fieldValue as type String
+                          returning indexArray as type Int32[].
+       
+           set strArray to fieldValue::Split(';')
+           
+           set size of indexArray to strArray::Length
+           
+           perform varying i from 0 by 1 until i >= strArray::Length
+               set indexArray[i] to type Int32::Parse(strArray[i])
+           end-perform
+           
+       end method.
+       
+       method-id getSelectedValues private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning strArray as type String[].
+      
+           set strArray to fieldValue::Split(';')           
+       end method.
+       
+       method-id getSelectedValue private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning val as type String.
+       
+           set val to self::getSelectedValues(fieldValue)[0]           
+       end method.       
+       
+       method-id getSelectedIndex private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning idx as type Int32.
+       
+           set idx to self::getSelectedIndeces(fieldValue)[0]           
+       end method.       
+      * ######################################################
          
        end class.

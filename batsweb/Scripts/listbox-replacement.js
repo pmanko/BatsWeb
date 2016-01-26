@@ -1,53 +1,98 @@
 ﻿// -----------------------------
 // List Box Replacement
 // -----------------------------
-$(document).on('click', 'table.listbox-replacement-clickable tbody tr', function(event){
-    var myTable = $(this).closest("table");
-    var lbVal = $(this).find("td:first").html();
-    var lbField = $(myTable.data("targetField"));
-    var postback = myTable.data("postback");
-    var multiple = myTable.data("multiple");
-
-
-    console.log(lbVal);
-    console.log(postback);
-    console.log(lbField);
-    console.log(multiple);
-        
-
+$(document).on('click', 'table.listbox-replacement-clickable tbody tr', function (event) {
     $(this).toggleClass("selected");
+    console.log("SINGLE!")
     
-    if(!multiple & $(this).hasClass("selected")) {
-        $(this).siblings().removeClass("selected");
-    }
-    
-    if(multiple) {
-        var combinedVals = $(this).parent().children(".selected").map(function(){ return $(this).text() }).get();
-        lbField.val(combinedVals);
-    } else {
-        lbField.val(unescape(lbVal));
-    }
-    
+    var attrs = getTableAttributes(this);
+
+    console.log(attrs);
     
 
-    if(postback) {
-    __doPostBack();   
+    setTableValues(this, attrs);
+
+
+    if (attrs.selected && attrs.selectFn){
+        window[attrs.selectFn]();
     }
+
+    if (attrs.selected && attrs.postback == "single" && !attrs.multiple) {
+        __doPostBack();
+    }
+   
 
 });
 
+$(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", function (event) {
+    $(this).toggleClass("selected");
+    console.log("DOUBLE!!");
+    
+    var attrs = getTableAttributes(this);
+    
+    setTableValues(this, attrs);
 
+    if (attrs.selected && attrs.selectFn){
+        window[attrs.selectFn]();
+    }
+    
+    if (attrs.dblclickFn && attrs.selected) {
+        window[attrs.dblclickFn]();    
+    }
+    
+    if (attrs.selected && attrs.postback == "double") {
+        __doPostBack();
+    }
+   
+});
+
+function setTableValues(target, attrs) {
+    if (!attrs.multiple & attrs.selected) {
+        $(target).siblings().removeClass("selected");
+    }
+    
+    if (attrs.multiple) {
+        attrs.valField.val(attrs.values.join(';'));
+        attrs.iField.val(attrs.indeces.join(';'));
+    } else {q
+    
+        attrs.valField.val(unescape(attrs.value));
+        attrs.iField.val(attrs.index);
+    }
+}
+
+function getTableAttributes(targetRow) {
+    var myRow = $(targetRow);
+    var myTable = myRow.closest("table");
+
+    var returnObj = {
+        table: myTable,
+        value: myRow.find("td:first").html(),
+        index: myRow.index(),
+        values: myRow.parent().children(".selected").map(function () { return unescape($(this).text()) }).get(),
+        indeces: myRow.parent().children(".selected").map(function() { return $(this).index() }).get(),
+        valField: $(myTable.data('valueField')),
+        iField: $(myTable.data('indexField')),
+        postback: myTable.data("postback"),
+        multiple: myTable.data("multiple"),
+        selected: myRow.hasClass("selected"),
+        dblclickFn: myTable.data("onDblclick"),
+        selectFn: myTable.data("onSelect") 
+    };
+    
+    return returnObj;    
+};
 
 function populateListboxTable(tableId, rowData) {
-  
-    $.each(rowData.split(";"), function(i, row){
+
+    $.each(rowData.split(";"), function (i, row) {
         console.log(i);
-        if(row != "") {                
+        if (row != "") {
             $(tableId + ' tbody').append('<tr><td></td></tr>');
             $(tableId + ' tbody tr:last td:first').html(unescape(row));
         }
-        
+
     });
-  
+
 }
 

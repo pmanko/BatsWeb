@@ -14,12 +14,6 @@ function callparkdetail() {
     //   event.preventDefault();
 }
 
-function makeServerRequest(requestType, args) {
-    CallServer(requestType + "|" + args, "");
-    
-}
-
-
 // -----------------------------
 // Server Asynchronious Callback 
 // -----------------------------

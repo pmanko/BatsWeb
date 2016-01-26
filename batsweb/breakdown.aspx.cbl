@@ -31,25 +31,23 @@
        01 cm type ClientScriptManager.
        01 cbReference type String.
        01 callbackScript type String.
-       01 js type System.Web.Script.Serialization.JavaScriptSerializer.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat310_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
            
-       
+      * #### ICallback Implementation ####
        if self::IsPostBack
            set cm to self::ClientScript
            set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
-           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};";
-           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true);
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
            exit method.
            
-      * #### ICallback Implementation ####
            set cm to self::ClientScript
            set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
-           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};";
-           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true);
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
       * #### End ICallback Implement  ####           
            
            set self::Session::Item("database") to self::Request::QueryString["league"]
@@ -726,11 +724,25 @@ PM         set self::Session::Item("nameArray") to nameArray
        
        method-id testCallback final protected.
        local-storage section.
-       01 temp type String.
+       01 i type Int32.
+       01 s type String.
+       01 temp type String[].
+       01 array type Int32[].
        procedure division using by value sender as object e as type System.EventArgs.
-                                                                        
-           set temp to pitchListValueField::Value
-           set temp to ""
+
+           set s to pitchListValueField::Value
+           set temp to s::Split(';')
+           set s to pitchListIndexField::Value
+           set temp to s::Split(';')
+       
+           set size of array to temp::Length
+           
+           perform varying i from 0 by 1 until i >= temp::Length
+               set array[i] to type Int32::Parse(temp[i])
+           end-perform
+           
+
+           set s to ""
        end method.
        
        method-id reloadCatchers final private.

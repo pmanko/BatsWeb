@@ -11,7 +11,7 @@
             $("#MainContent_locatePlayerTextBox").autocomplete({
                 autoFocus: true,
                 source: function (request, response) {
-                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+                    var matcher = new RegExp("^" + $.ui.autcoomplete.escapeRegex(request.term), "i");
                     response($.grep(names, function (item) {
                         return matcher.test(item);
                     }));
@@ -111,13 +111,7 @@
                         </div>
                         <div class="panel-body">
                             <asp:TextBox ID="pitcherTextBox" runat="server" style="text-align: left" class="form-control" ReadOnly="True"></asp:TextBox>
-                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#selectPitcherPanel" aria-expanded="false" aria-controls="selectPitcherPanel"><i class="fa fa-caret-right pull-left"></i>Select Pitcher</button>
-
-                            <!-- *Taken Out - using collapse*
-                            <asp:Button ID="pitcherButton" runat="server" Text="Select Pitcher" OnClick="Button1_Click" CssClass="btn btn-default" />                           
-                            <cc1:PopupControlExtender ID="pitcherButton_PopupExtender" runat="server" BehaviorID="pitcherButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="selectPitcher" TargetControlID="pitcherButton">
-                            </cc1:PopupControlExtender>
-                            -->
+                            <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#selectPitcherPanel" aria-expanded="false" aria-controls="selectPitcherPanel"><i class="fa fa-caret-right pull-left"></i>Select Pitcher</button>                            
                         </div>
                         <!-- Collapsible Pitcher Selection Panel -->
                         <div class="collapse" id="selectPitcherPanel">
@@ -408,35 +402,26 @@
                             List of At-Bats
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class='col-md-12'>
-                                    <asp:Label ID="abHeader" runat="server" BorderStyle="Groove" Text="Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class='col-md-12'>
-                                    <asp:ListBox ID="ListBox1" runat="server" Height="444px" Font-Names="consolas" Font-Size="Medium" class="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                
-                                
-                                
-                                </div>
-                                
-                            </div>
-                            <br />
-                            <hr />
+                            
                             <div class="row">
 
-                                <div class="col-md-offset-1 col-md-10">
-                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="true">
+                                <div class="col-md-12">
+                                    <asp:Table 
+                                        id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                        data-index-field="#MainContent_atBatIndexField" 
+                                        data-value-field="#MainContent_atBatValueField" 
+                                        data-postback="false" 
+                                        data-multiple="true"
+                                        data-on-select="atBatUpdate"
+                                        data-on-dblclick="openBatsTube"
+                                    >
                                         <asp:TableHeaderRow TableSection="TableHeader">
                                             <asp:TableHeaderCell>Game    Inn Batter              Out Runner *---- Type of hit, Where ----*  RBI Vid</asp:TableHeaderCell>
                                         </asp:TableHeaderRow>
                                     
                                     </asp:Table>
-                                    <asp:HiddenField ID="atBatTableValue" runat="server"  />
-
-                                    <asp:HiddenField ID="vid_paths" runat="server" />
-                                    <asp:HiddenField ID="vid_titles" runat="server" />      
+                                    <asp:HiddenField ID="atBatValueField" runat="server"  />
+                                    <asp:HiddenField ID="atBatIndexField" runat="server"  />  
                                 </div>
                             </div>
                                                       
@@ -448,8 +433,7 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class='col-md-12'>
-                            <%--     <a href="#" id="show_videos" class="btn btn-lg btn-primary">Show</a>--%>
-                                    <asp:Button id="showVideosButton" runat="server" Text="Show Videos in BatsTube" OnClick="showVideosButton_Click" class="btn btn-lg btn-primary"  />
+                                    <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
                                 </div>
                             </div>
                         </div>

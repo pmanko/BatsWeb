@@ -13,6 +13,7 @@
     <script type="text/javascript" src="/dist/scripts/jquery.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/angular.bundle.min.js"></script>
     <script type="text/javascript" src="/dist/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/async.js"></script>
     <script type="text/javascript" src="/Scripts/listbox-replacement.js"></script>
 
     

@@ -224,3 +224,7 @@ obj/
 bower_components
 node_modules
 dist
+
+.vscode
+
+

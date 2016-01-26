@@ -566,22 +566,6 @@
       *>> </remarks>
        01 resetButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> abHeader control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 abHeader type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
-      *>> ListBox1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
-      *>> <summary>
       *>> atBatTable control.
       *>> </summary>
       *>> <remarks>
@@ -590,37 +574,21 @@
       *>> </remarks>
        01 atBatTable type System.Web.UI.WebControls.Table protected.
       *>> <summary>
-      *>> atBatTableValue control.
+      *>> atBatValueField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.
+       01 atBatValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
-      *>> vid_paths control.
+      *>> atBatIndexField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 vid_paths type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
-      *>> vid_titles control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 vid_titles type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
-      *>> showVideosButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 showVideosButton type System.Web.UI.WebControls.Button protected.
+       01 atBatIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> allGamesButton control.
       *>> </summary>

@@ -702,6 +702,14 @@
       *>> </remarks>
        01 pitchListValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
+      *>> pitchListIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 pitchListIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> szoneImageButton control.
       *>> </summary>
       *>> <remarks>

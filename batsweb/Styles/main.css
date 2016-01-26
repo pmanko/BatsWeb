@@ -31,8 +31,3 @@ select option {
         margin-left: 5px;
     }
 }
-
-
-#MainContent_atBatTable tbody {
-    height: 300px;
-}
