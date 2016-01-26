@@ -132,7 +132,15 @@
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.       
+       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> atBatIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 atBatIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> allButton control.
       *>> </summary>
@@ -141,14 +149,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 allButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> selectedButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 selectedButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
       *>> locatePitcherLabel control.
       *>> </summary>

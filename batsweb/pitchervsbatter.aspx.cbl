@@ -4,6 +4,7 @@
       $set ilusing "System.Web.UI";
       $set ilusing "System.Web.UI.WebControls";
        class-id batsweb.pitchervsbatter is partial 
+                implements type System.Web.UI.ICallbackEventHandler
                 inherits type System.Web.UI.Page public.
      
        INPUT-OUTPUT SECTION.
@@ -29,14 +30,27 @@
        01  WS-NETWORK-FLAG             PIC X       VALUE SPACES.
        01 playerName      type String.
        01 nameArray      type String.       
+       01 callbackReturn type String.
        method-id Page_Load protected.
+       local-storage section.
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.       
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
-           if self::IsPostBack
+      * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+           
+           if self::IsPostBack       
                exit method.
-               
+
+      * #### End ICallback Implement  ####               
+        
       *    Setup - from main menu
            set self::Session::Item("database") to self::Request::QueryString["league"]
            if   self::Session["bat766data"] = null
@@ -100,7 +114,34 @@ PM         set self::Session::Item("nameArray") to nameArray
            goback.
        end method.
        
-   
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+      *####################################################################
+ 
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if actionFlag = "update-at-bat"
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg).
+           
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+      *####################################################################
+       
        method-id pTeamDropDownList_SelectedIndexChanged protected.
        local-storage section.
        linkage section.
@@ -786,7 +827,12 @@ PM         set self::Session::Item("nameArray") to nameArray
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
        end method.
-  
+ 
+      * ######################################################
+        
+      * ###################################################### 
+      * ######### List Box Replacement Table Methods #########
+      * ######################################################
        method-id addTableRow private.
        local-storage section.
        01 tRow type System.Web.UI.WebControls.TableRow.
@@ -804,6 +850,51 @@ PM         set self::Session::Item("nameArray") to nameArray
            invoke tRow::Cells::Add(td)
            invoke targetTable::Rows::Add(tRow)
        end method.
+       
+       method-id getSelectedIndeces private.
+       local-storage section.
+       01 i type Int32.
+       01 strArray type String[].
+       procedure division using by value fieldValue as type String
+                          returning indexArray as type Int32[].
+       
+           set strArray to fieldValue::Split(';')
+           
+           set size of indexArray to strArray::Length
+           
+           perform varying i from 0 by 1 until i >= strArray::Length
+               set indexArray[i] to type Int32::Parse(strArray[i])
+           end-perform
+           
+       end method.
+       
+       method-id getSelectedValues private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning strArray as type String[].
+      
+           set strArray to fieldValue::Split(';')           
+       end method.
+       
+       method-id getSelectedValue private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning val as type String.
+       
+           set val to self::getSelectedValues(fieldValue)[0]           
+       end method.       
+       
+       method-id getSelectedIndex private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning idx as type Int32.
+       
+           set idx to self::getSelectedIndeces(fieldValue)[0]           
+       end method.       
+      * ######################################################       
        
        method-id Load_List protected.
        linkage section.
@@ -906,7 +997,8 @@ PM         set vidTitles to vidTitles & BAT766-WF-VIDEO-TITL(aa) & ","
        lines-done.
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
+      *     invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
        method-id selectedButton_Click protected.
@@ -934,39 +1026,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::batstube.
        end method.
        
-       method-id GetNames public static
-           attribute System.Web.Services.WebMethod()
-           attribute System.Web.Script.Services.ScriptMethod().
-       local-storage section.
-       01  names           type String[].
-       01  names2           type String[].
-       01  playerName      type String.
-       01  fn                type String.
-       01  aa              type Single.
-       01  bb              type Single.
-       procedure division using by value prefixText as String,
-                          #count as binary-long
-                          returning GetNames as String occurs any.
-           move 0 to aa, bb.
-           set fn to type HttpContext::Current::Server::MapPath("~/App_Data") & "\" & 
-               type HttpContext::Current::Session::SessionID & "names.txt"
-           set names to type File::ReadAllLines(fn)
-           set size of names2 to names::Length.
-       loop.
-           if names::Length = aa
-               go to done.
-           if names[aa]::StartsWith(prefixText::ToUpper)
-               set names2[bb] to names[aa]
-               add 1 to bb.
-           add 1 to aa.
-           go to loop.
-       done.
-           set GetNames to names2.
-           invoke type Array::Resize(GetNames, bb)
-           add 1 to aa.
-
-       end method.
-         
        method-id locatePitcherButton_Click protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
@@ -1026,4 +1085,62 @@ PM         set self::Session::Item("video-titles") to vidTitles
            else
                set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim.       
        end method.
+       
+       method-id atBat_Selected protected.
+       local-storage section.
+       01 vidPaths type String. 
+       01 vidTitles type String.
+       01 selected  type Int32[].
+       linkage section.
+       COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
+       procedure division using by value indexString as type String 
+                          returning atBatReturn as type String.
+       
+           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
+           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
+           initialize BAT766-T-AB-SEL-TBL
+           move 0 to aa.
+
+           set selected to self::getSelectedIndeces(indexString).
+                      
+       videos-loop.
+           if aa = selected::Count
+               go to videos-done.
+           MOVE "Y" TO BAT766-T-SEL(selected[aa] + 1).
+           add 1 to aa.
+           go to videos-loop.
+       videos-done.
+       
+           MOVE "               00000000000" TO BAT766-I-KEY.
+           MOVE "VS" to BAT766-ACTION
+           set bat766rununit to self::Session::Item("766rununit") as type RunUnit
+
+           invoke bat766rununit::Call("BAT766WEBF")
+           
+           if ERROR-FIELD NOT = SPACES
+               set atBatReturn to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.           
+               
+           set vidPaths to ""
+           set vidTitles to ""
+           move 1 to aa.
+
+       lines-loop.
+           if aa > BAT766-WF-VID-COUNT
+               go to lines-done.
+           
+           set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-A(aa) & ","
+           set vidTitles to vidTitles & BAT766-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+       
+           set self::Session::Item("video-paths") to vidPaths
+           set self::Session::Item("video-titles") to vidTitles
+
+       end method.
+
+       
        end class.

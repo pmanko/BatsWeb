@@ -730,7 +730,9 @@
                             </div>
                             
                             <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement" 
-                                data-index-field="#MainContent_pitchListIndexField" data-value-field="#MainContent_pitchListValueField">           
+                                data-index-field="#MainContent_pitchListIndexField" 
+                                data-value-field="#MainContent_pitchListValueField"
+                            >           
                                 
                                 <tbody id="pitchListTableBody" runat="server"></tbody>
 

@@ -54,13 +54,21 @@
       *>> </remarks>
        01 gamesTable type System.Web.UI.WebControls.Table protected.
       *>> <summary>
-      *>> gamesTableValue control.
+      *>> gamesIndexField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 gamesTableValue type System.Web.UI.WebControls.HiddenField protected.
+       01 gamesIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> gamesValueField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gamesValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> allRadioButton control.
       *>> </summary>

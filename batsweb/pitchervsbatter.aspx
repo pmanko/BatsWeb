@@ -2,6 +2,7 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link type="text/css" href="/Styles/pitchervsbatter.css" rel="stylesheet" />
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/pitchervsbatter.js"></script> 
     <script type="text/javascript">
@@ -93,19 +94,28 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="true">
+                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                        data-index-field="#MainContent_atBatIndexField" 
+                                        data-value-field="#MainContent_atBatValueField" 
+                                        data-postback="false" 
+                                        data-multiple="true"
+                                        data-on-select="atBatUpdate"
+                                        data-on-dblclick="openBatsTube"
+                                        >
                                         <asp:TableHeaderRow TableSection="TableHeader">
                                             <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
                                         </asp:TableHeaderRow>
                                 
                                     </asp:Table>
                                     <asp:HiddenField ID="atBatTableValue" runat="server"  />
+                                    <asp:HiddenField ID="atBatIndexField" runat="server"  />  
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-lg btn-primary"/>
-                                        <asp:Button ID="selectedButton" runat="server" Text="Play Selected" OnClick="selectedButton_Click" class="btn btn-lg btn-primary"/>
+                                 <!--       <a href="#" id="allButton" class="btn btn-lg btn-primary btn-block">Play All</a> -->
+                                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
                                     </div>
                                 </div>
                             </div>

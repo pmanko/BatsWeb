@@ -3,6 +3,8 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link type="text/css" href="/Styles/gamesummary.css" rel="stylesheet" />
+    <script type="text/javascript" src="Scripts/gamesummary.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/summarycallatbat.js"></script> 
 </asp:Content>
@@ -24,13 +26,21 @@
                 </div>
                 <div class="row">
                     <div class='col-md-12'>
-                        <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_gamesTableValue" data-postback="false" data-multiple="false">
+                        <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                        data-index-field="#MainContent_gamesIndexField" 
+                                        data-value-field="#MainContent_gamesValueField" 
+                                        data-postback="false" 
+                                        data-multiple="false"
+                                        data-on-select="gamesUpdate"
+                                        data-on-dblclick="showInnings"
+                         >
                             <asp:TableHeaderRow TableSection="TableHeader">
                                 <asp:TableHeaderCell>Date      Vis                      Home                   Time Video</asp:TableHeaderCell>
                             </asp:TableHeaderRow>
                                 
                         </asp:Table>
-                        <asp:HiddenField ID="gamesTableValue" runat="server"  />
+                        <asp:HiddenField ID="gamesIndexField" runat="server"  />
+                        <asp:HiddenField ID="gamesValueField" runat="server"  />
                     </div>
                 </div>
                 <br />

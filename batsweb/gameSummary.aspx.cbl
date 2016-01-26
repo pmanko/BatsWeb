@@ -1,4 +1,5 @@
        class-id batsweb.gameSummary is partial
+                implements type System.Web.UI.ICallbackEventHandler
                 inherits type System.Web.UI.Page public.
 
        working-storage section.
@@ -6,18 +7,27 @@
        01 bat360rununit         type RunUnit.
        01 BAT360WEBF                type BAT360WEBF.
        01 mydata type batsweb.bat360Data.
+       01 callbackReturn type String.
        
        method-id Page_Load protected.
        local-storage section.
-           01 dataLine             type String.
-           01 gameNum              pic x.
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.       
        LINKAGE SECTION.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
 
+      * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+           
            if self::IsPostBack
                exit method.
+      * #### End ICallback Implement  ####               
                
       *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
       *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
@@ -77,6 +87,43 @@
            goback.
        end method.
   
+       
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+      *####################################################################
+ 
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if actionFlag = "update-game"
+               set callbackReturn to actionFlag & "|" & self::game_Selected(methodArg)
+           else
+           if actionFlag = "show-innings"
+               invoke self::show_Innings().      
+           
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+      *####################################################################
+    
+      * ######################################################
+        
+      * ###################################################### 
+      * ######### List Box Replacement Table Methods #########
+      * ######################################################
        method-id addTableRow private.
        local-storage section.
        01 tRow type System.Web.UI.WebControls.TableRow.
@@ -95,6 +142,51 @@
            invoke targetTable::Rows::Add(tRow)
        end method.
        
+       method-id getSelectedIndeces private.
+       local-storage section.
+       01 i type Int32.
+       01 strArray type String[].
+       procedure division using by value fieldValue as type String
+                          returning indexArray as type Int32[].
+       
+           set strArray to fieldValue::Split(';')
+           
+           set size of indexArray to strArray::Length
+           
+           perform varying i from 0 by 1 until i >= strArray::Length
+               set indexArray[i] to type Int32::Parse(strArray[i])
+           end-perform
+           
+       end method.
+       
+       method-id getSelectedValues private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning strArray as type String[].
+      
+           set strArray to fieldValue::Split(';')           
+       end method.
+       
+       method-id getSelectedValue private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning val as type String.
+       
+           set val to self::getSelectedValues(fieldValue)[0]           
+       end method.       
+       
+       method-id getSelectedIndex private.
+       local-storage section.
+       01 i type Int32.
+       procedure division using by value fieldValue as type String
+                          returning idx as type Int32.
+       
+           set idx to self::getSelectedIndeces(fieldValue)[0]           
+       end method.       
+      * ######################################################       
+             
        method-id loadGames protected.
        local-storage section.
            01 dataLine             type String.
@@ -1098,4 +1190,40 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
        end method.
        
+       method-id game_Selected protected.
+       local-storage section.
+       01 selected  type Int32.
+       linkage section.
+       COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value indexString as type String 
+                          returning gamesReturn as type String.
+       
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer
+
+           set selected to self::getSelectedIndex(indexString).
+           set BAT360-AB-IP to 0
+           set BAT360-SEL-GAME TO (selected)
+           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
+       end method.
+           
+       method-id show_Innings protected.
+       local-storage section.
+       linkage section.
+       COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division.
+       
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer          
+           MOVE "RA" to BAT360-ACTION
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+
+           invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.    
+           invoke self::loadLines.
+       end method.
        end class.

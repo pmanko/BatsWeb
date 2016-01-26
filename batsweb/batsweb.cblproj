@@ -445,6 +445,7 @@
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\breakdown.js" />
     <None Include="Scripts\breakdowncallpark.js" />
+    <None Include="Scripts\gamesummary.js" />
     <None Include="Scripts\listbox-replacement.js" />
     <None Include="Scripts\modals.js" />
     <None Include="Scripts\pitchervsbatter.js" />
@@ -458,10 +459,12 @@
     <None Include="Styles\BenStyleSheet.css" />
     <None Include="Styles\custom_bootstrap.scss" />
     <None Include="Styles\fullatbat.css" />
+    <None Include="Styles\gamesummary.css" />
     <None Include="Styles\jquery-ui.css" />
     <None Include="Styles\listbox-replacement.css" />
     <None Include="Styles\main.css" />
     <None Include="Styles\breakdown.css" />
+    <None Include="Styles\pitchervsbatter.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />
     <None Include="Theme\stylesheets\custom.scss" />

@@ -1,0 +1,20 @@
+/* At-Bat Table Styles*/
+#MainContent_gamesTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: medium;
+}
+
+#MainContent_gamesTable td, #MainContent_gamesTable th {
+    padding-left: 20px;
+}
+
+#MainContent_gamesTable tbody {
+    height: 250px;
+
+}
+
+#MainContent_gamesTable thead {
+    border-bottom: 2px #ddd solid;
+}
+/***/
