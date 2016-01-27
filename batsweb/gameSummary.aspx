@@ -117,7 +117,7 @@
                     data-index-field="#MainContent_inningSummaryIndexField" 
                     data-postback="dblclick" 
                     data-multiple="false"
-
+                    data-on-dblclick="inningSelected"
                 >
                                                                      
                 </asp:Table>

@@ -99,6 +99,14 @@
                into actionFlag, methodArg
            end-unstring.
            
+           if actionFlag = 'play-home'
+           else if actionFlag = 'play-vis'
+           else if actionFlag = 'inning-selected'
+           else if actionFlag = 'from-selected'
+           else if actionFlag = 'play-full'
+           .
+           
+           
       *    if actionFlag = "update-game"
       *        set callbackReturn to actionFlag & "|" & self::game_Selected(methodArg)
       *    else
