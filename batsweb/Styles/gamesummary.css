@@ -1,4 +1,4 @@
-/* At-Bat Table Styles*/
+/* Game Table Styles*/
 #MainContent_gamesTable {
     border-radius:5px;
     -moz-border-radius:5px;
@@ -18,3 +18,43 @@
     border-bottom: 2px #ddd solid;
 }
 /***/
+/* current Inning Table Styles*/
+#MainContent_statsTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: medium;
+}
+
+#MainContent_inningSummaryTable td, #MainContent_inningSummaryTable th {
+    padding-left: 20px;
+}
+
+#MainContent_inningSummaryTable tbody {
+    height: 250px;
+
+}
+
+#MainContent_inningSummaryTable thead {
+    border-bottom: 2px #ddd solid;
+}
+
+#MainContent_statsTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: x-small;
+}
+
+#MainContent_statsTable td, #MainContent_statsTable th {
+    padding-left: 20px;
+    padding-top: 0;
+    padding-bottom:0;
+}
+
+#MainContent_statsTable tbody {
+    height: 250px;
+
+}
+
+#MainContent_statsTable thead {
+    border-bottom: 2px #ddd solid;
+}

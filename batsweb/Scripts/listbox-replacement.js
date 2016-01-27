@@ -54,8 +54,7 @@ function setTableValues(target, attrs) {
     if (attrs.multiple) {
         attrs.valField.val(attrs.values.join(';'));
         attrs.iField.val(attrs.indeces.join(';'));
-    } else {q
-    
+    } else {    
         attrs.valField.val(unescape(attrs.value));
         attrs.iField.val(attrs.index);
     }

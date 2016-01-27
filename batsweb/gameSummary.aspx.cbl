@@ -24,17 +24,15 @@
            set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
            set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
            invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####               
            
            if self::IsPostBack
+               invoke self::loadGames
+               invoke self::loadLines
                exit method.
-      * #### End ICallback Implement  ####               
                
-      *     invoke self::ClientScript::RegisterStartupScript(type of self, "yourMessage",
-      *     'function HandleOnclose() {alert("Close Session"); PageMethods.CleanupPage();}'
-      *      & 'window.onbeforeunload = HandleOnclose;', true)
-           
-      *    Setup - from main menu     
-           
+
+      *    Setup - from main menu                
            SET self::Session::Item("database") to self::Request::QueryString["league"]
            if   self::Session["bat360data"] = null
               set mydata to new batsweb.bat360Data
@@ -53,11 +51,9 @@
                 set BAT360WEBF to new BAT360WEBF
                 invoke bat360rununit::Add(BAT360WEBF)
                 set self::Session::Item("360rununit") to  bat360rununit.
-           invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
-           invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
+      *     invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
+      *     invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
-           set label1::Text to label1::Text::Replace(" ", "&nbsp;")
-           set gamesHeader::Text to gamesHeader::Text::Replace(" ", "&nbsp;")
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
@@ -103,12 +99,12 @@
                into actionFlag, methodArg
            end-unstring.
            
-           if actionFlag = "update-game"
-               set callbackReturn to actionFlag & "|" & self::game_Selected(methodArg)
-           else
-           if actionFlag = "show-innings"
-               invoke self::show_Innings().      
-           
+      *    if actionFlag = "update-game"
+      *        set callbackReturn to actionFlag & "|" & self::game_Selected(methodArg)
+      *    else
+      *    if actionFlag = "show-innings"
+      *        invoke self::show_Innings().      
+      *    
        end method.
        
        method-id GetCallbackResult public.
@@ -129,13 +125,17 @@
        01 tRow type System.Web.UI.WebControls.TableRow.
        01 td type System.Web.UI.WebControls.TableCell.
        procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
-                          by value rowContent as type String.
+                          by value rowContent as type String,
+                          by value rowType as type String.
            
            set td to type System.Web.UI.WebControls.TableCell::New()
            set tRow to type System.Web.UI.WebControls.TableRow::New()
 
            set td::Text to rowContent
-           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           if rowType = 'b'
+               set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           else
+               set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableHeader.
            
     
            invoke tRow::Cells::Add(td)
@@ -195,9 +195,10 @@
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           invoke listbox1::Items::Clear.
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer 
            invoke gamesTable::Rows::Clear()
+           invoke self::addTableRow(gamesTable, "Date        Vis                         Home                     Time Video"::Replace(" ", "&nbsp;"), 'h')
+           
            move 1 to aa.
        games-loop.
            if aa > BAT360-NUM-GAMES
@@ -212,8 +213,7 @@
                   & gameNum & " " & BAT360-G-VIS(aa) & " "
                   & BAT360-G-HOME(aa) & " " & BAT360-G-TIME(aa)
                INSPECT dataline REPLACING ALL " " BY X'A0'
-               invoke listbox1::Items::Add(dataLine)
-               invoke self::addTableRow(gamesTable, " " & dataLine).
+               invoke self::addTableRow(gamesTable, " " & dataLine, 'b').
            add 1 to aa
            go to games-loop.
        games-done.
@@ -227,7 +227,7 @@
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
-           if ListBox1::SelectedItem = null
+           if GamesValueField::Value = null
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a game');", true)
                exit method.
            move BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
@@ -585,7 +585,7 @@
            invoke HiddenField2Home_ModalPopupExtender::Show.
        end method.
 
-       method-id ListBox2_SelectedIndexChanged protected.
+       method-id inningSelected protected.
        local-storage section.
        01 ctrl             type Control.
        01 atbatflag        pic x.
@@ -596,13 +596,17 @@
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
-           set BAT360-SEL-AB to ListBox2::SelectedIndex
+               
+           set BAT360-SEL-AB to type Int32::Parse(inningSummaryIndexField::Value)
+           
            add 1 to BAT360-SEL-AB
            MOVE BAT360-SEL-AB to BAT360-AB-IP
            MOVE BAT360-AB-KEY(BAT360-SEL-AB) to BAT360-I-KEY
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox2"
-                   exit method.
+           
+      *    if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+      *        if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox2"
+      *            exit method.
+      *    
            MOVE "VD" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
@@ -637,7 +641,9 @@ PM     01 vidPaths type String.
            invoke self::batstube.
        end method.
 
-       method-id ListBox1_SelectedIndexChanged protected.
+       method-id gameSelected protected.
+       local-storage section.
+       01 temp type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value sender as object e as type System.EventArgs.
@@ -646,10 +652,13 @@ PM     01 vidPaths type String.
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
            set BAT360-AB-IP to 0
-           set BAT360-SEL-GAME TO (ListBox1::SelectedIndex + 1)
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
-                   exit method.
+           set BAT360-SEL-GAME TO (type Int32::Parse(gamesIndexField::Value) + 1)
+           
+           
+      *    if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
+      *        if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$gamesValueField"
+      *            exit method.
+                   
            MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
            MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
            MOVE "RA" to BAT360-ACTION
@@ -679,8 +688,9 @@ PM     01 vidPaths type String.
        procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
-           invoke listbox2::Items::Clear.
-           invoke atBatTable::Rows::Clear()
+
+           invoke inningSummaryTable::Rows::Clear()
+           invoke self::addTableRow(inningSummaryTable, " Inn Batter         Out Rnrs  Res  RBI   Inn Batter         Out Rnrs  Res  RBI"::Replace(" ", "&nbsp;"), 'h')
 
            move 1 to aa.
        ab-loop.
@@ -692,8 +702,7 @@ PM     01 vidPaths type String.
       *        IF WS-DATA-L = SPACES
                    INSPECT WS-DATA-LINE REPLACING ALL " " BY X'A0'
       *        END-IF
-               invoke listbox2::Items::Add(WS-DATA-LINE)
-               invoke self::addTableRow(atBatTable, " " & WS-DATA-LINE).
+               invoke self::addTableRow(inningSummaryTable, " " & WS-DATA-LINE, 'b').
       *        IF AA > 1
       *             IF WS2-DATA-L = SPACES
       *                 invoke listbox2::Items[aa - 1]::Attributes::Add("style", "color:blue")
@@ -704,14 +713,17 @@ PM     01 vidPaths type String.
            add 1 to aa
            go to ab-loop.
        ab-done.
-           invoke listbox3::Items::Clear
+      *    invoke listbox3::Items::Clear
+           invoke statsTable::Rows::Clear()
+           
            move 1 to aa.
        5-loop.
            if aa > BAT360-NUM-T-LINES
                go to 10-done
            else
                INSPECT BAT360-T-LINE(aa) REPLACING ALL " " BY X'A0'
-               invoke listbox3::Items::Add(BAT360-T-LINE(aa)).
+      *        invoke listbox3::Items::Add(BAT360-T-LINE(aa)).
+               invoke self::addTableRow(statsTable, BAT360-T-LINE(aa), 'b')
            add 1 to aa
            go to 5-loop.
        10-done.
@@ -1189,41 +1201,42 @@ PM         set self::Session::Item("video-titles") to vidTitles
                move spaces to ERROR-FIELD.               
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
        end method.
-       
-       method-id game_Selected protected.
-       local-storage section.
-       01 selected  type Int32.
-       linkage section.
-       COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value indexString as type String 
-                          returning gamesReturn as type String.
-       
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer
-
-           set selected to self::getSelectedIndex(indexString).
-           set BAT360-AB-IP to 0
-           set BAT360-SEL-GAME TO (selected)
-           MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
-           MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
-       end method.
-           
-       method-id show_Innings protected.
-       local-storage section.
-       linkage section.
-       COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division.
-       
-           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer          
-           MOVE "RA" to BAT360-ACTION
-           set bat360rununit to self::Session::Item("360rununit")
-               as type RunUnit
-
-           invoke bat360rununit::Call("BAT360WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.    
-           invoke self::loadLines.
-       end method.
+      *
+      *method-id game_Selected protected.
+      *local-storage section.
+      *01 selected  type Int32.
+      *linkage section.
+      *COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+      *procedure division using by value indexString as type String 
+      *                   returning gamesReturn as type String.
+      *
+      *    set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+      *    set address of BAT360-DIALOG-FIELDS to myData::tablePointer
+      *
+      *    set selected to self::getSelectedIndex(indexString).
+      *    set BAT360-AB-IP to 0
+      *    set BAT360-SEL-GAME TO (selected)
+      *    MOVE BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
+      *    MOVE BAT360-G-GAME-ID(BAT360-SEL-GAME) to BAT360-I-GAME-ID
+      *end method.
+      *              
+      *    
+      *method-id show_Innings protected.
+      *local-storage section.
+      *linkage section.
+      *COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+      *procedure division.
+      *
+      *    set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+      *    set address of BAT360-DIALOG-FIELDS to myData::tablePointer          
+      *    MOVE "RA" to BAT360-ACTION
+      *    set bat360rununit to self::Session::Item("360rununit")
+      *        as type RunUnit
+      *
+      *    invoke bat360rununit::Call("BAT360WEBF")
+      *    if ERROR-FIELD NOT = SPACES
+      *        invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+      *        move spaces to ERROR-FIELD.    
+      *    invoke self::loadLines.
+      *end method.
        end class.

@@ -26,7 +26,6 @@
        01 playerName      type String.
        01 nameArray      type String.
        01 callbackReturn type String.
-
        method-id Page_Load protected.
        local-storage section.
        01 cm type ClientScriptManager.
@@ -38,19 +37,14 @@
                                          param-e as type System.EventArgs.
 
       * #### ICallback Implementation ####
-           if self::IsPostBack
-               set cm to self::ClientScript
-               set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
-               set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
-               invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
-               exit method.
-           
            set cm to self::ClientScript
            set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
            set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
            invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
       * #### End ICallback Implement  ####                 
-               
+
+           if self::IsPostBack
+               exit method.
                                                
       * Setup using GET variables
       *    Moved from mainmenu.aspx - Pages should be self-sufficient          
@@ -71,9 +65,6 @@
                set BAT666WEBF to new BAT666WEBF
                invoke bat666rununit::Add(BAT666WEBF)
                set self::Session::Item("666rununit") to  bat666rununit.
-
-      *     invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
-      *     set abHeader::Text to abHeader::Text::Replace(" ", "&nbsp;")
           
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT666-ACTION
@@ -157,6 +148,7 @@
            close play-file.
 PM         set self::Session::Item("nameArray") to nameArray
            goback.
+           
        end method.
       
       *#####               Client Callback Implementation             #####
@@ -217,18 +209,16 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.
-           invoke self::loadList.
+          invoke self::loadList.
        end method.
                   
        method-id loadList protected.
        local-storage section.
-       01 getVidPaths type String.
-       01 tRow type System.Web.UI.WebControls.TableRow.
-       01 td type System.Web.UI.WebControls.TableCell.
+      * 01 getVidPaths type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division.
-           set getVidPaths to ""
+      *      set getVidPaths to ""
 
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
@@ -240,12 +230,12 @@ PM         set self::Session::Item("nameArray") to nameArray
            INSPECT BAT666-T-LINE(AA) REPLACING ALL " " BY X'A0'
            
            invoke self::addTableRow(atBatTable, " " & BAT666-T-LINE(aa))
-           set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
+      *     set getVidPaths to getVidPaths & BAT666-T-LINE(aa) & ","
            
            add 1 to aa.
            go to lines-loop.
        lines-done.     
-           set self::Session::Item("testing") to getVidPaths
+      *     set self::Session::Item("testing") to getVidPaths
      
        end method.
        
@@ -377,6 +367,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                invoke maxABTextBox::Focus
            else
                move "N" to BAT666-MAX-FLAG.
+
+           invoke self::loadList
+               
        end method.
 
        method-id sortByInningCheckBox_CheckedChanged protected.
@@ -392,6 +385,7 @@ PM         set self::Session::Item("nameArray") to nameArray
                set sortByOldCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
+           invoke self::loadList
        end method.
 
        method-id sortByBatterCheckBox_CheckedChanged protected.
@@ -407,6 +401,9 @@ PM         set self::Session::Item("nameArray") to nameArray
                set sortByOldCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
+               
+           invoke self::loadList
+
        end method.
 
        method-id sortByOldCheckBox_CheckedChanged protected.
@@ -422,6 +419,7 @@ PM         set self::Session::Item("nameArray") to nameArray
                set sortByInningCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
+           invoke self::loadList
        end method.
 
        method-id allGamesButton_Click protected.
@@ -707,7 +705,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke self::loadList.       
+          invoke self::loadList.       
        end method.
 
        method-id Result2_SelectedIndexChanged protected.
@@ -726,7 +724,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke self::loadList.     
+          invoke self::loadList.     
        end method.
 
        method-id Runners_SelectedIndexChanged protected.
@@ -745,7 +743,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke self::loadList.  
+          invoke self::loadList.  
        end method.
 
        method-id Innings_SelectedIndexChanged protected.
@@ -764,7 +762,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke self::loadList.  
+          invoke self::loadList.  
        end method.
 
        method-id Outs_SelectedIndexChanged protected.
@@ -783,7 +781,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke self::loadList.
+          invoke self::loadList.
        end method.
 
        method-id resetButton_Click protected.
@@ -814,7 +812,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           INVOKE self::loadList.   
+          INVOKE self::loadList.   
        end method.
 
        method-id pAllLeftButton_Click protected.

@@ -22,30 +22,6 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
-      *>> gamesPanel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 gamesPanel type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> gamesHeader control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 gamesHeader type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
-      *>> ListBox1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
-      *>> <summary>
       *>> gamesTable control.
       *>> </summary>
       *>> <remarks>
@@ -54,14 +30,6 @@
       *>> </remarks>
        01 gamesTable type System.Web.UI.WebControls.Table protected.
       *>> <summary>
-      *>> gamesIndexField control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 gamesIndexField type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
       *>> gamesValueField control.
       *>> </summary>
       *>> <remarks>
@@ -69,6 +37,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 gamesValueField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> gamesIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 gamesIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> allRadioButton control.
       *>> </summary>
@@ -134,45 +110,29 @@
       *>> </remarks>
        01 inningsButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> Panel1 control.
+      *>> inningSummaryTable control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Panel1 type System.Web.UI.WebControls.Panel protected.
+       01 inningSummaryTable type System.Web.UI.WebControls.Table protected.
       *>> <summary>
-      *>> Label1 control.
+      *>> inningSummaryValueField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Label1 type System.Web.UI.WebControls.Label protected.
+       01 inningSummaryValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
-      *>> atBatTable control.
+      *>> inningSummaryIndexField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 atBatTable type System.Web.UI.WebControls.Table protected.
-      *>> <summary>
-      *>> atBatTableValue control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 atBatTableValue type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
-      *>> ListBox2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 ListBox2 type System.Web.UI.WebControls.ListBox protected.
+       01 inningSummaryIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> detailButton control.
       *>> </summary>
@@ -181,22 +141,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 detailButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> vid_paths control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 vid_paths type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
-      *>> vid_titles control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 vid_titles type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> playVis control.
       *>> </summary>
@@ -253,22 +197,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 HiddenField1 type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
-      *>> statsButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 statsButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> statsButton_PopupControlExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 statsButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
       *>> <summary>
       *>> replaysButton control.
       *>> </summary>
@@ -814,20 +742,12 @@
       *>> </remarks>
        01 Button60 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> statsPanel control.
+      *>> statsTable control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 statsPanel type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> ListBox3 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 ListBox3 type System.Web.UI.WebControls.ListBox protected.
+       01 statsTable type System.Web.UI.WebControls.Table protected.
 
        end class.

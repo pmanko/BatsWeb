@@ -13,40 +13,29 @@
     <div class="container main-container">
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-            <asp:Panel ID="gamesPanel" runat="server">
-                <div class="row">
-                    <div class='col-md-12'>
-                        <asp:Label ID="gamesHeader" runat="server" BorderStyle="Groove" Text="Date      Vis                      Home                   Time Video" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                    </div>
+            <div class="panel panel-default" id="gamesPanel">
+                <div class="panel-heading">
+                    <div class="panel-title">List of Games</div>
                 </div>
-                <div class="row">
-                    <div class='col-md-12'>
-                        <asp:ListBox ID="ListBox1" runat="server" Height="238px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class='col-md-12'>
-                        <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
-                                        data-index-field="#MainContent_gamesIndexField" 
-                                        data-value-field="#MainContent_gamesValueField" 
-                                        data-postback="false" 
-                                        data-multiple="false"
-                                        data-on-select="gamesUpdate"
-                                        data-on-dblclick="showInnings"
-                         >
-                            <asp:TableHeaderRow TableSection="TableHeader">
-                                <asp:TableHeaderCell>Date      Vis                      Home                   Time Video</asp:TableHeaderCell>
-                            </asp:TableHeaderRow>
-                                
-                        </asp:Table>
-                        <asp:HiddenField ID="gamesIndexField" runat="server"  />
-                        <asp:HiddenField ID="gamesValueField" runat="server"  />
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class="col-md-3">
 
+                <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                data-index-field="#MainContent_gamesIndexField" 
+                                data-value-field="#MainContent_gamesValueField" 
+                                data-postback="double" 
+                                data-multiple="false"
+                    >
+                    <asp:TableHeaderRow TableSection="TableHeader">
+                        <asp:TableHeaderCell>Date      Vis                      Home                   Time Video</asp:TableHeaderCell>
+                    </asp:TableHeaderRow>
+                                
+                </asp:Table>
+                <asp:HiddenField ID="gamesValueField" runat="server" onvaluechanged="gameSelected" />
+                <asp:HiddenField ID="gamesIndexField" runat="server"   />
+                <br />
+                <div class="panel-footer">
+
+                    <div class="row">
+                    <div class="col-md-3">
                         <div class='radio radio-primary'>
                             <asp:RadioButton ID="allRadioButton" runat="server" GroupName="Games" Text="All Games" AutoPostBack="True" OnCheckedChanged="allRadioButton_CheckedChanged" />
                         </div>
@@ -109,91 +98,81 @@
                             />
                         </div>
                         
-                        <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-default btn-block" />
+                        <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-primary btn-block" />
                     </div>
                 </div>
-            </asp:Panel>
+                </div>
+
+            </div>
+
             <br />
 
-            <asp:Panel ID="Panel1" runat="server">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Inning Summary
-                    </div>
-                    <div class="list-group"> 
-                        <div class="list-group-item">
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <asp:Label ID="Label1" runat="server" BorderStyle="Groove" Text="Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" data-target-field="#MainContent_atBatTableValue" data-postback="false" data-multiple="false">
-                                        <asp:TableHeaderRow TableSection="TableHeader">
-                                            <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
-                                        </asp:TableHeaderRow>
-                                
-                                    </asp:Table>
-                                    <asp:HiddenField ID="atBatTableValue" runat="server"  />
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col-md-12">
-                                    <asp:ListBox ID="ListBox2" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" OnSelectedIndexChanged="ListBox2_SelectedIndexChanged" Font-Size="Medium" class="form-control"></asp:ListBox>
-                                </div>
-                            </div>
-                            <div class='row'>
-                                <div class="col-md-3">
-                                    <asp:Button ID="detailButton" runat="server" OnClick="detailButton_Click" Text="At Bat Detail" class="btn btn-default btn-block" />
-                                </div>
-                            </div>
-                            <asp:HiddenField ID="vid_paths" runat="server" />
-                            <asp:HiddenField ID="vid_titles" runat="server" />
-                        </div>
-                    </div>
-                    <div class='panel-body'>
-                        <div class='row'>
-                            <div class="col-md-3">
-                                <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" class="btn btn-default btn-block" />
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" class="btn btn-default btn-block" />
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" class="btn btn-default btn-block" />
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" class="btn btn-default btn-block" />
-                            </div>
-                        </div>
-                        <br />
-                        <div class='row'>
-                            <div class="col-md-3">
-                                <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" class="btn btn-default btn-block" />
-                                <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
-                                </cc1:ModalPopupExtender>
-                                <asp:HiddenField ID="HiddenField1" runat="server" />
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="statsButton" runat="server" Text="View Game Stats" class="btn btn-default btn-block" />
-                                <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" PopupControlID="statsPanel" TargetControlID="statsButton">
-                                </cc1:PopupControlExtender>
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default btn-block" />
-                            </div>
-                            <div class="col-md-3">
-                                <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default btn-block" />
-                                <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
-                                </cc1:ModalPopupExtender>
-                                <asp:HiddenField ID="HiddenField2" runat="server" />
-                            </div>
-                        </div>
-                    </div>
-                    
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">Inning Summary</div>
                 </div>
-            </asp:Panel>
+                    
+                <asp:Table id="inningSummaryTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                    data-value-field="#MainContent_inningSummaryValueField" 
+                    data-index-field="#MainContent_inningSummaryIndexField" 
+                    data-postback="dblclick" 
+                    data-multiple="false"
+
+                >
+                                                                     
+                </asp:Table>
+                <asp:HiddenField ID="inningSummaryValueField" runat="server" OnValueChanged="inningSelected"  />
+                <asp:HiddenField ID="inningSummaryIndexField" runat="server"  />
+                                    
+                <div class="panel-footer">
+                     <asp:Button ID="detailButton" runat="server" OnClick="detailButton_Click" Text="At Bat Detail" class="btn btn-primary pull-right" />
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class='panel-body'>
+                    <div class='row'>
+                        <div class="col-md-3">
+                            <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" class="btn btn-default btn-block" />
+                        </div>
+                        <div class="col-md-3">
+                            <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" class="btn btn-default btn-block" />
+                        </div>
+                        <div class="col-md-3">
+                            <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" class="btn btn-default btn-block" />
+                        </div>
+                        <div class="col-md-3">
+                            <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" class="btn btn-default btn-block" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class='row'>
+                        <div class="col-md-3">
+                            <asp:Button ID="visButton" runat="server" Text="Select Visiting Player" OnClick="visButton_Click" class="btn btn-default btn-block" />
+                            <cc1:ModalPopupExtender ID="HiddenField1Vis_ModalPopupExtender" runat="server" BehaviorID="HiddenField1Vis_ModalPopupExtender" TargetControlID="HiddenField1" PopupControlID="visPanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
+                            </cc1:ModalPopupExtender>
+                            <asp:HiddenField ID="HiddenField1" runat="server" />
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#statsModal">View Team Stats</a>
+
+                            <%--<asp:Button ID="statsButton" runat="server" Text="View Game Stats" class="btn btn-default btn-block" />
+                            <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" PopupControlID="statsPanel" TargetControlID="statsButton">
+                            </cc1:PopupControlExtender>--%>
+                        </div>
+                        <div class="col-md-3">
+                            <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default btn-block" />
+                        </div>
+                        <div class="col-md-3">
+                            <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default btn-block" />
+                            <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
+                            </cc1:ModalPopupExtender>
+                            <asp:HiddenField ID="HiddenField2" runat="server" />
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
 
             <asp:Panel ID="visPanel" runat="server">
             <div class="panel panel-default">
@@ -335,25 +314,26 @@
                 </div>
             </div>
         </asp:Panel>
-        <asp:Panel ID="statsPanel" runat="server">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Current Game Stats
-                </div>
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:ListBox ID="ListBox3" runat="server" Height="245px" Font-Names="consolas" class="form-control"></asp:ListBox>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <%--<asp:Button ID="printStatsButton" runat="server" Text="Print Report" class="btn btn-default" />--%>
-                        </div>
-                    </div>
-                </div>
+
+        <!-- Stats Modal -->
+
+        <div class="modal fade" id="statsModal" tabindex="-1" role="dialog" aria-labelledby="statsModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="statsModalLabel">Current Game Stats</h4>
+              </div>
+              <div class="modal-body">
+                 <asp:Table id="statsTable" runat="server" class="table table-condensed table-bordered table-hover listbox-replacement"></asp:Table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
             </div>
-        </asp:Panel>
+          </div>
+        </div>
+
     </form>
     </div>
 </asp:Content>
