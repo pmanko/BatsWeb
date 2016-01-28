@@ -142,30 +142,6 @@
       *>> </remarks>
        01 detailButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> playVis control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playVis type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> playHome control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playHome type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> fromSelected control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 fromSelected type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> playFull control.
       *>> </summary>
       *>> <remarks>

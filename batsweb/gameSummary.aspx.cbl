@@ -1,3 +1,4 @@
+
        class-id batsweb.gameSummary is partial
                 implements type System.Web.UI.ICallbackEventHandler
                 inherits type System.Web.UI.Page public.
@@ -100,19 +101,17 @@
            end-unstring.
            
            if actionFlag = 'play-home'
+               set callbackReturn to actionFlag & "|" & self::playVids("VH")
            else if actionFlag = 'play-vis'
-           else if actionFlag = 'inning-selected'
-           else if actionFlag = 'from-selected'
+               set callbackReturn to actionFlag & "|" & self::playVids("VV")
            else if actionFlag = 'play-full'
-           .
-           
-           
-      *    if actionFlag = "update-game"
-      *        set callbackReturn to actionFlag & "|" & self::game_Selected(methodArg)
-      *    else
-      *    if actionFlag = "show-innings"
-      *        invoke self::show_Innings().      
-      *    
+               set callbackReturn to actionFlag & "|" & self::playVids("VX")
+           else if actionFlag = 'from-selected'
+               set callbackReturn to actionFlag & "|" & self::fromSelectd()
+           else if actionFlag = 'inning-selected'
+               set callbackReturn to actionFlag & "|" & self::inningSelected(methodArg)
+           else if actionFlag = 'show-detail'
+               set callbackReturn to actionFlag & "|" & self::showDetail().
        end method.
        
        method-id GetCallbackResult public.
@@ -121,6 +120,7 @@
            set returnToClient to callbackReturn.
            
        end method.
+       
       *####################################################################
     
       * ######################################################
@@ -599,13 +599,13 @@
        01 atbatflag        pic x.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division using by value inningIndex as String returning returnVal as  String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
                
-           set BAT360-SEL-AB to type Int32::Parse(inningSummaryIndexField::Value)
+           set BAT360-SEL-AB to type Int32::Parse(inningIndex)
            
            add 1 to BAT360-SEL-AB
            MOVE BAT360-SEL-AB to BAT360-AB-IP
@@ -618,34 +618,39 @@
            MOVE "VD" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                      
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                      
            invoke self::batstube.
                
        end method.
 
-       method-id fromSelected_Click protected.
+       method-id fromSelectd protected.
        local-storage section.
-PM     01 vidPaths type String. 
- PM    01 vidTitles type String.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning returnVal as String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
+               
            if BAT360-AB-IP = 0
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('No starting point is highlighted!');", true)
+               set returnVal to "er|" & "No starting point is highlighted!"
                exit method.   
            IF BAT360-REC-TYPE(BAT360-SEL-AB) NOT = "B"
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You cannot select a header field!');", true)
+               set returnVal to "er|" & "You cannot select a header field!"
                exit method.      
+               
            MOVE "VS" to BAT360-ACTION
+           
            invoke bat360rununit::Call("BAT360WEBF")
+           
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.               
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method. 
+                       
            invoke self::batstube.
        end method.
 
@@ -800,6 +805,7 @@ PM     01 vidPaths type String.
            set vidPaths to ""
 PM         set vidTitles to ""
            move 1 to aa.
+           
        lines-loop.
            if aa > BAT360-WF-VID-COUNT
                go to lines-done.
@@ -810,9 +816,9 @@ PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ","
            add 1 to aa.
            go to lines-loop.
        lines-done.
+       
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        
        method-id Button1_Click protected.
@@ -1011,166 +1017,23 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::batstube.
        end method.
        
-       method-id Button31_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 1 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button32_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 2 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button33_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 3 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button34_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 4 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button35_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 5 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button36_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 6 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button37_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 7 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button38_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 8 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button39_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 9 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button40_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 10 to aa.
-           invoke self::homePlayer.
-       end method. 
-       method-id Button41_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 11 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button42_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 12 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button43_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 13 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button44_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 14 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button45_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 15 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button46_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 16 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button47_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 17 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button48_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 18 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button49_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 19 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button50_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 20 to aa.
-           invoke self::homePlayer.
-       end method. 
-       method-id Button51_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 21 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button52_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 22 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button53_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 23 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button54_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 24 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button55_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 25 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button56_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 26 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button57_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 27 to aa.
-           invoke self::homePlayer.
-       end method.     
-       method-id Button58_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 28 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button59_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 29 to aa.
-           invoke self::homePlayer.
-       end method.
-       method-id Button60_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           move 30 to aa.
-           invoke self::homePlayer.
-       end method. 
+       
+       method-id homePlayerButtonClick protected.
+       procedure division using by value aaValue as String.
+           invoke self::homePlayer(type Int32::Parse(aaValue))
+       end method.    
+       
        
        method-id homePlayer protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division.
+       procedure division using by value aaVal as String 
+                          returning returnVal as string.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           MOVE aa to BAT360-H-SEL-BUTTON
+           MOVE aaVal to BAT360-H-SEL-BUTTON
            MOVE "PH" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
@@ -1191,23 +1054,23 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *     MOVE " " to SYD145WD-NOTEPAD
        end method.
 
-       method-id detailButton_Click protected.
+       method-id showDetail protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning returnVal as String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer   
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
            if BAT360-AB-IP = 0
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('No at bat is highlighted!');", true)
+               set returnVal to "er|" & "No at bat is highlighted!"
                exit method.   
            move "VA" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               set returnVal to "er|" & ERROR-FIELD
                move spaces to ERROR-FIELD.               
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "summarycallatbat", "summarycallatbat();", true).
+               exit method.   
        end method.
       *
       *method-id game_Selected protected.
@@ -1247,4 +1110,32 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *        move spaces to ERROR-FIELD.    
       *    invoke self::loadLines.
       *end method.
+       
+       
+       
+      * #### Helpers ####
+       method-id playVids protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value actionFlag as type String
+                          returning returnVal as type String.
+                          
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer    
+           
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit
+               
+           MOVE actionFlag to BAT360-ACTION
+           
+           invoke bat360rununit::Call("BAT360WEBF")   
+           
+           if ERROR-FIELD NOT = SPACES
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.         
+               
+           invoke self::batstube.
+       end method.
+
        end class.

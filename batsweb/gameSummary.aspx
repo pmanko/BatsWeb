@@ -115,9 +115,10 @@
                 <asp:Table id="inningSummaryTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                     data-value-field="#MainContent_inningSummaryValueField" 
                     data-index-field="#MainContent_inningSummaryIndexField" 
-                    data-postback="dblclick" 
+                    data-postback="false" 
                     data-multiple="false"
-                    data-on-dblclick="inningSelected"
+                    data-on-select="inningRowSelected"
+                    data-on-dblclick="openBatsTube"
                 >
                                                                      
                 </asp:Table>
@@ -125,7 +126,7 @@
                 <asp:HiddenField ID="inningSummaryIndexField" runat="server"  />
                                     
                 <div class="panel-footer">
-                     <asp:Button ID="detailButton" runat="server" OnClick="detailButton_Click" Text="At Bat Detail" class="btn btn-primary pull-right" />
+                    <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="show-detail">At Bat Detail</a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -133,16 +134,16 @@
                 <div class='panel-body'>
                     <div class='row'>
                         <div class="col-md-3">
-                            <asp:Button ID="playVis" runat="server" OnClick="playVis_Click" Text="Play Visitors" class="btn btn-default btn-block" />
+                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-vis">Play Visitors</a>
                         </div>
                         <div class="col-md-3">
-                            <asp:Button ID="playHome" runat="server" OnClick="playHome_Click" Text="Play Home" class="btn btn-default btn-block" />
+                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-home">Play Home</a>
                         </div>
                         <div class="col-md-3">
-                            <asp:Button ID="fromSelected" runat="server" OnClick="fromSelected_Click" Text="From Selected" class="btn btn-default btn-block" />
+                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="from-selected">From Selected</a>
                         </div>
                         <div class="col-md-3">
-                            <asp:Button ID="playFull" runat="server" OnClick="playFull_Click" Text="Play Full Game" class="btn btn-default btn-block" />
+                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-full">Play full</a>
                         </div>
                     </div>
                     <br />
