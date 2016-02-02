@@ -50,12 +50,23 @@
                             <div class='col-md-12'>
                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                             <ContentTemplate>
-                                <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
-                                </asp:DropDownList> 
-                                <asp:ListBox ID="playerListBox" runat="server" Height="114px" OnSelectedIndexChanged="playerListBox_SelectedIndexChanged" class="form-control" ></asp:ListBox>
+                            <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
+                            </asp:DropDownList> 
+                            <asp:Table 
+                                        id="playerTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                        data-index-field="#MainContent_playerIndexField" 
+                                        data-value-field="#MainContent_playerValueField" 
+                                        data-postback="false" 
+                                        data-multiple="false"
+                                        data-on-select="playerUpdate"
+                                        data-on-dblclick="playerSelected"
+                                    >
+                                    </asp:Table>
+                                    <asp:HiddenField ID="playerIndexField" runat="server"  />
+                                    <asp:HiddenField ID="playerValueField" runat="server"  />  
+                            </div>
                             </ContentTemplate>
                             </asp:UpdatePanel>
-                            </div>
                         </div>
                         <div class="row">
                             <div class='col-md-12'>

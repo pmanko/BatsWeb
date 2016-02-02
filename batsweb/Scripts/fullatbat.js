@@ -3,6 +3,10 @@ function atBatUpdate () {
     console.log($("#MainContent_atBatIndexField").val())
     makeServerRequest("update-at-bat", $("#MainContent_atBatIndexField").val());
 }
+function playerUpdate() {
+    console.log($("#MainContent_playerIndexField").val())
+    makeServerRequest("update-player", $("#MainContent_playerIndexField").val());
+}
 
 // Batstube and atBat List Box
 function openBatsTube() {

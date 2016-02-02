@@ -9,8 +9,59 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
         <form id="form1" runat="server">
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <!----------------------->
+        <!-- Modals and Popups -->
+        <!----------------------->
+        <div class="modal-container"></div>
+        <div class="modal" id="showDatesModal" tabindex="-1" role="dialog" aria-labelledby="ShowDatesModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Dates
+                    </div>
+                    <div class="modal-body"> 
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="100%" class="btn btn-default"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
             <asp:Panel ID="Panel1" runat="server" GroupingText="Master Video List">
                 <div class="row">
                     <div class="col-lg-3">
@@ -38,9 +89,7 @@
                         </div>
                     </div>
                     <div class="col-lg-3">
-                        <asp:Button ID="dateButton" runat="server" Text="Date One Clicks" CssClass="btn btn-default" />
-                        <cc1:PopupControlExtender ID="dateButton_PopupControlExtender" runat="server" BehaviorID="dateButton_PopupControlExtender" DynamicServicePath="" ExtenderControlID="" PopupControlID="Panel3" TargetControlID="dateButton">
-                        </cc1:PopupControlExtender>
+                        <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-block btn-info">Date One-Clicks</a>
                     </div>
                     <div class="col-lg-3">
                         <asp:Button ID="Button2" runat="server" Text="Go" OnClick="Button2_Click" CssClass="btn btn-primary" />
@@ -48,12 +97,6 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <asp:Label ID="headerLabel" runat="server" Text="Date     Clip Description"  Font-Names="consolas" Font-Size="Medium" class="form-control" ></asp:Label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <asp:ListBox ID="ListBox1" runat="server" Height="213px"  OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
                         <asp:Table id="videoTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                             data-index-field="#MainContent_videoIndexField" 
                             data-value-field="#MainContent_videoValueField" 
@@ -63,7 +106,7 @@
                             data-on-dblclick="openBatsTube"
                         >
                         <asp:TableHeaderRow TableSection="TableHeader">
-                            <asp:TableHeaderCell>Date     Clip Description</asp:TableHeaderCell>
+                            <asp:TableHeaderCell>Date          Clip      Description</asp:TableHeaderCell>
                         </asp:TableHeaderRow>
                                     
                         </asp:Table>
@@ -80,69 +123,24 @@
                             <div class="panel-body">   
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <asp:RadioButton ID="RadioButtonTeam" runat="server" Text="Team" AutoPostBack="True" OnCheckedChanged="RadioButtonTeam_CheckedChanged" GroupName="sort" />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButtonTeam" runat="server" Text="Team" AutoPostBack="True" OnCheckedChanged="RadioButtonTeam_CheckedChanged" GroupName="sort" /></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <asp:RadioButton ID="RadioButtonName" runat="server" Text="Name" AutoPostBack="True" OnCheckedChanged="RadioButtonName_CheckedChanged" GroupName="sort" />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButtonName" runat="server" Text="Name" AutoPostBack="True" OnCheckedChanged="RadioButtonName_CheckedChanged" GroupName="sort" /></div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <asp:RadioButton ID="RadioButtonDate" runat="server" Text="Newest Date" AutoPostBack="True" OnCheckedChanged="RadioButtonDate_CheckedChanged" GroupName="sort" />
+                                        <div class='radio radio-primary'><asp:RadioButton ID="RadioButtonDate" runat="server" Text="Newest Date" AutoPostBack="True" OnCheckedChanged="RadioButtonDate_CheckedChanged" GroupName="sort" /></div>
                                     </div>
                                 </div>
                             </div>
                          </div>
                      </div>
                     <div class="col-lg-6">
-                        <asp:Button ID="Button3" runat="server" Text="Play Video" CssClass="btn btn-primary" OnClick="Button3_Click" />
                         <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
-                    </div>
-                </div>
-            </asp:Panel>
-            <asp:Panel ID="Panel3" runat="server" >
-               <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Dates
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="allGamesButton" runat="server" OnClick="allGamesButton_Click" Text="All Games" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="twoWeeksButton" runat="server" OnClick="twoWeeksButton_Click" Text="Last 2 Weeks" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="currentMonthButton" runat="server" OnClick="currentMonthButton_Click" Text="Current Month" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="twoMonthsButton" runat="server" OnClick="twoMonthsButton_Click" Text="Last 2 Months" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:Button ID="threeMonthsButton" runat="server" OnClick="threeMonthsButton_Click" Text="Last 3 Months" Width="125px" class="btn btn-default"/>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </asp:Panel>

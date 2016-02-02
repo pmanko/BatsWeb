@@ -450,7 +450,6 @@
     <None Include="Scripts\listbox-replacement.js" />
     <None Include="Scripts\modals.js" />
     <None Include="Scripts\pitchervsbatter.js" />
-    <None Include="Scripts\summaryatbatdetail.js" />
     <None Include="Scripts\summarycallatbat.js" />
     <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />

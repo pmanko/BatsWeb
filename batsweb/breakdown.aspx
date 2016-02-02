@@ -532,13 +532,12 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <asp:Image ID="previousSzoneImage" runat="server" src="breakdownpreviousszone.aspx" alt="image could not be displayed refresh"/>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:ListBox ID="previousListBox" runat="server" Height="320px" Font-Names="consolas" class="form-control" ></asp:ListBox>
                                             <table id="previousPitchTable" class="table table-condensed table-hover listbox-replacement" >
                                             <tbody id="previousPitchTableBody" runat="server"></tbody>
                                             </table>
@@ -580,13 +579,12 @@
                         </div>
                         <div class="modal-body">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     <asp:Image ID="nextSzoneImage" runat="server" src="breakdownnextszone.aspx" alt="image could not be displayed refresh"/>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:ListBox ID="nextListBox" runat="server" Height="320px" Font-Names="consolas" class="form-control" ></asp:ListBox>
                                             <table id="nextPitchTable" class="table table-condensed table-hover listbox-replacement" >
                                             <tbody id="nextPitchTableBody" runat="server"></tbody>
                                             </table>

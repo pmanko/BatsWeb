@@ -89,11 +89,6 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <asp:ListBox ID="abListBox" runat="server"  Height="444px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" OnSelectedIndexChanged="abListBox_SelectedIndexChanged" class="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
                                     <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                         data-index-field="#MainContent_atBatIndexField" 
                                         data-value-field="#MainContent_atBatValueField" 

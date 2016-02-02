@@ -82,10 +82,10 @@ function GetServerData(arg, context) {
         populateListboxTable("#pitchListTable", splitArgs[1])
     }
     else if (actionFlag == 'reload-previous-list') {
-        populateListboxTable("#previousListTable", splitArgs[1])
+        populateListboxTable("#previousPitchTable", splitArgs[1])
     }
     else if (actionFlag == 'reload-next-list') {
-        populateListboxTable("#nextListTable", splitArgs[1])
+        populateListboxTable("#nextPitchTable", splitArgs[1])
     }
 };
 // -----------------------------
@@ -215,8 +215,8 @@ $(document).on("click", "#previousResultsButton", function(event){
 });
 
 $(document).on("click", "#previousButton", function(event){
-
-    makeServerRequest("pb");
+    $("#previousModal").modal();
+    makeServerRequest('reload-previous-list');
 });
 
 $(document).on("click", "#previousTypesButton", function(event){
@@ -229,8 +229,8 @@ $(document).on("click", "#nextResultsButton", function (event) {
 });
 
 $(document).on("click", "#nextButton", function (event) {
-
-    makeServerRequest("nb");
+    $("#nextModal").modal();
+    makeServerRequest('reload-next-list');
 });
 
 $(document).on("click", "#nextTypesButton", function (event) {
@@ -266,9 +266,7 @@ function playerListRefreshSuccess(players) {
 }
 
 function openPreviousModalSuccess(listData) {
-    $.each(listData.split(';'), function(i, listItem) {
-        $('#MainContent_previousListBox').append($('<option></option>').val(listItem).html(listItem));
-    });   
+
     
 
     $("#previousModal").modal();
