@@ -37,18 +37,14 @@
                                          param-e as type System.EventArgs.
            
       * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####          
+
        if self::IsPostBack
-           set cm to self::ClientScript
-           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
-           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
-           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
            exit method.
-           
-           set cm to self::ClientScript
-           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
-           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
-           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
-      * #### End ICallback Implement  ####           
            
            set self::Session::Item("database") to self::Request::QueryString["league"]
            if self::Session["bat310data"] = null
@@ -256,7 +252,11 @@
       
       *    List Box Re-Engineering
            else if actionFlag = 'reload-pitch-list'
-               set callbackReturn to actionFlag & "|" & self::printPitchList().
+               set callbackReturn to actionFlag & "|" & self::printPitchList()
+           else if actionFlag = 'reload-previous-list'
+               set callbackReturn to actionFlag & "|" & self::printPreviousPitchList()
+           else if actionFlag = 'reload-next-list'
+               set callbackReturn to actionFlag & "|" & self::printNextPitchList().
        end method.
        
        method-id GetCallbackResult public.
@@ -716,6 +716,52 @@ PM         set self::Session::Item("nameArray") to nameArray
            INSPECT BAT310-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
       *    invoke plListBox::Items::Add(BAT310-PITCH-DESC(AA))
            set pitchList to pitchlist & BAT310-PITCH-DESC(AA) & ';'
+           add 1 to aa.
+           go to 5-loop.
+       10-done.
+       
+       end method.
+
+       method-id printNextPitchList final private.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division returning pitchList as String.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set pitchList to ""
+           
+      *    invoke plListBox::Items::Clear
+
+           move 1 to aa.
+       5-loop.
+           if aa > BAT310-NP-NUM-PITCH-LIST
+               go to 10-done.
+           INSPECT BAT310-NP-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
+      *    invoke plListBox::Items::Add(BAT310-PITCH-DESC(AA))
+           set pitchList to pitchlist & BAT310-NP-PITCH-DESC(AA) & ';'
+           add 1 to aa.
+           go to 5-loop.
+       10-done.
+       
+       end method.
+
+       method-id printPreviousPitchList final private.
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
+       procedure division returning pitchList as String.
+           set mydata to self::Session["bat310data"] as type batsweb.bat310Data
+           set address of BAT310-DIALOG-FIELDS to myData::tablePointer
+           set pitchList to ""
+           
+      *    invoke plListBox::Items::Clear
+
+           move 1 to aa.
+       5-loop.
+           if aa > BAT310-PV-NUM-PITCH-LIST
+               go to 10-done.
+           INSPECT BAT310-PV-PITCH-DESC(AA) REPLACING ALL " " BY X'A0'
+      *    invoke plListBox::Items::Add(BAT310-PITCH-DESC(AA))
+           set pitchList to pitchlist & BAT310-PV-PITCH-DESC(AA) & ';'
            add 1 to aa.
            go to 5-loop.
        10-done.

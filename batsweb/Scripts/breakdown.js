@@ -80,10 +80,13 @@ function GetServerData(arg, context) {
     }
     else if (actionFlag == 'reload-pitch-list') {
         populateListboxTable("#pitchListTable", splitArgs[1])
-
     }
-	
-	
+    else if (actionFlag == 'reload-previous-list') {
+        populateListboxTable("#previousListTable", splitArgs[1])
+    }
+    else if (actionFlag == 'reload-next-list') {
+        populateListboxTable("#nextListTable", splitArgs[1])
+    }
 };
 // -----------------------------
 
@@ -269,6 +272,8 @@ function openPreviousModalSuccess(listData) {
     
 
     $("#previousModal").modal();
+    makeServerRequest('reload-previous-list')
+
 }
 
 function openNextModalSuccess(listData) {
@@ -278,6 +283,8 @@ function openNextModalSuccess(listData) {
 
 
     $("#nextModal").modal();
+    makeServerRequest('reload-next-list')
+
 }
 
 function playerSelectedSuccess(players) {

@@ -2,7 +2,9 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <link href="/Styles/ezvideo.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+    <script type="text/javascript" src="Scripts/ezvideo.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -52,6 +54,21 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <asp:ListBox ID="ListBox1" runat="server" Height="213px"  OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Font-Names="consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                        <asp:Table id="videoTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                            data-index-field="#MainContent_videoIndexField" 
+                            data-value-field="#MainContent_videoValueField" 
+                            data-postback="false" 
+                            data-multiple="true"
+                            data-on-select="videoUpdate"
+                            data-on-dblclick="openBatsTube"
+                        >
+                        <asp:TableHeaderRow TableSection="TableHeader">
+                            <asp:TableHeaderCell>Date     Clip Description</asp:TableHeaderCell>
+                        </asp:TableHeaderRow>
+                                    
+                        </asp:Table>
+                        <asp:HiddenField ID="videoValueField" runat="server"  />
+                        <asp:HiddenField ID="videoIndexField" runat="server"  />               
                     </div>
                 </div>
                 <div class="row">
@@ -81,6 +98,7 @@
                      </div>
                     <div class="col-lg-6">
                         <asp:Button ID="Button3" runat="server" Text="Play Video" CssClass="btn btn-primary" OnClick="Button3_Click" />
+                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
                     </div>
                 </div>
             </asp:Panel>

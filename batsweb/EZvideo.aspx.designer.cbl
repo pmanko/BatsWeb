@@ -118,6 +118,30 @@
       *>> </remarks>
        01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
       *>> <summary>
+      *>> videoTable control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 videoTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> videoValueField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 videoValueField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> videoIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 videoIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
       *>> RadioButtonTeam control.
       *>> </summary>
       *>> <remarks>

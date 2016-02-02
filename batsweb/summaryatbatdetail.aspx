@@ -3,6 +3,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+    <script type="text/javascript" src="Scripts/summaryatbatdetail.js"></script> 
+    <link type="text/css" href="/Styles/summaryatbatdetail.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -63,6 +65,9 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <asp:ListBox ID="ListBox1" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                                            <table id="PitchTable" class="table table-condensed table-hover listbox-replacement" >
+                                            <tbody id="PitchTableBody" runat="server"></tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
