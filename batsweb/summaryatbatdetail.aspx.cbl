@@ -54,19 +54,43 @@
            set rbiLabel::Text to BAT360-I-RBI::ToString
            set catcherLabel::Text to BAT360-CATCHER
            move 1 to aa.
-           invoke ListBox1::Items::Clear.
        pitch-loop.
            if aa > BAT360-NUM-PITCHES
                go to pitch-done.
            set dataline to (" " & BAT360-P-NUM(aa) & "  " & BAT360-P-TYPE(aa) & "  " & BAT360-P-DESC(aa) &
            " " & BAT360-P-RESULT(aa) & " " & BAT360-P-VEL(aa) & " " & BAT360-P-FLAG(aa) & BAT360-P-FLAG2(AA) & "  " & BAT360-P-VIDEO(aa))
            INSPECT dataline REPLACING ALL " " BY X'A0'
-           invoke ListBox1::Items::Add(dataline)
+           invoke self::addTableRow(pitchTable, " " & dataLine)
            add 1 to aa
            go to pitch-loop.
        pitch-done.
            set Label1::Text to Label1::Text::Replace(" ", "&nbsp;")
            goback.
+       end method.
+ 
+       method-id printPitchList final private.
+       local-storage section.
+       01 dataLine         type String. 
+       linkage section.
+           COPY "Y:\SYDEXSOURCE\BATS\bat360_dg.CPB".
+       procedure division returning pitchList as String.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer
+           set pitchList to ""
+           
+      *    invoke plListBox::Items::Clear
+
+           move 1 to aa.
+       5-loop.
+           if aa > BAT360-NUM-PITCHES
+               go to 10-done.
+           set dataline to (" " & BAT360-P-NUM(aa) & "  " & BAT360-P-TYPE(aa) & "  " & BAT360-P-DESC(aa) &
+           " " & BAT360-P-RESULT(aa) & " " & BAT360-P-VEL(aa) & " " & BAT360-P-FLAG(aa) & BAT360-P-FLAG2(AA) & "  " & BAT360-P-VIDEO(aa))
+           INSPECT dataline REPLACING ALL " " BY X'A0'
+           set pitchList to pitchlist & dataLine & ';'
+           add 1 to aa.
+           go to 5-loop.
+       10-done.
        end method.
        
        method-id szoneImageButton_Click protected.
@@ -111,4 +135,28 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        
+      * ######################################################
+        
+      * ###################################################### 
+      * ######### List Box Replacement Table Methods #########
+      * ######################################################
+       method-id addTableRow private.
+       local-storage section.
+       01 tRow type System.Web.UI.WebControls.TableRow.
+       01 td type System.Web.UI.WebControls.TableCell.
+       procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
+                          by value rowContent as type String.
+           
+           set td to type System.Web.UI.WebControls.TableCell::New()
+           set tRow to type System.Web.UI.WebControls.TableRow::New()
+
+           set td::Text to rowContent
+           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           
+    
+           invoke tRow::Cells::Add(td)
+           invoke targetTable::Rows::Add(tRow)
+       end method.
+           
+           
        end class.

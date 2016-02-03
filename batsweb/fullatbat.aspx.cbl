@@ -168,7 +168,8 @@ PM         set self::Session::Item("nameArray") to nameArray
            
            if actionFlag = "update-at-bat"
                set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
-           
+           else if actionFlag = "update-player"
+               set callbackReturn to actionFlag & "|" & self::player_Selected(methodArg).
        end method.
        
        method-id GetCallbackResult public.
@@ -600,13 +601,14 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.           
-           invoke playerListBox::Items::Clear.
+      *     invoke playerListBox::Items::Clear.
            move 1 to aa.
        5-loop.
            if aa > BAT666-ROSTER-NUM-ENTRIES
                go to 10-done
            else
-               invoke playerListBox::Items::Add(" " & BAT666-ROSTER-NAME(aa) & " " & BAT666-ROSTER-POS(aa)).
+      *         invoke playerListBox::Items::Add(" " & BAT666-ROSTER-NAME(aa) & " " & BAT666-ROSTER-POS(aa))
+               invoke self::addTableRow(playerTable, " " & BAT666-ROSTER-NAME(aa) & " " & BAT666-ROSTER-POS(aa)).
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -621,7 +623,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            set bat666rununit to self::Session::Item("666rununit")
                as type RunUnit
-           if playerListBox::SelectedItem = null
+      *     if playerListBox::SelectedItem = null
                SET LK-PLAYER-FILE TO BAT666-WF-LK-PLAYER-FILE
                MOVE SPACES TO PLAY-ALT-KEY
                unstring locatePlayerTextBox::Text delimited ", " into play-last-name, play-first-name
@@ -660,22 +662,24 @@ PM         set self::Session::Item("nameArray") to nameArray
            set batterTextBox::Text to BAT666-BATTER
        end method.
 
-       method-id playerListBox_SelectedIndexChanged protected.
+       method-id player_Selected protected.
+       local-storage section.
+       01 playerIndex              type Single.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division using by value indexString as type String 
+                          returning atBatReturn as type String.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
       *    if team is changed instead of ok button
-           if playerListBox::SelectedItem = null
-               exit method.
-           MOVE playerListBox::SelectedItem to BAT666-SEL-PLAYER.
+           invoke type System.Single::TryParse(self::getSelectedValue(indexString), by reference playerIndex)
+           MOVE BAT666-ROSTER-NAME(playerIndex) to BAT666-SEL-PLAYER.
       *     SET selectedplayerlabel::Text to BAT666-SEL-PLAYER
            
            if BAT666-IND-PB-FLAG = "P" THEN
-               MOVE BAT666-ROSTER-ID(playerListBox::SelectedIndex + 1) TO BAT666-SAVE-PITCHER-ID
+               MOVE BAT666-ROSTER-ID(playerIndex) TO BAT666-SAVE-PITCHER-ID
            ELSE
-               MOVE BAT666-ROSTER-ID(playerListBox::SelectedIndex + 1) TO BAT666-SAVE-BATTER-ID
+               MOVE BAT666-ROSTER-ID(playerIndex) TO BAT666-SAVE-BATTER-ID
            END-IF.
        end method.
 

@@ -22,6 +22,62 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
+      *>> allGamesButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 allGamesButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> currentYearButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 currentYearButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> pastYearButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 pastYearButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> twoWeeksButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 twoWeeksButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> currentMonthButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 currentMonthButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> twoMonthsButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 twoMonthsButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> threeMonthsButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 threeMonthsButton type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
       *>> Panel1 control.
       *>> </summary>
       *>> <remarks>
@@ -78,22 +134,6 @@
       *>> </remarks>
        01 TextBox2_CalendarExtender type AjaxControlToolkit.CalendarExtender protected.
       *>> <summary>
-      *>> dateButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 dateButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> dateButton_PopupControlExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 dateButton_PopupControlExtender type AjaxControlToolkit.PopupControlExtender protected.
-      *>> <summary>
       *>> Button2 control.
       *>> </summary>
       *>> <remarks>
@@ -110,13 +150,29 @@
       *>> </remarks>
        01 headerLabel type System.Web.UI.WebControls.Label protected.
       *>> <summary>
-      *>> ListBox1 control.
+      *>> videoTable control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 ListBox1 type System.Web.UI.WebControls.ListBox protected.
+       01 videoTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> videoValueField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 videoValueField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> videoIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 videoIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> RadioButtonTeam control.
       *>> </summary>
@@ -149,69 +205,5 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 Button3 type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> Panel3 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Panel3 type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> allGamesButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 allGamesButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> currentYearButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 currentYearButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> pastYearButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pastYearButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> twoWeeksButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 twoWeeksButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> currentMonthButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 currentMonthButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> twoMonthsButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 twoMonthsButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> threeMonthsButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 threeMonthsButton type System.Web.UI.WebControls.Button protected.
 
        end class.

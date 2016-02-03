@@ -46,13 +46,29 @@
       *>> </remarks>
        01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
-      *>> playerListBox control.
+      *>> playerTable control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 playerListBox type System.Web.UI.WebControls.ListBox protected.
+       01 playerTable type System.Web.UI.WebControls.Table protected.
+      *>> <summary>
+      *>> playerIndexField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playerIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> playerValueField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playerValueField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> playerOKButton control.
       *>> </summary>
@@ -165,22 +181,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 pitcherTextBox type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
-      *>> pitcherButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pitcherButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
-      *>> pitcherButton_PopupExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 pitcherButton_PopupExtender type AjaxControlToolkit.PopupControlExtender protected.
       *>> <summary>
       *>> pAllLeftButton control.
       *>> </summary>

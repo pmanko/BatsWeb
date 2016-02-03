@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+    <script type="text/javascript" src="Scripts/summaryatbatdetail.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -57,12 +58,14 @@
                                 <div class="col-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:Label ID="headerLabel" runat="server" BorderStyle="Groove" Text="## Type Location K Vel * Vid" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <asp:ListBox ID="ListBox1" runat="server" Height="160px" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:ListBox>
+                                            <asp:Table 
+                                                id="pitchTable" runat="server" class="table table-condensed table-bordered listbox-replacement" 
+                                            >
+                                            <asp:TableHeaderRow TableSection="TableHeader">
+                                                <asp:TableHeaderCell>## Type Location K Vel * Vid</asp:TableHeaderCell>
+                                            </asp:TableHeaderRow>
+                                    
+                                            </asp:Table>
                                         </div>
                                     </div>
                                 </div>

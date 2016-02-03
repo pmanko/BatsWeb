@@ -510,13 +510,13 @@
       *>> </remarks>
        01 previousSzoneImage type System.Web.UI.WebControls.Image protected.
       *>> <summary>
-      *>> previousListBox control.
+      *>> previousPitchTableBody control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 previousListBox type System.Web.UI.WebControls.ListBox protected.
+       01 previousPitchTableBody type System.Web.UI.HtmlControls.HtmlGenericControl protected.
       *>> <summary>
       *>> previousPitchesButton control.
       *>> </summary>
@@ -542,13 +542,13 @@
       *>> </remarks>
        01 nextSzoneImage type System.Web.UI.WebControls.Image protected.
       *>> <summary>
-      *>> nextListBox control.
+      *>> nextPitchTableBody control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 nextListBox type System.Web.UI.WebControls.ListBox protected.
+       01 nextPitchTableBody type System.Web.UI.HtmlControls.HtmlGenericControl protected.
       *>> <summary>
       *>> nextPitchesButton control.
       *>> </summary>
