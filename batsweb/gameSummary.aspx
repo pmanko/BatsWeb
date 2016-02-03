@@ -255,7 +255,7 @@
                     </div>
                 </div>
 
-<%--                <div class="panel-body">
+                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <asp:Button ID="Button31" runat="server" Text="Button" Visible="False" OnClick="Button31_Click" width="155px" class="btn btn-default" />
@@ -310,7 +310,7 @@
                             <asp:Button ID="Button60" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button60_Click" class="btn btn-default" />
                         </div>
                     </div>
-                </div>--%>
+                </div>
             </div>
         </asp:Panel>
 
