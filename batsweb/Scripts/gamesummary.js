@@ -16,11 +16,16 @@ function openBatsTube() {
 	batstubeWindow.focus();
 }
 
+function openAtBatDetail() {
+    batstubeWindow = window.open("summaryatbatdetail.aspx", '_blank');
+    batstubeWindow.focus();
+}
+
 // Inning Row Selected
 //      On a single click, data is set --> code behind, so that all the vars and video paths are set
 //      On a double click, batstube is opened
 function inningRowSelected() {
-    makeServerRequest("inning-selected", $("#MainContent_inningSummaryIndexField"))
+    makeServerRequest("inning-selected", $("#MainContent_inningSummaryIndexField").val());
 };
 
 // -----------------------------
@@ -43,10 +48,18 @@ function inningRowSelected() {
 // Play Vis
 // Play Full
 // From Selected
-// Show Detail
 $(document).on('click', '.btn-async-request', function (events) {
     makeServerRequest($(this).data("actionFlag"));
     openBatsTube();
+});
+
+// Show Detail
+$(document).on('click', '#atBatDetail', function (events) {
+    makeServerRequest($(this).data("actionFlag"));
+    if ($("#MainContent_inningSummaryIndexField").val()) {
+        openAtBatDetail();
+    }
+    
 });
 
 // -----------------------------

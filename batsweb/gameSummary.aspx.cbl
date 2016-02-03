@@ -500,6 +500,9 @@
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.                      
+               
+      * Create a button (or table?) for each home player using BAT360-H-ROSTER-NAME Array         
+      * ASYNC - Return roster array and create things on the client side  
            if BAT360-H-ROSTER-NAME(1) not = spaces
                set Button31::Visible to true
                set Button31::Text to BAT360-H-ROSTER-NAME(1)::Trim. 
@@ -1027,8 +1030,8 @@ PM         set self::Session::Item("video-titles") to vidTitles
        method-id homePlayer protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value aaVal as String 
-                          returning returnVal as string.
+       procedure division using by value aaVal as type Int32 
+                          returning returnVal as String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")

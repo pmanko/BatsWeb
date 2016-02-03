@@ -122,11 +122,11 @@
                 >
                                                                      
                 </asp:Table>
-                <asp:HiddenField ID="inningSummaryValueField" runat="server" OnValueChanged="inningSelected"  />
+                <asp:HiddenField ID="inningSummaryValueField" runat="server" />
                 <asp:HiddenField ID="inningSummaryIndexField" runat="server"  />
                                     
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="show-detail">At Bat Detail</a>
+                    <a href="#" class="btn btn-block btn-default" id="atBatDetail" data-action-flag="show-detail">At Bat Detail</a>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -165,10 +165,7 @@
                             <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default btn-block" />
                         </div>
                         <div class="col-md-3">
-                            <asp:Button ID="homeButton" runat="server" Text="Select Home Player" OnClick="homeButton_Click" class="btn btn-default btn-block" />
-                            <cc1:ModalPopupExtender ID="HiddenField2Home_ModalPopupExtender" runat="server" BehaviorID="HiddenField2Home_ModalPopupExtender" TargetControlID="HiddenField2" PopupControlID="homePanel" BackgroundCssClass="ModalPopupBackgroundCssClass">
-                            </cc1:ModalPopupExtender>
-                            <asp:HiddenField ID="HiddenField2" runat="server" />
+                            <asp:Button ID="homeButton" runat="server" Text="Select Home Player" class="btn btn-default btn-block" />
                         </div>
                     </div>
                 </div>
@@ -257,7 +254,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel-body">
+
+<%--                <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <asp:Button ID="Button31" runat="server" Text="Button" Visible="False" OnClick="Button31_Click" width="155px" class="btn btn-default" />
@@ -312,7 +310,7 @@
                             <asp:Button ID="Button60" runat="server" Text="Button" Visible="False" width="155px" OnClick="Button60_Click" class="btn btn-default" />
                         </div>
                     </div>
-                </div>
+                </div>--%>
             </div>
         </asp:Panel>
 
