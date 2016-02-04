@@ -10,3 +10,7 @@
     max-height: 330px;  
 
 }
+
+#playerTable tbody {
+    max-height: 300px;
+}

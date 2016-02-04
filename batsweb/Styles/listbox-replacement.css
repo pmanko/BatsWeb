@@ -5,6 +5,9 @@
 .listbox-replacement thead > tr > th {
   white-space: pre;
 }
+.listbox-replacement tbody > tr > td {
+  white-space: pre;
+}
 
 .listbox-replacement tbody {
   overflow-y: auto;

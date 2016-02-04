@@ -11,7 +11,7 @@
             $("#MainContent_locatePlayerTextBox").autocomplete({
                 autoFocus: true,
                 source: function (request, response) {
-                    var matcher = new RegExp("^" + $.ui.autcoomplete.escapeRegex(request.term), "i");
+                    var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
                     response($.grep(names, function (item) {
                         return matcher.test(item);
                     }));
@@ -58,11 +58,9 @@
                                         data-value-field="#MainContent_playerValueField" 
                                         data-postback="false" 
                                         data-multiple="false"
-                                        data-on-select="playerUpdate"
-                                        data-on-dblclick="playerSelected"
                                     >
                                     </asp:Table>
-                                    <asp:HiddenField ID="playerIndexField" runat="server"  />
+                                    <asp:HiddenField ID="playerIndexField" runat="server" onvaluechanged="player_Selected" />
                                     <asp:HiddenField ID="playerValueField" runat="server"  />  
                             </div>
                             </ContentTemplate>

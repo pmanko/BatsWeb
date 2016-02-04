@@ -25,20 +25,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
-<%--        <br />
-        <br />
-        <h1>TEST AREA</h1>
-        <div class="row">
-            <div class="col-md-6">
-
-            </div>
-            <div class="col-md-6">
-                
-            </div>
-        </div>
-
-        <br />
-        <br />--%>
         <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
@@ -507,7 +493,16 @@
                                 <div class='col-md-12'>
                                     <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
                                     <br />
-                                    <select ID="MainContent_playerListBox" size="14" class="form-control" ></select>                       
+<%--                                    <select ID="MainContent_playerListBox" size="14" class="form-control" ></select>                       --%>
+                                    <table id="playerTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                        data-index-field="#playerIndexField" 
+                                        data-value-field="#playerValueField" >
+                                        <tbody></tbody>
+                                    </table>                                
+
+                                    <input type="hidden" name="playerIndexField" id="playerIndexField" />
+                                    <input type="hidden" name="playerValueField" id="playerValueField" />
+                                    
                                 </div>
                             </div>
                             

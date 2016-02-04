@@ -169,14 +169,6 @@ $(document).on('change', "#MainContent_teamDropDownList", function(event) {
     makeServerRequest('lr',$(this).val())    
 });
 
-// $(document).on('change', "#MainContent_playerListBox", function(event) {
-//     var type = $("#playerSelectionModal").data("type");
-//     console.log(type);
-//     console.log($(this).val() + " | " + $(this).find("option:selected").text());
-//     
-//     CallServer('lc'+$(this).val()+','+$(this).find("option:selected").text());    
-// });
-
 $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
   // Set Modal Type - either pitcher or batter
   var button = $(event.relatedTarget); // Button that triggered the modal
@@ -197,14 +189,13 @@ $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
 
 $(document).on('click', "#selectPlayerButton", function(event){
     var selectedPlayerInfo;
-    
-    // Deceide which player value to select
-    if($("#MainContent_playerListBox").val() == null) {
+    // Decide which player value to select
+    if($("#playerValueField").val() == null) {
         selectedPlayerInfo = "located;" + $("#MainContent_locatePlayerTextBox").val()       
     } else {
-        selectedPlayerInfo = "selected;" + $("#MainContent_playerListBox").val()+','+$("#MainContent_playerListBox").find("option:selected").text()
+        var pIndex = parseInt($("#playerIndexField").val())+1
+        selectedPlayerInfo = "selected;" + pIndex +','+$("#playerValueField").val()
     }
-    
     makeServerRequest("po", selectedPlayerInfo); 
 });
 
@@ -256,13 +247,18 @@ function batterAllSelectionSuccess(batterVal) {
 
 function playerListRefreshSuccess(players) {
     console.log(players.split(';'))
-    $("#MainContent_playerListBox").empty();
+    $("#playerTable tbody").empty();
     $.each(players.split(';'), function(i, playerString) {
-        console.log(playerString);
         var splitPlayer = playerString.split(',');
-        if(splitPlayer.length > 1)
-            $('#MainContent_playerListBox').append( $('<option></option>').val(splitPlayer[0]).html(unescape(splitPlayer[1].replace(/ /g, "%A0"))));
+        if(splitPlayer.length > 1) {
+            $("#playerTable tbody").append('<tr><td></td></tr>');
+            $("#playerTable tbody tr:last td:first").html(unescape(splitPlayer[1]));
+            $("#playerTable tbody tr:last td:first").data("val", splitPlayer[0]);
+        }
+
     });
+    
+
 }
 
 function openPreviousModalSuccess(listData) {
