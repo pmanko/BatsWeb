@@ -242,6 +242,8 @@
                 </div>
             </div>
         </asp:Panel>
+
+
         <asp:Panel ID="homePanel" runat="server">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -325,6 +327,26 @@
               </div>
               <div class="modal-body">
                  <asp:Table id="statsTable" runat="server" class="table table-condensed table-bordered table-hover listbox-replacement"></asp:Table>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Select Player Modal -->
+
+        <div class="modal fade" id="selectPlayerModal" tabindex="-1" role="dialog" aria-labelledby="selectPlayerModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">View all clips for <span id="playerType"></span> Player</h4>
+              </div>
+              <div class="modal-body">
+                
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
