@@ -6,8 +6,8 @@
     margin-right: 0px;
 }
 
-.video-js.vjs-default-skin .vjs-big-play-button { display: none; }
-.vjs-loading-spinner {display:none !important;}
+.video-js.vjs-default-skin .vjs-big-play-button {  }
+/*.vjs-loading-spinner {display:none !important;}*/
 
 #playlist .list-group {
     max-height: 36em;

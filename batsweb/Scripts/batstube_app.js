@@ -67,9 +67,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
     $scope.model.currentVideo = $scope.sentVideos[0];
 
-    videojs("main_vid", { techOrder: ["html5", "flash"] }, function () {
+    videojs("main_vid", { "controls": true, "autoplay": false, "preload": "auto",  techOrder: ["html5", "flash"] }, function () {
         this.src([{ type: "video/mp4", src: $scope.model.currentVideo.path }]);
-        this.play();
 
         this.on('ended', function () {
             $scope.$apply(function () {

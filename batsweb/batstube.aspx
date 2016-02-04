@@ -4,7 +4,7 @@
 
     <link href="/dist/styles/video-js.min.css" rel="stylesheet" type="text/css">
 
-	<link type="text/css" href="/dist/styles/batstube.css" rel="stylesheet" />
+	<link type="text/css" href="/Styles/batstube.css" rel="stylesheet" />
 
     <script src="/dist/scripts/videojs.bundle.min.js"></script>
 	
@@ -28,7 +28,7 @@
 				<div class='row'>
 					<div class='col-lg-12'>
 						<div class='embed-responsive embed-responsive-16by9'>
-							<video id="main_vid" class='embed-responsive-item video-js vjs-default-skin' controls >
+							<video id="main_vid" class='embed-responsive-item video-js vjs-default-skin vjs-big-play-centered'>
 								<source src="" type="video/mp4">
 								<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 							</video>
