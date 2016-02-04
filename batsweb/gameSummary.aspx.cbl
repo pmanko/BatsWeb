@@ -111,7 +111,9 @@
            else if actionFlag = 'inning-selected'
                set callbackReturn to actionFlag & "|" & self::inningSelected(methodArg)
            else if actionFlag = 'show-detail'
-               set callbackReturn to actionFlag & "|" & self::showDetail().
+               set callbackReturn to actionFlag & "|" & self::showDetail()
+           else if actionFlag = 'select-home-player'
+               set callbackReturn to actionFlag & "|" & self::selectHomePlayer().
        end method.
        
        method-id GetCallbackResult public.
@@ -501,100 +503,101 @@
                set playerList to "er|" & ERROR-FIELD
                move spaces to ERROR-FIELD
                exit method.                      
-               
+           
+           move BAT360-H-ROSTER-NAME to playerList
       * Create a button (or table?) for each home player using BAT360-H-ROSTER-NAME Array         
       * ASYNC - Return roster array and create things on the client side  
-           if BAT360-H-ROSTER-NAME(1) not = spaces
-               set Button31::Visible to true
-               set Button31::Text to BAT360-H-ROSTER-NAME(1)::Trim. 
-           if BAT360-H-ROSTER-NAME(2) not = spaces
-               set Button32::Visible to true
-               set Button32::Text to BAT360-H-ROSTER-NAME(2)::Trim. 
-           if BAT360-H-ROSTER-NAME(3) not = spaces
-               set Button33::Visible to true
-               set Button33::Text to BAT360-H-ROSTER-NAME(3)::Trim. 
-           if BAT360-H-ROSTER-NAME(4) not = spaces
-               set Button34::Visible to true
-               set Button34::Text to BAT360-H-ROSTER-NAME(4)::Trim. 
-           if BAT360-H-ROSTER-NAME(5) not = spaces
-               set Button35::Visible to true
-               set Button35::Text to BAT360-H-ROSTER-NAME(5)::Trim. 
-           if BAT360-H-ROSTER-NAME(6) not = spaces
-               set Button36::Visible to true
-               set Button36::Text to BAT360-H-ROSTER-NAME(6)::Trim. 
-           if BAT360-H-ROSTER-NAME(7) not = spaces
-               set Button37::Visible to true
-               set Button37::Text to BAT360-H-ROSTER-NAME(7)::Trim. 
-           if BAT360-H-ROSTER-NAME(8) not = spaces
-               set Button38::Visible to true
-               set Button38::Text to BAT360-H-ROSTER-NAME(8)::Trim. 
-           if BAT360-H-ROSTER-NAME(9) not = spaces
-               set Button39::Visible to true
-               set Button39::Text to BAT360-H-ROSTER-NAME(9)::Trim. 
-           if BAT360-H-ROSTER-NAME(10) not = spaces
-               set Button40::Visible to true
-               set Button40::Text to BAT360-H-ROSTER-NAME(10)::Trim. 
-           if BAT360-H-ROSTER-NAME(11) not = spaces
-               set Button41::Visible to true
-               set Button41::Text to BAT360-H-ROSTER-NAME(11)::Trim. 
-           if BAT360-H-ROSTER-NAME(12) not = spaces
-               set Button42::Visible to true
-               set Button42::Text to BAT360-H-ROSTER-NAME(12)::Trim. 
-           if BAT360-H-ROSTER-NAME(13) not = spaces
-               set Button43::Visible to true
-               set Button43::Text to BAT360-H-ROSTER-NAME(13)::Trim. 
-           if BAT360-H-ROSTER-NAME(14) not = spaces
-               set Button44::Visible to true
-               set Button44::Text to BAT360-H-ROSTER-NAME(14)::Trim. 
-           if BAT360-H-ROSTER-NAME(15) not = spaces
-               set Button45::Visible to true
-               set Button45::Text to BAT360-H-ROSTER-NAME(15)::Trim. 
-           if BAT360-H-ROSTER-NAME(16) not = spaces
-               set Button46::Visible to true
-               set Button46::Text to BAT360-H-ROSTER-NAME(16)::Trim. 
-           if BAT360-H-ROSTER-NAME(17) not = spaces
-               set Button47::Visible to true
-               set Button47::Text to BAT360-H-ROSTER-NAME(17)::Trim. 
-           if BAT360-H-ROSTER-NAME(18) not = spaces
-               set Button48::Visible to true
-               set Button48::Text to BAT360-H-ROSTER-NAME(18)::Trim. 
-           if BAT360-H-ROSTER-NAME(19) not = spaces
-               set Button49::Visible to true
-               set Button49::Text to BAT360-H-ROSTER-NAME(19)::Trim. 
-           if BAT360-H-ROSTER-NAME(20) not = spaces
-               set Button50::Visible to true
-               set Button50::Text to BAT360-H-ROSTER-NAME(20)::Trim. 
-           if BAT360-H-ROSTER-NAME(21) not = spaces
-               set Button51::Visible to true
-               set Button51::Text to BAT360-H-ROSTER-NAME(21)::Trim. 
-           if BAT360-H-ROSTER-NAME(22) not = spaces
-               set Button52::Visible to true
-               set Button52::Text to BAT360-H-ROSTER-NAME(22)::Trim. 
-           if BAT360-H-ROSTER-NAME(23) not = spaces
-               set Button53::Visible to true
-               set Button53::Text to BAT360-H-ROSTER-NAME(23)::Trim. 
-           if BAT360-H-ROSTER-NAME(24) not = spaces
-               set Button54::Visible to true
-               set Button54::Text to BAT360-H-ROSTER-NAME(24)::Trim. 
-           if BAT360-H-ROSTER-NAME(25) not = spaces
-               set Button55::Visible to true
-               set Button55::Text to BAT360-H-ROSTER-NAME(25)::Trim. 
-           if BAT360-H-ROSTER-NAME(26) not = spaces
-               set Button56::Visible to true
-               set Button56::Text to BAT360-H-ROSTER-NAME(26)::Trim. 
-           if BAT360-H-ROSTER-NAME(27) not = spaces
-               set Button57::Visible to true
-               set Button57::Text to BAT360-H-ROSTER-NAME(27)::Trim. 
-           if BAT360-H-ROSTER-NAME(28) not = spaces
-               set Button58::Visible to true
-               set Button58::Text to BAT360-H-ROSTER-NAME(28)::Trim. 
-           if BAT360-H-ROSTER-NAME(29) not = spaces
-               set Button59::Visible to true
-               set Button59::Text to BAT360-H-ROSTER-NAME(29)::Trim. 
-           if BAT360-H-ROSTER-NAME(30) not = spaces
-               set Button60::Visible to true
-               set Button60::Text to BAT360-H-ROSTER-NAME(30)::Trim. 
-           invoke HiddenField2Home_ModalPopupExtender::Show.
+      *    if BAT360-H-ROSTER-NAME(1) not = spaces
+      *        set Button31::Visible to true
+      *        set Button31::Text to BAT360-H-ROSTER-NAME(1)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(2) not = spaces
+      *        set Button32::Visible to true
+      *        set Button32::Text to BAT360-H-ROSTER-NAME(2)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(3) not = spaces
+      *        set Button33::Visible to true
+      *        set Button33::Text to BAT360-H-ROSTER-NAME(3)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(4) not = spaces
+      *        set Button34::Visible to true
+      *        set Button34::Text to BAT360-H-ROSTER-NAME(4)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(5) not = spaces
+      *        set Button35::Visible to true
+      *        set Button35::Text to BAT360-H-ROSTER-NAME(5)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(6) not = spaces
+      *        set Button36::Visible to true
+      *        set Button36::Text to BAT360-H-ROSTER-NAME(6)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(7) not = spaces
+      *        set Button37::Visible to true
+      *        set Button37::Text to BAT360-H-ROSTER-NAME(7)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(8) not = spaces
+      *        set Button38::Visible to true
+      *        set Button38::Text to BAT360-H-ROSTER-NAME(8)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(9) not = spaces
+      *        set Button39::Visible to true
+      *        set Button39::Text to BAT360-H-ROSTER-NAME(9)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(10) not = spaces
+      *        set Button40::Visible to true
+      *        set Button40::Text to BAT360-H-ROSTER-NAME(10)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(11) not = spaces
+      *        set Button41::Visible to true
+      *        set Button41::Text to BAT360-H-ROSTER-NAME(11)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(12) not = spaces
+      *        set Button42::Visible to true
+      *        set Button42::Text to BAT360-H-ROSTER-NAME(12)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(13) not = spaces
+      *        set Button43::Visible to true
+      *        set Button43::Text to BAT360-H-ROSTER-NAME(13)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(14) not = spaces
+      *        set Button44::Visible to true
+      *        set Button44::Text to BAT360-H-ROSTER-NAME(14)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(15) not = spaces
+      *        set Button45::Visible to true
+      *        set Button45::Text to BAT360-H-ROSTER-NAME(15)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(16) not = spaces
+      *        set Button46::Visible to true
+      *        set Button46::Text to BAT360-H-ROSTER-NAME(16)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(17) not = spaces
+      *        set Button47::Visible to true
+      *        set Button47::Text to BAT360-H-ROSTER-NAME(17)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(18) not = spaces
+      *        set Button48::Visible to true
+      *        set Button48::Text to BAT360-H-ROSTER-NAME(18)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(19) not = spaces
+      *        set Button49::Visible to true
+      *        set Button49::Text to BAT360-H-ROSTER-NAME(19)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(20) not = spaces
+      *        set Button50::Visible to true
+      *        set Button50::Text to BAT360-H-ROSTER-NAME(20)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(21) not = spaces
+      *        set Button51::Visible to true
+      *        set Button51::Text to BAT360-H-ROSTER-NAME(21)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(22) not = spaces
+      *        set Button52::Visible to true
+      *        set Button52::Text to BAT360-H-ROSTER-NAME(22)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(23) not = spaces
+      *        set Button53::Visible to true
+      *        set Button53::Text to BAT360-H-ROSTER-NAME(23)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(24) not = spaces
+      *        set Button54::Visible to true
+      *        set Button54::Text to BAT360-H-ROSTER-NAME(24)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(25) not = spaces
+      *        set Button55::Visible to true
+      *        set Button55::Text to BAT360-H-ROSTER-NAME(25)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(26) not = spaces
+      *        set Button56::Visible to true
+      *        set Button56::Text to BAT360-H-ROSTER-NAME(26)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(27) not = spaces
+      *        set Button57::Visible to true
+      *        set Button57::Text to BAT360-H-ROSTER-NAME(27)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(28) not = spaces
+      *        set Button58::Visible to true
+      *        set Button58::Text to BAT360-H-ROSTER-NAME(28)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(29) not = spaces
+      *        set Button59::Visible to true
+      *        set Button59::Text to BAT360-H-ROSTER-NAME(29)::Trim. 
+      *    if BAT360-H-ROSTER-NAME(30) not = spaces
+      *        set Button60::Visible to true
+      *        set Button60::Text to BAT360-H-ROSTER-NAME(30)::Trim. 
+      *    invoke HiddenField2Home_ModalPopupExtender::Show.
        end method.
 
        method-id inningSelected protected.

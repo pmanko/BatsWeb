@@ -62,6 +62,12 @@ $(document).on('click', '#atBatDetail', function (events) {
     
 });
 
+// Select Home/Visting Player
+$(document).on('click', '#selectHomePlayer', function (events) {
+    makeServerRequest('select-home-player');
+
+});
+
 // -----------------------------
 // Returns Data from Server after GetCallbackResult code behind function
 function GetServerData(arg, context) {
