@@ -487,10 +487,10 @@
            invoke HiddenField1Vis_ModalPopupExtender::Show.
        end method.
 
-       method-id homeButton_Click protected.
+       method-id selectHomePlayer protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning playerList as String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
@@ -498,8 +498,9 @@
            MOVE "SH" to BAT360-ACTION.
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                      
+               set playerList to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                      
                
       * Create a button (or table?) for each home player using BAT360-H-ROSTER-NAME Array         
       * ASYNC - Return roster array and create things on the client side  
