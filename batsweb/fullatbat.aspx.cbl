@@ -663,8 +663,6 @@ PM         set self::Session::Item("nameArray") to nameArray
        end method.
 
        method-id player_Selected protected.
-       local-storage section.
-       01 playerIndex              type Single.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
        procedure division using by value indexString as type String 
@@ -672,14 +670,13 @@ PM         set self::Session::Item("nameArray") to nameArray
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
       *    if team is changed instead of ok button
-           invoke type System.Single::TryParse(self::getSelectedValue(indexString), by reference playerIndex)
-           MOVE BAT666-ROSTER-NAME(playerIndex) to BAT666-SEL-PLAYER.
+           MOVE BAT666-ROSTER-NAME(self::getSelectedIndex(indexString)) to BAT666-SEL-PLAYER.
       *     SET selectedplayerlabel::Text to BAT666-SEL-PLAYER
            
            if BAT666-IND-PB-FLAG = "P" THEN
-               MOVE BAT666-ROSTER-ID(playerIndex) TO BAT666-SAVE-PITCHER-ID
+               MOVE BAT666-ROSTER-ID(self::getSelectedIndex(indexString)) TO BAT666-SAVE-PITCHER-ID
            ELSE
-               MOVE BAT666-ROSTER-ID(playerIndex) TO BAT666-SAVE-BATTER-ID
+               MOVE BAT666-ROSTER-ID(self::getSelectedIndex(indexString)) TO BAT666-SAVE-BATTER-ID
            END-IF.
        end method.
 
