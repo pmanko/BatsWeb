@@ -422,22 +422,6 @@
       *>> </remarks>
        01 Button30 type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> homePanel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 homePanel type System.Web.UI.WebControls.Panel protected.
-      *>> <summary>
-      *>> backButton2 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 backButton2 type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> statsTable control.
       *>> </summary>
       *>> <remarks>
