@@ -111,7 +111,9 @@
            else if actionFlag = 'inning-selected'
                set callbackReturn to actionFlag & "|" & self::inningSelected(methodArg)
            else if actionFlag = 'show-detail'
-               set callbackReturn to actionFlag & "|" & self::showDetail().
+               set callbackReturn to actionFlag & "|" & self::showDetail()
+           else if actionFlag = 'select-home-player'
+               set callbackReturn to actionFlag & "|" & self::selectHomePlayer().
        end method.
        
        method-id GetCallbackResult public.
@@ -501,7 +503,8 @@
                set playerList to "er|" & ERROR-FIELD
                move spaces to ERROR-FIELD
                exit method.                      
-               
+           
+           move BAT360-H-ROSTER-NAME to playerList
       * Create a button (or table?) for each home player using BAT360-H-ROSTER-NAME Array         
       * ASYNC - Return roster array and create things on the client side  
       *    if BAT360-H-ROSTER-NAME(1) not = spaces

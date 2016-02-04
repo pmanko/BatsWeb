@@ -166,14 +166,6 @@
       *>> </remarks>
        01 replaysButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> homeButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 homeButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> visPanel control.
       *>> </summary>
       *>> <remarks>

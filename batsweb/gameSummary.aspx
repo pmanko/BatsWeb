@@ -155,17 +155,13 @@
                             <asp:HiddenField ID="HiddenField1" runat="server" />
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#statsModal">View Team Stats</a>
-
-                            <%--<asp:Button ID="statsButton" runat="server" Text="View Game Stats" class="btn btn-default btn-block" />
-                            <cc1:PopupControlExtender ID="statsButton_PopupControlExtender" runat="server" BehaviorID="statsButton_PopupControlExtender" DynamicServicePath="" PopupControlID="statsPanel" TargetControlID="statsButton">
-                            </cc1:PopupControlExtender>--%>
+                            <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#statsModal">View Game Stats</a>
                         </div>
                         <div class="col-md-3">
                             <asp:Button ID="replaysButton" runat="server" Text="Replays" class="btn btn-default btn-block" />
                         </div>
                         <div class="col-md-3">
-                            <asp:Button ID="homeButton" runat="server" Text="Select Home Player" class="btn btn-default btn-block" />
+                            <a href="#" id="selectHomePlayer" class="btn btn-default btn-block">Select Home Player</a>
                         </div>
                     </div>
                 </div>
