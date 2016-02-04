@@ -92,7 +92,7 @@
                         <a data-toggle="modal" data-target="#showDatesModal" class="btn btn-block btn-info">Date One-Clicks</a>
                     </div>
                     <div class="col-lg-3">
-                        <asp:Button ID="Button2" runat="server" Text="Go" OnClick="Button2_Click" CssClass="btn btn-primary" />
+                        <asp:Button ID="Button2" runat="server" Text="Go" OnClick="Button2_Click" CssClass="btn btn-primary btn-block" />
                     </div>
                 </div>
                 <div class="row">

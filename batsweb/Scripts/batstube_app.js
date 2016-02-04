@@ -69,7 +69,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
     videojs("main_vid", { "controls": true, "autoplay": false, "preload": "auto",  techOrder: ["html5", "flash"] }, function () {
         this.src([{ type: "video/mp4", src: $scope.model.currentVideo.path }]);
-
+        this.play();
+        
         this.on('ended', function () {
             $scope.$apply(function () {
                 var next_vid_index = ($scope.sentVideos.indexOf($scope.model.currentVideo) + 1) % $scope.sentVideos.length;
