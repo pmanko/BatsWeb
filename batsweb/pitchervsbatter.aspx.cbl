@@ -69,7 +69,6 @@
                set BAT766WEBF to new BAT766WEBF
                invoke bat766rununit::Add(BAT766WEBF)
                set self::Session::Item("766rununit") to  bat766rununit.
-           invoke abListBox::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(abListBox, "move"))
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
@@ -906,7 +905,6 @@ PM         set self::Session::Item("nameArray") to nameArray
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim.
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
       *     set pTeamDropDownList::Text to BAT766-PITCHER-TEAM::Trim
-           invoke abListBox::Items::Clear.
            invoke atBatTable::Rows::Clear()
            move 1 to aa.
        5-loop.
@@ -914,7 +912,6 @@ PM         set self::Session::Item("nameArray") to nameArray
                go to 10-done
            else
                INSPECT BAT766-T-LINE(AA) REPLACING ALL " " BY X'A0'
-               invoke abListBox::Items::Add(" " & BAT766-T-LINE(aa))
                invoke self::addTableRow(atBatTable, " " & BAT766-T-LINE(aa)).
            add 1 to aa.
            go to 5-loop.
@@ -941,38 +938,6 @@ PM         set self::Session::Item("nameArray") to nameArray
            invoke self::Load_List.
        end method.
     
-       method-id abListBox_SelectedIndexChanged protected.
-       local-storage section.
-       01 selected  type Int32[].
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
-           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
-           initialize BAT766-T-AB-SEL-TBL
-           move 0 to aa.
-           set selected to abListBox::GetSelectedIndices.
-       videos-loop.
-           if aa = selected::Count
-               go to videos-done.
-           MOVE "Y" TO BAT766-T-SEL(selected[aa] + 1).
-           add 1 to aa.
-           go to videos-loop.
-       videos-done.
-           MOVE "               00000000000" TO BAT766-I-KEY.
-           MOVE "VS" to BAT766-ACTION
-           set bat766rununit to self::Session::Item("766rununit")
-               as type RunUnit
-
-           invoke bat766rununit::Call("BAT766WEBF")
-           if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") = "ctl00$MainContent$abListBox"
-                   invoke self::batstube.
-       end method.
-
        method-id batstube protected.
        local-storage section.
 PM     01 vidPaths type String. 
@@ -1001,14 +966,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *     invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
-       method-id selectedButton_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-           if abListBox::SelectedItem = null
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select an at bat!');", true)
-           else    
-               invoke self::batstube.
-       end method.
-       
        method-id allButton_Click protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".

@@ -17,4 +17,9 @@
 #MainContent_atBatTable thead {
     border-bottom: 2px #ddd solid;
 }
+
+#atBatTableWrapper {
+    height: 450px;
+
+}
 /***/

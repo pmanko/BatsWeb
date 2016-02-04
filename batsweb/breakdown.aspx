@@ -494,15 +494,15 @@
                                     <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
                                     <br />
 <%--                                    <select ID="MainContent_playerListBox" size="14" class="form-control" ></select>                       --%>
-                                    <table id="playerTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                    <div class="listbox-replacement-wrapper">
+                                        <table id="playerTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                         data-index-field="#playerIndexField" 
                                         data-value-field="#playerValueField" >
                                         <tbody></tbody>
-                                    </table>                                
-
+                                        </table>                                
+                                    </div>
                                     <input type="hidden" name="playerIndexField" id="playerIndexField" />
                                     <input type="hidden" name="playerValueField" id="playerValueField" />
-                                    
                                 </div>
                             </div>
                             
@@ -533,9 +533,11 @@
                                 <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <table id="previousPitchTable" class="table table-condensed table-hover listbox-replacement" >
-                                            <tbody id="previousPitchTableBody" runat="server"></tbody>
-                                            </table>
+                                            <div class="listbox-replacement-wrapper">
+                                                <table id="previousPitchTable" class="table table-condensed table-hover listbox-replacement" >
+                                                <tbody id="previousPitchTableBody" runat="server"></tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -580,9 +582,11 @@
                                 <div class="col-lg-8">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <table id="nextPitchTable" class="table table-condensed table-hover listbox-replacement" >
-                                            <tbody id="nextPitchTableBody" runat="server"></tbody>
-                                            </table>
+                                            <div class="listbox-replacement-wrapper">
+                                                <table id="nextPitchTable" class="table table-condensed table-hover listbox-replacement" >
+                                                <tbody id="nextPitchTableBody" runat="server"></tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -728,19 +732,18 @@
                                 <div class="panel-title">Pitch List</div>
                             </div>
                             
-                            <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement" 
+                            <div class="listbox-replacement-wrapper">
+                                <table id="pitchListTable" class="table table-condensed table-hover listbox-replacement" 
                                 data-index-field="#MainContent_pitchListIndexField" 
                                 data-value-field="#MainContent_pitchListValueField"
-                            >           
+                                >           
                                 
                                 <tbody id="pitchListTableBody" runat="server"></tbody>
 
-                            </table>
-
+                                </table>
+                            </div>
                             <asp:HiddenField ID="pitchListValueField" runat="server" />
                             <asp:HiddenField ID="pitchListIndexField" runat="server" />
-
-                            
                         </div>
                     </div>
                 </div>

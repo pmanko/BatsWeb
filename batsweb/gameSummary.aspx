@@ -17,8 +17,9 @@
                 <div class="panel-heading">
                     <div class="panel-title">List of Games</div>
                 </div>
+                <div class="listbox-replacement-wrapper">
 
-                <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                    <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                 data-index-field="#MainContent_gamesIndexField" 
                                 data-value-field="#MainContent_gamesValueField" 
                                 data-postback="double" 
@@ -28,7 +29,8 @@
                         <asp:TableHeaderCell>Date      Vis                      Home                   Time Video</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                                 
-                </asp:Table>
+                    </asp:Table>
+                </div>
                 <asp:HiddenField ID="gamesValueField" runat="server" onvaluechanged="gameSelected" />
                 <asp:HiddenField ID="gamesIndexField" runat="server"   />
                 <br />
@@ -111,17 +113,18 @@
                 <div class="panel-heading">
                     <div class="panel-title">Inning Summary</div>
                 </div>
-                    
-                <asp:Table id="inningSummaryTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                <div class="listbox-replacement-wrapper">
+                    <asp:Table id="inningSummaryTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                     data-value-field="#MainContent_inningSummaryValueField" 
                     data-index-field="#MainContent_inningSummaryIndexField" 
                     data-postback="false" 
                     data-multiple="false"
                     data-on-select="inningRowSelected"
                     data-on-dblclick="openBatsTube"
-                >
+                    >
                                                                      
-                </asp:Table>
+                    </asp:Table>
+                </div>
                 <asp:HiddenField ID="inningSummaryValueField" runat="server" />
                 <asp:HiddenField ID="inningSummaryIndexField" runat="server"  />
                                     
@@ -178,7 +181,9 @@
                 <h4 class="modal-title" id="statsModalLabel">Current Game Stats</h4>
               </div>
               <div class="modal-body">
-                 <asp:Table id="statsTable" runat="server" class="table table-condensed table-bordered table-hover listbox-replacement"></asp:Table>
+                <div class="listbox-replacement-wrapper">
+                  <asp:Table id="statsTable" runat="server" class="table table-condensed table-bordered table-hover listbox-replacement"></asp:Table>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

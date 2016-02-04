@@ -58,14 +58,16 @@
                                 <div class="col-lg-4">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <asp:Table 
+                                            <div class="listbox-replacement-wrapper">
+                                                <asp:Table 
                                                 id="pitchTable" runat="server" class="table table-condensed table-bordered listbox-replacement" 
-                                            >
-                                            <asp:TableHeaderRow TableSection="TableHeader">
+                                                >
+                                                <asp:TableHeaderRow TableSection="TableHeader">
                                                 <asp:TableHeaderCell>## Type Location K Vel * Vid</asp:TableHeaderCell>
-                                            </asp:TableHeaderRow>
+                                                </asp:TableHeaderRow>
                                     
-                                            </asp:Table>
+                                                </asp:Table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

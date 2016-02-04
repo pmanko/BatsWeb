@@ -5,13 +5,13 @@
     font-size: medium;
 }
 
-#MainContent_gamesTable td, #MainContent_gamesTable th {
-    padding-left: 20px;
-}
-
 #MainContent_gamesTable tbody {
     height: 250px;
 
+}
+
+#MainContent_gamesTable td, #MainContent_gamesTable th {
+    padding-left: 20px;
 }
 
 #MainContent_gamesTable thead {
@@ -30,7 +30,7 @@
 }
 
 #MainContent_inningSummaryTable tbody {
-    height: 250px;
+    height: 350px;
 
 }
 
@@ -51,7 +51,7 @@
 }
 
 #MainContent_statsTable tbody {
-    height: 250px;
+    height: 450px;
 
 }
 
@@ -59,7 +59,20 @@
     border-bottom: 2px #ddd solid;
 }
 
+#gamesTableWrapper {
+    height: 250px;
 
+}
+
+#inningSummaryTableWrapper {
+    height: 250px;
+
+}
+
+#statsTableWrapper {
+    height: 250px;
+
+}
 
 /***/
 /* Player Button Styles*/

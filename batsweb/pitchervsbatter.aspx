@@ -89,19 +89,21 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                    <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
-                                        data-index-field="#MainContent_atBatIndexField" 
-                                        data-value-field="#MainContent_atBatValueField" 
-                                        data-postback="false" 
-                                        data-multiple="true"
-                                        data-on-select="atBatUpdate"
-                                        data-on-dblclick="openBatsTube"
-                                        >
-                                        <asp:TableHeaderRow TableSection="TableHeader">
-                                            <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
-                                        </asp:TableHeaderRow>
+                                        <div class="listbox-replacement-wrapper">
+                                            <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                            data-index-field="#MainContent_atBatIndexField" 
+                                            data-value-field="#MainContent_atBatValueField" 
+                                            data-postback="false" 
+                                            data-multiple="true"
+                                            data-on-select="atBatUpdate"
+                                            data-on-dblclick="openBatsTube"
+                                            >
+                                            <asp:TableHeaderRow TableSection="TableHeader">
+                                                <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
+                                            </asp:TableHeaderRow>
                                 
-                                    </asp:Table>
+                                            </asp:Table>
+                                        </div>
                                     <asp:HiddenField ID="atBatTableValue" runat="server"  />
                                     <asp:HiddenField ID="atBatIndexField" runat="server"  />  
                                     </div>

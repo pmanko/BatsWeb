@@ -1,16 +1,19 @@
-﻿#pitchListTable tbody {
-    max-height: 330px;  
-
-}
-#previousPitchTable tbody {
-    max-height: 330px;  
-
-}
-#nextPitchTable tbody {
-    max-height: 330px;  
+﻿#pitchListTableWrapper {
+    height: 330px;
 
 }
 
-#playerTable tbody {
-    max-height: 300px;
+#previousPitchTableWrapper {
+    height: 330px;
+
+}
+
+#nextPitchTableWrapper {
+    height: 330px;
+
+}
+
+#playerTableWrapper {
+    height: 330px;
+
 }
