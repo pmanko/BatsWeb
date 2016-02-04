@@ -48,20 +48,21 @@
                         <br />
                         <div class="row">
                             <div class='col-md-12'>
-                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                            <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
-                            </asp:DropDownList> 
-                            <asp:Table 
-                                        id="playerTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
-                                        data-index-field="#MainContent_playerIndexField" 
-                                        data-value-field="#MainContent_playerValueField" 
-                                        data-postback="false" 
-                                        data-multiple="false"
-                                    >
+                                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                                <asp:DropDownList ID="teamDropDownList" runat="server" OnSelectedIndexChanged="teamDropDownList_SelectedIndexChanged" AutoPostBack="True" class="form-control" >
+                                </asp:DropDownList> 
+                                <div class="listbox-replacement-wrapper">
+                                    <asp:Table 
+                                            id="playerTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                            data-index-field="#MainContent_playerIndexField" 
+                                            data-value-field="#MainContent_playerValueField" 
+                                            data-postback="false" 
+                                            data-multiple="false">
                                     </asp:Table>
                                     <asp:HiddenField ID="playerIndexField" runat="server" onvaluechanged="player_Selected" />
                                     <asp:HiddenField ID="playerValueField" runat="server"  />  
+                                </div>
                             </div>
                             </ContentTemplate>
                             </asp:UpdatePanel>
@@ -394,11 +395,11 @@
                         <div class="col-lg-2">
                             
                             <%--<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>--%>
-                            <asp:Button ID="Button5" runat="server" Text="Show At Bats" OnClick="Button5_Click" CssClass="btn btn-primary" />
+                            <asp:Button ID="Button5" runat="server" Text="Show At Bats" OnClick="Button5_Click" CssClass="btn btn-primary btn-block" />
                         </div>
                         <div class="col-lg-2">
                             <%--<asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>--%>
-                            <asp:Button ID="resetButton" runat="server" Text="Reset" OnClick="resetButton_Click" CssClass="btn btn-danger"/>
+                            <asp:Button ID="resetButton" runat="server" Text="Reset" OnClick="resetButton_Click" CssClass="btn btn-danger btn-block"/>
                         </div>
                     </div>
                 </div>
@@ -414,7 +415,7 @@
                             
                             <div class="row">
 
-                                <div class="col-md-12">
+                                <div class="col-md-12 listbox-replacement-wrapper" id="atBatTableWrapper">
                                     <asp:Table 
                                         id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                         data-index-field="#MainContent_atBatIndexField" 

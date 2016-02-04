@@ -1,4 +1,8 @@
 ﻿/* ListBox Replacement - make scss when finalized */
+.listbox-replacement-wrapper {
+    overflow: auto;
+}
+
 .listbox-replacement thead {
   width: 97%;
 }
@@ -10,10 +14,9 @@
 }
 
 .listbox-replacement tbody {
-  overflow-y: auto;
-  overflow-x: auto;
   width: 100%;
   display: block;
+  overflow-y: auto;
 }
 
 .listbox-replacement-clickable tr {
