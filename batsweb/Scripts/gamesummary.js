@@ -68,6 +68,22 @@ $(document).on('click', '#selectHomePlayer', function (events) {
 
 });
 
+$(document).on('click', '#selectVisitingPlayer', function (events) {
+    makeServerRequest('select-visiting-player');
+
+});
+
+$(document).on('click', '#playerButtons .btn', function(event){
+    console.log($(this).data("playerId")); 
+    if($(this).data("playerType") == "Home") {
+        makeServerRequest('home-player-button-click', $(this).data("playerId"));    
+    } else {
+        makeServerRequest('visiting-player-button-click', $(this).data("playerId"));
+    }
+    
+    openBatsTube();
+});
+
 // -----------------------------
 // Returns Data from Server after GetCallbackResult code behind function
 function GetServerData(arg, context) {
@@ -80,8 +96,32 @@ function GetServerData(arg, context) {
     }
 
     switch(actionFlag) {
+      case 'select-home-player':
+        console.log(splitArgs[1]);
+        openPlayerModal(splitArgs[1], "Home");
+        break;
+      case 'select-visiting-player':
+        console.log(splitArgs[1]);
+        openPlayerModal(splitArgs[1], "Visiting");
+        break;        
       default:
         console.log("Default!");
     };
 };
+// -----------------------------
+
+// -----------------------------
+// Callback Functions
+
+function openPlayerModal(playerList, modalType) {
+    $("#playerButtons").html("");
+    $.each(playerList.split(';') ,function(i, player){
+        if(player) {
+            $('<a class="btn btn-default">')
+            .text(player).data("playerId", i + 1).data("playerType", modalType).appendTo($("#playerButtons"))            
+        }
+    });
+    $("#playerType").text(modalType);
+    $("#selectPlayerModal").modal();
+}
 // -----------------------------

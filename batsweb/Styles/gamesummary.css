@@ -58,3 +58,14 @@
 #MainContent_statsTable thead {
     border-bottom: 2px #ddd solid;
 }
+
+
+
+/***/
+/* Player Button Styles*/
+
+#playerButtons .btn {
+    width: 207px;
+    word-wrap: break-word;
+    margin: 0 10px 10px 0;
+}
