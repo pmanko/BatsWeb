@@ -79,13 +79,15 @@ function GetServerData(arg, context) {
         playerSelectedSuccess(splitArgs[1]);
     }
     else if (actionFlag == 'reload-pitch-list') {
-        populateListboxTable("#pitchListTable", splitArgs[1])
+        populateListboxTable("#pitchListTable", splitArgs[1]);
     }
     else if (actionFlag == 'reload-previous-list') {
-        populateListboxTable("#previousPitchTable", splitArgs[1])
+        populateListboxTable("#previousPitchTable", splitArgs[1]);
     }
     else if (actionFlag == 'reload-next-list') {
-        populateListboxTable("#nextPitchTable", splitArgs[1])
+        // console.log("RELOADING!");
+        $('#nextPitchTable tbody').empty();
+        populateListboxTable("#nextPitchTable", splitArgs[1]);
     }
 };
 // -----------------------------
@@ -174,10 +176,12 @@ $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
   var button = $(event.relatedTarget); // Button that triggered the modal
   var type = button.data('modalType');// Extract info from data-* attributes
   
-
+  
   var modal = $(this);
   modal.data("type", type);
-
+  
+  $("#MainContent_locatePlayerTextBox").val("");
+  
   if(type == 'pitcher')
     makeServerRequest('sp');
   else
@@ -190,7 +194,7 @@ $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
 $(document).on('click', "#selectPlayerButton", function(event){
     var selectedPlayerInfo;
     // Decide which player value to select
-    if($("#playerValueField").val() == null) {
+    if(!$("#playerValueField").val()) {
         selectedPlayerInfo = "located;" + $("#MainContent_locatePlayerTextBox").val()       
     } else {
         var pIndex = parseInt($("#playerIndexField").val())+1

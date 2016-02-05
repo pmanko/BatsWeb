@@ -105,7 +105,11 @@
            set MOUSEY to e::Y
            move "MO" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
-           invoke self::batstube.
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD
+           else               
+               invoke self::batstube.
        end method.
        
        method-id batstube protected.

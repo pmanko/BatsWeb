@@ -18,6 +18,10 @@
                exit method.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer       
+           if BAT310-INFIELD-IP = "Y"
+               set infieldButton::Text to "Show Outfield"
+           else    
+               set infieldButton::Text to "Show Infield".
            move 1 to aa.
        parks-loop.
            if aa > BAT310-BPARK-NUM-ENTRIES

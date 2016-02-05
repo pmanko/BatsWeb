@@ -167,7 +167,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            end-unstring.
            
            if actionFlag = "update-at-bat"
-               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg).
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
+           else if actionFlag = "play-all"
+               set callbackReturn to actionFlag & "|" & self::playAll(methodArg).
       *    else if actionFlag = "update-player"
       *        set callbackReturn to actionFlag & "|" & self::player_Selected(methodArg).
        end method.
@@ -261,6 +263,61 @@ PM         set self::Session::Item("nameArray") to nameArray
            if aa = selected::Count
                go to videos-done.
            MOVE "Y" TO BAT666-T-SEL(selected[aa] + 1).
+           add 1 to aa.
+           go to videos-loop.
+       videos-done.
+       
+           MOVE "               00000000000" TO BAT666-I-KEY.
+           MOVE "VS" to BAT666-ACTION
+           set bat666rununit to self::Session::Item("666rununit") as type RunUnit
+
+           invoke bat666rununit::Call("BAT666WEBF")
+           
+           if ERROR-FIELD NOT = SPACES
+               set atBatReturn to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.           
+               
+           set vidPaths to ""
+           set vidTitles to ""
+           move 1 to aa.
+
+       lines-loop.
+           if aa > BAT666-WF-VID-COUNT
+               go to lines-done.
+           
+           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
+           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+       
+           set self::Session::Item("video-paths") to vidPaths
+           set self::Session::Item("video-titles") to vidTitles
+
+       end method.
+
+       method-id playAll protected.
+       local-storage section.
+       01 vidPaths type String. 
+       01 vidTitles type String.
+       linkage section.
+       COPY "Y:\sydexsource\BATS\bat666_dg.CPB".
+       procedure division using by value itemsCount as type String 
+                               returning atBatReturn as type String.
+       
+           set mydata to self::Session["bat666data"] as type batsweb.bat666Data
+           set address of BAT666-DIALOG-FIELDS to myData::tablePointer
+           initialize BAT666-T-AB-SEL-TBL
+           move spaces to BAT666-VIDEO-FOUND
+           move 0 to aa.
+           invoke type System.Single::TryParse(itemsCount, by reference abNum).
+       videos-loop.
+      * Replace with itemsCount
+           if aa = abNum
+               go to videos-done.
+           MOVE "Y" TO BAT666-T-SEL(aa + 1).
            add 1 to aa.
            go to videos-loop.
        videos-done.
@@ -806,14 +863,14 @@ PM         set self::Session::Item("nameArray") to nameArray
            set BAT666-RES-IDX2 to (Result2::SelectedIndex + 1)
            set BAT666-RESULT2 TO Result2::SelectedItem
            move 0 to runners::SelectedIndex
-           set DIALOG-RUN-MASTER to Outs::SelectedItem
-           set DIALOG-RUN-IDX to (Outs::SelectedIndex + 1)           
+           set DIALOG-RUN-MASTER to runners::SelectedItem
+           set DIALOG-RUN-IDX to (runners::SelectedIndex + 1)           
            move 0 to outs::SelectedIndex
            set DIALOG-OUT-MASTER to Outs::SelectedItem
            set DIALOG-OUT-IDX to (Outs::SelectedIndex + 1)
            move 0 to innings::SelectedIndex
-           set DIALOG-INN-MASTER to Outs::SelectedItem
-           set DIALOG-INN-IDX to (Outs::SelectedIndex + 1)
+           set DIALOG-INN-MASTER to innings::SelectedItem
+           set DIALOG-INN-IDX to (innings::SelectedIndex + 1)
            MOVE "RA" TO BAT666-ACTION
            invoke bat666rununit::Call("BAT666WEBF")
            if ERROR-FIELD NOT = SPACES

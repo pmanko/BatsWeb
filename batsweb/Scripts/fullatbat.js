@@ -25,6 +25,11 @@ $(document).on("click", "#showVideosButton", function(){
    openBatsTube(); 
 });
 
+$(document).on("click", "#playAllButton", function () {
+    makeServerRequest("play-all", $("#MainContent_atBatTable tbody tr").length);
+    batstubeWindow = window.open("batstube.aspx", '_blank');
+    batstubeWindow.focus();
+});
 // Open Player Selection Modal
 function openModal() {
     $("#showPlayerModal").modal();

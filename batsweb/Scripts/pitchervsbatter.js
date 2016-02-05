@@ -27,9 +27,10 @@ $(document).on("click", "#showVideosButton", function () {
     openBatsTube();
 });
 
-$(document).on("click", "#allButton", function () {
-    makeServerRequest("play-all", $("#MainContent_atBatIndexField").val());
-    openBatsTube();
+$(document).on("click", "#playAllButton", function () {
+    makeServerRequest("play-all");
+    batstubeWindow = window.open("batstube.aspx", '_blank');
+    batstubeWindow.focus();
 });
 // -----------------------------
 // Server Asynchronious Callback 

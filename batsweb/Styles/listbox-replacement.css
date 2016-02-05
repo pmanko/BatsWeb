@@ -6,7 +6,7 @@
 .listbox-replacement thead {
   width: 97%;
 }
-.listbox-replacement thead > tr > th {
+.listbox-replacement thead > tr > th,  .listbox-replacement thead > tr > td {
   white-space: pre;
 }
 .listbox-replacement tbody > tr > td {
@@ -42,7 +42,7 @@ table.listbox-replacement > tbody > tr > td {
   border-bottom-width: 0;
 }
 
-table.listbox-replacement > thead > tr > th {
+table.listbox-replacement > thead > tr > th, table.listbox-replacement > thead > tr > td {
   display: block;
   float: left;
   width: 100%;

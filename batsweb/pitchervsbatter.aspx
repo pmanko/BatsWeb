@@ -84,11 +84,6 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <asp:Label ID="headerLabel" runat="server" BorderStyle="Groove" Font-Bold="True" Font-Names="Consolas" Font-Size="Medium" class="form-control"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
                                         <div class="listbox-replacement-wrapper">
                                             <asp:Table id="atBatTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                             data-index-field="#MainContent_atBatIndexField" 
@@ -98,9 +93,7 @@
                                             data-on-select="atBatUpdate"
                                             data-on-dblclick="openBatsTube"
                                             >
-                                            <asp:TableHeaderRow TableSection="TableHeader">
-                                                <asp:TableHeaderCell>Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI</asp:TableHeaderCell>
-                                            </asp:TableHeaderRow>
+
                                 
                                             </asp:Table>
                                         </div>
@@ -109,10 +102,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-lg btn-primary"/>
-                                 <!--       <a href="#" id="allButton" class="btn btn-lg btn-primary btn-block">Play All</a> -->
-                                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
+                                    <div class="col-md-6">
+                                        <a href="#" id="playAllButton" class="btn btn-lg btn-primary btn-block">Play All</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Play Selected</a>
                                     </div>
                                 </div>
                             </div>

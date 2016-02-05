@@ -442,8 +442,11 @@
 
                         <div class="panel-footer">
                             <div class="row">
-                                <div class='col-md-12'>
-                                    <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
+                                <div class='col-md-6'>
+                                    <a href="#" id="playAllButton" class="btn btn-lg btn-primary btn-block">Play All</a>
+                                </div>
+                                <div class='col-md-6'>
+                                    <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Play Selected</a>
                                 </div>
                             </div>
                         </div>

@@ -494,15 +494,16 @@
                                     <asp:DropDownList ID="teamDropDownList" runat="server" class="form-control" ></asp:DropDownList> 
                                     <br />
 <%--                                    <select ID="MainContent_playerListBox" size="14" class="form-control" ></select>                       --%>
-                                    <div class="listbox-replacement-wrapper">
+                                    <div class="listbox-replacement-wrapper" id="playerTableWrapper">
                                         <table id="playerTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                         data-index-field="#playerIndexField" 
                                         data-value-field="#playerValueField" >
                                         <tbody></tbody>
                                         </table>                                
+                                        <input type="hidden" name="playerIndexField" id="playerIndexField" />
+                                        <input type="hidden" name="playerValueField" id="playerValueField" />
                                     </div>
-                                    <input type="hidden" name="playerIndexField" id="playerIndexField" />
-                                    <input type="hidden" name="playerValueField" id="playerValueField" />
+
                                 </div>
                             </div>
                             
@@ -720,7 +721,7 @@
                             <div class="panel-footer">
                                 <div class="pull-right">
                                 <a class="btn btn-info btn-md" data-toggle="modal" data-target="#moreModal">More</a>
-                                <asp:Button ID="resetButton" runat="server" Text="Reset" class="btn btn-danger btn-md"/>
+                                <asp:Button ID="resetButton" runat="server" Text="Reset" OnClick="resetButton_Click" class="btn btn-danger btn-md"/>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

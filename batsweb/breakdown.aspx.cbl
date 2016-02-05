@@ -600,6 +600,18 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
+           move 0 to countdd::SelectedIndex
+           set DIALOG-CNT-IDX to (countdd::SelectedIndex + 1)
+           set DIALOG-COUNT-MASTER to countdd::SelectedItem
+           move 0 to pitchlocdd::SelectedIndex
+           set DIALOG-PLO-IDX to (pitchlocdd::SelectedIndex + 1)
+           set DIALOG-PLO-MASTER to pitchlocdd::SelectedItem   
+           move 0 to pitchtypedd::SelectedIndex
+           set DIALOG-PTY-IDX to (pitchtypedd::SelectedIndex + 1)
+           set DIALOG-PTY-MASTER to pitchtypedd::SelectedItem       
+           move 0 to catcherdd::SelectedIndex
+           set DIALOG-CAT-IDX to (countdd::SelectedIndex + 1)
+           set DIALOG-CAT-MASTER to countdd::SelectedItem                
            move 0 to result1dd::SelectedIndex
            set DIALOG-RES-IDX to (result1dd::SelectedIndex + 1)
            set DIALOG-RES-MASTER TO result1dd::SelectedItem
@@ -621,7 +633,7 @@ PM         set self::Session::Item("nameArray") to nameArray
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD.                    
            invoke self::Recalc.
-           invoke self::Response::Redirect(self::Request::RawUrl)
+      *     invoke self::Response::Redirect(self::Request::RawUrl)
        end method.
        
        method-id Recalc protected.
@@ -1098,8 +1110,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                 
-           invoke self::batstube.
+               move spaces to ERROR-FIELD
+           else    
+               invoke self::batstube.
        end method.
        
        method-id allButton_Click protected.

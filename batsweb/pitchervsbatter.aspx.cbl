@@ -75,6 +75,7 @@
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert(ERROR-FIELD);", true)
                move spaces to ERROR-FIELD.
+           set BAT766-GAME-FLAG to "D"
            SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
@@ -92,7 +93,6 @@
        10-done.
            close play-file.
 PM         set self::Session::Item("nameArray") to nameArray
-           set headerLabel::Text to BAT766-LINE-HDR::Replace(" ", "&nbsp;")
            set pitcherTextBox::Text to BAT766-PITCHER-DSP-NAME::Trim
            set batterTextBox::Text to BAT766-BATTER-DSP-NAME::Trim
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
@@ -129,7 +129,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            end-unstring.
            
            if actionFlag = "update-at-bat"
-               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg).
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
+           else if actionFlag = "play-all"
+               set callbackReturn to actionFlag & "|" & self::playAll.
            
        end method.
        
@@ -837,13 +839,17 @@ PM         set self::Session::Item("nameArray") to nameArray
        01 tRow type System.Web.UI.WebControls.TableRow.
        01 td type System.Web.UI.WebControls.TableCell.
        procedure division using by value targetTable as type System.Web.UI.WebControls.Table,
-                          by value rowContent as type String.
+                          by value rowContent as type String,
+                          by value rowType as type String.
            
            set td to type System.Web.UI.WebControls.TableCell::New()
            set tRow to type System.Web.UI.WebControls.TableRow::New()
 
            set td::Text to rowContent
-           set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           if rowType = 'b'
+               set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableBody
+           else
+               set tRow::TableSection to type System.Web.UI.WebControls.TableRowSection::TableHeader.
            
     
            invoke tRow::Cells::Add(td)
@@ -906,13 +912,16 @@ PM         set self::Session::Item("nameArray") to nameArray
       *     set bTeamDropDownList::Text to BAT766-BATTER-TEAM::Trim
       *     set pTeamDropDownList::Text to BAT766-PITCHER-TEAM::Trim
            invoke atBatTable::Rows::Clear()
+         
+           invoke self::addTableRow(atBatTable, "Inn Batter       Out Rnrs Res   RBI Inn Batter      Out Rnrs Res   RBI"::Replace(" ", "&nbsp;"), 'h')
+ 
            move 1 to aa.
        5-loop.
            if aa > BAT766-NUM-AB
                go to 10-done
            else
                INSPECT BAT766-T-LINE(AA) REPLACING ALL " " BY X'A0'
-               invoke self::addTableRow(atBatTable, " " & BAT766-T-LINE(aa)).
+               invoke self::addTableRow(atBatTable, " " & BAT766-T-LINE(aa), 'b').
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -966,10 +975,13 @@ PM         set self::Session::Item("video-titles") to vidTitles
       *     invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
        end method.
 
-       method-id allButton_Click protected.
+       method-id playAll protected.
+       local-storage section.
+       01 vidPaths type String. 
+       01 vidTitles type String.       
        linkage section.
            COPY "Y:\sydexsource\BATS\bat766_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning atBatReturn as type String.
            set mydata to self::Session["bat766data"] as type batsweb.bat766Data
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            set bat766rununit to self::Session::Item("766rununit")
@@ -978,9 +990,27 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "VA" TO BAT766-ACTION
            invoke bat766rununit::Call("BAT766WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.           
-           invoke self::batstube.
+               set atBatReturn to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.
+           set vidPaths to ""
+           set vidTitles to ""
+           move 1 to aa.
+
+       lines-loop.
+           if aa > BAT766-WF-VID-COUNT
+               go to lines-done.
+           
+           set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-A(aa) & ","
+           set vidTitles to vidTitles & BAT766-WF-VIDEO-TITL(aa) & ","
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+       
+           set self::Session::Item("video-paths") to vidPaths
+           set self::Session::Item("video-titles") to vidTitles
+               
        end method.
        
        method-id locatePitcherButton_Click protected.

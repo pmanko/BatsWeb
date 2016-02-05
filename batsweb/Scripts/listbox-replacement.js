@@ -85,7 +85,7 @@ function getTableAttributes(targetRow) {
 function populateListboxTable(tableId, rowData) {
     $.each(rowData.split(";"), function (i, row) {
         if (row != "") {
-
+            // console.log($(tableId + ' tbody'));
             $(tableId + ' tbody').append('<tr><td></td></tr>');
             $(tableId + ' tbody tr:last td:first').html(unescape(row));
         }
