@@ -1147,14 +1147,28 @@ PM         set vidTitles to ""
            if aa > BAT310-WF-VID-COUNT
                go to lines-done.
            
-PM         set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-A(aa) & ","
-PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ","
            
+      *    REFACTOR BATSTUBE SETUP --> SINGLE CLASS     
+PM         set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-A(aa) & ";"          
+PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT310-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT310-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT310-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
+               
            add 1 to aa.
            go to lines-loop.
        lines-done.
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
+      *    END REFACTOR
+           
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        

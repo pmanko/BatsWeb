@@ -82,6 +82,7 @@ function GetServerData(arg, context) {
         populateListboxTable("#pitchListTable", splitArgs[1]);
     }
     else if (actionFlag == 'reload-previous-list') {
+        $('#previousPitchTable tbody').empty();
         populateListboxTable("#previousPitchTable", splitArgs[1]);
     }
     else if (actionFlag == 'reload-next-list') {

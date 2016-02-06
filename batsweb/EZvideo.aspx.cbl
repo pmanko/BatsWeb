@@ -212,8 +212,19 @@
            if aa > BATSW060-WF-VID-COUNT
                go to lines-done.
            
-PM         set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-A(aa) & ","
-PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ","
+PM         set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-A(aa) & ";"
+PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ";"
+           
+           if BATSW060-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BATSW060-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BATSW060-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
+               
            
            add 1 to aa.
            go to lines-loop.
@@ -222,96 +233,6 @@ PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ","
            set self::Session::Item("video-paths") to vidPaths
            set self::Session::Item("video-titles") to vidTitles
 
-       end method.
-
-       method-id ListBox1_SelectedIndexChanged protected.
-       local-storage section.
-PM     01 vidPaths type String.
- PM    01 vidTitles type String.
-       01 selected  type Int32[].
-      *01 newListItem type ListItem.
-       linkage section.
-       COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
-           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
-           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
-           initialize BATSW060-SEL-VID-TBL
-           move 0 to aa.
-       videos-loop.
-           if aa = selected::Count
-               go to videos-done.
-           MOVE "Y" TO BATSW060-SEL-VID-FLAG(selected[aa] + 1).
-           add 1 to aa.
-           go to videos-loop.
-       videos-done.
-           if self::Request::Params::Get("__EVENTTARGET") not = null or spaces
-               if self::Request::Params::Get("__EVENTTARGET") not = "ctl00$MainContent$ListBox1"
-                   exit method.
-           MOVE "PV" to BATSW060-ACTION
-           set batsw060rununit to self::Session::Item("w060rununit") as
-               type RunUnit
-           invoke batsw060rununit::Call("BATSW060WEBF")
-           invoke self::batstube.
-
-      *     if aa > BATSW060-NUM-SEL
-       end method.
-
-
-       method-id batstube protected.
-       local-storage section.
-PM     01 vidPaths type String. 
- PM    01 vidTitles type String.
-       linkage section.
-           COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
-       procedure division.
-           set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
-           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer       
-           set vidPaths to ""
-PM         set vidTitles to ""
-           move 1 to aa.
-       lines-loop.
-           if aa > BATSW060-WF-VID-COUNT
-               go to lines-done.
-           
-PM         set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-A(aa) & ","
-PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ","
-           
-           add 1 to aa.
-           go to lines-loop.
-       lines-done.
-PM         set self::Session::Item("video-paths") to vidPaths
-PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
-       end method.
-
-
-       method-id Button3_Click protected.
-      * Play video Button
-       local-storage section.
-PM     01 vidPaths type String.
- PM    01 vidTitles type String.
-       01 selected  type Int32[].
-       linkage section.
-       COPY "Y:\sydexsource\BATS\batsw060webf_dg.CPB".
-
-       procedure division using by value sender as object e as type System.EventArgs.
-      *    invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-                      set mydata to self::Session["batsw060data"] as type batsweb.batsw060Data
-           set address of BATSW060-DIALOG-FIELDS to myData::tablePointer
-           initialize BATSW060-SEL-VID-TBL
-           move 0 to aa.
-       videos-loop.
-           if aa = selected::Count
-               go to videos-done.
-           MOVE "Y" TO BATSW060-SEL-VID-FLAG(selected[aa] + 1).
-           add 1 to aa.
-           go to videos-loop.
-       videos-done.
-           MOVE "PV" to BATSW060-ACTION
-           set batsw060rununit to self::Session::Item("w060rununit") as
-               type RunUnit
-           invoke batsw060rununit::Call("BATSW060WEBF")
-           invoke self::batstube.
        end method.
 
        method-id allGamesButton_Click protected.

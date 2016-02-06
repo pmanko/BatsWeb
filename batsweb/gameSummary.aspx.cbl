@@ -648,8 +648,18 @@ PM         set vidTitles to ""
            if aa > BAT360-WF-VID-COUNT
                go to lines-done.
            
-PM         set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-A(aa) & ","
-PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ","
+PM         set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-A(aa) & ";"
+PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT360-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT360-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT360-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
            
            add 1 to aa.
            go to lines-loop.

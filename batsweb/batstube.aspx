@@ -9,8 +9,8 @@
     <script src="/dist/scripts/videojs.bundle.min.js"></script>
 	
 	<script>
-		var videoPaths = "<%= Session["video-paths"] %>".split(',');
-		var videoTitles = "<%= Session["video-titles"] %>".split(',');
+		var videoPaths = "<%= Session["video-paths"] %>".split(';');
+		var videoTitles = "<%= Session["video-titles"] %>".split(';');
 	</script>
 	<script src="/Scripts/batstube_app.js"></script> 
 

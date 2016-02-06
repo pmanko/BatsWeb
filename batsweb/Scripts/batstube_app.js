@@ -18,14 +18,14 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
 
     if (paths) {
-        path = paths.split(',');
+        path = paths.split(';');
         network_path = true;
     }       
     else
         paths = ["/Images/1288A.mp4", "/Images/1289A.mp4", "/Images/1290A.mp4", "/Images/1291A.mp4"];
     
     if (titles)
-        titles = titles.split(',');
+        titles = titles.split(';');
     else
         titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
 

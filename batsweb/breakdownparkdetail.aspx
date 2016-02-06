@@ -95,11 +95,11 @@
                                             <asp:Button ID="infieldButton" runat="server" Text="Show Infield" OnClick="infieldButton_Click" class="btn btn-primary"/>
                                         </div>
                                     </div>
-                                    <div class="row">
+                            <!--    <div class="row">
                                         <div class="col-lg-12">
                                             <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary"/>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>

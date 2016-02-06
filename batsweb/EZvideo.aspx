@@ -106,7 +106,7 @@
                             data-on-dblclick="openBatsTube"
                         >
                         <asp:TableHeaderRow TableSection="TableHeader">
-                            <asp:TableHeaderCell>Date          Clip      Description</asp:TableHeaderCell>
+                            <asp:TableHeaderCell> Date          Clip               Description</asp:TableHeaderCell>
                         </asp:TableHeaderRow>
                                     
                         </asp:Table>
@@ -140,7 +140,7 @@
                          </div>
                      </div>
                     <div class="col-lg-6">
-                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Show Videos in BatsTube</a>
+                        <a href="#" id="showVideosButton" class="btn btn-lg btn-primary btn-block">Play Selected</a>
                     </div>
                 </div>
             </asp:Panel>

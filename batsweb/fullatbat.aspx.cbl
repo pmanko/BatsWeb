@@ -286,8 +286,18 @@ PM         set self::Session::Item("nameArray") to nameArray
            if aa > BAT666-WF-VID-COUNT
                go to lines-done.
            
-           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
-           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ";"
+           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT666-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT666-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT666-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
            
            add 1 to aa.
            go to lines-loop.
@@ -341,8 +351,18 @@ PM         set self::Session::Item("nameArray") to nameArray
            if aa > BAT666-WF-VID-COUNT
                go to lines-done.
            
-           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ","
-           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ","
+           set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-A(aa) & ";"
+           set vidTitles to vidTitles & BAT666-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT666-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT666-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT666-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
            
            add 1 to aa.
            go to lines-loop.
