@@ -75,7 +75,7 @@
            end-unstring.
            
            if actionFlag = "update-video"
-               set callbackReturn to actionFlag & "|" & self::video_Selected(methodArg)
+               set callbackReturn to actionFlag & "|" & self::video_Selected(methodArg).
            
        end method.
        
@@ -221,7 +221,7 @@ PM         set vidTitles to vidTitles & BATSW060-WF-VIDEO-TITL(aa) & ";"
            if BATSW060-WF-VIDEO-C(aa) not = spaces
                set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-C(aa) & ";"
                set vidTitles to vidTitles & "C;".
-           if BATSW060-WF-VIDEO-B(aa) not = spaces
+           if BATSW060-WF-VIDEO-D(aa) not = spaces
                set vidPaths to vidPaths & BATSW060-WF-VIDEO-PATH(aa) & BATSW060-WF-VIDEO-D(aa) & ";"
                set vidTitles to vidTitles & "D;".
                

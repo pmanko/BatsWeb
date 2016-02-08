@@ -52,6 +52,41 @@ $(document).on('hidden.bs.collapse', '#selectPitcherPanel, #selectBatterPanel', 
     $(this).prev().find('.fa').removeClass("fa-caret-down").addClass("fa-caret-right");
 });
 
+$(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", function (event) {
+    $(this).toggleClass("selected");
+    console.log("DOUBLE!!");
+
+    var attrs = getTableAttributes(this);
+    setTableValues(this, attrs, true);
+
+    if (attrs.selected && attrs.selectFn) {
+        window[attrs.selectFn]();
+    }
+
+    if (attrs.dblclickFn && attrs.selected) {
+        window[attrs.dblclickFn]();
+    }
+
+    if (attrs.selected && attrs.postback == "double") {
+        __doPostBack();
+    }
+
+});
+
+function setTableValues(target, attrs, double_clicked) {
+    if (!attrs.multiple & attrs.selected) {
+        $(target).siblings().removeClass("selected");
+    }
+
+    if (attrs.multiple & !double_clicked) {
+        attrs.valField.val(attrs.values.join(';'));
+        attrs.iField.val(attrs.indeces.join(';'));
+    } else {
+        attrs.valField.val(unescape(attrs.value));
+        attrs.iField.val(attrs.index);
+    }
+}
+
 // -----------------------------
 // Server Asynchronious Callback 
 // -----------------------------

@@ -295,7 +295,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if BAT666-WF-VIDEO-C(aa) not = spaces
                set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-C(aa) & ";"
                set vidTitles to vidTitles & "C;".
-           if BAT666-WF-VIDEO-B(aa) not = spaces
+           if BAT666-WF-VIDEO-D(aa) not = spaces
                set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-D(aa) & ";"
                set vidTitles to vidTitles & "D;".
            
@@ -360,7 +360,7 @@ PM         set self::Session::Item("nameArray") to nameArray
            if BAT666-WF-VIDEO-C(aa) not = spaces
                set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-C(aa) & ";"
                set vidTitles to vidTitles & "C;".
-           if BAT666-WF-VIDEO-B(aa) not = spaces
+           if BAT666-WF-VIDEO-D(aa) not = spaces
                set vidPaths to vidPaths & BAT666-WF-VIDEO-PATH(aa) & BAT666-WF-VIDEO-D(aa) & ";"
                set vidTitles to vidTitles & "D;".
            

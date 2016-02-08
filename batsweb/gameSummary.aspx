@@ -153,7 +153,6 @@
                     <div class='row'>
                         <div class="col-md-3">
                             <a href="#" id="selectVisitingPlayer" class="btn btn-default btn-block">Select Visiting Player</a>
-                            
                         </div>
                         <div class="col-md-3">
                             <a href="#" class="btn btn-default btn-block" data-toggle="modal" data-target="#statsModal">View Game Stats</a>

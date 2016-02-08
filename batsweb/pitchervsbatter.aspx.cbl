@@ -972,7 +972,7 @@ PM         set vidTitles to vidTitles & BAT766-WF-VIDEO-TITL(aa) & ";"
            if BAT766-WF-VIDEO-C(aa) not = spaces
                set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-C(aa) & ";"
                set vidTitles to vidTitles & "C;".
-           if BAT766-WF-VIDEO-B(aa) not = spaces
+           if BAT766-WF-VIDEO-D(aa) not = spaces
                set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-D(aa) & ";"
                set vidTitles to vidTitles & "D;".
            

@@ -104,6 +104,7 @@
     <Content Include="breakdownparkdetail.aspx" />
     <Content Include="breakdownpreviousszone.aspx" />
     <Content Include="breakdownszone.aspx" />
+    <Content Include="customClips.aspx" />
     <Content Include="ErrorPages\timeout.aspx" />
     <Content Include="parkdetailpark.aspx" />
     <Content Include="summaryatbatdetail.aspx" />
@@ -218,6 +219,12 @@
     <Compile Include="..\..\..\..\sydexsource\bats\BAT768.CBL">
       <Link>BAT768.CBL</Link>
     </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Batsw100SharedData.COB">
+      <Link>Batsw100SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BATSW100WEBF.CBL">
+      <Link>BATSW100WEBF.CBL</Link>
+    </Compile>
     <Compile Include="About.aspx.cbl">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,6 +294,13 @@
     </Compile>
     <Compile Include="breakdownszone.aspx.designer.cbl">
       <DependentUpon>breakdownszone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customClips.aspx.cbl">
+      <DependentUpon>customClips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customClips.aspx.designer.cbl">
+      <DependentUpon>customClips.aspx</DependentUpon>
     </Compile>
     <Compile Include="ErrorPages\timeout.aspx.cbl">
       <DependentUpon>timeout.aspx</DependentUpon>
@@ -445,6 +459,7 @@
     <None Include="Scripts\batstube_app.js" />
     <None Include="Scripts\breakdown.js" />
     <None Include="Scripts\breakdowncallpark.js" />
+    <None Include="Scripts\customclips.js" />
     <None Include="Scripts\ezvideo.js" />
     <None Include="Scripts\gamesummary.js" />
     <None Include="Scripts\listbox-replacement.js" />
@@ -458,6 +473,7 @@
     <None Include="Styles\autocomplete.css" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
+    <None Include="Styles\customclips.css" />
     <None Include="Styles\custom_bootstrap.scss" />
     <None Include="Styles\ezvideo.css" />
     <None Include="Styles\fullatbat.css" />

@@ -46,6 +46,7 @@
                 <div id="MISC" class="col-md-4">
                     <h2>MISC</h2>     
                     <a href="/EZvideo.aspx" class="btn btn-default btn-block">EZ Video</a>
+                    <a href="/customClips.aspx" class="btn btn-default btn-block">Custom Clips</a>
                     <asp:Button ID="Button12" runat="server" Text="Reload Games" OnClick="Button12_Click" CssClass="btn btn-default btn-block" />
 <%--                    <div class="row">
                         <asp:Button ID="EZvideobutton" runat="server" OnClick="EZvideobutton_Click" Text="EZ Video" Width="200px" CssClass="btn btn-default"/>
