@@ -30,7 +30,7 @@ $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", funct
     
     var attrs = getTableAttributes(this);
     
-    setTableValues(this, attrs);
+    setTableValues(this, attrs, "double");
 
     if (attrs.selected && attrs.selectFn){
         window[attrs.selectFn]();
@@ -46,12 +46,21 @@ $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", funct
    
 });
 
-function setTableValues(target, attrs) {
-    if (!attrs.multiple & attrs.selected) {
+function setTableValues(target, attrs, clicktype) {
+    if (clicktype === undefined) {
+        clicktype = "single";
+    }
+    
+    console.log(attrs.multiple);
+    console.log(clicktype);
+    console.log(attrs.selected);
+    
+    if ((!attrs.multiple || clicktype == "double") && attrs.selected) {
+
         $(target).siblings().removeClass("selected");
     }
     
-    if (attrs.multiple) {
+    if (attrs.multiple && clicktype == 'single') {
         attrs.valField.val(attrs.values.join(';'));
         attrs.iField.val(attrs.indeces.join(';'));
     } else {    
