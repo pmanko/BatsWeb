@@ -73,6 +73,6 @@ function GetServerData(arg, context) {
         break;
       default: 
         console.log("Default!");
-    };	
+    };	 
 };
 // -----------------------------

@@ -63,9 +63,9 @@
                                     <asp:HiddenField ID="playerIndexField" runat="server" onvaluechanged="player_Selected" />
                                     <asp:HiddenField ID="playerValueField" runat="server"  />  
                                 </div>
-                            </div>
                             </ContentTemplate>
                             </asp:UpdatePanel>
+                            </div>
                         </div>
                         <div class="row">
                             <div class='col-md-12'>

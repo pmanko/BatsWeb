@@ -43,6 +43,7 @@
     <IncludeIisSettings>false</IncludeIisSettings>
     <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
     <IntermediatePath>.\obj\x86\Debug\</IntermediatePath>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>

@@ -15,15 +15,17 @@
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-body">   
-                                <asp:Table id="videoTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                <div class="listbox-replacement-wrapper">
+                                    <asp:Table id="videoTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                     data-index-field="#MainContent_videoIndexField" 
                                     data-value-field="#MainContent_videoValueField" 
                                     data-postback="false" 
                                     data-multiple="true"
                                     data-on-select="videoUpdate"
                                     data-on-dblclick="openBatsTube"
-                                >
-                                </asp:Table>
+                                    >
+                                    </asp:Table>
+                                </div>
                                 <asp:HiddenField ID="videoValueField" runat="server"  />
                                 <asp:HiddenField ID="videoIndexField" runat="server"  />               
                             </div>
