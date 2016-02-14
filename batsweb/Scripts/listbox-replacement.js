@@ -13,7 +13,7 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
     setTableValues(this, attrs);
 
 
-    if (attrs.selected && attrs.selectFn){
+    if (attrs.selectFn){
         window[attrs.selectFn]();
     }
 

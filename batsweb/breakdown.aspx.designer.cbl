@@ -502,14 +502,6 @@
       *>> </remarks>
        01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
-      *>> playerTableBody control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playerTableBody type System.Web.UI.HtmlControls.HtmlGenericControl protected.
-      *>> <summary>
       *>> previousSzoneImage control.
       *>> </summary>
       *>> <remarks>
@@ -726,13 +718,29 @@
       *>> </remarks>
        01 szoneImageButton type System.Web.UI.WebControls.ImageButton protected.
       *>> <summary>
-      *>> gLabel control.
+      *>> gValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 gLabel type System.Web.UI.WebControls.Label protected.
+       01 gValue type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> Literal1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Literal1 type System.Web.UI.WebControls.Literal protected.
+      *>> <summary>
+      *>> Literal2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Literal2 type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
       *>> sacLabel control.
       *>> </summary>

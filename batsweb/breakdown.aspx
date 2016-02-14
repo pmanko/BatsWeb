@@ -758,12 +758,20 @@
                                 <div class="panel-title">Statistics</div> 
                             </div>
                             <div class="panel-body">
+                                <dl>
+                                    <dt>G:</dt>
+                                    <dd><asp:Literal ID="gValue" runat="server"></asp:Literal></dd>
+                                    <dt>G:</dt>
+                                    <dd><asp:Literal ID="Literal1" runat="server"></asp:Literal></dd>
+                                    <dt>G:</dt>
+                                    <dd><asp:Literal ID="Literal2" runat="server"></asp:Literal></dd>
+                                </dl>
+
                                 <div class="row">
                                     <div class="col-lg-2 text-right">
                                         <label>G:</label>
                                     </div>
                                     <div class="col-lg-2">
-                                        <asp:Label ID="gLabel" runat="server"></asp:Label>
                                     </div>
                                     <div class="col-lg-2 text-right">
                                         <label>SAC:</label>
