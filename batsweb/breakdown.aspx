@@ -758,188 +758,77 @@
                                 <div class="panel-title">Statistics</div> 
                             </div>
                             <div class="panel-body">
-                                <dl>
-                                    <dt>G:</dt>
-                                    <dd><asp:Literal ID="gValue" runat="server"></asp:Literal></dd>
-                                    <dt>G:</dt>
-                                    <dd><asp:Literal ID="Literal1" runat="server"></asp:Literal></dd>
-                                    <dt>G:</dt>
-                                    <dd><asp:Literal ID="Literal2" runat="server"></asp:Literal></dd>
-                                </dl>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <dl>
+                                            <dt>G:</dt>
+                                            <dd><asp:Literal ID="gValue" runat="server"></asp:Literal></dd>
+                                            <dt>AB:</dt>
+                                            <dd><asp:Literal ID="abValue" runat="server"></asp:Literal></dd>
+                                            <dt>H:</dt>
+                                            <dd><asp:Literal ID="hValue" runat="server"></asp:Literal></dd>
+                                            <dt>2B:</dt>
+                                            <dd><asp:Literal ID="doubleValue" runat="server"></asp:Literal></dd>
+                                            <dt>3B:</dt>
+                                            <dd><asp:Literal ID="tripleValue" runat="server"></asp:Literal></dd>
+                                            <dt>HR:</dt>
+                                            <dd><asp:Literal ID="hrValue" runat="server"></asp:Literal></dd>
+                                            <dt>RBI:</dt>
+                                            <dd><asp:Literal ID="rbiValue" runat="server"></asp:Literal></dd>
+                                            <dt>BB:</dt>
+                                            <dd><asp:Literal ID="bbValue" runat="server"></asp:Literal></dd>
+                                            <dt>K:</dt>
+                                            <dd><asp:Literal ID="kValue" runat="server"></asp:Literal></dd>
+                                        </dl>                                        
+                                    </div>
+                                    <div class="col-md-4">
+                                        <dl>
+                                            <dt>SAC:</dt>
+                                            <dd><asp:Literal ID="sacValue" runat="server"></asp:Literal></dd>
+                                            <dt>DP:</dt>
+                                            <dd><asp:Literal ID="dpValue" runat="server"></asp:Literal></dd>
+                                            <dt>HBP:</dt>
+                                            <dd><asp:Literal ID="hbpValue" runat="server"></asp:Literal></dd>
+                                            <dt>TPA:</dt>
+                                            <dd><asp:Literal ID="tpaValue" runat="server"></asp:Literal></dd>
+                                            <dt></dt>
+                                            <dd><asp:Literal ID="Literal13" runat="server"></asp:Literal></dd>
+                                            <dt>AVG:</dt>
+                                            <dd><asp:Literal ID="avgValue" runat="server"></asp:Literal></dd>
+                                            <dt>OBP:</dt>
+                                            <dd><asp:Literal ID="obpValue" runat="server"></asp:Literal></dd>
+                                            <dt>SLG:</dt>
+                                            <dd><asp:Literal ID="slgValue" runat="server"></asp:Literal></dd>
+                                            <dt>OPS:</dt>
+                                            <dd><asp:Literal ID="opsValue" runat="server"></asp:Literal></dd>
+                                        </dl>                                        
+                                    </div>
+                                    <div class="col-md-4">
+                                        <dl>
+                                            <dt>FB:</dt>
+                                            <dd><asp:Literal ID="fbValue" runat="server"></asp:Literal></dd>
+                                            <dt>GB:</dt>
+                                            <dd><asp:Literal ID="gbValue" runat="server"></asp:Literal></dd>
+                                            <dt>LD:</dt>
+                                            <dd><asp:Literal ID="ldValue" runat="server"></asp:Literal></dd>
+                                            <dt>PU:</dt>
+                                            <dd><asp:Literal ID="puValue" runat="server"></asp:Literal></dd>
+                                            <dt>BU:</dt>
+                                            <dd><asp:Literal ID="buValue" runat="server"></asp:Literal></dd>
+                                            <dt></dt>
+                                            <dd><asp:Literal runat="server"></asp:Literal></dd>
+                                            <dt>Hard:</dt>
+                                            <dd><asp:Literal ID="hardValue" runat="server"></asp:Literal></dd>
+                                            <dt>Med:</dt>
+                                            <dd><asp:Literal ID="medValue" runat="server"></asp:Literal></dd>
+                                            <dt>Soft:</dt>
+                                            <dd><asp:Literal ID="softValue" runat="server"></asp:Literal></dd>
+                                        </dl>                                        
+                                    </div>
+                                </div>
 
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>G:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>SAC:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="sacLabel" runat="server"></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>FB:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="fbLabel" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>AB:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="abLabel" runat="server"></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>DP:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="dpLabel" runat="server"></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>GB:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="gbLabel" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>H:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="hLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>HBP:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="hbpLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>LD:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="ldLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>2B:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="doubleLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>TPA:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="tpaLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>PU:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="puLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>3B:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="tripleLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                    </div>
-                                    <div class="col-lg-2">
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>BU:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="buLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>HR:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="hrLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>AVG:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="avgLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-4">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>RBI:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="rbiLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>OBP:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="obpLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>Hard:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="hardLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>BB:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="bbLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>SLG:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="slgLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>Med:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="medLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-2 text-right">
-                                        <label>K:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="kLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>OPS:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="opsLabel" runat="server" ></asp:Label>
-                                    </div>
-                                    <div class="col-lg-2 text-right">
-                                        <label>Soft:</label>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <asp:Label ID="softLabel" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
+
+                                
                             </div>
                         </div>
                     </div>

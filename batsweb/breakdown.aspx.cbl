@@ -668,35 +668,35 @@ PM         set self::Session::Item("nameArray") to nameArray
            set pitcherTextBox::Text to DIALOG-PITCHER::Trim
            set gamesTextBox::Text to DIALOG-GAME-RANGE::Trim
            set locationTextBox::Text to DIALOG-GAME-LOC::Trim
-           set gLabel::Text to BAT310-G::ToString
-           set abLabel::Text to BAT310-AB::ToString
-           set hLabel::Text to BAT310-H::ToString
-           set doubleLabel::Text to BAT310-2B::ToString
-           set tripleLabel::Text to BAT310-3B::ToString
-           set hrLabel::Text to BAT310-HR::ToString
-           set rbiLabel::Text to BAT310-RBI::ToString
-           set bbLabel::Text to BAT310-BB::ToString
-           set kLabel::Text to BAT310-K::ToString
-           set sacLabel::Text to BAT310-SAC::ToString
-           set dpLabel::Text to BAT310-DP::ToString
-           set hbpLabel::Text to BAT310-HBP::ToString
-           set tpaLabel::Text to BAT310-TPA::ToString
+           set gValue::Text to BAT310-G::ToString
+           set abValue::Text to BAT310-AB::ToString
+           set hValue::Text to BAT310-H::ToString
+           set doubleValue::Text to BAT310-2B::ToString
+           set tripleValue::Text to BAT310-3B::ToString
+           set hrValue::Text to BAT310-HR::ToString
+           set rbiValue::Text to BAT310-RBI::ToString
+           set bbValue::Text to BAT310-BB::ToString
+           set kValue::Text to BAT310-K::ToString
+           set sacValue::Text to BAT310-SAC::ToString
+           set dpValue::Text to BAT310-DP::ToString
+           set hbpValue::Text to BAT310-HBP::ToString
+           set tpaValue::Text to BAT310-TPA::ToString
            set avg to BAT310-BA
-           set avgLabel::Text to avg::ToString("#.000")
+           set avgValue::Text to avg::ToString("#.000")
            set avg to BAT310-SP
-           set slgLabel::Text to avg::ToString("#.000")
+           set slgValue::Text to avg::ToString("#.000")
            set avg to BAT310-OBP
-           set obpLabel::Text to avg::ToString("#.000")
+           set obpValue::Text to avg::ToString("#.000")
            set avg to BAT310-OPS
-           set opsLabel::Text to avg::ToString("#.000")
-           set fbLabel::Text to BAT310-FB::ToString
-           set gbLabel::Text to BAT310-GB::ToString
-           set ldLabel::Text to BAT310-LD::ToString
-           set puLabel::Text to BAT310-PU::ToString
-           set buLabel::Text to BAT310-BU::ToString
-           set hardLabel::Text to BAT310-HARD::Trim
-           set medLabel::Text to BAT310-MEDIUM::Trim
-           set softLabel::Text to BAT310-SOFT::Trim
+           set opsValue::Text to avg::ToString("#.000")
+           set fbValue::Text to BAT310-FB::ToString
+           set gbValue::Text to BAT310-GB::ToString
+           set ldValue::Text to BAT310-LD::ToString
+           set puValue::Text to BAT310-PU::ToString
+           set buValue::Text to BAT310-BU::ToString
+           set hardValue::Text to BAT310-HARD::Trim
+           set medValue::Text to BAT310-MEDIUM::Trim
+           set softValue::Text to BAT310-SOFT::Trim
       
            invoke printPitchList()
            

@@ -726,213 +726,205 @@
       *>> </remarks>
        01 gValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> Literal1 control.
+      *>> abValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Literal1 type System.Web.UI.WebControls.Literal protected.
+       01 abValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> Literal2 control.
+      *>> hValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Literal2 type System.Web.UI.WebControls.Literal protected.
+       01 hValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> sacLabel control.
+      *>> doubleValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 sacLabel type System.Web.UI.WebControls.Label protected.
+       01 doubleValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> fbLabel control.
+      *>> tripleValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 fbLabel type System.Web.UI.WebControls.Label protected.
+       01 tripleValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> abLabel control.
+      *>> hrValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 abLabel type System.Web.UI.WebControls.Label protected.
+       01 hrValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> dpLabel control.
+      *>> rbiValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 dpLabel type System.Web.UI.WebControls.Label protected.
+       01 rbiValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> gbLabel control.
+      *>> bbValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 gbLabel type System.Web.UI.WebControls.Label protected.
+       01 bbValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> hLabel control.
+      *>> kValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 hLabel type System.Web.UI.WebControls.Label protected.
+       01 kValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> hbpLabel control.
+      *>> sacValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 hbpLabel type System.Web.UI.WebControls.Label protected.
+       01 sacValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> ldLabel control.
+      *>> dpValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 ldLabel type System.Web.UI.WebControls.Label protected.
+       01 dpValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> doubleLabel control.
+      *>> hbpValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 doubleLabel type System.Web.UI.WebControls.Label protected.
+       01 hbpValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> tpaLabel control.
+      *>> tpaValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 tpaLabel type System.Web.UI.WebControls.Label protected.
+       01 tpaValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> puLabel control.
+      *>> Literal13 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 puLabel type System.Web.UI.WebControls.Label protected.
+       01 Literal13 type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> tripleLabel control.
+      *>> avgValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 tripleLabel type System.Web.UI.WebControls.Label protected.
+       01 avgValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> buLabel control.
+      *>> obpValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 buLabel type System.Web.UI.WebControls.Label protected.
+       01 obpValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> hrLabel control.
+      *>> slgValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 hrLabel type System.Web.UI.WebControls.Label protected.
+       01 slgValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> avgLabel control.
+      *>> opsValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 avgLabel type System.Web.UI.WebControls.Label protected.
+       01 opsValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> rbiLabel control.
+      *>> fbValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 rbiLabel type System.Web.UI.WebControls.Label protected.
+       01 fbValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> obpLabel control.
+      *>> gbValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 obpLabel type System.Web.UI.WebControls.Label protected.
+       01 gbValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> hardLabel control.
+      *>> ldValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 hardLabel type System.Web.UI.WebControls.Label protected.
+       01 ldValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> bbLabel control.
+      *>> puValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 bbLabel type System.Web.UI.WebControls.Label protected.
+       01 puValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> slgLabel control.
+      *>> buValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 slgLabel type System.Web.UI.WebControls.Label protected.
+       01 buValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> medLabel control.
+      *>> hardValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 medLabel type System.Web.UI.WebControls.Label protected.
+       01 hardValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> kLabel control.
+      *>> medValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 kLabel type System.Web.UI.WebControls.Label protected.
+       01 medValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> opsLabel control.
+      *>> softValue control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 opsLabel type System.Web.UI.WebControls.Label protected.
-      *>> <summary>
-      *>> softLabel control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 softLabel type System.Web.UI.WebControls.Label protected.
+       01 softValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
       *>> clearButton control.
       *>> </summary>
