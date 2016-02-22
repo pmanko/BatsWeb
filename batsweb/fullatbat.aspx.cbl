@@ -49,7 +49,6 @@
       * Setup using GET variables
       *    Moved from mainmenu.aspx - Pages should be self-sufficient          
            SET self::Session::Item("database") to self::Request::QueryString["league"]
-           
            if   self::Session["bat666data"] = null
                set mydata to new batsweb.bat666Data
                invoke mydata::populateData
@@ -438,6 +437,8 @@ PM         set self::Session::Item("nameArray") to nameArray
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
+           set bat666rununit to self::Session::Item("666rununit")
+               as type RunUnit           
            if maxAtBatsCheckBox::Checked
                invoke type System.Single::TryParse(MaxABTextBox::Text::ToString, by reference abnum)
                set BAT666-MAX-NUM to abnum
@@ -445,7 +446,17 @@ PM         set self::Session::Item("nameArray") to nameArray
                invoke maxABTextBox::Focus
            else
                move "N" to BAT666-MAX-FLAG.
-
+           MOVE "GO" to BAT668-ACTION
+           MOVE "T" to BAT666-ACTION               
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                     
+           MOVE "RA" to BAT666-ACTION
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.           
            invoke self::loadList
                
        end method.
@@ -456,13 +467,25 @@ PM         set self::Session::Item("nameArray") to nameArray
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-
+           set bat666rununit to self::Session::Item("666rununit")
+               as type RunUnit
            if sortByInningCheckBox::Checked
                move "Y" to BAT666-SORT-FLAG
                set sortByBatterCheckBox::Checked to false
                set sortByOldCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
+           MOVE "GO" to BAT668-ACTION
+           MOVE "T" to BAT666-ACTION               
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                
+           MOVE "RA" to BAT666-ACTION
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                          
            invoke self::loadList
        end method.
 
@@ -472,14 +495,25 @@ PM         set self::Session::Item("nameArray") to nameArray
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-
+           set bat666rununit to self::Session::Item("666rununit")
+               as type RunUnit
            if sortByBatterCheckBox::Checked
                move "B" to BAT666-SORT-FLAG
                set sortByInningCheckBox::Checked to false
                set sortByOldCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
-               
+           MOVE "GO" to BAT668-ACTION
+           MOVE "T" to BAT666-ACTION               
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                     
+           MOVE "RA" to BAT666-ACTION
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                          
            invoke self::loadList
 
        end method.
@@ -490,13 +524,25 @@ PM         set self::Session::Item("nameArray") to nameArray
        procedure division using by value sender as object e as type System.EventArgs.
            set mydata to self::Session["bat666data"] as type batsweb.bat666Data
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
-
+           set bat666rununit to self::Session::Item("666rununit")
+               as type RunUnit
            if sortByOldCheckBox::Checked
                move "O" to BAT666-SORT-FLAG
                set sortByBatterCheckBox::Checked to false
                set sortByInningCheckBox::Checked to false
            else
                move "N" to BAT666-SORT-FLAG.
+           MOVE "GO" to BAT668-ACTION
+           MOVE "T" to BAT666-ACTION               
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                     
+           MOVE "RA" to BAT666-ACTION
+           invoke bat666rununit::Call("BAT666WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD.                          
            invoke self::loadList
        end method.
 

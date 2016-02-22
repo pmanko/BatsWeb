@@ -81,6 +81,8 @@
                set yearDropDownList::Text to BAT360-GAME-SEL-YR::ToString
            else
                set yearDropDownList::Text to type DateTime::Today::Year::ToString.
+           if BAT360-STARTING-PITCHERS = "Y"
+               set pitchersCheckBox::Checked to true.
            goback.
        end method.
   
@@ -108,6 +110,8 @@
                set callbackReturn to actionFlag & "|" & self::playVids("VX")
            else if actionFlag = 'from-selected'
                set callbackReturn to actionFlag & "|" & self::fromSelectd()
+           else if actionFlag = 'play-sel'
+               set callbackReturn to actionFlag & "|" & self::playSelected()              
            else if actionFlag = 'inning-selected'
                set callbackReturn to actionFlag & "|" & self::inningSelected(methodArg)
            else if actionFlag = 'show-detail'
@@ -243,7 +247,7 @@
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit
-           if GamesValueField::Value = null
+           if GamesValueField::Value = null or spaces
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a game');", true)
                exit method.
            move BAT360-G-GAME-DATE(BAT360-SEL-GAME) to BAT360-I-GAME-DATE
@@ -492,6 +496,26 @@
            invoke self::batstube.
        end method.
 
+       method-id playSelected protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division returning returnVal as String.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer   
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit      
+           if BAT360-AB-IP = 0
+               set returnVal to "er|" & "No at bat is highlighted!"
+               exit method.   
+           MOVE "VD" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                      
+           invoke self::batstube.
+       end method.
+       
        method-id gameSelected protected.
        local-storage section.
        01 temp type String.

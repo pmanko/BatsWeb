@@ -14,7 +14,10 @@
             <h2>Please sign in</h2>
             <div class='form-group'>
                 <label for="TextBox4" class="sr-only">Team:</label>
-                <asp:TextBox ID="TextBox4" runat="server" CssClass="form-control" placeholder="Team"></asp:TextBox>
+                <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
+                    <asp:ListItem>DEMO</asp:ListItem>
+                    <asp:ListItem>MARLINS</asp:ListItem>
+                </asp:DropDownList> 
             </div>
             <div class='form-group'>
                 <label for="TextBox4" class="sr-only">First Name:</label>
@@ -28,11 +31,7 @@
                 <label for="TextBox4" class="sr-only">Password:</label>
                 <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
             </div>
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me"> Remember me
-              </label>
-            </div>
+            <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>
             <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Sign In" class="btn btn-lg btn-primary btn-block"/>
 
 

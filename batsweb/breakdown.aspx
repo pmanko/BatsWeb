@@ -56,7 +56,7 @@
                                                 <div class='radio radio-primary'><asp:RadioButton ID="allStartRadioButton" runat="server" GroupName="startDate" text="All Games"  OnCheckedChanged="allStartRadioButton_CheckedChanged"/></div>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="startDateRadioButton" runat="server" GroupName="startDate" Text="Start Date:"  OnCheckedChanged="startDateRadioButton_CheckedChanged"/></div>
                                                 <asp:TextBox ID="startDateTextBox" runat="server" TextMode="DateTime" class="form-control"></asp:TextBox>
-                                                <cc1:MaskedEditExtender ID="startDateTextBox_MaskedEditExtender" runat="server" BehaviorID="startDateTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="startDateTextBox" />
+                                                <cc1:MaskedEditExtender ID="startDateTextBox_MaskedEditExtender" runat="server" BehaviorID="startDateTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" TargetControlID="startDateTextBox" />
                                                 <cc1:CalendarExtender ID="startDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="startDateTextBox_CalendarExtender" TargetControlID="startDateTextBox" />
                                             </div>
                                             <div class="list-group-item">
@@ -64,7 +64,7 @@
                                                 <div class='radio radio-primary'><asp:RadioButton ID="allEndRadioButton" runat="server" GroupName="endDate" Text="All Games" OnCheckedChanged="allEndRadioButton_CheckedChanged"/></div>
                                                 <div class='radio radio-primary'><asp:RadioButton ID="endDateRadioButton" runat="server" GroupName="endDate" Text="End Date:" OnCheckedChanged="endDateRadioButton_CheckedChanged"/></div>
                                                 <asp:TextBox ID="endDateTextBox" runat="server" TextMode="DateTime"  class="form-control"></asp:TextBox>
-                                                <cc1:MaskedEditExtender ID="endDateTextBox_MaskedEditExtender" runat="server" BehaviorID="endDateTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="endDateTextBox" />
+                                                <cc1:MaskedEditExtender ID="endDateTextBox_MaskedEditExtender" runat="server" BehaviorID="endDateTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" TargetControlID="endDateTextBox" />
                                                 <cc1:CalendarExtender ID="endDateTextBox_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="endDateTextBox_CalendarExtender" DefaultView="Days" PopupPosition="BottomLeft" TargetControlID="endDateTextBox" />
 
                                             </div>
@@ -324,8 +324,8 @@
                   <div class="modal-body">
                     <div class="list-group" id="oneClickDate">
                       <button type="button" class="list-group-item" data-date-flag="A">All Games</button>
-                      <button type="button" class="list-group-item" data-date-flag="C">Current Year</button>
-                      <button type="button" class="list-group-item" data-date-flag="P">Past Year</button>
+                      <button type="button" class="list-group-item" data-date-flag="C">Current Season</button>
+                      <button type="button" class="list-group-item" data-date-flag="P">Previous Season</button>
                       <button type="button" class="list-group-item" data-date-flag="W">Last 2 Weeks</button>
                       <button type="button" class="list-group-item" data-date-flag="M">Current Month</button>
                       <button type="button" class="list-group-item" data-date-flag="2">Last 2 Months</button>
@@ -759,8 +759,8 @@
                             </div>
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <dl>
+                                    <div class="col-sm-4">
+                                        <dl class="dl-horizontal dl-horizontal-compact">
                                             <dt>G:</dt>
                                             <dd><asp:Literal ID="gValue" runat="server"></asp:Literal></dd>
                                             <dt>AB:</dt>
@@ -781,8 +781,8 @@
                                             <dd><asp:Literal ID="kValue" runat="server"></asp:Literal></dd>
                                         </dl>                                        
                                     </div>
-                                    <div class="col-md-4">
-                                        <dl>
+                                    <div class="col-sm-4">
+                                        <dl class="dl-horizontal dl-horizontal-compact">
                                             <dt>SAC:</dt>
                                             <dd><asp:Literal ID="sacValue" runat="server"></asp:Literal></dd>
                                             <dt>DP:</dt>
@@ -791,8 +791,8 @@
                                             <dd><asp:Literal ID="hbpValue" runat="server"></asp:Literal></dd>
                                             <dt>TPA:</dt>
                                             <dd><asp:Literal ID="tpaValue" runat="server"></asp:Literal></dd>
-                                            <dt></dt>
-                                            <dd><asp:Literal ID="Literal13" runat="server"></asp:Literal></dd>
+                                            <dt>&nbsp;</dt>
+                                            <dd>&nbsp;</dd>
                                             <dt>AVG:</dt>
                                             <dd><asp:Literal ID="avgValue" runat="server"></asp:Literal></dd>
                                             <dt>OBP:</dt>
@@ -803,8 +803,8 @@
                                             <dd><asp:Literal ID="opsValue" runat="server"></asp:Literal></dd>
                                         </dl>                                        
                                     </div>
-                                    <div class="col-md-4">
-                                        <dl>
+                                    <div class="col-sm-4">
+                                        <dl class="dl-horizontal dl-horizontal-compact">
                                             <dt>FB:</dt>
                                             <dd><asp:Literal ID="fbValue" runat="server"></asp:Literal></dd>
                                             <dt>GB:</dt>
@@ -815,8 +815,8 @@
                                             <dd><asp:Literal ID="puValue" runat="server"></asp:Literal></dd>
                                             <dt>BU:</dt>
                                             <dd><asp:Literal ID="buValue" runat="server"></asp:Literal></dd>
-                                            <dt></dt>
-                                            <dd><asp:Literal runat="server"></asp:Literal></dd>
+                                            <dt>&nbsp;</dt>
+                                            <dd>&nbsp;</dd>
                                             <dt>Hard:</dt>
                                             <dd><asp:Literal ID="hardValue" runat="server"></asp:Literal></dd>
                                             <dt>Med:</dt>
@@ -839,7 +839,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                 <!--                <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary btn-block"/> -->
-                                <asp:Button ID="allButton" runat="server" Text="All" OnClick="allButton_Click" class="btn btn-primary btn-block"/>
+                                <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-primary btn-block"/>
                             </div>
                             <div class="col-lg-4">
                 <!--                <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary btn-block"/> -->

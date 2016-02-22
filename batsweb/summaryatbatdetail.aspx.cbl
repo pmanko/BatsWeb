@@ -41,18 +41,18 @@
        
       *     set pitcherTextBox::Text to BAT360-PITCHER::Trim
       *     set batterTextBox::Text to BAT360-BATTER::Trim           
-           set outsLabel::Text to BAT360-I-OUTS::ToString
-           set hitLabel::Text to BAT360-I-HIT-DESC::Trim
-           set resultLabel::Text to BAT360-I-RES-DESC::Trim
-           set posLabel1::Text to BAT360-I-FIELDER-POS::Trim
-           set posLabel2::Text to BAT360-I-FIELDER2-POS::Trim
-           set fieldedLabel1::Text to BAT360-I-FIELDER-NAME::Trim
-           set fieldedLabel2::Text to BAT360-I-FIELDER2-NAME::Trim
-           set flagLabel1::Text to BAT360-I-FIELDER-FLAG::Trim
-           set flagLabel2::Text to BAT360-I-FIELDER2-FLAG::Trim
-           set countLabel::Text to BAT360-I-FINAL-COUNT::Trim
-           set rbiLabel::Text to BAT360-I-RBI::ToString
-           set catcherLabel::Text to BAT360-CATCHER
+           set outsValue::Text to BAT360-I-OUTS::ToString
+           set hitValue::Text to BAT360-I-HIT-DESC::Trim
+           set resultValue::Text to BAT360-I-RES-DESC::Trim
+           set posValue1::Text to BAT360-I-FIELDER-POS::Trim
+           set posValue2::Text to BAT360-I-FIELDER2-POS::Trim
+           set fieldedValue1::Text to BAT360-I-FIELDER-NAME::Trim
+           set fieldedValue2::Text to BAT360-I-FIELDER2-NAME::Trim
+           set flagValue1::Text to BAT360-I-FIELDER-FLAG::Trim
+           set flagValue2::Text to BAT360-I-FIELDER2-FLAG::Trim
+           set countValue::Text to BAT360-I-FINAL-COUNT::Trim
+           set rbiValue::Text to BAT360-I-RBI::ToString
+           set catcherValue::Text to BAT360-CATCHER
            move 1 to aa.
        pitch-loop.
            if aa > BAT360-NUM-PITCHES
@@ -64,7 +64,6 @@
            add 1 to aa
            go to pitch-loop.
        pitch-done.
-           set Label1::Text to Label1::Text::Replace(" ", "&nbsp;")
            goback.
        end method.
  

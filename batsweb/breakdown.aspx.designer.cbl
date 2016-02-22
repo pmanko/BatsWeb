@@ -822,14 +822,6 @@
       *>> </remarks>
        01 tpaValue type System.Web.UI.WebControls.Literal protected.
       *>> <summary>
-      *>> Literal13 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 Literal13 type System.Web.UI.WebControls.Literal protected.
-      *>> <summary>
       *>> avgValue control.
       *>> </summary>
       *>> <remarks>

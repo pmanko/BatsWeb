@@ -77,89 +77,27 @@
                             </div>
                             <br />
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong><asp:Label ID="Label1" runat="server" Text="Outs:"></asp:Label></strong>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <asp:Label ID="outsLabel" runat="server" ></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3  text-right">
-                                            <strong>Hit Type:</strong>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <asp:Label ID="hitLabel" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>Result:</strong>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <asp:Label ID="resultLabel" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>Final Count:</strong>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <asp:Label ID="countLabel" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>RBI:</strong>
-                                        </div>
-                                        <div class="col-lg-9">
-                                            <asp:Label ID="rbiLabel" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>Fielded By(1):</strong>
-                                        </div>
-                                        <div class="col-lg-1" >
-                                            <asp:Label ID="posLabel1" runat="server"></asp:Label>       
-                                        </div>
-                                        <div class="col-lg-3" >
-                                            &vert;
-                                            <asp:Label ID="fieldedLabel1" runat="server"></asp:Label>
-                                        </div>
-                                        <div class="col-lg-5" >
-                                            &vert;
-                                            <asp:Label ID="flagLabel1" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>Fielded By(2):</strong>
-                                        </div>
-                                        <div class="col-lg-1" >
-                                            <asp:Label ID="posLabel2" runat="server"></asp:Label>
-                                        </div>
-                                        <div class="col-lg-3" >
-                                            &vert;
-                                            <asp:Label ID="fieldedLabel2" runat="server"></asp:Label>
-                                        </div>
-                                        <div class="col-lg-5" >
-                                            &vert;
-                                            <asp:Label ID="flagLabel2" runat="server"></asp:Label>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-3 text-right" >
-                                            <strong>Catcher:</strong>
-                                        </div>
-                                        <div class="col-lg-9" >
-                                            <asp:Label ID="catcherLabel" runat="server"></asp:Label>  
-                                        </div>
-                                    </div>
+                                <div class="col-sm-6">
+                                    <dl class="dl-horizontal">
+                                        <dt>Outs:</dt>
+                                        <dd><asp:Literal ID="outsValue" runat="server" ></asp:Literal></dd>
+                                        <dt>Hit Type:</dt>
+                                        <dd><asp:Literal ID="hitValue" runat="server" ></asp:Literal></dd>
+                                        <dt>Result:</dt>
+                                        <dd><asp:Literal ID="resultValue" runat="server" ></asp:Literal></dd>
+                                        <dt>Final Count:</dt>
+                                        <dd><asp:Literal ID="countValue" runat="server" ></asp:Literal></dd>
+                                        <dt>RBI:</dt>
+                                        <dd><asp:Literal ID="rbiValue" runat="server" ></asp:Literal></dd>
+                                        <dt>Fielded By(1):</dt>
+                                        <dd><span><asp:Literal ID="posValue1" runat="server" ></asp:Literal>&vert;<asp:Literal ID="fieldedValue1" runat="server" ></asp:Literal>&vert;<asp:Literal ID="flagValue1" runat="server" ></asp:Literal></span></dd>
+                                        <dt>Fielded By(2):</dt>
+                                        <dd><span><asp:Literal ID="posValue2" runat="server" ></asp:Literal>&vert;<asp:Literal ID="fieldedValue2" runat="server" ></asp:Literal>&vert;<asp:Literal ID="flagValue2" runat="server" ></asp:Literal></span></dd>
+                                        <dt>Catcher:</dt>
+                                        <dd><asp:Literal ID="catcherValue" runat="server" ></asp:Literal></dd>
+                                    </dl>
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-sm-6">
                                     <asp:Image ID="parkImage" runat="server" src="summarypark.aspx" alt="image could not be displayed refresh"/>
                                 </div>
                             </div>

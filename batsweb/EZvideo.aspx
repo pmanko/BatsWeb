@@ -28,12 +28,12 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Year" Width="100%" class="btn btn-default"/>
+                                <asp:Button ID="currentYearButton" runat="server" OnClick="currentYearButton_Click" Text="Current Season" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12">
-                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Past Year" Width="100%" class="btn btn-default"/>
+                                <asp:Button ID="pastYearButton" runat="server" OnClick="pastYearButton_Click" Text="Previous Season" Width="100%" class="btn btn-default"/>
                             </div>
                         </div>
                         <div class="row">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="panel-body">   
                                 <asp:TextBox ID="TextBox1" runat="server" class="form-control"></asp:TextBox>
-                                <cc1:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" BehaviorID="TextBox1_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox1" />
+                                <cc1:MaskedEditExtender ID="TextBox1_MaskedEditExtender" runat="server" BehaviorID="TextBox1_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" TargetControlID="TextBox1" />
                                 <cc1:CalendarExtender ID="TextBox1_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox1_CalendarExtender" TargetControlID="TextBox1" />
                             </div>
                          </div>
@@ -83,7 +83,7 @@
                             </div>
                             <div class="panel-body">   
                                 <asp:TextBox ID="TextBox2" runat="server" class="form-control"></asp:TextBox>
-                                <cc1:MaskedEditExtender ID="TextBox2_MaskedEditExtender" runat="server" BehaviorID="TextBox2_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" PromptCharacter="9" TargetControlID="TextBox2" />
+                                <cc1:MaskedEditExtender ID="TextBox2_MaskedEditExtender" runat="server" BehaviorID="TextBox2_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="99/99/99" MaskType="Date" TargetControlID="TextBox2" />
                                 <cc1:CalendarExtender ID="TextBox2_CalendarExtender" runat="server" Format="MM/dd/yy" BehaviorID="TextBox2_CalendarExtender" TargetControlID="TextBox2" />
                             </div>
                         </div>

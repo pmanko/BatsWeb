@@ -43,27 +43,40 @@
        local-storage section.
 
        procedure division using by value sender as object by value e as type EventArgs.
-           set self::Session["team"] to "DEMO".
+           if self::IsPostBack
+               exit method.       
+      *     if type HttpContext::Current::Request::Cookies["creds"] not = null
+      *         set TextBox1::Text to type HttpContext::Current::Request::Cookies["creds"]["firstName"]
+      *         set TextBox3::Text to type HttpContext::Current::Request::Cookies["creds"]["lastName"]
+      *         set TextBox2::Text to type HttpContext::Current::Request::Cookies["creds"]["Password"].
+           if self::Request::QueryString::ToString = "MARLINS"
+               set teamDropDownList::SelectedIndex to 1.
            goback.
        end method.
 
-       method-id Button3_Click protected.
+       method-id loginButton_Click protected.
        local-storage section.
        01 app-data-folder pic x(256).
+       01 cook            type HttpCookie.
        procedure division using by value sender as object e as type System.EventArgs.
-          set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
-          string '"' app-data-folder delimited by "  "
+           set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
+           set WS-TEAM-NAME to teamDropDownList::SelectedItem.
+           string '"' app-data-folder delimited by "  " "\" WS-TEAM-NAME delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
-          set WS-TEAM-NAME to TextBox4::Text.
-          set WS-FIRST to TextBox1::Text.
-          set WS-LAST to TextBox3::Text.
-          set WS-PASS to TextBox2::Text.
-          invoke self::verify_password
-          set TextBox2::Text to WS-REJECT-FLAG.
+           set WS-FIRST to TextBox1::Text::ToUpper.
+           set WS-LAST to TextBox3::Text::ToUpper.
+           set WS-PASS to TextBox2::Text.
+           invoke self::verify_password
+           if WS-REJECT-FLAG = "Y"
+      *         if rememberCheckBox::Checked = true
+      *             set cook to new HttpCookie("creds")
+      *             invoke cook::Values::Add("firstName", WS-FIRST)
+      *             invoke cook::Values::Add("lastName", WS-LAST)
+      *             invoke cook::Values::Add("Password", WS-PASS)
+      *         end-if
+               invoke self::Response::Redirect("/mainmenu.aspx").
        end method.
-
-
 
        method-id verify_password protected.
        local-storage section.
@@ -75,12 +88,14 @@
             IF STATUS-BYTE-1 NOT EQUAL ZEROES
                go to  100-done.
 
-            MOVE self::Session["team"] TO WEBPASS-TEAM-NAME
+            MOVE WS-TEAM-NAME::ToUpper to WEBPASS-TEAM-NAME
+            MOVE WS-TEAM-NAME to self::Session["team"]
             MOVE WS-LAST TO WEBPASS-LAST
             MOVE WS-FIRST TO WEBPASS-FIRST
             READ WEBPASS-FILE
                 INVALID KEY
                     CLOSE WEBPASS-FILE
+                    invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Name incorrect or not authorized');", true)
       *              MOVE "LOG IN FAILED" TO ERROR-MESSAGE-TEXT
       *              MOVE "NAME INCORRECT, OR NOT AUTHORIZED"
       *                  TO ERROR-MESSAGE-TEXT2
@@ -97,7 +112,8 @@
       *           PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
                 MOVE "Y" TO WS-REJECT-FLAG
                 ELSE
-                MOVE "N" TO WS-REJECT-FLAG.
+                MOVE "N" TO WS-REJECT-FLAG
+                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Incorrect password');", true).
       *          MOVE "LOG IN FAILED" TO ERROR-MESSAGE-TEXT
       *          MOVE "INCORRECT PASSWORD"
       *                  TO ERROR-MESSAGE-TEXT2
@@ -106,13 +122,6 @@
            CLOSE WEBPASS-FILE.
 
            goback.
-       end method.
-
-       method-id loginButton_Click protected.
-       procedure division using by value sender as object e as type System.EventArgs.
-       
-           invoke self::Response::Redirect("/mainmenu.aspx")
-
        end method.
 
        end class.

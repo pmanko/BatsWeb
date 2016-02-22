@@ -129,24 +129,31 @@
                 <asp:HiddenField ID="inningSummaryIndexField" runat="server"  />
                                     
                 <div class="panel-footer">
-                    <a href="#" class="btn btn-block btn-default" id="atBatDetail" data-action-flag="show-detail">At Bat Detail</a>
+                    <div class='row'>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-block btn-default" id="atBatDetail" data-action-flag="show-detail">At Bat Detail</a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-sel">Play Selected</a>
+                        </div>
                     <div class="clearfix"></div>
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default">
                 <div class='panel-body'>
                     <div class='row'>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-vis">Play Visitors</a>
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-vis">Play Visitors</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-home">Play Home</a>
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-home">Play Home</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="from-selected">From Selected</a>
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="from-selected">From Selected</a>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" class="btn btn-block btn-default btn-async-request" data-action-flag="play-full">Play full</a>
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-full">Play Full</a>
                         </div>
                     </div>
                     <br />
