@@ -22,7 +22,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
-        <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:Panel ID="Panel1" runat="server" GroupingText="Report Settings">
                 <div class="row">
@@ -418,6 +417,5 @@
                     </div>
                 </div>
             </div>
-        </form>
     </div>
 </asp:Content>

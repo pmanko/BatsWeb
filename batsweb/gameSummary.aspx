@@ -11,7 +11,6 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
-        <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <div class="panel panel-default" id="gamesPanel">
                 <div class="panel-heading">
@@ -220,6 +219,5 @@
           </div>
         </div>
 
-    </form>
     </div>
 </asp:Content>
