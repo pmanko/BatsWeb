@@ -38,8 +38,8 @@
        01  STATUS-COMN.
            05  STATUS-BYTE-1           PIC X      VALUE SPACES.
            05  STATUS-BYTE-2           PIC X      VALUE SPACES.
-
-
+       01 plaintext           type Byte occurs any.
+       01 entropy           type Byte occurs 20.
        method-id Page_Load protected.
        local-storage section.
 
@@ -81,18 +81,8 @@
                
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
                invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
-
            else
                set Msg::Text to "Login failed. Name or password incorrect".
-             
-           
-      *         if rememberCheckBox::Checked = true
-      *             set cook to new HttpCookie("creds")
-      *             invoke cook::Values::Add("firstName", WS-FIRST)
-      *             invoke cook::Values::Add("lastName", WS-LAST)
-      *             invoke cook::Values::Add("Password", WS-PASS)
-      *         end-if
-      *        invoke self::Response::Redirect("/mainmenu.aspx").
        end method.
 
        method-id verify_password protected.

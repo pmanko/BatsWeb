@@ -63,8 +63,13 @@
 
 			<div class='col-lg-3 col-lg-pull-9'>
 				<div  class="panel  panel-default" id='playlist'>
-					<div class="panel-heading">My Playlist</div>
-
+					<div class="panel-heading">
+                        <div class='panel-title'>My Playlist</div>                        
+                        <div class='checkbox checkbox-primary'>
+                            <input id='angleCheckbox' type="checkbox" ng-model="angleChoice.mainOnly">
+                            <label for='angleCheckbox'>Main Angle Only</label> 
+                        </div>
+					</div>
 					<div class="list-group">
 						<a class='list-group-item' ng-repeat="video in sentVideos" ng-class="{ active: video == model.currentVideo }" ng-click="setCurrentVideo(video)">
 							<h4>{{video.title}}</h4>

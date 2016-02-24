@@ -467,6 +467,7 @@
     <Import Include="System.Drawing.Text" />
     <Import Include="System.IO" />
     <Import Include="System.Linq" />
+    <Import Include="System.Security.Cryptography" />
     <Import Include="System.Text" />
     <Import Include="System.Web" />
     <Import Include="System.Web.Security" />
