@@ -7,7 +7,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
-        <form id="form1" runat="server">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:Panel ID="Panel6" runat="server" >
                     <div class="panel panel-default">
@@ -104,6 +103,5 @@
                         </div>
                     </div>
             </asp:Panel>
-        </form>
     </div>
 </asp:Content>

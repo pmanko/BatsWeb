@@ -6,6 +6,14 @@
 
        working-storage section.
       *>> <summary>
+      *>> Msg control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Msg type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
       *>> teamDropDownList control.
       *>> </summary>
       *>> <remarks>

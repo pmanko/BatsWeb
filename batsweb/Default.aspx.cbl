@@ -1,6 +1,7 @@
+       $set ilusing"System.Web.Security"
+
        class-id batsweb._Default is partial
                inherits type System.Web.UI.Page public.
-
 
        $SET CALLFH"EXTFH"
        $SET DATACOMPRESS"1"
@@ -57,7 +58,10 @@
        method-id loginButton_Click protected.
        local-storage section.
        01 app-data-folder pic x(256).
-       01 cook            type HttpCookie.
+       01 ticket          type FormsAuthenticationTicket.
+       01 encTicket       type String.
+       01 userName        type String.
+       
        procedure division using by value sender as object e as type System.EventArgs.
            set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
@@ -67,21 +71,18 @@
            set WS-FIRST to TextBox1::Text::ToUpper.
            set WS-LAST to TextBox3::Text::ToUpper.
            set WS-PASS to TextBox2::Text.
+           
            invoke self::verify_password
+               
            if WS-REJECT-FLAG = "Y"
-               if rememberCheckBox::Checked = true
-                   invoke type Encoding::UTF8::GetBytes(WS-FIRST) returning plaintext
-                   perform using rng as type RNGCryptoServiceProvider = new type RNGCryptoServiceProvider
-                       invoke rng::GetBytes(entropy)
-                   end-perform
-         
-                   declare ciphertext as type Byte occurs any 
-      *             set cook to new HttpCookie("creds")
-      *             invoke cook::Values::Add("firstName", WS-FIRST)
-      *             invoke cook::Values::Add("lastName", WS-LAST)
-      *             invoke cook::Values::Add("Password", WS-PASS)
-      *         end-if
-               invoke self::Response::Redirect("/mainmenu.aspx").
+               set userName to WS-FIRST & WS-LAST & WS-TEAM-NAME
+               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 60)
+               set encTicket to type FormsAuthentication::Encrypt(ticket)
+               
+               invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
+               invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
+           else
+               set Msg::Text to "Login failed. Name or password incorrect".
        end method.
 
        method-id verify_password protected.
@@ -101,7 +102,7 @@
             READ WEBPASS-FILE
                 INVALID KEY
                     CLOSE WEBPASS-FILE
-                    invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Name incorrect or not authorized');", true)
+      *             invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Name incorrect or not authorized');", true)
       *              MOVE "LOG IN FAILED" TO ERROR-MESSAGE-TEXT
       *              MOVE "NAME INCORRECT, OR NOT AUTHORIZED"
       *                  TO ERROR-MESSAGE-TEXT2
@@ -117,16 +118,17 @@
       *           MOVE "Log In successful" TO ERROR-MESSAGE-TEXT
       *           PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
                 MOVE "Y" TO WS-REJECT-FLAG
+                
                 ELSE
-                MOVE "N" TO WS-REJECT-FLAG
-                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Incorrect password');", true).
+                MOVE "N" TO WS-REJECT-FLAG.
+      *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Incorrect password');", true).
       *          MOVE "LOG IN FAILED" TO ERROR-MESSAGE-TEXT
       *          MOVE "INCORRECT PASSWORD"
       *                  TO ERROR-MESSAGE-TEXT2
       *          PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
        100-DONE.
            CLOSE WEBPASS-FILE.
-
+           
            goback.
        end method.
 

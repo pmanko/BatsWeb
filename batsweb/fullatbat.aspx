@@ -22,7 +22,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id='fullatbat' class="container main-container">
-        <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
         <!----------------------->
@@ -551,7 +550,6 @@
                 </div>
             </div>
         </div>
-        </form>
     </div>
 </asp:Content>
 

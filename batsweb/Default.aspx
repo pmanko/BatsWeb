@@ -4,7 +4,6 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    <form runat="server">
 
     <h2>Welcome to Batsweb!</h2>
 
@@ -12,6 +11,7 @@
     <div class="container">
         <div id="sign-in">
             <h2>Please sign in</h2>
+            <asp:label ID="Msg" CssClass="text-danger" runat="server"></asp:label>
             <div class='form-group'>
                 <label for="TextBox4" class="sr-only">Team:</label>
                 <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
@@ -38,5 +38,4 @@
 
         </div>
     </div> <!-- /container -->
-    </form>
 </asp:Content>
