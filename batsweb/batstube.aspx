@@ -66,7 +66,7 @@
 					<div class="panel-heading">
                         <div class='panel-title'>My Playlist</div>                        
                         <div class='checkbox checkbox-primary'>
-                            <input id='angleCheckbox' type="checkbox" ng-model="angleChoice.mainOnly">
+                            <input id='angleCheckbox' type="checkbox" ng-model="angleChoice.mainOnly" ng-change="setupVideos()">
                             <label for='angleCheckbox'>Main Angle Only</label> 
                         </div>
 					</div>

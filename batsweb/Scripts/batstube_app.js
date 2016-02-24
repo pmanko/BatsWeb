@@ -7,9 +7,9 @@ VidApp.controller('PathCtrl', ['$scope', function ($scope) {
 }]);
 
 VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-    var paths = $location.search().paths;
-    var titles = $location.search().titles;
-    var network_path = false;
+    // var paths = $location.search().paths;
+    // var titles = $location.search().titles;
+    // var network_path = false;
 
     $scope.model = {
         currentVideo: undefined
@@ -20,57 +20,65 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     };
 
 
-    if (paths) {
-        path = paths.split(';');
-        network_path = true;
-    }       
-    else
-        paths = ["/Images/1288A.mp4", "/Images/1289A.mp4", "/Images/1290A.mp4", "/Images/1291A.mp4"];
-    
-    if (titles)
-        titles = titles.split(';');
-    else
-        titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
+    // if (paths) {
+    //     path = paths.split(';');
+    //     network_path = true;
+    // }       
+    // else
+    //     paths = ["/Images/1288A.mp4", "/Images/1289A.mp4", "/Images/1290A.mp4", "/Images/1291A.mp4"];
+    // 
+    // if (titles)
+    //     titles = titles.split(';');
+    // else
+    //     titles = ["Example Video 1", "Example Video 2", "Example Video 3", "Example Video 4"];
 
     $scope.videos = [];
     $scope.model.currentVideo = null;
 
-    console.log(paths);
-    console.log(titles);
-    console.log(network_path);
+    // console.log(videoPaths);
+    // console.log(videoTitles);
 
-    $scope.sentVideos = [];
-    for (var i = 0; i < videoPaths.length; i++) {
-       if (videoPaths[i] != "") {
-           $scope.sentVideos.push(
-               {
-                   path: videoPaths[i].trim().replace(/\s+/g, "/"),
-                   title: videoTitles[i]
-               }
-           );
 
-       }
+    
+
+
+//     for (var i = 0; i < paths.length; i++) {
+//         if (paths[i].replace(/ /g, '') != "") {
+//             if (network_path) {
+//                 vid_info = {
+//                     path: "/Content" + paths[i].replace(/ /g, '').replace(/"/, '').replace(/\\/g, "/").split("MAJORS")[1],
+//                     title: titles[i].trim()
+//                 }
+//             } else {
+//                 vid_info = {
+//                     path: paths[i],
+//                     title: titles[i].trim()
+//                 }
+//             }
+//             $scope.videos.push(vid_info);
+// 
+//         }            
+//     }
+
+    $scope.setupVideos = function (x) {
+        $scope.sentVideos = [];
+        for (var i = 0; i < videoPaths.length; i++) {
+            if (videoPaths[i] != "") {
+                console.log($.trim(videoTitles[i]).length);
+                if(!$scope.angleChoice.mainOnly || $.trim(videoTitles[i]).length > 1) {
+                    $scope.sentVideos.push(
+                        {
+                            path: videoPaths[i].trim().replace(/\s+/g, "/"),
+                            title: videoTitles[i]
+                        }
+                    );                    
+                }
+
+            }
+        };        
     };
 
-
-    for (var i = 0; i < paths.length; i++) {
-        if (paths[i].replace(/ /g, '') != "") {
-            if (network_path) {
-                vid_info = {
-                    path: "/Content" + paths[i].replace(/ /g, '').replace(/"/, '').replace(/\\/g, "/").split("MAJORS")[1],
-                    title: titles[i].trim()
-                }
-            } else {
-                vid_info = {
-                    path: paths[i],
-                    title: titles[i].trim()
-                }
-            }
-            $scope.videos.push(vid_info);
-
-        }            
-    }
-
+    $scope.setupVideos();
     $scope.model.currentVideo = $scope.sentVideos[0];
 
     videojs("main_vid", { "controls": true, "autoplay": false, "preload": "auto",  techOrder: ["html5", "flash"] }, function () {
@@ -87,16 +95,19 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     });
 
 
+
+
     $scope.setCurrentVideo = function (newVid) {
 
 
         $scope.model.currentVideo = newVid;
 
         videojs("main_vid").ready(function () {
+            
             var myvid = this;
             var currentRate = myvid.playbackRate();
 
-
+            myvid.errorDisplay.close()
 
             myvid.src([{ type: "video/mp4", src: newVid.path }]);
             myvid.addClass("embed-responsive-item");
