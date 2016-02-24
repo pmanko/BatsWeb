@@ -37,8 +37,8 @@
        01  STATUS-COMN.
            05  STATUS-BYTE-1           PIC X      VALUE SPACES.
            05  STATUS-BYTE-2           PIC X      VALUE SPACES.
-
-
+       01 plaintext           type Byte occurs any.
+       01 entropy           type Byte occurs 20.
        method-id Page_Load protected.
        local-storage section.
 
@@ -69,7 +69,13 @@
            set WS-PASS to TextBox2::Text.
            invoke self::verify_password
            if WS-REJECT-FLAG = "Y"
-      *         if rememberCheckBox::Checked = true
+               if rememberCheckBox::Checked = true
+                   invoke type Encoding::UTF8::GetBytes(WS-FIRST) returning plaintext
+                   perform using rng as type RNGCryptoServiceProvider = new type RNGCryptoServiceProvider
+                       invoke rng::GetBytes(entropy)
+                   end-perform
+         
+                   declare ciphertext as type Byte occurs any 
       *             set cook to new HttpCookie("creds")
       *             invoke cook::Values::Add("firstName", WS-FIRST)
       *             invoke cook::Values::Add("lastName", WS-LAST)
