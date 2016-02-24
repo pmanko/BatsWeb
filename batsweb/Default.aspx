@@ -16,7 +16,21 @@
                 <label for="TextBox4" class="sr-only">Team:</label>
                 <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
                     <asp:ListItem>DEMO</asp:ListItem>
+                    <asp:ListItem>BLUE JAYS</asp:ListItem>
+                    <asp:ListItem>BRAVES</asp:ListItem>
+                    <asp:ListItem>BREWERS</asp:ListItem>
+                    <asp:ListItem>DODGERS</asp:ListItem>
+                    <asp:ListItem>GIANTS</asp:ListItem>
                     <asp:ListItem>MARLINS</asp:ListItem>
+                    <asp:ListItem>METS</asp:ListItem>
+                    <asp:ListItem>NATIONALS</asp:ListItem>
+                    <asp:ListItem>ORIOLES</asp:ListItem>
+                    <asp:ListItem>PADRES</asp:ListItem>
+                    <asp:ListItem>RANGERS</asp:ListItem>
+                    <asp:ListItem>REDS</asp:ListItem>
+                    <asp:ListItem>ROCKIES</asp:ListItem>
+                    <asp:ListItem>ROYALS</asp:ListItem>
+                    <asp:ListItem>TWINS</asp:ListItem>
                 </asp:DropDownList> 
             </div>
             <div class='form-group'>

@@ -6,14 +6,6 @@
 
        working-storage section.
       *>> <summary>
-      *>> form1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 form1 type System.Web.UI.HtmlControls.HtmlForm protected.
-      *>> <summary>
       *>> ScriptManager1 control.
       *>> </summary>
       *>> <remarks>
@@ -229,5 +221,13 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 parkImage type System.Web.UI.WebControls.Image protected.
+      *>> <summary>
+      *>> playButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playButton type System.Web.UI.WebControls.Button protected.
 
        end class.

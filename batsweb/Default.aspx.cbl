@@ -40,27 +40,44 @@
            05  STATUS-BYTE-2           PIC X      VALUE SPACES.
        01 plaintext           type Byte occurs any.
        01 entropy           type Byte occurs 20.
+       01 ticket          type FormsAuthenticationTicket.
+       01 aa               type Single.
+       01 team             type String.
+       
        method-id Page_Load protected.
        local-storage section.
-
        procedure division using by value sender as object by value e as type EventArgs.
            if self::IsPostBack
                exit method.       
-      *     if type HttpContext::Current::Request::Cookies["creds"] not = null
-      *         set TextBox1::Text to type HttpContext::Current::Request::Cookies["creds"]["firstName"]
-      *         set TextBox3::Text to type HttpContext::Current::Request::Cookies["creds"]["lastName"]
       *         set TextBox2::Text to type HttpContext::Current::Request::Cookies["creds"]["Password"].
-           if self::Request::QueryString::ToString = "MARLINS"
-               set teamDropDownList::SelectedIndex to 1.
+           if type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"] not = null
+               set rememberCheckBox::Checked to true
+               set ticket to type FormsAuthentication::Decrypt(type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Value)
+               set TextBox1::Text to ticket::Name::Substring(0, 15)::Trim
+               set TextBox3::Text to ticket::Name::Substring(15, 15)::Trim
+               set TextBox2::Text to ticket::Name::Substring(30, 6)::Trim
+               set team to ticket::Name::Substring(36, 15)::Trim.
+           move 0 to aa.
+       5-loop.
+           if teamDropDownList::Items::Count = aa
+               go to 10-done.
+           if team = teamDropDownList::Items[aa]::ToString
+               set teamDropDownList::SelectedIndex to aa
+               go to 10-done.
+           if self::Request::QueryString::ToString = teamDropDownList::Items[aa]::ToString
+               set teamDropDownList::SelectedIndex to aa
+               go to 10-done.
+           add 1 to aa
+           go to 5-loop.
+       10-done.        
            goback.
        end method.
 
        method-id loginButton_Click protected.
        local-storage section.
        01 app-data-folder pic x(256).
-       01 ticket          type FormsAuthenticationTicket.
-       01 encTicket       type String.
        01 userName        type String.
+       01 encTicket       type String.
        
        procedure division using by value sender as object e as type System.EventArgs.
            set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
@@ -71,15 +88,13 @@
            set WS-FIRST to TextBox1::Text::ToUpper.
            set WS-LAST to TextBox3::Text::ToUpper.
            set WS-PASS to TextBox2::Text.
-           
            invoke self::verify_password
-               
            if WS-REJECT-FLAG = "Y"
-               set userName to WS-FIRST & WS-LAST & WS-TEAM-NAME
-               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 60)
+               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME 
+               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
-               
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
+               set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
                invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
            else
                set Msg::Text to "Login failed. Name or password incorrect".

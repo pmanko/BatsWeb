@@ -86,7 +86,8 @@
            set dataline to (" " & BAT360-P-NUM(aa) & "  " & BAT360-P-TYPE(aa) & "  " & BAT360-P-DESC(aa) &
            " " & BAT360-P-RESULT(aa) & " " & BAT360-P-VEL(aa) & " " & BAT360-P-FLAG(aa) & BAT360-P-FLAG2(AA) & "  " & BAT360-P-VIDEO(aa))
            INSPECT dataline REPLACING ALL " " BY X'A0'
-           set pitchList to pitchlist & dataLine & ';'
+           invoke self::addTableRow(pitchTable, " " & dataLine)
+      *     set pitchList to pitchlist & dataLine & ';'
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -109,6 +110,25 @@
                move spaces to ERROR-FIELD
            else               
                invoke self::batstube.
+           invoke self::printPitchList
+       end method.
+       
+       method-id playButton_Click protected.
+       linkage section.
+           COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
+       procedure division using by value sender as object e as type System.EventArgs.
+           set mydata to self::Session["bat360data"] as type batsweb.bat360Data
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
+           set bat360rununit to self::Session::Item("360rununit")
+               as type RunUnit           
+           move "PA" to BAT360-ACTION
+           invoke bat360rununit::Call("BAT360WEBF")
+           if ERROR-FIELD NOT = SPACES
+               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               move spaces to ERROR-FIELD
+           else               
+               invoke self::batstube.               
+           invoke self::printPitchList
        end method.
        
        method-id batstube protected.

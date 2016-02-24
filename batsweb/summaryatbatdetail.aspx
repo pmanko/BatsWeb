@@ -100,6 +100,15 @@
                                     <asp:Image ID="parkImage" runat="server" src="summarypark.aspx" alt="image could not be displayed refresh"/>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <asp:Button ID="playButton" runat="server" Text="Play At-Bat" OnClick="playButton_Click" class="btn btn-primary btn-block" /> 
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
                         </div>
                     </div>
             </asp:Panel>
