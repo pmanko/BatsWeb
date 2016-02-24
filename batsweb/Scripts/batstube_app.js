@@ -14,7 +14,10 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.model = {
         currentVideo: undefined
     };
-
+    
+    $scope.angleChoice = {
+        mainOnly : false
+    };
 
 
     if (paths) {
@@ -32,6 +35,9 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.videos = [];
     $scope.model.currentVideo = null;
 
+    console.log(paths);
+    console.log(titles);
+    console.log(network_path);
 
     $scope.sentVideos = [];
     for (var i = 0; i < videoPaths.length; i++) {
