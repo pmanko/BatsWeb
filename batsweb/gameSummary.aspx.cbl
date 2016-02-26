@@ -52,14 +52,14 @@
                 set BAT360WEBF to new BAT360WEBF
                 invoke bat360rununit::Add(BAT360WEBF)
                 set self::Session::Item("360rununit") to  bat360rununit.
-      *     invoke ListBox2::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox2, "move"))
-      *     invoke ListBox1::Attributes::Add("ondblclick", ClientScript::GetPostBackEventReference(ListBox1, "move"))
+                
+           set self::Session::Item("team") to "MARLINS"
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                      
+               move spaces to ERROR-FIELD.   
            if BAT360-GAMES-CHOICE = " "
                set allRadioButton::Checked to true
            else if BAT360-GAMES-CHOICE = "N"

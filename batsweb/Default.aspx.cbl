@@ -80,9 +80,9 @@
        01 encTicket       type String.
        
        procedure division using by value sender as object e as type System.EventArgs.
-           set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
+           set app-data-folder to type HttpContext::Current::Server::MapPath("~")
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
-           string '"' app-data-folder delimited by "  " "\" WS-TEAM-NAME delimited by "  "
+           string '"' app-data-folder delimited by "  " WS-TEAM-NAME delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
            set WS-FIRST to TextBox1::Text::ToUpper.
@@ -90,6 +90,7 @@
            set WS-PASS to TextBox2::Text.
            invoke self::verify_password
            if WS-REJECT-FLAG = "Y"
+      *         set self::Session::Item("team") to WS-TEAM-NAME::Trim
                set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME 
                set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
