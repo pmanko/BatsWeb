@@ -52,8 +52,7 @@
                 set BAT360WEBF to new BAT360WEBF
                 invoke bat360rununit::Add(BAT360WEBF)
                 set self::Session::Item("360rununit") to  bat360rununit.
-                
-           set self::Session::Item("team") to "MARLINS"
+           
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")

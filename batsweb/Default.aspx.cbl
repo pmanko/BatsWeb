@@ -90,13 +90,14 @@
            set WS-PASS to TextBox2::Text.
            invoke self::verify_password
            if WS-REJECT-FLAG = "Y"
-      *         set self::Session::Item("team") to WS-TEAM-NAME::Trim
                set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME 
                set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
                set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
+               set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
                invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
+      *         invoke self::Response::Redirect("~/mainmenu.aspx")
            else
                set Msg::Text to "Login failed. Name or password incorrect".
        end method.
