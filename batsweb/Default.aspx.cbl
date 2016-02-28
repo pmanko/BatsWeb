@@ -43,12 +43,12 @@
        01 ticket          type FormsAuthenticationTicket.
        01 aa               type Single.
        01 team             type String.
-       
+
        method-id Page_Load protected.
        local-storage section.
        procedure division using by value sender as object by value e as type EventArgs.
            if self::IsPostBack
-               exit method.       
+               exit method.
       *         set TextBox2::Text to type HttpContext::Current::Request::Cookies["creds"]["Password"].
            if type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"] not = null
                set rememberCheckBox::Checked to true
@@ -69,7 +69,7 @@
                go to 10-done.
            add 1 to aa
            go to 5-loop.
-       10-done.        
+       10-done.
            goback.
        end method.
 
@@ -78,11 +78,11 @@
        01 app-data-folder pic x(256).
        01 userName        type String.
        01 encTicket       type String.
-       
+
        procedure division using by value sender as object e as type System.EventArgs.
            set app-data-folder to type HttpContext::Current::Server::MapPath("~")
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
-           string '"' app-data-folder delimited by "  " WS-TEAM-NAME delimited by "  "
+           string '"' app-data-folder delimited by "Programs" WS-TEAM-NAME delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
            set WS-FIRST to TextBox1::Text::ToUpper.
@@ -90,7 +90,7 @@
            set WS-PASS to TextBox2::Text.
            invoke self::verify_password
            if WS-REJECT-FLAG = "Y"
-               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME 
+               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
                set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
@@ -135,7 +135,7 @@
       *           MOVE "Log In successful" TO ERROR-MESSAGE-TEXT
       *           PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
                 MOVE "Y" TO WS-REJECT-FLAG
-                
+
                 ELSE
                 MOVE "N" TO WS-REJECT-FLAG.
       *         invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('Log in failed. Incorrect password');", true).
@@ -145,7 +145,7 @@
       *          PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
        100-DONE.
            CLOSE WEBPASS-FILE.
-           
+
            goback.
        end method.
 
