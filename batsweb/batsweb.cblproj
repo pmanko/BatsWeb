@@ -33,7 +33,6 @@
     <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\</OutputPath>
     <DebugSymbols>True</DebugSymbols>
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
@@ -44,6 +43,7 @@
     <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
     <IntermediatePath>.\obj\x86\Debug\</IntermediatePath>
     <WarningLevel>2</WarningLevel>
+    <OutputPath>Y:\wwwroot\Programs</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -422,6 +422,7 @@
     <None Include="Images\szone1.png" />
     <None Include="Images\szone2.png" />
     <None Include="package.json" />
+    <None Include="Properties\PublishProfiles\Boston Red Sox.pubxml" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\async.js" />
     <None Include="Scripts\batstube_app.js" />

@@ -230,7 +230,7 @@
                end-if
                Set dataLine to BAT360-G-DSP-DATE(aa)::ToString("0#/##/##") & " "
                   & gameNum & " " & BAT360-G-VIS(aa) & " "
-                  & BAT360-G-HOME(aa) & " " & BAT360-G-TIME(aa)
+                  & BAT360-G-HOME(aa) & " " & BAT360-G-TIME(aa) & " " & BAT360-G-VIDEO(AA)
                INSPECT dataline REPLACING ALL " " BY X'A0'
                invoke self::addTableRow(gamesTable, " " & dataLine, 'b').
            add 1 to aa

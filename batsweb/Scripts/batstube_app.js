@@ -35,8 +35,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.videos = [];
     $scope.model.currentVideo = null;
 
-    // console.log(videoPaths);
-    // console.log(videoTitles);
+    //console.log(videoPaths);
+    //console.log(videoTitles);
 
 
     
@@ -64,11 +64,11 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
         $scope.sentVideos = [];
         for (var i = 0; i < videoPaths.length; i++) {
             if (videoPaths[i] != "") {
-                console.log($.trim(videoTitles[i]).length);
+                //console.log($.trim(videoTitles[i]).length);
                 if(!$scope.angleChoice.mainOnly || $.trim(videoTitles[i]).length > 1) {
                     $scope.sentVideos.push(
                         {
-                            path: videoPaths[i].trim().replace(/\s+/g, "/"),
+                            path: videoPaths[i].trim().replace(/\s+/g, "/").replace("97.74.233.86", "97.74.233.86:8080"),
                             title: videoTitles[i]
                         }
                     );                    
@@ -106,13 +106,15 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
             
             var myvid = this;
             var currentRate = myvid.playbackRate();
-
-            myvid.errorDisplay.close()
+            //console.log(currentRate);
+            myvid.errorDisplay.close();
 
             myvid.src([{ type: "video/mp4", src: newVid.path }]);
             myvid.addClass("embed-responsive-item");
-            myvid.playbackRate(currentRate);
+	
+	    myvid.defaultPlaybackRate = currentRate;
             myvid.play();
+            this.playbackRate(currentRate);
         });
             
     };
@@ -131,8 +133,8 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     };
 
     $scope.stepBack = function () {
-        videojs("main_vid").ready(function () {
-            var myvid = this;
+        videojs("main_vid").ready(function () { 
+            var myvid = this;   
             var fps = 29;
             var frameLength = 1 / fps;
 
@@ -145,15 +147,19 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     $scope.play = function () {
         videojs("main_vid").ready(function () {
             var myvid = this;
+            this.defaultPlaybackRate = 1.0;
+	               myvid.play();
+	
             myvid.playbackRate(1.0);
-            myvid.play();
         });
     };
 
     $scope.slow = function () {
         videojs("main_vid").ready(function () {
-            this.playbackRate(0.25);
+            this.defaultPlaybackRate = 0.25;
             this.play();
+            this.playbackRate(0.25);
+
         });
     }
 

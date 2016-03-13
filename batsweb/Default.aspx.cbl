@@ -78,13 +78,17 @@
        01 app-data-folder pic x(256).
        01 userName        type String.
        01 encTicket       type String.
-
+       01 teamName        pic x(15).
        procedure division using by value sender as object e as type System.EventArgs.
-           set app-data-folder to type HttpContext::Current::Server::MapPath("~")
+           set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
+
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
-           string '"' app-data-folder delimited by "Programs" WS-TEAM-NAME delimited by "  "
+           set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
+      *     string '"' app-data-folder delimited by "  " teamName delimited by "  "
+           string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
+             
            set WS-FIRST to TextBox1::Text::ToUpper.
            set WS-LAST to TextBox3::Text::ToUpper.
            set WS-PASS to TextBox2::Text.
