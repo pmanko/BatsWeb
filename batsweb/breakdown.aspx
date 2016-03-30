@@ -873,7 +873,7 @@
                     <a href="#" class="btn btn-primary btn-block" id="nextButton">Next Pitch</a>
                 </div>
                 <div class="col-lg-2">
-                    <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/>
+                 <!--   <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/> -->
                 </div>
             </div>
         </asp:Panel>                       

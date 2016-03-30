@@ -1,6 +1,6 @@
-       class-id batsweb.gamesummaryszone is partial 
+       class-id batsweb.gamesummaryszone is partial
                 inherits type System.Web.UI.Page public.
-                 
+
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01 bat360rununit         type RunUnit.
@@ -37,7 +37,7 @@
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
-           set address of BAT360-DIALOG-FIELDS to myData::tablePointer                                                                       
+           set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            set drawArea to type Bitmap::FromFile(Server::MapPath("Images\\szone2.png")) as type Bitmap
            set BAT360-SZONE-WIDTH, dimx, dim2x to drawArea::Width
            set BAT360-SZONE-HEIGHT, dimy, dim2y to drawArea::Height
@@ -95,11 +95,11 @@
                invoke g::DrawString(mytext2, myfont, mybrushred, ws-x, ws-y).
 
 
+       TEST-CONT.
            if aa < 30
                add 1 to aa
                go to test-loop.
-       TEST-CONT.
-    
+
            set Response::ContentType to "image/jpeg"
            invoke drawArea::Save(Response::OutputStream, type ImageFormat::Jpeg)
            invoke mybrush::Dispose()
@@ -112,5 +112,5 @@
 
            goback.
        end method.
- 
+
        end class.

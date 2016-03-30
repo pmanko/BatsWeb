@@ -26,6 +26,7 @@
                     <asp:ListItem>NATIONALS</asp:ListItem>
                     <asp:ListItem>ORIOLES</asp:ListItem>
                     <asp:ListItem>PADRES</asp:ListItem>
+                    <asp:ListItem>PIRATES</asp:ListItem>
                     <asp:ListItem>RANGERS</asp:ListItem>
                     <asp:ListItem>RED SOX</asp:ListItem>
                     <asp:ListItem>REDS</asp:ListItem>
