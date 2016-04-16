@@ -110,6 +110,14 @@
       *>> </remarks>
        01 inningsButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
+      *>> label1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 label1 type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
       *>> inningSummaryTable control.
       *>> </summary>
       *>> <remarks>

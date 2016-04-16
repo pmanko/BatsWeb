@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" MasterPageFile="~/Site.master" AutoEventWireup="true"
+<%@ Page Title="Home Page" MasterPageFile="~/Site.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cbl" Inherits="batsweb._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
@@ -32,8 +32,9 @@
                     <asp:ListItem>REDS</asp:ListItem>
                     <asp:ListItem>ROCKIES</asp:ListItem>
                     <asp:ListItem>ROYALS</asp:ListItem>
+                    <asp:ListItem>TIGERS</asp:ListItem>
                     <asp:ListItem>TWINS</asp:ListItem>
-                </asp:DropDownList> 
+                </asp:DropDownList>
             </div>
             <div class='form-group'>
                 <label for="TextBox4" class="sr-only">First Name:</label>

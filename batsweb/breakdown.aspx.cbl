@@ -363,7 +363,7 @@ PM         set self::Session::Item("nameArray") to nameArray
       *checkboxes for MaxAbs and My Team's Games Only
            if BAT300-MAX-FLAG = "Y"
                SET maxAtBatsCheckBox::Checked to true
-               set maxABTextBox::Text to BAT300-MAX-NUM::ToString
+      *         set maxABTextBox::Text to BAT300-MAX-NUM::ToString
            else
                SET maxAtBatsCheckBox::Checked to false.
                
