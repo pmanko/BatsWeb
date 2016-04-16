@@ -6,13 +6,21 @@
 
        working-storage section.
       *>> <summary>
-      *>> TextBox4 control.
+      *>> Msg control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 TextBox4 type System.Web.UI.WebControls.TextBox protected.
+       01 Msg type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> teamDropDownList control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
       *>> TextBox1 control.
       *>> </summary>
@@ -37,6 +45,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 TextBox2 type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
+      *>> rememberCheckBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 rememberCheckBox type System.Web.UI.WebControls.CheckBox protected.
       *>> <summary>
       *>> loginButton control.
       *>> </summary>

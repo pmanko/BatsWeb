@@ -18,17 +18,32 @@
     <Title>batsweb</Title>
     <Product>batsweb</Product>
     <UseIISExpress>true</UseIISExpress>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
     <DebugSymbols>True</DebugSymbols>
-    <WarningLevel>3</WarningLevel>
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
     <DefineConstants>DEBUG</DefineConstants>
     <PlatformTarget>x86</PlatformTarget>
     <AdditionalDirectives>
     </AdditionalDirectives>
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <DefineConstants>DEBUG</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+    <AdditionalDirectives />
+    <IncludeIisSettings>false</IncludeIisSettings>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+    <IntermediatePath>.\obj\x86\Debug\</IntermediatePath>
+    <WarningLevel>2</WarningLevel>
+    <OutputPath>Y:\wwwroot\Programs</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -36,6 +51,17 @@
     <WarningLevel>2</WarningLevel>
     <MaxError>100</MaxError>
     <SourceFormat>Variable</SourceFormat>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <WarningLevel>2</WarningLevel>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <ExcludeFoldersFromDeployment>node_modules</ExcludeFoldersFromDeployment>
+    <IntermediatePath>.\obj\x86\Release\</IntermediatePath>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AjaxControlToolkit">
@@ -70,22 +96,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
-    <Content Include="Account\ChangePassword.aspx" />
-    <Content Include="Account\ChangePasswordSuccess.aspx" />
-    <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Register.aspx" />
+    <Content Include="breakdownnextszone.aspx" />
+    <Content Include="breakdownpark.aspx" />
+    <Content Include="breakdownparkdetail.aspx" />
+    <Content Include="breakdownpreviousszone.aspx" />
+    <Content Include="breakdownszone.aspx" />
+    <Content Include="customClips.aspx" />
+    <Content Include="ErrorPages\timeout.aspx" />
+    <Content Include="parkdetailpark.aspx" />
+    <Content Include="summaryatbatdetail.aspx" />
+    <Content Include="breakdown.aspx" />
     <Content Include="EZvideo.aspx" />
     <Content Include="fullatbat.aspx" />
-    <Content Include="fullatbat_piotr.aspx" />
     <Content Include="gameSummary.aspx" />
+    <Content Include="gamesummaryszone.aspx" />
     <Content Include="mainmenu.aspx" />
+    <Content Include="pitchervsbatter.aspx" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.4.1.js" />
-    <Content Include="Scripts\jquery-1.4.1.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="summarypark.aspx" />
+    <Content Include="summaryrunners.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -95,9 +129,6 @@
     <Content Include="batstube.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BAT301SE.CBL">
-      <Link>BAT301SE.CBL</Link>
-    </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT360.CBL">
       <Link>BAT360.CBL</Link>
     </Compile>
@@ -131,14 +162,8 @@
     <Compile Include="..\..\..\..\..\sydexsource\bats\BAT668.CBL">
       <Link>BAT668.CBL</Link>
     </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSCPLY.CBL">
-      <Link>BATSCPLY.CBL</Link>
-    </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BATSIPCA.CBL">
       <Link>BATSIPCA.CBL</Link>
-    </Compile>
-    <Compile Include="..\..\..\..\..\sydexsource\bats\BATSMILWF.CBL">
-      <Link>BATSMILWF.CBL</Link>
     </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\Batsw060SharedData.cbl">
       <Link>Batsw060SharedData.cbl</Link>
@@ -155,6 +180,48 @@
     <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
       <Link>BWEBFTP2.CBL</Link>
     </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT292V.CBL">
+      <Link>BAT292V.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT300.CBL">
+      <Link>BAT300.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat300SharedData.COB">
+      <Link>Bat300SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT300WEBF.CBL">
+      <Link>BAT300WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT310.CBL">
+      <Link>BAT310.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat310SharedData.cbl">
+      <Link>Bat310SharedData.cbl</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT310WEBF.CBL">
+      <Link>BAT310WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT766.CBL">
+      <Link>BAT766.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat766SharedData.CBL">
+      <Link>Bat766SharedData.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT766WEBF.CBL">
+      <Link>BAT766WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT767.CBL">
+      <Link>BAT767.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT768.CBL">
+      <Link>BAT768.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Batsw100SharedData.COB">
+      <Link>Batsw100SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BATSW100WEBF.CBL">
+      <Link>BATSW100WEBF.CBL</Link>
+    </Compile>
     <Compile Include="About.aspx.cbl">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,33 +229,75 @@
     <Compile Include="About.aspx.designer.cbl">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\ChangePassword.aspx.cbl">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    <Compile Include="breakdownnextszone.aspx.cbl">
+      <DependentUpon>breakdownnextszone.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\ChangePassword.aspx.designer.cbl">
-      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    <Compile Include="breakdownnextszone.aspx.designer.cbl">
+      <DependentUpon>breakdownnextszone.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.cbl">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    <Compile Include="breakdownpark.aspx.cbl">
+      <DependentUpon>breakdownpark.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cbl">
-      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    <Compile Include="breakdownpark.aspx.designer.cbl">
+      <DependentUpon>breakdownpark.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Login.aspx.cbl">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="breakdownparkdetail.aspx.cbl">
+      <DependentUpon>breakdownparkdetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Login.aspx.designer.cbl">
-      <DependentUpon>Login.aspx</DependentUpon>
+    <Compile Include="breakdownparkdetail.aspx.designer.cbl">
+      <DependentUpon>breakdownparkdetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register.aspx.cbl">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="breakdownpreviousszone.aspx.cbl">
+      <DependentUpon>breakdownpreviousszone.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Register.aspx.designer.cbl">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="breakdownpreviousszone.aspx.designer.cbl">
+      <DependentUpon>breakdownpreviousszone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdownszone.aspx.cbl">
+      <DependentUpon>breakdownszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdownszone.aspx.designer.cbl">
+      <DependentUpon>breakdownszone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customClips.aspx.cbl">
+      <DependentUpon>customClips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customClips.aspx.designer.cbl">
+      <DependentUpon>customClips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="parkdetailpark.aspx.cbl">
+      <DependentUpon>parkdetailpark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="parkdetailpark.aspx.designer.cbl">
+      <DependentUpon>parkdetailpark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="summaryatbatdetail.aspx.cbl">
+      <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summaryatbatdetail.aspx.designer.cbl">
+      <DependentUpon>summaryatbatdetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="breakdown.aspx.cbl">
+      <DependentUpon>breakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="breakdown.aspx.designer.cbl">
+      <DependentUpon>breakdown.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cbl">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -211,19 +320,19 @@
     <Compile Include="fullatbat.aspx.designer.cbl">
       <DependentUpon>fullatbat.aspx</DependentUpon>
     </Compile>
-    <Compile Include="fullatbat_piotr.aspx.cbl">
-      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="fullatbat_piotr.aspx.designer.cbl">
-      <DependentUpon>fullatbat_piotr.aspx</DependentUpon>
-    </Compile>
     <Compile Include="gameSummary.aspx.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="gameSummary.aspx.designer.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gamesummaryszone.aspx.cbl">
+      <DependentUpon>gamesummaryszone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gamesummaryszone.aspx.designer.cbl">
+      <DependentUpon>gamesummaryszone.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cbl">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +343,13 @@
     </Compile>
     <Compile Include="mainmenu.aspx.designer.cbl">
       <DependentUpon>mainmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pitchervsbatter.aspx.cbl">
+      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pitchervsbatter.aspx.designer.cbl">
+      <DependentUpon>pitchervsbatter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cbl">
       <DependentUpon>Site.Master</DependentUpon>
@@ -249,232 +365,111 @@
     <Compile Include="batstube.aspx.designer.cbl">
       <DependentUpon>batstube.aspx</DependentUpon>
     </Compile>
+    <Compile Include="summarypark.aspx.cbl">
+      <DependentUpon>summarypark.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summarypark.aspx.designer.cbl">
+      <DependentUpon>summarypark.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="summaryrunners.aspx.cbl">
+      <DependentUpon>summaryrunners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summaryrunners.aspx.designer.cbl">
+      <DependentUpon>summaryrunners.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Data\BATSW010.DAT" />
-    <None Include="App_Data\BATSW010.idx" />
-    <None Include="App_Data\BATSW020.DAT" />
-    <None Include="App_Data\BATSW020.idx" />
-    <None Include="App_Data\MAJORS\AB.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\AB.idx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\CTL.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\CTL.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\GAME.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\GAME.idx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\PITCH.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\PITCH.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\PLAYER.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\PLAYER.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\ROSTER.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\ROSTER.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\TEAM.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\TEAM.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\TEMPHIT2.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1288A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1289A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1290A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1291A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1292A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1293A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1294A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1295A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1296A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1297A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1298A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1299A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1300A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1301A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1302A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1303A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1304A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1305A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1306A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1307A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1308A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1309A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1310A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1311A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1312A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1313A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1314A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1315A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1316A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VID2015\05\28\0280020\0280020L\1317A.mp4">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VIDIDX.DAT">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MAJORS\VIDIDX.IDX">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="App_Data\MINORS\AB.DAT" />
-    <None Include="App_Data\MINORS\AB.idx" />
-    <None Include="App_Data\MINORS\CTL.DAT" />
-    <None Include="App_Data\MINORS\CTL.IDX" />
-    <None Include="App_Data\MINORS\GAME.DAT" />
-    <None Include="App_Data\MINORS\GAME.idx" />
-    <None Include="App_Data\MINORS\PITCH.DAT" />
-    <None Include="App_Data\MINORS\PITCH.IDX" />
-    <None Include="App_Data\MINORS\PLAYER.DAT" />
-    <None Include="App_Data\MINORS\PLAYER.IDX" />
-    <None Include="App_Data\MINORS\ROSTER.DAT" />
-    <None Include="App_Data\MINORS\ROSTER.IDX" />
-    <None Include="App_Data\MINORS\TEAM.DAT" />
-    <None Include="App_Data\MINORS\TEAM.IDX" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1001A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1002A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1003A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1004A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1005A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1006A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1007A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1008A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1009A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1010A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1011A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1012A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1013A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1014A.mov" />
-    <None Include="App_Data\MINORS\VID2015\08\20\1031060\1031060L\1015A.mov" />
-    <None Include="App_Data\MINORS\VIDIDX.DAT" />
-    <None Include="App_Data\MINORS\VIDIDX.IDX" />
     <None Include="App_Data\TEMPmlb1.DAT" />
     <None Include="App_Data\TEMPmlb1.idx" />
     <None Include="App_Data\wininet.dll" />
+    <None Include="bower.json" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="dist\scripts\batstube_app.js" />
+    <None Include="dist\scripts\bootstrap.min.js" />
+    <None Include="dist\scripts\callBatstube.js" />
+    <None Include="dist\scripts\fullatbat.js" />
+    <None Include="dist\scripts\summarycallatbat.js" />
+    <None Include="dist\scripts\vendor.bundle.min.js" />
+    <None Include="dist\scripts\video.js" />
+    <None Include="dist\styles\app.css" />
+    <None Include="dist\styles\batstube.css" />
+    <None Include="dist\styles\BenStyleSheet.css" />
+    <None Include="dist\styles\main.css" />
+    <None Include="dist\styles\Site.css" />
+    <None Include="dist\styles\video-js.css" />
     <None Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="fonts\glyphicons-halflings-regular.svg" />
     <None Include="fonts\glyphicons-halflings-regular.ttf" />
     <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\ZURCHBXC.TTF" />
+    <None Include="fonts\ZURCHLXC.TTF" />
+    <None Include="gulpfile.js" />
     <None Include="Images\1288A.mp4" />
     <None Include="Images\homeplateGREY.png" />
     <None Include="Images\logo.png" />
     <None Include="Images\Play.png" />
     <None Include="Images\SydexLogo.png" />
-    <None Include="Scripts\angular-route.js" />
-    <None Include="Scripts\angular.js" />
+    <None Include="Images\szone1.bmp" />
+    <None Include="Images\szone1.png" />
+    <None Include="Images\szone2.png" />
+    <None Include="package.json" />
+    <None Include="Properties\PublishProfiles\Boston Red Sox.pubxml" />
+    <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
+    <None Include="Scripts\async.js" />
     <None Include="Scripts\batstube_app.js" />
-    <None Include="Scripts\bootstrap.js" />
+    <None Include="Scripts\breakdown.js" />
+    <None Include="Scripts\breakdowncallpark.js" />
+    <None Include="Scripts\customclips.js" />
+    <None Include="Scripts\ezvideo.js" />
+    <None Include="Scripts\gamesummary.js" />
+    <None Include="Scripts\listbox-replacement.js" />
+    <None Include="Scripts\modals.js" />
+    <None Include="Scripts\pitchervsbatter.js" />
+    <None Include="Scripts\summarycallatbat.js" />
+    <None Include="Scripts\callBatstube.js" />
     <None Include="Scripts\fullatbat.js" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <None Include="Scripts\jquery-1.10.2.js" />
-    <None Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <None Include="Scripts\jquery.validate.js" />
-    <None Include="Scripts\jquery.validate.min.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.js" />
-    <None Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <None Include="Scripts\modernizr-2.6.2.js" />
-    <None Include="Scripts\respond.js" />
-    <None Include="Scripts\respond.min.js" />
     <None Include="Scripts\video.js" />
+    <None Include="Styles\app.scss" />
+    <None Include="Styles\autocomplete.css" />
     <None Include="Styles\batstube.css" />
     <None Include="Styles\BenStyleSheet.css" />
-    <None Include="Styles\bootstrap_blue.css" />
-    <None Include="Styles\bootstrap_original.css" />
-    <None Include="Styles\bootstrap_superhero.css" />
+    <None Include="Styles\customclips.css" />
+    <None Include="Styles\custom_bootstrap.scss" />
+    <None Include="Styles\ezvideo.css" />
+    <None Include="Styles\fullatbat.css" />
+    <None Include="Styles\gamesummary.css" />
+    <None Include="Styles\jquery-ui.css" />
+    <None Include="Styles\listbox-replacement.css" />
     <None Include="Styles\main.css" />
+    <None Include="Styles\breakdown.css" />
+    <None Include="Styles\pitchervsbatter.css" />
+    <None Include="Styles\summaryatbatdetail.css" />
     <None Include="Styles\video-js.css" />
     <None Include="Styles\video-js.swf" />
+    <None Include="Theme\stylesheets\custom.scss" />
+    <None Include="Theme\stylesheets\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="MicroFocus.COBOL.RuntimeServices" />
     <Import Include="System" />
     <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Drawing.Drawing2D" />
+    <Import Include="System.Drawing.Imaging" />
+    <Import Include="System.Drawing.Text" />
+    <Import Include="System.IO" />
     <Import Include="System.Linq" />
+    <Import Include="System.Security.Cryptography" />
+    <Import Include="System.Text" />
     <Import Include="System.Web" />
     <Import Include="System.Web.Security" />
     <Import Include="System.Web.SessionState" />
@@ -483,6 +478,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Styles\App_LocalResources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ExcludeFromPackageFolders Include="node_modules">
+      <FromTarget>Project</FromTarget>
+    </ExcludeFromPackageFolders>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -495,16 +495,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57709</DevelopmentServerPort>
-          <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56576/</IISUrl>
-          <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
-          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

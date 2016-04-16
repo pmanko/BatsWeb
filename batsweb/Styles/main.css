@@ -15,6 +15,12 @@
     padding-top: 0px;
 }
 
+select option {
+    font-family: "Lucida Console", Monaco, monospace	;
+}
+
+
+
 @media (max-width: 767px) { 
     .navbar-brand {
         padding: 0;        
@@ -24,4 +30,19 @@
         margin-top: 5px;
         margin-left: 5px;
     }
+    
+}
+
+.dl-horizontal-compact dd {
+    margin-left: 60px;
+}
+
+.dl-horizontal-compact dt {
+    float: left;
+    width: 50px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

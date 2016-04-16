@@ -156,6 +156,7 @@ csx/
 
 # Windows Store app package directory
 AppPackages/
+batsweb/App_Data/
 
 # Visual Studio cache files
 # files ending in .cache can be ignored
@@ -214,6 +215,16 @@ ModelManifest.xml
 
 
 # Custom
-App_Data/
+MAJORS/
+MINORS/
 bin/
 obj/
+
+
+bower_components
+node_modules
+dist
+
+.vscode
+
+
