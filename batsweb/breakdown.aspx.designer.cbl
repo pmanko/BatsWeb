@@ -6,14 +6,6 @@
 
        working-storage section.
       *>> <summary>
-      *>> form1 control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 form1 type System.Web.UI.HtmlControls.HtmlForm protected.
-      *>> <summary>
       *>> ScriptManager1 control.
       *>> </summary>
       *>> <remarks>
@@ -157,22 +149,6 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 maxAtBatsCheckBox type System.Web.UI.WebControls.CheckBox protected.
-      *>> <summary>
-      *>> maxABTextBox control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 maxABTextBox type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
-      *>> maxABTextBox_MaskedEditExtender control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 maxABTextBox_MaskedEditExtender type AjaxControlToolkit.MaskedEditExtender protected.
       *>> <summary>
       *>> myCheckBox control.
       *>> </summary>
