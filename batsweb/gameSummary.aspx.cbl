@@ -9,7 +9,10 @@
        01 BAT360WEBF                type BAT360WEBF.
        01 mydata type batsweb.bat360Data.
        01 callbackReturn type String.
-       
+       01 dir      type DirectoryInfo.
+       01 files    type FileInfo occurs any.
+       01 searchPattern    type String.
+       01 searchOption    type SearchOption.
        method-id Page_Load protected.
        local-storage section.
        01 cm type ClientScriptManager.
@@ -19,7 +22,10 @@
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
-
+      *     set searchOption to new SearchOption::AllDirectories
+      *     set dir to new DirectoryInfo(Server::MapPath("/majorsbats"))           
+      *     set files to dir::GetFiles()
+      *     set BAT360-TEST-PATH to dir       
       * #### ICallback Implementation ####
            set cm to self::ClientScript
            set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
@@ -32,7 +38,6 @@
                invoke self::loadLines
                exit method.
                
-
       *    Setup - from main menu                
            SET self::Session::Item("database") to self::Request::QueryString["league"]
            if   self::Session["bat360data"] = null
@@ -42,8 +47,6 @@
            else
                set mydata to self::Session["bat360data"] as type batsweb.bat360Data.
 
-           
-           
            if  self::Session::Item("360rununit") not = null
                set bat360rununit to self::Session::Item("360rununit")
                    as type RunUnit
@@ -56,8 +59,11 @@
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer
            move "I" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
+          
+      *     set label1::Text to files[0]::Length
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+              invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+      *        invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & BAT360-TEST-PATH::Trim & "');", true)
                move spaces to ERROR-FIELD.   
            if BAT360-GAMES-CHOICE = " "
                set allRadioButton::Checked to true

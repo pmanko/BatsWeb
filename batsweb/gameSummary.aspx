@@ -99,8 +99,9 @@
                             />
                         </div>
                         
-                        <asp:Button ID="inningsButton" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-primary btn-block" />
-                    </div>
+                        <asp:Button ID="Button1" runat="server" Text="Show Innings" OnClick="inningsButton_Click" class="btn btn-primary btn-block" />
+                <%--        <asp:Label ID="label1" runat="server" Text="test"></asp:Label>--%>
+                       </div>
                 </div>
                 </div>
 

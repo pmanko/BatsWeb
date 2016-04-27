@@ -99,8 +99,8 @@
                                             <div class="list-group-item">
                                                 <div class='form-group'>
                                                     <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
-                                                    <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
-                                                    <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
+                                                    <input type="number" name="maxid" id="maxid" onkeypress="return isNumberKey(event)" onkeydown="limit(this);" onkeyup="limit(this);" class="form-control"/>
+                                                <!--    <asp:TextBox ID="maxABTextBox" runat="server" class="form-control"></asp:TextBox>      -->                                          
                                                 </div>
                                                 <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
                                             </div>
@@ -646,7 +646,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <a class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#changeSelectionModal">Change Selection</a>
+                    <a class="btn btn-lg btn-block btn-primary" id="changeSelectionButton" data-toggle="modal" data-target="#changeSelectionModal">Change Selection</a>
                 </div>
                     
             </div>
@@ -873,7 +873,7 @@
                     <a href="#" class="btn btn-primary btn-block" id="nextButton">Next Pitch</a>
                 </div>
                 <div class="col-lg-2">
-                    <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/>
+                 <!--   <asp:Button ID="printButton" runat="server" Text="Print..." class="btn btn-primary btn-block"/> -->
                 </div>
             </div>
         </asp:Panel>                       

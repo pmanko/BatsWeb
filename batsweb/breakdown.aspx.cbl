@@ -249,7 +249,13 @@
            else if actionFlag = "nt"
                invoke self::nextTypesButton_Click()
                set callbackReturn to actionFlag & "|"    
-      
+           else if actionFlag = "mx"
+               if methodArg not = ""
+                   invoke self::setMaxAB(methodArg)
+               end-if
+               set callbackReturn to actionFlag & "|" & self::getMaxAB()         
+           else if actionFlag = "sm"
+               set callbackReturn to actionFlag & "|" & self::getMaxAB()                     
       *    List Box Re-Engineering
            else if actionFlag = 'reload-pitch-list'
                set callbackReturn to actionFlag & "|" & self::printPitchList()
@@ -363,7 +369,6 @@ PM         set self::Session::Item("nameArray") to nameArray
       *checkboxes for MaxAbs and My Team's Games Only
            if BAT300-MAX-FLAG = "Y"
                SET maxAtBatsCheckBox::Checked to true
-               set maxABTextBox::Text to BAT300-MAX-NUM::ToString
            else
                SET maxAtBatsCheckBox::Checked to false.
                
@@ -1057,7 +1062,6 @@ PM         set self::Session::Item("nameArray") to nameArray
            set allLocRadioButton::Checked to true
            set allTimeRadioButton::Checked to true
            set maxAtBatsCheckBox::Checked to false
-           set maxABTextBox::Text to BAT300-MAX-NUM::ToString
            set myCheckBox::Checked to false
            set batseitherRadioButton::Checked to true
            set throwseitherRadioButton::Checked to true
@@ -1274,12 +1278,32 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
            if maxAtBatsCheckBox::Checked
                move "Y" to BAT300-MAX-FLAG
-               invoke maxABTextBox::Focus
-               invoke type System.Single::TryParse(maxABTextBox::Text::ToString, by reference abnum)
-               set BAT300-MAX-NUM TO abnum
+      *         set BAT300-MAX-NUM TO abnum
             else
                move "N" to BAT300-MAX-FLAG.
        end method.
+       
+       method-id setMaxAB protected.
+       01 abnum    type Single.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".       
+       procedure division using by value maxabs as String.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer
+           invoke type System.Single::TryParse(maxabs, by reference abnum)
+           set BAT300-MAX-NUM TO abnum.
+       end method.
+       
+       method-id getMaxAB protected.
+       linkage section.
+            COPY "Y:\SYDEXSOURCE\BATS\bat300_dg.CPB".       
+       procedure division returning maxabs as String.
+           set mydata300 to self::Session["bat300data"] as type batsweb.bat300Data
+           set address of BAT300-DIALOG-FIELDS to myData300::tablePointer           
+           set maxabs to BAT300-MAX-NUM.
+       end method.
+       
+       
 
        method-id myCheckBox_CheckedChanged protected.
        linkage section.
