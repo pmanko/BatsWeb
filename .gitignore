@@ -215,6 +215,7 @@ ModelManifest.xml
 
 
 # Custom
+App_Data/*
 MAJORS/
 MINORS/
 bin/
@@ -226,5 +227,7 @@ node_modules
 dist
 
 .vscode
+
+*.db
 
 
