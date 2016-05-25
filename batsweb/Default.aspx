@@ -38,15 +38,15 @@
                 </asp:DropDownList>
             </div>
             <div class='form-group'>
-                <label for="TextBox4" class="sr-only">First Name:</label>
+                <label for="TextBox1" class="sr-only">First Name:</label>
                 <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
             </div>
             <div class='form-group'>
-                <label for="TextBox4" class="sr-only">Last Name:</label>
+                <label for="TextBox3" class="sr-only">Last Name:</label>
                 <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
             </div>
             <div class='form-group'>
-                <label for="TextBox4" class="sr-only">Password:</label>
+                <label for="TextBox2" class="sr-only">Password:</label>
                 <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
             </div>
             <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>

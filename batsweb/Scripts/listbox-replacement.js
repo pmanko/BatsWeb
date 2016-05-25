@@ -7,7 +7,7 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
     
     var attrs = getTableAttributes(this);
 
-    console.log(attrs);
+    // console.log(attrs);
     
 
     setTableValues(this, attrs);
@@ -25,6 +25,8 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
 });
 
 $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", function (event) {
+    // This 
+    
     $(this).toggleClass("selected");
     console.log("DOUBLE!!");
     
@@ -51,9 +53,9 @@ function setTableValues(target, attrs, clicktype) {
         clicktype = "single";
     }
     
-    console.log(attrs.multiple);
-    console.log(clicktype);
-    console.log(attrs.selected);
+    // console.log(attrs.multiple);
+    // console.log(clicktype);
+    // console.log(attrs.selected);
     
     if ((!attrs.multiple || clicktype == "double") && attrs.selected) {
 
