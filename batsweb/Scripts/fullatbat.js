@@ -1,6 +1,6 @@
 ﻿// atBat Selection
 function atBatUpdate () {
-    // console.log($("#MainContent_atBatIndexField").val())
+    console.log("atbatindexfield: " + $("#MainContent_atBatIndexField").val())
     makeServerRequest("update-at-bat", $("#MainContent_atBatIndexField").val());
 }
 function playerUpdate() {

@@ -1,0 +1,44 @@
+﻿#MainContent_videoTable tbody {
+    max-height: 330px;
+
+}
+#MainContent_videoTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: medium;
+}
+
+#MainContent_videoTable td, #MainContent_videoTable th {
+    padding-left: 20px;
+}
+
+#videoTableWrapper {
+    height: 330px;
+
+}
+
+#MainContent_videoTable thead {
+    border-bottom: 2px #ddd solid;
+}
+#MainContent_playerTable tbody {
+    max-height: 330px;
+
+}
+#MainContent_playerTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: medium;
+}
+
+#MainContent_playerTable td, #MainContent_playerTable th {
+    padding-left: 20px;
+}
+
+#playerTableWrapper {
+    height: 330px;
+
+}
+
+#MainContent_playerTable thead {
+    border-bottom: 2px #ddd solid;
+}

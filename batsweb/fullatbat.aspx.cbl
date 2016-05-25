@@ -132,7 +132,9 @@
            SET LK-PLAYER-FILE TO BAT666-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
-           start play-file key > play-alt-key.
+           start play-file key > play-alt-key
+               invalid key
+               go to 10-done.
            move 1 to aa.     
        5-loop.
            read play-file next
@@ -1229,7 +1231,9 @@ PM         set self::Session::Item("nameArray") to nameArray
        01 strArray type String[].
        procedure division using by value fieldValue as type String
                           returning indexArray as type Int32[].
-       
+           
+           if fieldValue = null
+               exit method.
            set strArray to fieldValue::Split(';')
            
            set size of indexArray to strArray::Length

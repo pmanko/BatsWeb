@@ -1,4 +1,11 @@
-﻿$(function () {
+﻿var batstubeWindow;
+// Open Batstube
+function openBatsTube() {
+    batstubeWindow = window.open("batstube.aspx", '_blank');
+    batstubeWindow.focus();
+}
+
+$(function () {
     if (typeof showModal != 'undefined') {
         $("#changeSelectionModal").modal('show');
     };
@@ -325,3 +332,13 @@ function limit(element) {
         element.value = element.value.substr(0, max_chars);
     }
 }
+
+$(document).on('click', '.btn-async-request', function (events) {
+    makeServerRequest($(this).data("actionFlag"));
+    openBatsTube();
+});
+
+$(document).on('click', '#hlButton', function (events) {
+    batstubeWindow = window.open("breakdownparkdetail.aspx", '_blank');
+    batstubeWindow.focus();
+});
