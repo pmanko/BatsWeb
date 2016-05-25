@@ -34,6 +34,7 @@
                     <asp:ListItem>ROYALS</asp:ListItem>
                     <asp:ListItem>TIGERS</asp:ListItem>
                     <asp:ListItem>TWINS</asp:ListItem>
+                    <asp:ListItem>HALTEST</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class='form-group'>

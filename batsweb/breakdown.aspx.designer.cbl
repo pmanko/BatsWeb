@@ -150,6 +150,14 @@
       *>> </remarks>
        01 maxAtBatsCheckBox type System.Web.UI.WebControls.CheckBox protected.
       *>> <summary>
+      *>> maxABTextBox control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 maxABTextBox type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
       *>> myCheckBox control.
       *>> </summary>
       *>> <remarks>

@@ -255,7 +255,17 @@
                end-if
                set callbackReturn to actionFlag & "|" & self::getMaxAB()         
            else if actionFlag = "sm"
-               set callbackReturn to actionFlag & "|" & self::getMaxAB()                     
+               set callbackReturn to actionFlag & "|" & self::getMaxAB()       
+           else if actionFlag = "play-all"
+               set callbackReturn to actionFlag & "|" & self::playAll
+           else if actionFlag = "play-next"
+               set callbackReturn to actionFlag & "|" & self::playNext
+           else if actionFlag = "with-prev"
+               set callbackReturn to actionFlag & "|" & self::withPrev         
+           else if actionFlag = "play-prev"
+               set callbackReturn to actionFlag & "|" & self::playPrev
+           else if actionFlag = "with-next"
+               set callbackReturn to actionFlag & "|" & self::withNext                  
       *    List Box Re-Engineering
            else if actionFlag = 'reload-pitch-list'
                set callbackReturn to actionFlag & "|" & self::printPitchList()
@@ -301,7 +311,9 @@
            SET LK-PLAYER-FILE TO BAT300-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
-           start play-file key > play-alt-key.
+           start play-file key > play-alt-key
+               invalid key
+               go to 10-done.           
            move 1 to aa.     
        5-loop.
            read play-file next
@@ -1101,6 +1113,9 @@ PM         set self::Session::Item("nameArray") to nameArray
        end method.
        
        method-id szoneImageButton_Click protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
@@ -1115,14 +1130,44 @@ PM         set self::Session::Item("nameArray") to nameArray
            if ERROR-FIELD NOT = SPACES
                invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
                move spaces to ERROR-FIELD
-           else    
-               invoke self::batstube.
+               exit method.
+
+           set vidPaths to ""
+PM         set vidTitles to ""
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT310-WF-VID-COUNT
+               go to lines-done.
+           
+           
+      *    REFACTOR BATSTUBE SETUP --> SINGLE CLASS     
+PM         set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-A(aa) & ";"          
+PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT310-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT310-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT310-WF-VIDEO-D(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
+               
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+PM         set self::Session::Item("video-paths") to vidPaths
+PM         set self::Session::Item("video-titles") to vidTitles
+      *    END REFACTOR
+           
+           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).  
        end method.
        
-       method-id allButton_Click protected.
+       method-id playAll protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning returnVal as type String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -1130,8 +1175,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            MOVE "VA" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                 
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                        
            invoke self::batstube.
        end method.
        
@@ -1173,7 +1219,6 @@ PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    END REFACTOR
            
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        
        method-id allStartRadioButton_CheckedChanged protected.
@@ -2013,10 +2058,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callparkdetail", "callparkdetail();", true).
        end method.  
        
-       method-id previousPitchesButton_Click protected.
+       method-id playPrev protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division returning returnVal as type String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -2024,15 +2069,16 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "PX" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                               
            invoke self::batstube
        end method.  
 
-       method-id withNextButton_Click protected.
+       method-id withNext protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division returning returnVal as type String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -2040,8 +2086,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "PP" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                             
            invoke self::batstube
        end method.  
    
@@ -2094,10 +2141,10 @@ PM         set self::Session::Item("video-titles") to vidTitles
        10-done.       
        end method.  
        
-       method-id nextPitchesButton_Click protected.
+       method-id playNext protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division returning returnVal as type String.    
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -2105,15 +2152,16 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "NX" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                        
            invoke self::batstube
        end method.  
 
-       method-id withPreviousButton_Click protected.
+       method-id withPrev protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
+       procedure division returning returnVal as type String.     
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
@@ -2121,8 +2169,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            MOVE "NN" TO BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
-               move spaces to ERROR-FIELD.                
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.                           
            invoke self::batstube
        end method.  
    

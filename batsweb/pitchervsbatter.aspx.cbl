@@ -79,7 +79,9 @@
            SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
-           start play-file key > play-alt-key.
+           start play-file key > play-alt-key
+               invalid key
+               go to 10-done.           
            move 1 to aa.     
        5-loop.
            read play-file next
