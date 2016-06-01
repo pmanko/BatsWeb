@@ -46,3 +46,8 @@ select option {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* Modal Background Scroll Fix */
+body.modal-open {
+    position: fixed;
+}

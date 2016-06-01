@@ -1109,7 +1109,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            initialize BAT766-T-AB-SEL-TBL
            move 0 to aa.
-
+           if indexString = null
+               initialize BAT766-T-AB-SEL-TBL
+               exit method.
            set selected to self::getSelectedIndeces(indexString).
                       
        videos-loop.

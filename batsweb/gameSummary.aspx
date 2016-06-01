@@ -7,6 +7,7 @@
     <script type="text/javascript" src="Scripts/gamesummary.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <script type="text/javascript" src="Scripts/summarycallatbat.js"></script> 
+    <meta name="format-detection" content="telephone=no" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

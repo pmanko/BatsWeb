@@ -85,7 +85,7 @@
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
            set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
            string '"' app-data-folder delimited by "  "
-      *     string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
+      *    string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
              

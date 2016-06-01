@@ -257,7 +257,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            initialize BAT666-T-AB-SEL-TBL
            move 0 to aa.
-
+           if indexString = null
+               initialize BAT666-T-AB-SEL-TBL
+               exit method.
            set selected to self::getSelectedIndeces(indexString).
                       
        videos-loop.
