@@ -3,6 +3,11 @@ function atBatUpdate () {
     console.log("atbatindexfield: " + $("#MainContent_atBatIndexField").val())
     makeServerRequest("update-at-bat", $("#MainContent_atBatIndexField").val());
 }
+function atBatUpdateDblclick () {
+    console.log("atbatindexfield: " + $("#MainContent_atBatIndexField").val())
+    makeServerRequest("update-at-bat-dblclick", $("#MainContent_atBatIndexField").val());
+}
+
 function playerUpdate() {
     //console.log($("#MainContent_playerIndexField").val())
     makeServerRequest("update-player", $("#MainContent_playerIndexField").val());
@@ -67,12 +72,18 @@ function GetServerData(arg, context) {
         return;
     }
     
+    // console.log("Returned with " + actionFlag);
+    
     switch(actionFlag) {
       case "update-at-bat":   
-        console.log("UPDATED!");
+        // console.log("UPDATED!");
+        break;
+      case "update-at-bat-dblclick":
+        // console.log("After Double");
+        $("body").data("dblReturn", 1);
         break;
       default: 
-        console.log("Default!");
+        // console.log("Default!");
     };	 
 };
 // -----------------------------

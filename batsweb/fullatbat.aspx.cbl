@@ -169,6 +169,8 @@ PM         set self::Session::Item("nameArray") to nameArray
            
            if actionFlag = "update-at-bat"
                set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
+           else if actionFlag = "update-at-bat-dblclick"
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
            else if actionFlag = "play-all"
                set callbackReturn to actionFlag & "|" & self::playAll(methodArg).
       *    else if actionFlag = "update-player"
