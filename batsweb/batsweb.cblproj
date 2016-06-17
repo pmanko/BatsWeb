@@ -103,6 +103,7 @@
     <Content Include="breakdownszone.aspx" />
     <Content Include="customClips.aspx" />
     <Content Include="ErrorPages\timeout.aspx" />
+    <Content Include="ezVideoFull.aspx" />
     <Content Include="parkdetailpark.aspx" />
     <Content Include="summaryatbatdetail.aspx" />
     <Content Include="breakdown.aspx" />
@@ -179,6 +180,15 @@
     </Compile>
     <Compile Include="..\..\..\..\..\sydexsource\bats\BWEBFTP2.CBL">
       <Link>BWEBFTP2.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT130VI.CBL">
+      <Link>BAT130VI.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\Bat130viSharedData.COB">
+      <Link>Bat130viSharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\bats\BAT130VIWEBF.CBL">
+      <Link>BAT130VIWEBF.CBL</Link>
     </Compile>
     <Compile Include="..\..\..\..\sydexsource\bats\BAT292V.CBL">
       <Link>BAT292V.CBL</Link>
@@ -277,6 +287,13 @@
     </Compile>
     <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
       <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ezVideoFull.aspx.cbl">
+      <DependentUpon>ezVideoFull.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ezVideoFull.aspx.designer.cbl">
+      <DependentUpon>ezVideoFull.aspx</DependentUpon>
     </Compile>
     <Compile Include="parkdetailpark.aspx.cbl">
       <DependentUpon>parkdetailpark.aspx</DependentUpon>
@@ -422,7 +439,7 @@
     <None Include="Images\szone1.png" />
     <None Include="Images\szone2.png" />
     <None Include="package.json" />
-    <None Include="Properties\PublishProfiles\Boston Red Sox.pubxml" />
+    <None Include="Properties\PublishProfiles\Local Publish.pubxml" />
     <None Include="Properties\PublishProfiles\sydexdan.pubxml" />
     <None Include="Scripts\async.js" />
     <None Include="Scripts\batstube_app.js" />
@@ -430,6 +447,7 @@
     <None Include="Scripts\breakdowncallpark.js" />
     <None Include="Scripts\customclips.js" />
     <None Include="Scripts\ezvideo.js" />
+    <None Include="Scripts\ezvideofull.js" />
     <None Include="Scripts\gamesummary.js" />
     <None Include="Scripts\listbox-replacement.js" />
     <None Include="Scripts\modals.js" />
@@ -445,6 +463,7 @@
     <None Include="Styles\customclips.css" />
     <None Include="Styles\custom_bootstrap.scss" />
     <None Include="Styles\ezvideo.css" />
+    <None Include="Styles\ezvideofull.css" />
     <None Include="Styles\fullatbat.css" />
     <None Include="Styles\gamesummary.css" />
     <None Include="Styles\jquery-ui.css" />

@@ -3,11 +3,11 @@
 // -----------------------------
 $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function (event) {
     $(this).toggleClass("selected");
-    console.log("SINGLE!")
+    // console.log("SINGLE!")
     
     var attrs = getTableAttributes(this);
 
-    console.log(attrs);
+    // console.log(attrs);
     
 
     setTableValues(this, attrs);
@@ -25,18 +25,34 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
 });
 
 $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", function (event) {
-    $(this).toggleClass("selected");
-    console.log("DOUBLE!!");
+    // This 
+    // console.log("DOUBLE!!");
+    
+    if(!$(this).hasClass("selected")) {
+        $(this).toggleClass("selected");    
+    }
+    
     
     var attrs = getTableAttributes(this);
     
     setTableValues(this, attrs, "double");
 
-    if (attrs.selected && attrs.selectFn){
-        window[attrs.selectFn]();
+    if (attrs.selected && attrs.dblclickSelectFn){
+        $("body").data("dblReturn", 0);
+        // console.log("1 dblval : " + $("body").data("dblReturn"));
+        window[attrs.dblclickSelectFn]();
     }
     
     if (attrs.dblclickFn && attrs.selected) {
+        //console.log("2 dblval : " + $("body").data("dblReturn"));
+        
+        function waitForReturn() {
+            // console.log("waiting: " + $("body").data("dblReturn"));
+            if($("body").data("dblReturn") == 1)
+                return;
+            setTimeout(waitForReturn, 50);
+        }
+        waitForReturn();
         window[attrs.dblclickFn]();    
     }
     
@@ -51,9 +67,9 @@ function setTableValues(target, attrs, clicktype) {
         clicktype = "single";
     }
     
-    console.log(attrs.multiple);
-    console.log(clicktype);
-    console.log(attrs.selected);
+    // console.log(attrs.multiple);
+    // console.log(clicktype);
+    // console.log(attrs.selected);
     
     if ((!attrs.multiple || clicktype == "double") && attrs.selected) {
 
@@ -85,6 +101,7 @@ function getTableAttributes(targetRow) {
         multiple: myTable.data("multiple"),
         selected: myRow.hasClass("selected"),
         dblclickFn: myTable.data("onDblclick"),
+        dblclickSelectFn: myTable.data("onDblclickSelect"),
         selectFn: myTable.data("onSelect") 
     };
     

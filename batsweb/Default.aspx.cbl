@@ -64,7 +64,7 @@
            if team = teamDropDownList::Items[aa]::ToString
                set teamDropDownList::SelectedIndex to aa
                go to 10-done.
-           if self::Request::QueryString::ToString = teamDropDownList::Items[aa]::ToString
+           if self::Request::QueryString::ToString::Replace("_", " ") = teamDropDownList::Items[aa]::ToString
                set teamDropDownList::SelectedIndex to aa
                go to 10-done.
            add 1 to aa
@@ -84,7 +84,7 @@
 
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
            set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
-      *     string '"' app-data-folder delimited by "  " teamName delimited by "  "
+ debug*     string '"' app-data-folder delimited by "  "
            string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.

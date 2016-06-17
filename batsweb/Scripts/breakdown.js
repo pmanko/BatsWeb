@@ -1,9 +1,17 @@
-﻿$(function() {
-	if(typeof showModal != 'undefined'){
-	 $("#changeSelectionModal").modal('show');
+﻿var batstubeWindow;
+// Open Batstube
+function openBatsTube() {
+    batstubeWindow = window.open("batstube.aspx", '_blank');
+    batstubeWindow.focus();
+}
+
+$(function () {
+    if (typeof showModal != 'undefined') {
+        $("#changeSelectionModal").modal('show');
     };
-	
-    makeServerRequest('reload-pitch-list')
+
+    makeServerRequest('reload-pitch-list');
+ //   makeServerRequest('mx', "");
 });
 
 
@@ -42,16 +50,16 @@ function callparkdetail() {
 function GetServerData(arg, context) {
     var splitArgs = arg.split("|");
     var actionFlag = splitArgs[0];
-    
-    if(splitArgs.length > 2) {
+
+    if (splitArgs.length > 2) {
         alert(splitArgs[2]);
         return;
     }
-    
-    if(actionFlag == 'od') {
+
+    if (actionFlag == 'od') {
         oneClickDateSelectionSuccess(splitArgs[1]);
-    } 
-    else if (actionFlag=='pt' || actionFlag == 'bt') {
+    }
+    else if (actionFlag == 'pt' || actionFlag == 'bt') {
         teamSelectionSuccess(splitArgs[1], actionFlag);
     }
     else if (actionFlag == 'pa') {
@@ -63,13 +71,13 @@ function GetServerData(arg, context) {
     else if (actionFlag == 'lr') {
         playerListRefreshSuccess(splitArgs[1]);
     }
-    else if (actionFlag == 'tt' || actionFlag == 'tr') {        
+    else if (actionFlag == 'tt' || actionFlag == 'tr') {
         $("#MainContent_previousSzoneImage").attr("src", "/breakdownpreviousszone.aspx?timestamp=" + new Date().getTime());
     }
     else if (actionFlag == 'nt' || actionFlag == 'nr') {
         $("#MainContent_nextSzoneImage").attr("src", "/breakdownnextszone.aspx?timestamp=" + new Date().getTime());
     }
-    else if (actionFlag == 'pb') {        
+    else if (actionFlag == 'pb') {
         openPreviousModalSuccess(splitArgs[1]);
     }
     else if (actionFlag == 'nb') {
@@ -90,133 +98,148 @@ function GetServerData(arg, context) {
         $('#nextPitchTable tbody').empty();
         populateListboxTable("#nextPitchTable", splitArgs[1]);
     }
+    else if (actionFlag == 'mx' || actionFlag == 'sm') {
+        console.log("MX RETURN:" + splitArgs[1]);
+        $("#maxid").val(splitArgs[1]);
+    }
 };
 // -----------------------------
 
 // -----------------------------
+// Max AB
+
+$(document).on("change", "#maxid", function (event) {
+    console.log("MAXAB: " + $("#maxid").val());
+    makeServerRequest('mx', $("#maxid").val());
+
+});
+
 // Selection Modal
 
 // Pitcher - select all
-$(document).on("click", "#pitcherAllButton,#batterAllButton", function(event){
-   // Selects all pitchers
-   var requestFlag = $(this).data("playerType")+"a";
-   makeServerRequest(requestFlag, ""); 
+$(document).on("click", "#pitcherAllButton,#batterAllButton", function (event) {
+    // Selects all pitchers
+    var requestFlag = $(this).data("playerType") + "a";
+    makeServerRequest(requestFlag, "");
 });
 
 // Batter - select all
 
 
 // One-Click Dates
-$(document).on("click", "#oneClickDate button", function(event) {
+$(document).on("click", "#oneClickDate button", function (event) {
     // Calls server with one-click date parameter and request type flag
-	// console.log($(this).data('dateFlag'));
+    // console.log($(this).data('dateFlag'));
     var requestFlag = "od";
-	makeServerRequest(requestFlag, $(this).data('dateFlag'));
+    makeServerRequest(requestFlag, $(this).data('dateFlag'));
 
 });
 
 function oneClickDateSelectionSuccess(dateRange) {
-    if(dateRange == "ALL") {
-		$("#MainContent_allEndRadioButton").prop("checked", true);
-		$("#MainContent_allStartRadioButton").prop("checked", true);
-	}
-	else {
-	
-		var dates = dateRange.split(";");
-		console.log(dates);
+    if (dateRange == "ALL") {
+        $("#MainContent_allEndRadioButton").prop("checked", true);
+        $("#MainContent_allStartRadioButton").prop("checked", true);
+    }
+    else {
 
-		$("#MainContent_startDateTextBox").val(dates[0]);
-		$("#MainContent_startDateRadioButton").prop("checked", true);
+        var dates = dateRange.split(";");
+        console.log(dates);
 
-		$("#MainContent_endDateTextBox").val(dates[1]);
-		$("#MainContent_endDateRadioButton").prop("checked", true);
+        $("#MainContent_startDateTextBox").val(dates[0]);
+        $("#MainContent_startDateRadioButton").prop("checked", true);
 
-	}
-	$("#oneClickDateModal").modal('hide');
+        $("#MainContent_endDateTextBox").val(dates[1]);
+        $("#MainContent_endDateRadioButton").prop("checked", true);
+
+    }
+    $("#oneClickDateModal").modal('hide');
 }
 
 // Team Selection
-$(document).on("click", "#teamSelectionOkButton", function(event) {
+$(document).on("click", "#teamSelectionOkButton", function (event) {
     // Calls server with one-click date parameter and request type flag
-	// console.log($(this).data('dateFlag'));
+    // console.log($(this).data('dateFlag'));
     var requestFlag = "";
     var modalType = $("#teamSelectionModal #modalType").text();
-    
-    
-    
+
+
+
     console.log(modalType);
     console.log($('#MainContent_pTeamDropDownList :selected').text());
-    
-    if(modalType=="pitcher")
+
+    if (modalType == "pitcher")
         requestFlag = 'pt';
-    else if (modalType=="batter")
+    else if (modalType == "batter")
         requestFlag = 'bt';
-        
-	makeServerRequest(requestFlag, $('#MainContent_pTeamDropDownList :selected').text());
+
+    makeServerRequest(requestFlag, $('#MainContent_pTeamDropDownList :selected').text());
 
 });
 
 $(document).on('show.bs.modal', '#teamSelectionModal', function (event) {
-  // Set Modal Type - either pitcher or batter
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var type = button.data('modalType'); // Extract info from data-* attributes
-  
+    // Set Modal Type - either pitcher or batter
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var type = button.data('modalType'); // Extract info from data-* attributes
 
-  var modal = $(this);
-  modal.find('#modalType').text(type);
-  
+
+    var modal = $(this);
+    modal.find('#modalType').text(type);
+
 })
 
 // Player Selection
-$(document).on('change', "#MainContent_teamDropDownList", function(event) {
-    makeServerRequest('lr',$(this).val())    
+$(document).on('change', "#MainContent_teamDropDownList", function (event) {
+    makeServerRequest('lr', $(this).val())
 });
 
 $(document).on('show.bs.modal', '#playerSelectionModal', function (event) {
-  // Set Modal Type - either pitcher or batter
-  var button = $(event.relatedTarget); // Button that triggered the modal
-  var type = button.data('modalType');// Extract info from data-* attributes
-  
-  
-  var modal = $(this);
-  modal.data("type", type);
-  
-  $("#MainContent_locatePlayerTextBox").val("");
-  
-  if(type == 'pitcher')
-    makeServerRequest('sp');
-  else
-    makeServerRequest('sb');
-    
-  makeServerRequest('lr',$("#MainContent_teamDropDownList").val())
-  
+    // Set Modal Type - either pitcher or batter
+    var button = $(event.relatedTarget); // Button that triggered the modal
+    var type = button.data('modalType');// Extract info from data-* attributes
+
+
+    var modal = $(this);
+    modal.data("type", type);
+
+    $("#MainContent_locatePlayerTextBox").val("");
+
+    if (type == 'pitcher')
+        makeServerRequest('sp');
+    else
+        makeServerRequest('sb');
+
+    makeServerRequest('lr', $("#MainContent_teamDropDownList").val())
+
 });
 
-$(document).on('click', "#selectPlayerButton", function(event){
+$(document).on('click', "#selectPlayerButton", function (event) {
     var selectedPlayerInfo;
     // Decide which player value to select
-    if(!$("#playerValueField").val()) {
-        selectedPlayerInfo = "located;" + $("#MainContent_locatePlayerTextBox").val()       
+    if (!$("#playerValueField").val()) {
+        selectedPlayerInfo = "located;" + $("#MainContent_locatePlayerTextBox").val()
     } else {
-        var pIndex = parseInt($("#playerIndexField").val())+1
-        selectedPlayerInfo = "selected;" + pIndex +','+$("#playerValueField").val()
+        var pIndex = parseInt($("#playerIndexField").val()) + 1
+        selectedPlayerInfo = "selected;" + pIndex + ',' + $("#playerValueField").val()
     }
-    makeServerRequest("po", selectedPlayerInfo); 
+    makeServerRequest("po", selectedPlayerInfo);
 });
 
 // Pitch Buttons
-$(document).on("click", "#previousResultsButton", function(event){
+$(document).on("click", "#previousResultsButton", function (event) {
 
     makeServerRequest("tr");
 });
 
-$(document).on("click", "#previousButton", function(event){
+$(document).on("click", "#previousButton", function (event) {
     $("#previousModal").modal();
     makeServerRequest('reload-previous-list');
 });
 
-$(document).on("click", "#previousTypesButton", function(event){
-    makeServerRequest("tt");
+$(document).on("click", "#changeSelectionButton", function (event) {
+    console.log("MAXAB: " + $("#maxid").val());
+    makeServerRequest("sm");
+ //   console.log("MX RETURN:" + splitArgs[1]);
+  //  $("#maxid").val(splitArgs[1]);
 });
 
 $(document).on("click", "#nextResultsButton", function (event) {
@@ -235,9 +258,9 @@ $(document).on("click", "#nextTypesButton", function (event) {
 // Success Callbacks
 function teamSelectionSuccess(selectedTeam, typeFlag) {
     console.log("CLOSE: " + selectedTeam);
-    if(typeFlag == 'pt')
+    if (typeFlag == 'pt')
         $("#MainContent_pitcherSelectionTextBox").val(selectedTeam);
-    else 
+    else
         $("#MainContent_batterSelectionTextBox").val(selectedTeam);
     $("#teamSelectionModal").modal("hide");
 }
@@ -253,22 +276,22 @@ function batterAllSelectionSuccess(batterVal) {
 function playerListRefreshSuccess(players) {
     console.log(players.split(';'))
     $("#playerTable tbody").empty();
-    $.each(players.split(';'), function(i, playerString) {
+    $.each(players.split(';'), function (i, playerString) {
         var splitPlayer = playerString.split(',');
-        if(splitPlayer.length > 1) {
+        if (splitPlayer.length > 1) {
             $("#playerTable tbody").append('<tr><td></td></tr>');
             $("#playerTable tbody tr:last td:first").html(unescape(splitPlayer[1]));
             $("#playerTable tbody tr:last td:first").data("val", splitPlayer[0]);
         }
 
     });
-    
+
 
 }
 
 function openPreviousModalSuccess(listData) {
 
-    
+
 
     $("#previousModal").modal();
     makeServerRequest('reload-previous-list')
@@ -291,6 +314,31 @@ function playerSelectedSuccess(players) {
     var playersSplit = players.split(';')
     $("#MainContent_pitcherSelectionTextBox").val(playersSplit[0]);
     $("#MainContent_batterSelectionTextBox").val(playersSplit[1]);
- 
-    $("#playerSelectionModal").modal('hide');   
+
+    $("#playerSelectionModal").modal('hide');
 }
+
+function isNumberKey(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+function limit(element) {
+    var max_chars = 3;
+
+    if (element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+    }
+}
+
+$(document).on('click', '.btn-async-request', function (events) {
+    makeServerRequest($(this).data("actionFlag"));
+    openBatsTube();
+});
+
+$(document).on('click', '#hlButton', function (events) {
+    batstubeWindow = window.open("breakdownparkdetail.aspx", '_blank');
+    batstubeWindow.focus();
+});

@@ -99,9 +99,9 @@
                                             <div class="list-group-item">
                                                 <div class='form-group'>
                                                     <div class='checkbox checkbox-primary'><asp:CheckBox ID="maxAtBatsCheckBox" runat="server" Text="Maximum At Bats:" OnCheckedChanged="maxAtBatsCheckBox_CheckedChanged"/></div>
-                                                    <asp:TextBox ID="maxABTextBox" runat="server" class="form-control" MaxLength="3"></asp:TextBox>
+                                                    <input type="number" name="maxid" id="maxid" onkeypress="return isNumberKey(event)" onkeydown="limit(this);" onkeyup="limit(this);" class="form-control"/>
+                                                <!--    <asp:TextBox ID="maxABTextBox" runat="server" class="form-control"></asp:TextBox>      -->                                          
                                                 </div>
-                                                <cc1:MaskedEditExtender ID="maxABTextBox_MaskedEditExtender" runat="server" AutoComplete="False" BehaviorID="maxABTextBox_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" Mask="999" MaskType="Number" PromptCharacter=" " TargetControlID="maxABTextBox" />
                                                 <div class='checkbox checkbox-primary'><asp:CheckBox ID="myCheckBox" runat="server" Text="My Team's Games Only" OnCheckedChanged="myCheckBox_CheckedChanged"/></div>
                                             </div>
                                         </div>
@@ -542,10 +542,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <asp:Button ID="previousPitchesButton" runat="server" OnClick="previousPitchesButton_Click" Text="These Pitches"  class="btn btn-primary" />
+                                        <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-prev">These Pitches</a>
+                           <!--             <asp:Button ID="previousPitchesButton" runat="server"  Text="These Pitches"  class="btn btn-primary" /> -->
                                     </div>
                                     <div class="col-lg-6">
-                                        <asp:Button ID="withNextButton" runat="server" OnClick="withNextButton_Click" Text="With Next Pitch"  class="btn btn-primary" />
+                                        <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="with-next">With Next Pitch</a>
+                           <!--             <asp:Button ID="withNextButton" runat="server"  Text="With Next Pitch"  class="btn btn-primary" /> -->
                                     </div>
                                 </div>
                             </div>
@@ -591,10 +593,12 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <asp:Button ID="nextPitchesButton" runat="server" OnClick="nextPitchesButton_Click" Text="These Pitches"  class="btn btn-primary" />
+                                        <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-next">These Pitches</a>
+                               <!--         <asp:Button ID="nextPitchesButton" runat="server"  Text="These Pitches"  class="btn btn-primary" /> -->
                                     </div>
                                     <div class="col-lg-6">
-                                        <asp:Button ID="withPreviousButton" runat="server" OnClick="withPreviousButton_Click" Text="With Previous Pitch"  class="btn btn-primary" />
+                                        <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="with-prev">With Previous Pitch</a>
+                                <!--        <asp:Button ID="withPreviousButton" runat="server" Text="With Previous Pitch"  class="btn btn-primary" /> -->
                                     </div>
                                 </div>
                             </div>
@@ -646,7 +650,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <a class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#changeSelectionModal">Change Selection</a>
+                    <a class="btn btn-lg btn-block btn-primary" id="changeSelectionButton" data-toggle="modal" data-target="#changeSelectionModal">Change Selection</a>
                 </div>
                     
             </div>
@@ -838,7 +842,8 @@
                     <div class="row">
                         <div class="col-lg-4">
             <!--                <asp:Button ID="clearButton" runat="server" Text="Clear Selected" class="btn btn-primary btn-block"/> -->
-                            <asp:Button ID="allButton" runat="server" Text="Play All" OnClick="allButton_Click" class="btn btn-primary btn-block"/>
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-all">Play All</a>
+                   <!--         <asp:Button ID="allButton" runat="server" Text="Play All"  class="btn btn-primary btn-block"/> -->
                         </div>
                         <div class="col-lg-4">
             <!--                <asp:Button ID="selectedButton" runat="server" Text="Selected" class="btn btn-primary btn-block"/> -->
@@ -852,7 +857,8 @@
                 </div>
                 <div class="col-lg-2">
                     <asp:Button ID="ifButton" runat="server" Text="Infield" OnClick="ifButton_Click" class="btn btn-primary btn-block"/>
-                    <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary btn-block"/>
+                    <a href="#" class="btn btn-block btn-primary" id="hlButton" data-action-flag="show-park">Expand Ballpark View</a>
+               <!--     <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary btn-block"/> -->
                 </div>
             </div>
             <br />
@@ -864,7 +870,7 @@
                     <asp:Button ID="typesButton" runat="server" Text="Pitch Types" OnClick="typesButton_Click" class="btn btn-primary btn-block"/>
                 </div>
                 <div class="col-lg-2">
-                    <asp:Button ID="videosButton" runat="server" Text="Compare Videos" OnClick="videosButton_Click" class="btn btn-primary btn-block"/>
+            <!--        <asp:Button ID="videosButton" runat="server" Text="Compare Videos" OnClick="videosButton_Click" class="btn btn-primary btn-block"/> -->
                 </div>
                 <div class="col-lg-2">
                     <a href="#" class="btn btn-primary btn-block" id="previousButton">Prev. Pitch</a>

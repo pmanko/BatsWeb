@@ -79,7 +79,9 @@
            SET LK-PLAYER-FILE TO BAT766-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
-           start play-file key > play-alt-key.
+           start play-file key > play-alt-key
+               invalid key
+               go to 10-done.           
            move 1 to aa.     
        5-loop.
            read play-file next
@@ -1107,7 +1109,9 @@ PM         set self::Session::Item("video-titles") to vidTitles
            set address of BAT766-DIALOG-FIELDS to myData::tablePointer
            initialize BAT766-T-AB-SEL-TBL
            move 0 to aa.
-
+           if indexString = null
+               initialize BAT766-T-AB-SEL-TBL
+               exit method.
            set selected to self::getSelectedIndeces(indexString).
                       
        videos-loop.

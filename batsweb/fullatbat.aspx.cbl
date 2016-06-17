@@ -132,7 +132,9 @@
            SET LK-PLAYER-FILE TO BAT666-WF-LK-PLAYER-FILE
            open input play-file.
            initialize play-alt-key
-           start play-file key > play-alt-key.
+           start play-file key > play-alt-key
+               invalid key
+               go to 10-done.
            move 1 to aa.     
        5-loop.
            read play-file next
@@ -166,6 +168,8 @@ PM         set self::Session::Item("nameArray") to nameArray
            end-unstring.
            
            if actionFlag = "update-at-bat"
+               set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
+           else if actionFlag = "update-at-bat-dblclick"
                set callbackReturn to actionFlag & "|" & self::atBat_Selected(methodArg)
            else if actionFlag = "play-all"
                set callbackReturn to actionFlag & "|" & self::playAll(methodArg).
@@ -255,7 +259,9 @@ PM         set self::Session::Item("nameArray") to nameArray
            set address of BAT666-DIALOG-FIELDS to myData::tablePointer
            initialize BAT666-T-AB-SEL-TBL
            move 0 to aa.
-
+           if indexString = null
+               initialize BAT666-T-AB-SEL-TBL
+               exit method.
            set selected to self::getSelectedIndeces(indexString).
                       
        videos-loop.
@@ -1229,7 +1235,9 @@ PM         set self::Session::Item("nameArray") to nameArray
        01 strArray type String[].
        procedure division using by value fieldValue as type String
                           returning indexArray as type Int32[].
-       
+           
+           if fieldValue = null
+               exit method.
            set strArray to fieldValue::Split(';')
            
            set size of indexArray to strArray::Length

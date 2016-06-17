@@ -422,6 +422,7 @@
                                         data-postback="false" 
                                         data-multiple="true"
                                         data-on-select="atBatUpdate"
+                                        data-on-dblclick-select="atBatUpdateDblclick"
                                         data-on-dblclick="openBatsTube"
                                     >
                                         <asp:TableHeaderRow TableSection="TableHeader">

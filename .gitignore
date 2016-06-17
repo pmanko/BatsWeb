@@ -215,6 +215,7 @@ ModelManifest.xml
 
 
 # Custom
+App_Data/*
 MAJORS/
 MINORS/
 bin/
@@ -227,4 +228,6 @@ dist
 
 .vscode
 
+*.db
 
+batsweb/VID2016
