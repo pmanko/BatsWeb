@@ -12,7 +12,7 @@
 		var videoPaths = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-paths"]) %>'.split(';');
 		var videoTitles = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-titles"]) %>'.split(';');
 	</script>
-	<script src="/Scripts/batstube_app.js"></script> 
+	<script src="/Scripts/batstube_boxapi_app.js"></script> 
 
 </asp:Content>
 
