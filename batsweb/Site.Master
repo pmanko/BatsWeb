@@ -47,7 +47,7 @@
                         <li><a href="/fullatbat.aspx?league=MA">Full At Bat</a></li>
                         <li><a href="/pitchervsbatter.aspx?league=MA">Pitcher vs. Batter At Bats</a></li>
                         <li><a href="/breakdown.aspx?league=MA">Batter/Pitcher Breakdown</a></li>
-                        <%--<li><a href="/ezVideoFull.aspx?league=MA">EZ Video</a></li>--%>
+                        <li><a href="/ezVideoFull.aspx?league=MA">EZ Video</a></li>
                       </ul>
                     </li>
                     
@@ -58,12 +58,12 @@
                         <li><a href="/fullatbat.aspx?league=MI">Full At Bat</a></li>
                         <li><a href="/pitchervsbatter.aspx?league=MI">Pitcher vs. Batter At Bats</a></li>
                         <li><a href="/breakdown.aspx?league=MI">Batter/Pitcher Breakdown</a></li>
-                        <%--<li><a href="/ezVideoFull.aspx?league=MI">EZ Video</a></li>--%>
+                        <li><a href="/ezVideoFull.aspx?league=MI">EZ Video</a></li>
                       </ul>
                     </li>
-                    <li><a href="/EZvideo.aspx">EZ Video</a></li> 
+<%--                    <li><a href="/EZvideo.aspx">EZ Video</a></li> 
                     <li><a href="/customClips.aspx">Custom Clips</a></li>
-                    <li><a href="#">Reload Games</a></li>
+                    <li><a href="#">Reload Games</a></li>--%>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">

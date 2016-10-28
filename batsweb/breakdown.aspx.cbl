@@ -437,6 +437,7 @@ PM         set self::Session::Item("nameArray") to nameArray
           if aa > BAT300-NUM-TEAMS
                go to 20-done
           else
+          if BAT300-TEAM-NAME(aa) alphabetic
                invoke thisTeamdd::Items::Add(BAT300-TEAM-NAME(aa))
                invoke teamDropDownList::Items::Add(BAT300-TEAM-NAME(aa))
                invoke pTeamDropDownList::Items::Add(BAT300-TEAM-NAME(aa)).

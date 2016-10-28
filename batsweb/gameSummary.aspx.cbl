@@ -78,7 +78,8 @@
        team-loop.
            if aa > BAT360-NUM-TEAMS
                go to team-done.
-           invoke teamDropDownList::Items::Add(BAT360-TEAM-NAME(aa))
+           if BAT360-TEAM-NAME(aa) alphabetic
+               invoke teamDropDownList::Items::Add(BAT360-TEAM-NAME(aa)).
            add 1 to aa
            go to team-loop.
        team-done.

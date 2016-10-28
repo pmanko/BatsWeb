@@ -99,9 +99,10 @@
        team-loop.
            if aa > BAT666-NUM-TEAMS
                go to team-done.
-           invoke teamDropDownList::Items::Add(BAT666-TEAM-NAME(aa))
-           invoke pTeamDropDownList::Items::Add(BAT666-TEAM-NAME(aa))
-           invoke bTeamDropDownList::Items::Add(BAT666-TEAM-NAME(aa))
+           if BAT666-TEAM-NAME(aa) alphabetic
+               invoke teamDropDownList::Items::Add(BAT666-TEAM-NAME(aa))
+               invoke pTeamDropDownList::Items::Add(BAT666-TEAM-NAME(aa))
+               invoke bTeamDropDownList::Items::Add(BAT666-TEAM-NAME(aa)).
            add 1 to aa
            go to team-loop.
        team-done.

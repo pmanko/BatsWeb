@@ -74,7 +74,8 @@
        team-loop.
            if aa > BAT130VI-NUM-TEAMS
                go to team-done.
-           invoke teamDropDownList::Items::Add(BAT130VI-TEAM-NAME(aa))
+           if BAT130VI-TEAM-NAME(aa) alphabetic
+                  invoke teamDropDownList::Items::Add(BAT130VI-TEAM-NAME(aa)).
            add 1 to aa
            go to team-loop.           
        team-done.    
