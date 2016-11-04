@@ -1,22 +1,33 @@
        class-id batsweb.atbatdetail is partial 
-                inherits type System.Web.UI.Page public.
+                inherits type System.Web.UI.Page 
+                implements type System.Web.UI.ICallbackEventHandler
+                public.
                  
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
        01 bat360rununit         type RunUnit.
        01 BAT360WEBF                type BAT360WEBF.
        01 mydata type batsweb.bat360Data.
-       01 teststring type String protected.
+       01 callbackReturn type String.
 
 
        method-id Page_Load protected.
        local-storage section.
        01 dataLine         type String.
-
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat360_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
+      * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####       
+        
            if self::IsPostBack
                exit method.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
@@ -66,7 +77,36 @@
        pitch-done.
            goback.
        end method.
- 
+       
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+       
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+       01 xVal      type Int16.
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if actionFlag = "play-all"
+               invoke self::playAll
+               set callbackReturn to actionFlag & "|" 
+           else if type Int16::TryParse(actionFlag, xVal) = true
+               set callbackReturn to "szone" & "|" & self::playSzone(actionFlag, methodArg).    
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+
+      *##### Event Callbacks #####
        method-id printPitchList final private.
        local-storage section.
        01 dataLine         type String. 
@@ -92,31 +132,68 @@
            go to 5-loop.
        10-done.
        end method.
+      
        
-       method-id szoneImageButton_Click protected.
+       method-id playSzone protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.
+       01 iNum         type Int16.       
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+       procedure division using xVal as type String, 
+                          yVal as type String,
+                          returning returnVal as type String.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
                as type RunUnit      
-           set MOUSEX to e::X
-           set MOUSEY to e::Y
+           invoke type Int16::TryParse(xVal, iNum)
+           set MOUSEX to iNum          
+           invoke type Int16::TryParse(yVal, iNum)
+           set MOUSEY to iNum
            move "MO" to BAT360-ACTION
            invoke bat360rununit::Call("BAT360WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               set returnVal to "er|" & ERROR-FIELD
                move spaces to ERROR-FIELD
-           else               
-               invoke self::batstube.
+               exit method.
+           set vidPaths to ""
+PM         set vidTitles to ""
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT360-WF-VID-COUNT
+               go to lines-done.
+           
+           
+      *    REFACTOR BATSTUBE SETUP --> SINGLE CLASS     
+PM         set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-A(aa) & ";"          
+PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT360-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT360-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT360-WF-VIDEO-D(aa) not = spaces
+               set vidPaths to vidPaths & BAT360-WF-VIDEO-PATH(aa) & BAT360-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
+               
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+PM         set self::Session::Item("video-paths") to vidPaths
+PM         set self::Session::Item("video-titles") to vidTitles
+      *    END REFACTOR
+           set returnVal to "play"     
            invoke self::printPitchList
        end method.
        
-       method-id playButton_Click protected.
+       method-id playAll protected.
        linkage section.
            COPY "Y:\sydexsource\BATS\bat360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division.
            set mydata to self::Session["bat360data"] as type batsweb.bat360Data
            set address of BAT360-DIALOG-FIELDS to myData::tablePointer       
            set bat360rununit to self::Session::Item("360rununit")
@@ -165,7 +242,6 @@ PM         set vidTitles to vidTitles & BAT360-WF-VIDEO-TITL(aa) & ";"
        lines-done.
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
        end method.
        
       * ######################################################

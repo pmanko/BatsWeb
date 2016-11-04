@@ -102,6 +102,9 @@ function GetServerData(arg, context) {
         console.log("MX RETURN:" + splitArgs[1]);
         $("#maxid").val(splitArgs[1]);
     }
+    else if (actionFlag == 'szone') {
+        szoneClick(splitArgs[1]);
+    }
 };
 // -----------------------------
 
@@ -342,3 +345,16 @@ $(document).on('click', '#hlButton', function (events) {
     batstubeWindow = window.open("breakdownparkdetail.aspx", '_blank');
     batstubeWindow.focus();
 });
+
+$(document).on('click', '#szoneImagebtn', function (events) {
+    pos_x = events.offsetX ? (events.offsetX) : events.pageX - document.getElementById("szoneImagebtn").offsetLeft;
+    pos_y = events.offsetY ? (events.offsetY) : events.pageY - document.getElementById("szoneImagebtn").offsetTop;
+    makeServerRequest(pos_x, pos_y);
+});
+
+function szoneClick(result) {
+    if (result = "play")
+        openBatsTube();
+    else
+        alert(result);
+}

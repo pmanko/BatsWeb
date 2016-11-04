@@ -949,44 +949,6 @@ PM         set self::Session::Item("nameArray") to nameArray
                move spaces to ERROR-FIELD.           
            invoke self::Load_List.
        end method.
-    
-       method-id batstube protected.
-       local-storage section.
-PM     01 vidPaths type String. 
- PM    01 vidTitles type String.   
-       linkage section.
-           COPY "Y:\sydexsource\BATS\bat766_dg.CPB".      
-       procedure division.
-           set mydata to self::Session["bat766data"] as type batsweb.bat766Data
-           set address of BAT766-DIALOG-FIELDS to myData::tablePointer
-PM         set vidPaths to ""
-PM         set vidTitles to ""
-           move 1 to aa.
-       lines-loop.
-           if aa > BAT766-WF-VID-COUNT
-               go to lines-done.
-           
-PM         set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-A(aa) & ";"
-PM         set vidTitles to vidTitles & BAT766-WF-VIDEO-TITL(aa) & ";"
-           
-           if BAT766-WF-VIDEO-B(aa) not = spaces
-               set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-B(aa) & ";"
-               set vidTitles to vidTitles & "B;".
-           if BAT766-WF-VIDEO-C(aa) not = spaces
-               set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-C(aa) & ";"
-               set vidTitles to vidTitles & "C;".
-           if BAT766-WF-VIDEO-D(aa) not = spaces
-               set vidPaths to vidPaths & BAT766-WF-VIDEO-PATH(aa) & BAT766-WF-VIDEO-D(aa) & ";"
-               set vidTitles to vidTitles & "D;".
-           
-           add 1 to aa.
-           go to lines-loop.
-       lines-done.
-PM         set self::Session::Item("video-paths") to vidPaths
-PM         set self::Session::Item("video-titles") to vidTitles
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).
-      *     invoke self::ClientScript::RegisterStartupScript(self::GetType(), "alert", "callBatstube();", true).
-       end method.
 
        method-id playAll protected.
        local-storage section.

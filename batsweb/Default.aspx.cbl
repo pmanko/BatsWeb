@@ -1,6 +1,7 @@
        $set ilusing"System.Web.Security"
 
        class-id batsweb._Default is partial
+                implements type System.Web.UI.ICallbackEventHandler
                inherits type System.Web.UI.Page public.
 
        $SET CALLFH"EXTFH"
@@ -43,10 +44,22 @@
        01 ticket          type FormsAuthenticationTicket.
        01 aa               type Single.
        01 team             type String.
+       01 callbackReturn type String.
 
        method-id Page_Load protected.
        local-storage section.
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.              
        procedure division using by value sender as object by value e as type EventArgs.
+       
+      * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####   
+        
            if self::IsPostBack
                exit method.
       *         set TextBox2::Text to type HttpContext::Current::Request::Cookies["creds"]["Password"].
@@ -73,22 +86,83 @@
            goback.
        end method.
 
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+      *####################################################################
+ 
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+       
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if actionFlag = 'login'
+               set callbackReturn to actionFlag & "|" & self::login.
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+       
+      *####################################################################
+       
+       method-id login protected.
+       local-storage section.
+       01 app-data-folder pic x(256).
+       01 userName        type String.
+       01 encTicket       type String.
+       01 teamName        pic x(15).       
+      * procedure division using by value sender as object e as type System.EventArgs.
+       procedure division returning retVal as type String.
+           set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
+           set WS-TEAM-NAME to teamDropDownList::SelectedItem.
+           set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
+      *  string '"' app-data-folder delimited by "  "
+           string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
+              '\WEBSYNC\BATSW020.DAT"' delimited by size
+              into WS-BATSW020-FILE.
+           set WS-FIRST to TextBox1::Text::ToUpper.
+           set WS-LAST to TextBox3::Text::ToUpper.
+           set WS-PASS to TextBox2::Text.
+           invoke self::verify_password
+           if WS-REJECT-FLAG = "Y"
+               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
+               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
+               set encTicket to type FormsAuthentication::Encrypt(ticket)
+               invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
+               set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
+               set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
+               invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
+                set retVal to "success"
+      *         invoke self::Response::Redirect("~/mainmenu.aspx")
+           else
+                set retVal to WS-FIRST::Trim & WS-LAST::Trim & WS-PASS::Trim & WS-TEAM-NAME::Trim
+               set Msg::Text to "Login failed. Name or password incorrect".
+       end method.
+
        method-id loginButton_Click protected.
        local-storage section.
        01 app-data-folder pic x(256).
        01 userName        type String.
        01 encTicket       type String.
-       01 teamName        pic x(15).
+       01 teamName        pic x(15).       
        procedure division using by value sender as object e as type System.EventArgs.
+      * procedure division returning retVal as type String.
            set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
-
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
            set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
- debug*     string '"' app-data-folder delimited by "  "
+      *  string '"' app-data-folder delimited by "  "
            string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
-             
            set WS-FIRST to TextBox1::Text::ToUpper.
            set WS-LAST to TextBox3::Text::ToUpper.
            set WS-PASS to TextBox2::Text.
@@ -105,6 +179,7 @@
            else
                set Msg::Text to "Login failed. Name or password incorrect".
        end method.
+
 
        method-id verify_password protected.
        local-storage section.

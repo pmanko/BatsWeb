@@ -2,6 +2,7 @@
     CodeBehind="Default.aspx.cbl" Inherits="batsweb._Default" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+        <script type="text/javascript" src="Scripts/default.js"></script> 
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 
@@ -15,7 +16,7 @@
             <div class='form-group'>
                 <label for="TextBox4" class="sr-only">Team:</label>
                 <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
-                    <asp:ListItem>REDS</asp:ListItem>
+                    <asp:ListItem>HALTEST</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class='form-group'>
@@ -31,10 +32,8 @@
                 <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
             </div>
             <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>
-            <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Sign In" class="btn btn-lg btn-primary btn-block"/>
-
-
-
+           <asp:Button ID="loginButton" runat="server" Text="Log In" OnClick="loginButton_Click" class="btn btn-primary btn-block" />
+            <a href="#" id="login" class="btn btn-lg btn-primary btn-block">Log In</a>
         </div>
     </div> <!-- /container -->
 </asp:Content>

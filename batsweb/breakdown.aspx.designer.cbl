@@ -942,14 +942,6 @@
       *>> </remarks>
        01 ifButton type System.Web.UI.WebControls.Button protected.
       *>> <summary>
-      *>> hlButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 hlButton type System.Web.UI.WebControls.Button protected.
-      *>> <summary>
       *>> resultsButton control.
       *>> </summary>
       *>> <remarks>

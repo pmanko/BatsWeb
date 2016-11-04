@@ -3,6 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
+    <script type="text/javascript" src="Scripts/breakdownparkdetail.js"></script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
@@ -25,7 +26,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-8">
-                                <asp:ImageButton ID="parkImageButton" runat="server" OnClick="parkImageButton_Click" src="parkdetailpark.aspx" alt="image could not be displayed refresh"/>
+                                <img id="parkImagebtn" src="parkdetailpark.aspx" alt="image could not be displayed refresh" style="cursor: pointer;"/>
                             </div>
                             <div class="col-lg-4">
                                 <div class="row">

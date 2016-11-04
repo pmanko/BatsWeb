@@ -753,7 +753,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-6">
-                    <asp:ImageButton ID="szoneImageButton" runat="server" src="breakdownszone.aspx" OnClick="szoneImageButton_Click" alt="image could not be displayed refresh"/>
+                    <img id="szoneImagebtn" src="breakdownszone.aspx" alt="image could not be displayed refresh" style="cursor: pointer;"/>
                 </div>
                 <div class="col-lg-6">
                     <div class="panel panel-default">
@@ -858,7 +858,6 @@
                 <div class="col-lg-2">
                     <asp:Button ID="ifButton" runat="server" Text="Infield" OnClick="ifButton_Click" class="btn btn-primary btn-block"/>
                     <a href="#" class="btn btn-block btn-primary" id="hlButton" data-action-flag="show-park">Expand Ballpark View</a>
-               <!--     <asp:Button ID="hlButton" runat="server" Text="Expand Ballpark View" OnClick="hlButton_Click" class="btn btn-primary btn-block"/> -->
                 </div>
             </div>
             <br />

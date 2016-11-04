@@ -52,7 +52,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-4">
-                                    <asp:ImageButton ID="szoneImageButton" runat="server" OnClick="szoneImageButton_Click" src="gamesummaryszone.aspx" alt="image could not be displayed refresh"/>
+                                    <img id="szoneImagebtn" src="gamesummaryszone.aspx" alt="image could not be displayed refresh" style="cursor: pointer;"/>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="row">
@@ -102,7 +102,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <asp:Button ID="playButton" runat="server" Text="Play At-Bat" OnClick="playButton_Click" class="btn btn-primary btn-block" /> 
+                                    <a href="#" id="playAllButton" class="btn btn-lg btn-primary btn-block">Play At-Bat</a>
                                 </div>
                                 <div class="col-md-4">
                                 </div>

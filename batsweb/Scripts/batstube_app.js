@@ -53,7 +53,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
                 if (!$scope.angleChoice.mainOnly || $.trim(videoTitles[i]).length > 1) {
                     $scope.sentVideos.push(
                         {
-                            path: videoPaths[i].trim().replace(/\s+/g, "/").replace("192.169.190.40", "vids6.sydexsports.net"),
+                            path: videoPaths[i].trim().replace(/\s+/g, "/").replace("", ""),
                             title: videoTitles[i]
                         }
                     );

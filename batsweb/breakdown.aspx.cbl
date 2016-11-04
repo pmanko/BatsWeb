@@ -204,7 +204,7 @@
        local-storage section.
        01 actionFlag type String.
        01 methodArg type String.       
-
+       01 xVal      type Int16.
        procedure division using by value eventArgument as String.
            unstring eventArgument
                delimited by "|"
@@ -265,14 +265,16 @@
            else if actionFlag = "play-prev"
                set callbackReturn to actionFlag & "|" & self::playPrev
            else if actionFlag = "with-next"
-               set callbackReturn to actionFlag & "|" & self::withNext                  
+               set callbackReturn to actionFlag & "|" & self::withNext   
       *    List Box Re-Engineering
            else if actionFlag = 'reload-pitch-list'
                set callbackReturn to actionFlag & "|" & self::printPitchList()
            else if actionFlag = 'reload-previous-list'
                set callbackReturn to actionFlag & "|" & self::printPreviousPitchList()
            else if actionFlag = 'reload-next-list'
-               set callbackReturn to actionFlag & "|" & self::printNextPitchList().
+               set callbackReturn to actionFlag & "|" & self::printNextPitchList()
+           else if type Int16::TryParse(actionFlag, xVal) = true
+               set callbackReturn to "szone" & "|" & self::playSzone(actionFlag, methodArg).    
        end method.
        
        method-id GetCallbackResult public.
@@ -1113,23 +1115,28 @@ PM         set self::Session::Item("nameArray") to nameArray
 
        end method.
        
-       method-id szoneImageButton_Click protected.
+       method-id playSzone protected.
        local-storage section.
 PM     01 vidPaths type String. 
  PM    01 vidTitles type String.
+       01 iNum         type Int16.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+       procedure division using xVal as type String, 
+                          yVal as type String,
+                          returning returnVal as type String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit") as
                type RunUnit
-           set MOUSEX, MOUSEX2 to e::X
-           set MOUSEY, MOUSEY2 to e::Y
+           invoke type Int16::TryParse(xVal, iNum)
+           set MOUSEX, MOUSEX2 to iNum          
+           invoke type Int16::TryParse(yVal, iNum)
+           set MOUSEY, MOUSEY2 to iNum
            move "MO" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
            if ERROR-FIELD NOT = SPACES
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('" & ERROR-FIELD & "');", true)
+               set returnVal to "er|" & ERROR-FIELD
                move spaces to ERROR-FIELD
                exit method.
 
@@ -1161,9 +1168,9 @@ PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ";"
 PM         set self::Session::Item("video-paths") to vidPaths
 PM         set self::Session::Item("video-titles") to vidTitles
       *    END REFACTOR
+           set returnVal to "play"
            
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callcallBatstube", "callBatstube();", true).  
-       end method.
+       end method.       
        
        method-id playAll protected.
        linkage section.
@@ -2052,13 +2059,6 @@ PM         set self::Session::Item("video-titles") to vidTitles
            invoke self::Recalc
        end method.    
               
-       method-id hlButton_Click protected.
-       linkage section.
-            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.     
-           invoke self::ClientScript::RegisterStartupScript(self::GetType(), "callparkdetail", "callparkdetail();", true).
-       end method.  
-       
        method-id playPrev protected.
        linkage section.
             COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".

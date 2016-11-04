@@ -1,5 +1,7 @@
        class-id batsweb.breakdownparkdetail is partial 
-                inherits type System.Web.UI.Page public.
+                inherits type System.Web.UI.Page 
+                implements type System.Web.UI.ICallbackEventHandler
+                public.
                  
        working-storage section.
        COPY "Y:\sydexsource\shared\WS-SYS.CBL".
@@ -7,13 +9,25 @@
        01 BAT310WEBF                type BAT310WEBF.
        01 mydata type batsweb.bat310Data.
        01 teststring type String protected.
+       01 callbackReturn type String.
        
        method-id Page_Load protected.
        local-storage section.
+       01 cm type ClientScriptManager.
+       01 cbReference type String.
+       01 callbackScript type String.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
        procedure division using by value param-sender as object
                                          param-e as type System.EventArgs.
+
+      * #### ICallback Implementation ####
+           set cm to self::ClientScript
+           set cbReference to cm::GetCallbackEventReference(self, "arg", "GetServerData", "context")
+           set callbackScript to "function CallServer(arg, context)" & "{" & cbReference & "};"
+           invoke cm::RegisterClientScriptBlock(self::GetType(), "CallServer", callbackScript, true)
+      * #### End ICallback Implement  ####         
+        
            if self::IsPostBack
                exit method.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
@@ -36,6 +50,33 @@
 
            goback.
        end method.
+       
+      *#####               Client Callback Implementation             #####
+      *##### (https://msdn.microsoft.com/en-us/library/ms178208.aspx) #####
+       
+       method-id RaiseCallbackEvent public.
+       local-storage section.
+       01 actionFlag type String.
+       01 methodArg type String.       
+       01 xVal      type Int16.
+       procedure division using by value eventArgument as String.
+           unstring eventArgument
+               delimited by "|"
+               into actionFlag, methodArg
+           end-unstring.
+           
+           if type Int16::TryParse(actionFlag, xVal) = true
+               set callbackReturn to "park" & "|" & self::playPark(actionFlag, methodArg).    
+       end method.
+       
+       method-id GetCallbackResult public.
+       procedure division returning returnToClient as String.
+       
+           set returnToClient to callbackReturn.
+           
+       end method.
+
+      *##### Event Callbacks #####
        
        method-id Recalc protected.
        local-storage section.
@@ -78,17 +119,25 @@
            invoke self::Recalc
        end method.      
        
-       method-id parkImageButton_Click protected.
+       method-id playPark protected.
+       local-storage section.
+PM     01 vidPaths type String. 
+ PM    01 vidTitles type String.       
+       01 iNum         type Int16.
        linkage section.
            COPY "Y:\SYDEXSOURCE\BATS\bat310_dg.CPB".
-       procedure division using by value sender as object e as type System.Web.UI.ImageClickEventArgs.
+       procedure division using xVal as type String, 
+                          yVal as type String,
+                          returning returnVal as type String.
            set mydata to self::Session["bat310data"] as type batsweb.bat310Data
            set address of BAT310-DIALOG-FIELDS to myData::tablePointer
            set bat310rununit to self::Session::Item("310rununit")
                as type RunUnit
 
-           set MOUSEX-BF, MOUSEX2-BF to e::X
-           set MOUSEY-BF, MOUSEY2-BF to e::Y.
+           invoke type Int16::TryParse(xVal, iNum)
+           set MOUSEX-BF, MOUSEX2-BF to iNum
+           invoke type Int16::TryParse(yVal, iNum)
+           set MOUSEY-BF, MOUSEY2-BF to iNum.
 
            COMPUTE BAT292V-DOWN-X ROUNDED = MOUSEX-BF * 597 / 597
            COMPUTE BAT292V-DOWN-Y ROUNDED = MOUSEY-BF * 480 / 480
@@ -100,8 +149,38 @@
            ADD 3 TO BAT292V-UP-Y
            move "M2" to BAT310-ACTION
            invoke bat310rununit::Call("BAT310WEBF")
-           invoke self::batstube
-       end method.
+           if ERROR-FIELD NOT = SPACES
+               set returnVal to "er|" & ERROR-FIELD
+               move spaces to ERROR-FIELD
+               exit method.           
+           set vidPaths to ""
+PM         set vidTitles to ""
+           move 1 to aa.
+       lines-loop.
+           if aa > BAT310-WF-VID-COUNT
+               go to lines-done.
+           
+PM         set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-A(aa) & ";"
+PM         set vidTitles to vidTitles & BAT310-WF-VIDEO-TITL(aa) & ";"
+           
+           if BAT310-WF-VIDEO-B(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-B(aa) & ";"
+               set vidTitles to vidTitles & "B;".
+           if BAT310-WF-VIDEO-C(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-C(aa) & ";"
+               set vidTitles to vidTitles & "C;".
+           if BAT310-WF-VIDEO-D(aa) not = spaces
+               set vidPaths to vidPaths & BAT310-WF-VIDEO-PATH(aa) & BAT310-WF-VIDEO-D(aa) & ";"
+               set vidTitles to vidTitles & "D;".
+                   
+           
+           add 1 to aa.
+           go to lines-loop.
+       lines-done.
+PM         set self::Session::Item("video-paths") to vidPaths
+PM         set self::Session::Item("video-titles") to vidTitles
+           set returnVal to "play"
+       end method.       
        
        method-id batstube protected.
        local-storage section.
