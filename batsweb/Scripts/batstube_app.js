@@ -54,6 +54,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
                     $scope.sentVideos.push(
                         {
                             path: videoPaths[i].trim().replace(/\s+/g, "/").replace("", ""),
+                            //path: videoPaths[i].trim().replace(/\s+/g, "/").replace("cvmds", BAM + "cvmds"),
                             title: videoTitles[i]
                         }
                     );

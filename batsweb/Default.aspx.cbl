@@ -140,6 +140,7 @@
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
                set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
                set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
+      *         set type HttpContext::Current::Session::Item("BAM") to READ TXT FILE FOR CREDS
                invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
                 set retVal to "success"
       *         invoke self::Response::Redirect("~/mainmenu.aspx")
