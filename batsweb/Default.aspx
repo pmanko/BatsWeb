@@ -14,25 +14,24 @@
             <h2>Please sign in</h2>
             <asp:label ID="Msg" CssClass="text-danger" runat="server"></asp:label>
             <div class='form-group'>
-                <label for="TextBox4" class="sr-only">Team:</label>
+                <label for="teamDropDownList" class="sr-only">Team:</label>
                 <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
                     <asp:ListItem>HALTEST</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class='form-group'>
-                <label for="TextBox1" class="sr-only">First Name:</label>
-                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="First Name"></asp:TextBox>
+                <label for="password" class="sr-only">First Name:</label>
+                <asp:TextBox ID="first_name" runat="server" CssClass="form-control" placeholder="First Name" ></asp:TextBox>
             </div>
             <div class='form-group'>
-                <label for="TextBox3" class="sr-only">Last Name:</label>
-                <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" placeholder="Last Name"></asp:TextBox>
+                <label for="password" class="sr-only">Last Name:</label>
+                <asp:TextBox ID="last_name" runat="server" CssClass="form-control" placeholder="Last Name" ></asp:TextBox>
             </div>
             <div class='form-group'>
-                <label for="TextBox2" class="sr-only">Password:</label>
-                <asp:TextBox ID="TextBox2" runat="server" type="password" CssClass="form-control" placeholder="Password"></asp:TextBox>
+                <label for="password" class="sr-only">Password:</label>
+                <asp:TextBox ID="password" runat="server" type="password" CssClass="form-control" placeholder="Password" ></asp:TextBox>
             </div>
-            <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>
-           <asp:Button ID="loginButton" runat="server" Text="Log In" OnClick="loginButton_Click" class="btn btn-primary btn-block" />
+            <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>         
             <a href="#" id="login" class="btn btn-lg btn-primary btn-block">Log In</a>
         </div>
     </div> <!-- /container -->

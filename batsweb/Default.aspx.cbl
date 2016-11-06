@@ -66,9 +66,9 @@
            if type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"] not = null
                set rememberCheckBox::Checked to true
                set ticket to type FormsAuthentication::Decrypt(type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Value)
-               set TextBox1::Text to ticket::Name::Substring(0, 15)::Trim
-               set TextBox3::Text to ticket::Name::Substring(15, 15)::Trim
-               set TextBox2::Text to ticket::Name::Substring(30, 6)::Trim
+               set first_name::Text to ticket::Name::Substring(0, 15)::Trim
+               set last_name::Text to ticket::Name::Substring(15, 15)::Trim
+               set password::Text to ticket::Name::Substring(30, 6)::Trim
                set team to ticket::Name::Substring(36, 15)::Trim.
            move 0 to aa.
        5-loop.
@@ -102,7 +102,8 @@
            end-unstring.
            
            if actionFlag = 'login'
-               set callbackReturn to actionFlag & "|" & self::login.
+               set callbackReturn to actionFlag & "|" & self::login(methodArg).
+       
        end method.
        
        method-id GetCallbackResult public.
@@ -119,67 +120,73 @@
        01 app-data-folder pic x(256).
        01 userName        type String.
        01 encTicket       type String.
-       01 teamName        pic x(15).       
+       01 teamName        pic x(15). 
+       01 remember        type String.
+             
       * procedure division using by value sender as object e as type System.EventArgs.
-       procedure division returning retVal as type String.
+       procedure division using by value loginParams as String returning returnVal as  String.
+       
            set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
-           set WS-TEAM-NAME to teamDropDownList::SelectedItem.
-           set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
-      *  string '"' app-data-folder delimited by "  "
-           string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
+           
+           string '"' app-data-folder delimited by "  "
+      *     string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
               '\WEBSYNC\BATSW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
-           set WS-FIRST to TextBox1::Text::ToUpper.
-           set WS-LAST to TextBox3::Text::ToUpper.
-           set WS-PASS to TextBox2::Text.
+           
+           unstring loginParams
+               delimited by ","
+               into WS-TEAM-NAME, WS-FIRST, WS-LAST, WS-PASS
+           end-unstring.
+           
+           set teamName to WS-TEAM-NAME::Replace(" ", type String::Empty)   
+           
            invoke self::verify_password
+           
            if WS-REJECT-FLAG = "Y"
                set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
-               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
+               set ticket to type FormsAuthenticationTicket::New(userName, False, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
                set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
                set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
       *         set type HttpContext::Current::Session::Item("BAM") to READ TXT FILE FOR CREDS
-               invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
-                set retVal to "success"
-      *         invoke self::Response::Redirect("~/mainmenu.aspx")
+                set returnVal to "success|" & type FormsAuthentication::GetRedirectUrl(userName, False)
            else
-                set retVal to WS-FIRST::Trim & WS-LAST::Trim & WS-PASS::Trim & WS-TEAM-NAME::Trim
-               set Msg::Text to "Login failed. Name or password incorrect".
+               set returnVal to "failure|" & WS-FIRST::Trim & WS-LAST::Trim & WS-PASS::Trim & WS-TEAM-NAME::Trim
        end method.
 
-       method-id loginButton_Click protected.
-       local-storage section.
-       01 app-data-folder pic x(256).
-       01 userName        type String.
-       01 encTicket       type String.
-       01 teamName        pic x(15).       
-       procedure division using by value sender as object e as type System.EventArgs.
+      * Outdated - Leaving for reference
+      *method-id loginButton_Click protected.
+      *local-storage section.
+      *01 app-data-folder pic x(256).
+      *01 userName        type String.
+      *01 encTicket       type String.
+      *01 teamName        pic x(15).       
+      *procedure division using by value sender as object e as type System.EventArgs.
       * procedure division returning retVal as type String.
-           set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
-           set WS-TEAM-NAME to teamDropDownList::SelectedItem.
-           set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
-      *  string '"' app-data-folder delimited by "  "
-           string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
-              '\WEBSYNC\BATSW020.DAT"' delimited by size
-              into WS-BATSW020-FILE.
-           set WS-FIRST to TextBox1::Text::ToUpper.
-           set WS-LAST to TextBox3::Text::ToUpper.
-           set WS-PASS to TextBox2::Text.
-           invoke self::verify_password
-           if WS-REJECT-FLAG = "Y"
-               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
-               set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
-               set encTicket to type FormsAuthentication::Encrypt(ticket)
-               invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
-               set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
-               set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
-               invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
+      *    set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
+      *    set WS-TEAM-NAME to teamDropDownList::SelectedItem.
+      *    set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
+      *    string '"' app-data-folder delimited by "  "
+      *    string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
+      *      '\WEBSYNC\BATSW020.DAT"' delimited by size
+      *      into WS-BATSW020-FILE.
+      *    set WS-FIRST to first_name::Text::ToUpper.
+      *    set WS-LAST to last_name::Text::ToUpper.
+      *    set WS-PASS to password::Text.
+      *    invoke self::verify_password
+      *    if WS-REJECT-FLAG = "Y"
+      *        set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
+      *        set ticket to type FormsAuthenticationTicket::New(userName, rememberCheckBox::Checked, 525600)
+      *        set encTicket to type FormsAuthentication::Encrypt(ticket)
+      *        invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
+      *        set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
+      *        set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
+      *        invoke self::Response::Redirect(type FormsAuthentication::GetRedirectUrl(userName, rememberCheckBox::Checked))
       *         invoke self::Response::Redirect("~/mainmenu.aspx")
-           else
-               set Msg::Text to "Login failed. Name or password incorrect".
-       end method.
+      *    else
+      *        set Msg::Text to "Login failed. Name or password incorrect".
+      *end method.
 
 
        method-id verify_password protected.
