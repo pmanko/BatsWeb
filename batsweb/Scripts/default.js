@@ -2,8 +2,7 @@
 
 function openBam() {
     console.log("Opening BAM");
-    //bamWindow = window.open("https://CoachingVideoSEA:PzSdfYXHiSA@cvmds.bamnetworks.com/mlbam/2016/10/23/487629/coaching_video/cv_1208687883_1200K.mp4", '_blank');
-    bamWindow = window.open("http://www.google.com", '_blank');
+    bamWindow = window.open("https://CoachingVideoSEA:PzSdfYXHiSA@cvmds.bamnetworks.com/mlbam/2016/10/23/487629/coaching_video/cv_1208687883_1200K.mp4", '_blank');
 }
 
 $(document).on("click", "#login", function () {

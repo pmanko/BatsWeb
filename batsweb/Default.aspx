@@ -16,7 +16,7 @@
             <div class='form-group'>
                 <label for="teamDropDownList" class="sr-only">Team:</label>
                 <asp:DropDownList ID="teamDropDownList" runat="server" AutoPostBack="false" class="form-control" >
-                    <asp:ListItem>HALTEST</asp:ListItem>
+                    <asp:ListItem>SYDEX</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div class='form-group'>

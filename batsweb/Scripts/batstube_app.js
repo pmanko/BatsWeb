@@ -53,8 +53,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
                 if (!$scope.angleChoice.mainOnly || $.trim(videoTitles[i]).length > 1) {
                     $scope.sentVideos.push(
                         {
-                            path: videoPaths[i].trim().replace(/\s+/g, "/").replace("", ""),
-                            //path: videoPaths[i].trim().replace(/\s+/g, "/").replace("cvmds", BAM + "cvmds"),
+                            path: videoPaths[i].trim().replace(/\s+/g, "/").replace("cvmds", BAM + "cvmds"),
                             title: videoTitles[i]
                         }
                     );

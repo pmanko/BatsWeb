@@ -127,18 +127,17 @@
        procedure division using by value loginParams as String returning returnVal as  String.
        
            set app-data-folder to type HttpContext::Current::Server::MapPath("~/App_Data")
-           
-           string '"' app-data-folder delimited by "  "
-      *     string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
-              '\WEBSYNC\BATSW020.DAT"' delimited by size
-              into WS-BATSW020-FILE.
-           
            unstring loginParams
                delimited by ","
                into WS-TEAM-NAME, WS-FIRST, WS-LAST, WS-PASS
-           end-unstring.
-           
+           end-unstring.           
            set teamName to WS-TEAM-NAME::Replace(" ", type String::Empty)   
+           
+debug *
+      *     string '"' app-data-folder delimited by "  "
+            string '"' app-data-folder delimited by "Programs" teamName delimited by "  "
+              '\WEBSYNC\BATSW020.DAT"' delimited by size
+              into WS-BATSW020-FILE.
            
            invoke self::verify_password
            
@@ -149,7 +148,7 @@
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
                set type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Expires to type DateTime::Now::AddYears(1)
                set type HttpContext::Current::Session::Item("team") to WS-TEAM-NAME::Trim
-      *         set type HttpContext::Current::Session::Item("BAM") to READ TXT FILE FOR CREDS
+               set type HttpContext::Current::Session::Item("BAM") to type File::ReadAllText(type HttpContext::Current::Server::MapPath("~/Credentials") & "\" & WS-FIRST::Trim & ".txt")
                 set returnVal to "success|" & type FormsAuthentication::GetRedirectUrl(userName, False)
            else
                set returnVal to "failure|" & WS-FIRST::Trim & WS-LAST::Trim & WS-PASS::Trim & WS-TEAM-NAME::Trim
