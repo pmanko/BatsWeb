@@ -1,0 +1,1 @@
+﻿<%@ Page AutoEventWireup="true" CodeBehind="visSummaryRink.aspx.cbl" Inherits="pucksweb.visSummaryRink" %>

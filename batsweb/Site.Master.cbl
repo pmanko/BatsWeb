@@ -1,4 +1,4 @@
-﻿       class-id batsweb.SiteMaster is partial
+﻿       class-id pucksweb.SiteMaster is partial
                inherits type System.Web.UI.MasterPage public.
                
        working-storage section.
@@ -19,5 +19,6 @@
            invoke type FormsAuthentication::RedirectToLoginPage()
        end method.
 
+              
        end class.
     

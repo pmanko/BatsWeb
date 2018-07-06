@@ -1,0 +1,20 @@
+﻿body
+{
+}
+
+/*.btn-group-justified > .btn-group:nth-of-type(1) {
+  width: 2.5%;
+}*/
+
+.table {
+   table-layout: fixed;
+   width: 100%;
+}
+
+thead tr th:first-child,
+tbody tr td:first-child {
+  width: 14em;
+  min-width: 14em;
+  max-width: 14em;
+  word-break: break-all;
+}

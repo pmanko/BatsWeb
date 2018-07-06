@@ -1,10 +1,18 @@
 ﻿      $set sourceformat(variable)
 
-      *> Namespace: batsweb
+      *> Namespace: pucksweb
 
-       class-id batsweb.SiteMaster is partial.
+       class-id pucksweb.SiteMaster is partial.
 
        working-storage section.
+      *>> <summary>
+      *>> Head1 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 Head1 type System.Web.UI.HtmlControls.HtmlHead protected.
       *>> <summary>
       *>> HeadContent control.
       *>> </summary>

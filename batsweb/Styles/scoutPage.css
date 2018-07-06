@@ -1,0 +1,64 @@
+﻿/**
+ * CSS bar graph (SO)
+ */
+.graph {
+    width: 100%;
+    height: 200px;
+    border: 1px solid #aeaeae;
+    /*background-color: #eaeaea;*/
+}
+hr {
+    border: 0;
+    height: 80px;
+    background: black;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+}
+
+.centerLine {
+    height: 0px;
+    width: 100%;
+    position: relative;
+    background-color: transparent;
+    border-style:dashed;
+    bottom: 100px;
+    border-width: 1px;
+}
+
+.barRed {
+    width: 60px;
+    margin: 1px;
+    display: inline-block;
+    position: relative;
+    background-color: #fc0000;
+    vertical-align: baseline;
+}
+
+.barBlue {
+    width: 60px;
+    margin: 1px;
+    display: inline-block;
+    position: relative;
+    background-color: #000cfc;
+    vertical-align: baseline;
+}
+
+
+.breakBar {
+    width: 2px;
+    margin: 1px;
+    display: inline-block;
+    position: relative;
+    background-color: #aeaeae;
+    vertical-align: baseline;
+}
+
+.barBlue:hover, .barRed:hover{
+    opacity: .5;
+}
+
+/*.myChart {
+    width: 400px;
+    height: 400px;
+}*/

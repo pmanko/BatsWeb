@@ -1,4 +1,4 @@
-﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="timeout.aspx.cbl" Inherits="batsweb.ErrorPages.timeout" %>
+﻿<%@ Page MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="timeout.aspx.cbl" Inherits="pucksweb.ErrorPages.timeout" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -12,3 +12,4 @@
         </div>
     </div>
 </asp:Content>
+

@@ -1,8 +1,8 @@
       $set sourceformat(variable)
 
-      *> Namespace: batsweb
+      *> Namespace: pucksweb
 
-       class-id batsweb.batstube is partial.
+       class-id pucksweb.batstube is partial.
 
        working-storage section.
 

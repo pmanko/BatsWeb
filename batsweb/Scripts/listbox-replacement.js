@@ -1,6 +1,17 @@
 ﻿// -----------------------------
 // List Box Replacement
 // -----------------------------
+$(document).on('mousedown', 'table.listbox-replacement-clickable tbody tr', function (event) {
+    //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+    //   console.log("droid!")
+    //}
+    return false;
+});
+
+//$(document).on('mouseover', 'table.listbox-replacement-clickable tbody tr', function (event) {
+//    return false;
+//});
+
 $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function (event) {
     $(this).toggleClass("selected");
     // console.log("SINGLE!")
@@ -26,7 +37,6 @@ $(document).on('click', 'table.listbox-replacement-clickable tbody tr', function
 
 $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", function (event) {
     // This 
-    // console.log("DOUBLE!!");
     
     if(!$(this).hasClass("selected")) {
         $(this).toggleClass("selected");    
@@ -39,15 +49,12 @@ $(document).on("dblclick", "table.listbox-replacement-clickable tbody tr", funct
 
     if (attrs.selected && attrs.dblclickSelectFn){
         $("body").data("dblReturn", 0);
-        // console.log("1 dblval : " + $("body").data("dblReturn"));
         window[attrs.dblclickSelectFn]();
     }
     
     if (attrs.dblclickFn && attrs.selected) {
-        //console.log("2 dblval : " + $("body").data("dblReturn"));
         
         function waitForReturn() {
-            // console.log("waiting: " + $("body").data("dblReturn"));
             if($("body").data("dblReturn") == 1)
                 return;
             setTimeout(waitForReturn, 50);
@@ -72,16 +79,22 @@ function setTableValues(target, attrs, clicktype) {
     // console.log(attrs.selected);
     
     if ((!attrs.multiple || clicktype == "double") && attrs.selected) {
-
         $(target).siblings().removeClass("selected");
     }
     
     if (attrs.multiple && clicktype == 'single') {
         attrs.valField.val(attrs.values.join(';'));
         attrs.iField.val(attrs.indeces.join(';'));
-    } else {    
-        attrs.valField.val(unescape(attrs.value));
-        attrs.iField.val(attrs.index);
+        console.log(attrs.iField.val());
+    } else {
+        if (!$(target).hasClass("selected")) {
+            attrs.valField.val(unescape(""));
+            attrs.iField.val("");
+        }
+        else {
+            attrs.valField.val(unescape(attrs.value));
+            attrs.iField.val(attrs.index);
+        }
     }
 }
 

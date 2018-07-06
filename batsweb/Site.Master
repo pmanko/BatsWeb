@@ -1,8 +1,8 @@
-﻿<%@ Master AutoEventWireup="true" CodeBehind="Site.master.cbl" Inherits="batsweb.SiteMaster" %>
+﻿<%@ Master AutoEventWireup="true" CodeBehind="Site.master.cbl" Inherits="pucksweb.SiteMaster" %>
 
 <!DOCTYPE html>
 <html lang="'en">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
 
     <link type="text/css" href="/dist/styles/app.css" rel="stylesheet" />
@@ -15,13 +15,13 @@
     <script type="text/javascript" src="/dist/scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="/Scripts/async.js"></script>
     <script type="text/javascript" src="/Scripts/listbox-replacement.js"></script>
+    <link rel="icon" href="Images/PucksIcon.ico">
 
-    
     <asp:ContentPlaceHolder ID="HeadContent" runat="server"></asp:ContentPlaceHolder>
 
 </head>
 <body>
-    <form runat="server">
+    <form id="Form1" runat="server">
 
     <div class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -33,34 +33,39 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/mainmenu.aspx">
-                    <strong class="visible-xs">BatsWeb</strong>
-                    <img class="hidden-xs" id="logo-img" src="Images/homeplateGREY.png" alt=""> 
+                    <strong class="visible-xs">Pucks</strong>
+                    <img class="hidden-xs" id="logo-img" src="Images/PucksIcon.ico" alt=""> 
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Majors <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">NHL <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="/gameSummary.aspx?league=MA">Games</a></li>
-                        <li><a href="/fullatbat.aspx?league=MA">Full At Bat</a></li>
-                        <li><a href="/pitchervsbatter.aspx?league=MA">Pitcher vs. Batter At Bats</a></li>
-                        <li><a href="/breakdown.aspx?league=MA">Batter/Pitcher Breakdown</a></li>
-                        <li><a href="/ezVideoFull.aspx?league=MA">EZ Video</a></li>
+                        <li><a href="/playerBreakdown.aspx?league=MA">Player/Team Breakdown</a></li>
+                        <li><a href="/lineBreakdown.aspx?league=MA">Line Breakdown</a></li>
+                        <li><a href="/goalieAnalysis.aspx?league=MA">Goalie Analysis</a></li>
                       </ul>
                     </li>
                     
-                    <li class="dropdown">
+            <%--        <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Minors <span class="caret"></span></a>
                       <ul class="dropdown-menu">
                         <li><a href="/gameSummary.aspx?league=MI">Games</a></li>
-                        <li><a href="/fullatbat.aspx?league=MI">Full At Bat</a></li>
-                        <li><a href="/pitchervsbatter.aspx?league=MI">Pitcher vs. Batter At Bats</a></li>
-                        <li><a href="/breakdown.aspx?league=MI">Batter/Pitcher Breakdown</a></li>
-                        <li><a href="/ezVideoFull.aspx?league=MI">EZ Video</a></li>
+                        <li><a href="/playerBreakdown.aspx?league=MI">Player/Team Breakdown</a></li>
+                        <li><a href="/lineBreakdown.aspx?league=MI">Line Breakdown</a></li>
+                        <li><a href="/goalieAnalysis.aspx?league=MI">Goalie Analysis</a></li>
                       </ul>
-                    </li>
+                    </li>--%>
+                    <li><a href="/comments.aspx"> Feedback</a></li> 
+                    <li><a href="/shotValueExplanation.aspx"> Shot Value Explanation</a></li> 
+<%--                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Training <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                      </ul>
+                    </li>--%>
 <%--                    <li><a href="/EZvideo.aspx">EZ Video</a></li> 
                     <li><a href="/customClips.aspx">Custom Clips</a></li>
                     <li><a href="#">Reload Games</a></li>--%>
@@ -70,15 +75,6 @@
                     <li><asp:LinkButton runat="server" ID="Logout" OnClick="Logout_Click">Log Out</asp:LinkButton></li>
                 </ul> 
 
-          <!--      <ul class="nav navbar-nav navbar-right">
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">pmanko<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </li>
-                </ul> -->
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -88,7 +84,7 @@
     
     <div class="container">
         <footer>
-            <p>&copy; 2015 - Sydex</p>
+            <p>&copy; 2018 - Sydex</p>
         </footer>
 
     </div>
