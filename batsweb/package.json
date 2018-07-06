@@ -25,7 +25,8 @@
     "jquery-validation-unobtrusive": "^3.2.10",
     "modernizr": "^3.6.0",
     "response.js": "^0.10.0",
-    "video.js": "^7.0.3"
+    "video.js": "^7.0.3",
+    "videojs-flash": "^2.1.1"
   },
   "private": true
 }

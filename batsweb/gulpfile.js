@@ -25,7 +25,7 @@ gulp.task('vendor-scripts', function () {
         ],
 		jquery_ui_styles: ['node_modules/jquery-ui/themes/ui-lightness'],
         angular: ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js'],
-        videojs: ['node_modules/video.js/dis/ie8/videojs-ie8.js', 'node_modules/video.js/dist/video.js'],
+        videojs: ['node_modules/video.js/dist/video.js', 'node_modules/videojs-flash/dist/videojs-flash.js'],
         videojsflash: ["node_modules/video.js/dist/video-js.swf"],
         videojscss: ["node_modules/video.js/dist/video-js.min.css"],
         videojsfonts: ["node_modules/video.js/dist/font"],
