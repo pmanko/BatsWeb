@@ -6,7 +6,7 @@ var minifyCSS = require('gulp-minify-css');
 var watch = require('gulp-watch');
 var del = require('del');
 var config = {
-    bootstrapDir: './bower_components/bootstrap-sass',
+    bootstrapDir: './node_modules/bootstrap-sass',
     customThemeDir: './Theme'
 };
 
@@ -18,19 +18,19 @@ gulp.task('clean', function () {
 
 gulp.task('vendor-scripts', function () {
     var vendorSources = {
-        jquery: ['bower_components/jquery/dist/jquery.min.js',
-	            'bower_components/jquery-validation/dist/jquery.validate.min.js',
-	            'bower_components/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js', 
-				'bower_components/jquery-ui/jquery-ui.js'
+        jquery: ['node_modules/jquery/dist/jquery.min.js',
+	            'node_modules/jquery-validation/dist/jquery.validate.min.js',
+	            'node_modules/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js', 
+				'node_modules/jquery-ui/jquery-ui.js'
         ],
-		jquery_ui_styles: ['bower_components/jquery-ui/themes/ui-lightness'],
-        angular: ['bower_components/angular/angular.js', 'bower_components/angular-route/angular-route.js'],
-        videojs: ['bower_components/video.js/dis/ie8/videojs-ie8.js', 'bower_components/video.js/dist/video.js'],
-        videojsflash: ["bower_components/video.js/dist/video-js.swf"],
-        videojscss: ["bower_components/video.js/dist/video-js.min.css"],
-        videojsfonts: ["bower_components/video.js/dist/font"],
-        fontawesomecss: ["bower_components/components-font-awesome/css/font-awesome.min.css"],
-        fontawesome: ["bower_components/components-font-awesome/fonts"]
+		jquery_ui_styles: ['node_modules/jquery-ui/themes/ui-lightness'],
+        angular: ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js'],
+        videojs: ['node_modules/video.js/dist/video.js', 'node_modules/videojs-flash/dist/videojs-flash.js'],
+        videojsflash: ["node_modules/video.js/dist/video-js.swf"],
+        videojscss: ["node_modules/video.js/dist/video-js.min.css"],
+        videojsfonts: ["node_modules/video.js/dist/font"],
+        fontawesomecss: ["node_modules/components-font-awesome/css/font-awesome.min.css"],
+        fontawesome: ["node_modules/components-font-awesome/fonts"]
     }
 
     gulp.src(vendorSources.jquery)
