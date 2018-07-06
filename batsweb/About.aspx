@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="About Us" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeBehind="About.aspx.cbl" Inherits="batsweb.About" %>
+    CodeBehind="About.aspx.cbl" Inherits="pucksweb.About" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>

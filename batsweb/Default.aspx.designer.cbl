@@ -1,8 +1,8 @@
 ﻿      $set sourceformat(variable)
 
-      *> Namespace: batsweb
+      *> Namespace: pucksweb
 
-       class-id batsweb._Default is partial.
+       class-id pucksweb._Default is partial.
 
        working-storage section.
       *>> <summary>
@@ -30,14 +30,6 @@
       *>> </remarks>
        01 first_name type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
-      *>> last_name control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 last_name type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
       *>> password control.
       *>> </summary>
       *>> <remarks>
@@ -53,5 +45,13 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 rememberCheckBox type System.Web.UI.WebControls.CheckBox protected.
+      *>> <summary>
+      *>> loginButton control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 loginButton type System.Web.UI.WebControls.Button protected.
 
        end class.

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cbl" Inherits="batsweb.Global" %>
+﻿<%@ Application Codebehind="Global.asax.cbl" Inherits="pucksweb.Global" %>

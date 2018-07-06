@@ -7,7 +7,7 @@
       * </auto-generated>
       *------------------------------------------------------------------------------
        
-       class-id batsweb.About is partial
+       class-id pucksweb.About is partial
                inherits type System.Web.UI.Page public.     
          
        working-storage section.

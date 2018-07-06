@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{09A80591-14D0-4C5D-8EA3-C22D2471D59E}</ProjectGuid>
+    <ProjectTypeGuids>{E1DD800B-C85F-4F85-B885-C65F5774C347};{349c5851-65df-11da-9384-00065b846f21};{535C04D7-A2A5-47c7-83E0-B340A995CD1F}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputName>pucksweb</OutputName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>pucksweb</RootNamespace>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Version>1.0.0.0</Version>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Title>pucksweb</Title>
+    <Product>pucksweb</Product>
+    <UseIISExpress>true</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+    <DefineConstants>DEBUG</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <DebugSymbols>false</DebugSymbols>
+    <MaxError>100</MaxError>
+    <SourceFormat>Variable</SourceFormat>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <Name>AjaxControlToolkit</Name>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroFocus.COBOL.Runtime">
+      <Name>MicroFocus.COBOL.Runtime</Name>
+    </Reference>
+    <Reference Include="MicroFocus.COBOL.RuntimeServices">
+      <Name>MicroFocus.COBOL.RuntimeServices</Name>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <Name>Newtonsoft.Json</Name>
+      <HintPath>..\..\..\hal\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PucksSharedModules">
+      <Name>PucksSharedModules</Name>
+      <HintPath>..\..\..\..\pucks99wfrelease\PucksSharedModules.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="batstube.aspx" />
+    <Content Include="comments.aspx" />
+    <Content Include="ErrorPages\timeout.aspx" />
+    <Content Include="gameSummary.aspx" />
+    <Content Include="goalieAnalysis.aspx" />
+    <Content Include="goalieAnalysisRbdRink.aspx" />
+    <Content Include="goalieAnalysisRink.aspx" />
+    <Content Include="homeSummaryRink.aspx" />
+    <Content Include="lineBreakdown.aspx" />
+    <Content Include="lineBreakdownRink.aspx" />
+    <Content Include="mainmenu.aspx" />
+    <Content Include="playerBreakdown.aspx" />
+    <Content Include="playerBreakdownRink.aspx" />
+    <Content Include="playerGameValue.aspx" />
+    <Content Include="scoutPage.aspx" />
+    <Content Include="shotValueExplanation.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="summaryFwdLinesDefPairs.aspx" />
+    <Content Include="visSummaryRink.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK175.CBL">
+      <Link>PK175.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK300.CBL">
+      <Link>PK300.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK300SharedData.COB">
+      <Link>PK300SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK300WEBF.CBL">
+      <Link>PK300WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK310.CBL">
+      <Link>PK310.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK310SharedData.COB">
+      <Link>PK310SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK310WEBF.CBL">
+      <Link>PK310WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK320.CBL">
+      <Link>PK320.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK320SharedData.COB">
+      <Link>PK320SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK320WEBF.CBL">
+      <Link>PK320WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK322.CBL">
+      <Link>PK322.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK322SharedData.COB">
+      <Link>PK322SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK322WEBF.CBL">
+      <Link>PK322WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK330.CBL">
+      <Link>PK330.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK330SharedData.COB">
+      <Link>PK330SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK330WEBF.CBL">
+      <Link>PK330WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK340.CBL">
+      <Link>PK340.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK340SharedData.COB">
+      <Link>PK340SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK340WEBF.CBL">
+      <Link>PK340WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK360.CBL">
+      <Link>PK360.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK360app.CBL">
+      <Link>PK360app.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK360RA.CBL">
+      <Link>PK360RA.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK360SharedData.COB">
+      <Link>PK360SharedData.COB</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK360WEBF.CBL">
+      <Link>PK360WEBF.CBL</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\sydexsource\pucks\PK365.CBL">
+      <Link>PK365.CBL</Link>
+    </Compile>
+    <Compile Include="About.aspx.cbl">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cbl">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cbl">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cbl">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cbl">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cbl">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cbl">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cbl">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cbl">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cbl">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="batstube.aspx.cbl">
+      <DependentUpon>batstube.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="batstube.aspx.designer.cbl">
+      <DependentUpon>batstube.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="comments.aspx.cbl">
+      <DependentUpon>comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="comments.aspx.designer.cbl">
+      <DependentUpon>comments.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cbl">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
+      <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="gameSummary.aspx.cbl">
+      <DependentUpon>gameSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="gameSummary.aspx.designer.cbl">
+      <DependentUpon>gameSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cbl">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="goalieAnalysis.aspx.cbl">
+      <DependentUpon>goalieAnalysis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="goalieAnalysis.aspx.designer.cbl">
+      <DependentUpon>goalieAnalysis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="goalieAnalysisRbdRink.aspx.cbl">
+      <DependentUpon>goalieAnalysisRbdRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="goalieAnalysisRbdRink.aspx.designer.cbl">
+      <DependentUpon>goalieAnalysisRbdRink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="goalieAnalysisRink.aspx.cbl">
+      <DependentUpon>goalieAnalysisRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="goalieAnalysisRink.aspx.designer.cbl">
+      <DependentUpon>goalieAnalysisRink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="homeSummaryRink.aspx.cbl">
+      <DependentUpon>homeSummaryRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="homeSummaryRink.aspx.designer.cbl">
+      <DependentUpon>homeSummaryRink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="jsonReq.cbl" />
+    <Compile Include="jsonRes.cbl" />
+    <Compile Include="lineBreakdown.aspx.cbl">
+      <DependentUpon>lineBreakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lineBreakdown.aspx.designer.cbl">
+      <DependentUpon>lineBreakdown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="lineBreakdownRink.aspx.cbl">
+      <DependentUpon>lineBreakdownRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="lineBreakdownRink.aspx.designer.cbl">
+      <DependentUpon>lineBreakdownRink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="mainmenu.aspx.cbl">
+      <DependentUpon>mainmenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="mainmenu.aspx.designer.cbl">
+      <DependentUpon>mainmenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="playerBreakdown.aspx.cbl">
+      <DependentUpon>playerBreakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="playerBreakdown.aspx.designer.cbl">
+      <DependentUpon>playerBreakdown.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="playerBreakdownRink.aspx.cbl">
+      <DependentUpon>playerBreakdownRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="playerBreakdownRink.aspx.designer.cbl">
+      <DependentUpon>playerBreakdownRink.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="playerGameValue.aspx.cbl">
+      <DependentUpon>playerGameValue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="playerGameValue.aspx.designer.cbl">
+      <DependentUpon>playerGameValue.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="scoutPage.aspx.cbl">
+      <DependentUpon>scoutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="scoutPage.aspx.designer.cbl">
+      <DependentUpon>scoutPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="shotValueExplanation.aspx.cbl">
+      <DependentUpon>shotValueExplanation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="shotValueExplanation.aspx.designer.cbl">
+      <DependentUpon>shotValueExplanation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cbl">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cbl">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="summaryFwdLinesDefPairs.aspx.cbl">
+      <DependentUpon>summaryFwdLinesDefPairs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="summaryFwdLinesDefPairs.aspx.designer.cbl">
+      <DependentUpon>summaryFwdLinesDefPairs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="visSummaryRink.aspx.cbl">
+      <DependentUpon>visSummaryRink.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="visSummaryRink.aspx.designer.cbl">
+      <DependentUpon>visSummaryRink.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <None Include="dist\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <None Include="dist\scripts\batstube_app.js" />
+    <None Include="dist\scripts\bootstrap.min.js" />
+    <None Include="dist\scripts\callBatstube.js" />
+    <None Include="dist\scripts\Chart.min.js" />
+    <None Include="dist\scripts\d3.min.js" />
+    <None Include="dist\scripts\jquery.bundle.min.js" />
+    <None Include="dist\scripts\video.js" />
+    <None Include="dist\scripts\videojs.bundle.min.js" />
+    <None Include="dist\styles\app.css" />
+    <None Include="dist\styles\batstube.css" />
+    <None Include="dist\styles\main.css" />
+    <None Include="dist\styles\Site.css" />
+    <None Include="dist\styles\video-js.css" />
+    <None Include="fonts\ZURCHBXC.TTF" />
+    <None Include="fonts\ZURCHLXC.TTF" />
+    <None Include="gulpfile.js" />
+    <None Include="Images\logo.png" />
+    <None Include="Images\NHLrink2.png" />
+    <None Include="Images\NHLrink2small.png" />
+    <None Include="Images\PucksIcon.ico" />
+    <None Include="Images\RbdSprayChartSmall.png" />
+    <None Include="Images\Shot Values Example.png" />
+    <None Include="Images\SydexLogo.jpg" />
+    <None Include="package.json" />
+    <None Include="Properties\PublishProfiles\pucksweb.pubxml" />
+    <None Include="Scripts\async.js" />
+    <None Include="Scripts\batstube_app.js" />
+    <None Include="Scripts\batstube.js" />
+    <None Include="Scripts\callBatstube.js" />
+    <None Include="Scripts\download.js" />
+    <None Include="Scripts\gameSummary.js" />
+    <None Include="Scripts\goalieAnalysis.js" />
+    <None Include="Scripts\lineBreakdown.js" />
+    <None Include="Scripts\listbox-replacement.js" />
+    <None Include="Scripts\modals.js" />
+    <None Include="Scripts\newtube_app.js" />
+    <None Include="Scripts\playerBreakdown.js" />
+    <None Include="Scripts\playerGameValue.js" />
+    <None Include="Scripts\scoutPage.js" />
+    <None Include="Scripts\summaryFwdLinesDefPair.js" />
+    <None Include="Scripts\video.js" />
+    <None Include="Styles\app.scss" />
+    <None Include="Styles\autocomplete.css" />
+    <None Include="Styles\batstube.css" />
+    <None Include="Styles\custom_bootstrap.scss" />
+    <None Include="Styles\gameSummary.css" />
+    <None Include="Styles\goalieAnalysis.css" />
+    <None Include="Styles\jquery-ui.css" />
+    <None Include="Styles\lineBreakdown.css" />
+    <None Include="Styles\listbox-replacement.css" />
+    <None Include="Styles\main.css" />
+    <None Include="Styles\playerBreakdown.css" />
+    <None Include="Styles\playerGameValue.css" />
+    <None Include="Styles\scoutPage.css" />
+    <None Include="Styles\summaryFwdLinesDefPair.css" />
+    <None Include="Styles\video-js.css" />
+    <None Include="Styles\video-js.swf" />
+    <None Include="Theme\stylesheets\awesome-bootstrap-checkbox.scss" />
+    <None Include="Theme\stylesheets\custom.scss" />
+    <None Include="Theme\stylesheets\_variables.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="MicroFocus.COBOL.RuntimeServices" />
+    <Import Include="Newtonsoft.Json" />
+    <Import Include="System" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Drawing.Drawing2D" />
+    <Import Include="System.Drawing.Imaging" />
+    <Import Include="System.Drawing.Text" />
+    <Import Include="System.Dynamic" />
+    <Import Include="System.IO" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Net.Mail" />
+    <Import Include="System.Web" />
+    <Import Include="System.Web.Security" />
+    <Import Include="System.Web.SessionState" />
+    <Import Include="System.Web.UI" />
+    <Import Include="System.Web.UI.WebControls" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Micro Focus\Visual COBOL\v1.0\MicroFocus.COBOL.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

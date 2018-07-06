@@ -1,4 +1,4 @@
-       class-id batsweb.ErrorPages.timeout is partial 
+       class-id pucksweb.ErrorPages.timeout is partial 
                 inherits type System.Web.UI.Page public.
                  
        working-storage section.

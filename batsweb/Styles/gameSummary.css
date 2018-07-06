@@ -1,0 +1,87 @@
+﻿/* Game Table Styles*/
+#MainContent_gamesTable {
+    border-radius:5px;
+    -moz-border-radius:5px;
+    font-size: medium;
+}
+
+#MainContent_gamesTable tbody {
+    height: 250px;
+
+}
+
+#MainContent_gamesTable td, #MainContent_gamesTable th {
+    padding-left: 20px;
+}
+
+#MainContent_gamesTable thead {
+    border-bottom: 2px #ddd solid;
+}
+
+/***/
+/* current Inning Table Styles*/
+
+#MainContent_playTable td, #MainContent_playTable th {
+    padding-left: 20px;
+}
+
+#MainContent_playTable tbody {
+    height: 350px;
+
+}
+
+#MainContent_playTable thead {
+    border-bottom: 2px #ddd solid;
+}
+
+#gamesTableWrapper {
+    height: 250px;
+
+}
+
+#playTableWrapper {
+    height: 250px;
+
+}
+
+#toiTableWrapper {
+    height: 400px;
+
+}
+
+#goalsTableWrapper {
+    height: 250px;
+
+}
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+
+.outsideWrapper {
+    width:277px;
+    height:336px;
+    /*margin:20px 60px;*/
+/*//   border:1px solid blue;*/
+}
+.insideWrapper {
+    width:100%;
+    height:100%;
+    position:relative;
+}
+.coveredImage {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+.coveringCanvas {
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    left:0px;
+/*background-color: rgba(255, 0, 0, .1);*/
+}

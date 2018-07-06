@@ -1,0 +1,1 @@
+﻿<%@ Page AutoEventWireup="true" CodeBehind="goalieAnalysisRbdRink.aspx.cbl" Inherits="pucksweb.goalieAnalysisRbdRink" %>
