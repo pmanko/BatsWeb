@@ -215,7 +215,7 @@ ModelManifest.xml
 
 
 # Custom
-App_Data/*
+pucksweb/App_Data/*
 MAJORS/
 MINORS/
 bin/
@@ -230,4 +230,4 @@ dist
 
 *.db
 
-batsweb/VID2016
+pucksweb/VID*
