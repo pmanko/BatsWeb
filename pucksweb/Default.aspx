@@ -40,10 +40,14 @@
             </div>
             <div class='checkbox checkbox-primary'><asp:CheckBox ID="rememberCheckBox" runat="server" AutoPostBack="False" Text="Remember Me" /></div>         
             <asp:Button ID="loginButton" runat="server" OnClick="loginButton_Click" Text="Sign In" class="btn btn-lg btn-primary btn-block"/>
-			<button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="#freeTrialModal">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Clips
-			</button>
+
+<%--			<button type="button" class="btn btn-secondary btn-md" data-toggle="modal" data-target="#freeTrialModal">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Free Trial
+			</button>--%>
             <%--<a href="#" id="login" class="btn btn-lg btn-primary btn-block">Log In</a>--%>
+            <a href="/freeTrial.aspx" class="btn btn-lg btn-success btn-block">
+                Sign Up For A Free Trial
+            </a>
         </div>
         <div class="modal fade" id="freeTrialModal" tabindex="-1" role="dialog" aria-labelledby="freeTrialModalLabel">
           <div class="modal-dialog modal-md" role="document">
@@ -80,7 +84,7 @@
                   </div>
                   <div class="row">
                       <div class="col-xs-12">
-                        <asp:Button ID="btnTrial" runat="server" OnClick="btnTrial_Click" Text="Submit" class="btn btn-lg btn-primary btn-block"/>
+                        <asp:Button ID="btnTrial" runat="server" OnClick="btnTrial_Click" Text="Submit" class="btn btn-lg btn-secondary btn-block"/>
                       </div>
                   </div>
               </div>

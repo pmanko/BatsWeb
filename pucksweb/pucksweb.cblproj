@@ -76,7 +76,9 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="batstube.aspx" />
     <Content Include="comments.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="ErrorPages\timeout.aspx" />
+    <Content Include="freeTrial.aspx" />
     <Content Include="gameSummary.aspx" />
     <Content Include="goalieAnalysis.aspx" />
     <Content Include="goalieAnalysisRbdRink.aspx" />
@@ -91,7 +93,6 @@
     <Content Include="scoutPage.aspx" />
     <Content Include="shotValueExplanation.aspx" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -237,12 +238,22 @@
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Default.aspx.designer.cbl">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ErrorPages\timeout.aspx.cbl">
       <DependentUpon>timeout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ErrorPages\timeout.aspx.designer.cbl">
       <DependentUpon>timeout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="freeTrial.aspx.cbl">
+      <DependentUpon>freeTrial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="freeTrial.aspx.designer.cbl">
+      <DependentUpon>freeTrial.aspx</DependentUpon>
     </Compile>
     <Compile Include="gameSummary.aspx.cbl">
       <DependentUpon>gameSummary.aspx</DependentUpon>

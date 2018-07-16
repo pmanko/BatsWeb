@@ -1,58 +1,26 @@
-﻿      $set sourceformat(variable)
+      $set sourceformat(variable)
 
       *> Namespace: pucksweb
 
-       class-id pucksweb._Default is partial.
+       class-id pucksweb.freeTrial is partial.
 
        working-storage section.
       *>> <summary>
-      *>> Msg control.
+      *>> ScriptManager1 control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 Msg type System.Web.UI.WebControls.Label protected.
+       01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
-      *>> teamDropDownList control.
+      *>> ddTeam control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 teamDropDownList type System.Web.UI.WebControls.DropDownList protected.
-      *>> <summary>
-      *>> first_name control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 first_name type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
-      *>> password control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 #password type System.Web.UI.WebControls.TextBox protected.
-      *>> <summary>
-      *>> rememberCheckBox control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 rememberCheckBox type System.Web.UI.WebControls.CheckBox protected.
-      *>> <summary>
-      *>> loginButton control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 loginButton type System.Web.UI.WebControls.Button protected.
+       01 ddTeam type System.Web.UI.WebControls.DropDownList protected.
       *>> <summary>
       *>> tbName control.
       *>> </summary>
@@ -70,6 +38,22 @@
       *>> </remarks>
        01 tbUser type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
+      *>> tbPass control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 tbPass type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
+      *>> tbPass2 control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 tbPass2 type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
       *>> tbEmail control.
       *>> </summary>
       *>> <remarks>
@@ -78,6 +62,14 @@
       *>> </remarks>
        01 tbEmail type System.Web.UI.WebControls.TextBox protected.
       *>> <summary>
+      *>> tbNote control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 tbNote type System.Web.UI.WebControls.TextBox protected.
+      *>> <summary>
       *>> btnTrial control.
       *>> </summary>
       *>> <remarks>
@@ -85,5 +77,21 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 btnTrial type System.Web.UI.WebControls.Button protected.
+      *>> <summary>
+      *>> lblMsg control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 lblMsg type System.Web.UI.WebControls.Label protected.
+      *>> <summary>
+      *>> btnReturn control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 btnReturn type System.Web.UI.HtmlControls.HtmlAnchor protected.
 
        end class.

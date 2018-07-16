@@ -1,5 +1,7 @@
 ﻿var myPlayer;
 function pageLoad(sender, args) {
+    if (window.navigator.userAgent.indexOf("Edge") > -1)
+        console.log('edge');
     myPlayer = videojs("main_vid");
     myPlayer.on('loadstart', function () {
         document.getElementById("lblStart").innerHTML = (myPlayer.src().substring((myPlayer.src().indexOf('=') + 1), myPlayer.src().indexOf(',')));

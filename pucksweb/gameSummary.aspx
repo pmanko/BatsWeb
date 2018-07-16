@@ -85,49 +85,47 @@
                 <div class="panel-heading">
                     <strong><label id="lblAllGoals"></label></strong>
                 </div>
-                <div class="panel panel-default">
-                    <div class='panel-body'>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="listbox-replacement-wrapper" id="goalsTableWrapper">
-                                    <table id="goalsTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
-                                    data-value-field="#MainContent_goalsValueField" 
-                                    data-index-field="#MainContent_goalsIndexField" 
-                                    data-postback="false" 
-                                    data-multiple="true"
-                                    data-on-select="goalsUpdate"
-                                    data-on-dblclick-select="goalsUpdateDblclick"
-                                    data-on-dblclick="openBatsTube"
-                                    >
-                                    <thead>
-                                    <tr>
-                                        <th>Pd V H   Description</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="goalsTableBody" runat="server"></tbody>
-                                    </table>
-                                </div>
-                                <asp:HiddenField ID="goalsValueField" runat="server" />
-                                <asp:HiddenField ID="goalsIndexField" runat="server"  />
+                <div class='panel-body'>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="listbox-replacement-wrapper" id="goalsTableWrapper">
+                                <table id="goalsTable" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                                data-value-field="#MainContent_goalsValueField" 
+                                data-index-field="#MainContent_goalsIndexField" 
+                                data-postback="false" 
+                                data-multiple="true"
+                                data-on-select="goalsUpdate"
+                                data-on-dblclick-select="goalsUpdateDblclick"
+                                data-on-dblclick="openBatsTube"
+                                >
+                                <thead>
+                                <tr>
+                                    <th>Pd V H   Description</th>
+                                </tr>
+                                </thead>
+                                <tbody id="goalsTableBody" runat="server"></tbody>
+                                </table>
                             </div>
+                            <asp:HiddenField ID="goalsValueField" runat="server" />
+                            <asp:HiddenField ID="goalsIndexField" runat="server"  />
                         </div>
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-goals">
-                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> All
-                                </a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="goals-selection">
-                                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Selection
-                                </a>
-                            </div>
-                            <div class="col-xs-3">
-                                <div class='checkbox checkbox-primary'><asp:CheckBox ID="cbPowerGoals" runat="server" AutoPostBack="False" OnClick="handleClick(this);" Text="Show All PP Goals" /></div>         
-                            </div>
-                            <div class="col-xs-3">
-                                <div class='checkbox checkbox-primary'><asp:CheckBox ID="cbChanceGoals" runat="server" AutoPostBack="False" OnClick="handleClick(this);" Text="Show All 5% Chances" /></div>         
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="play-goals">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> All
+                            </a>
+                        </div>
+                        <div class="col-xs-3">
+                            <a href="#" class="btn btn-block btn-primary btn-async-request" data-action-flag="goals-selection">
+                                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Selection
+                            </a>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class='checkbox checkbox-primary'><asp:CheckBox ID="cbPowerGoals" runat="server" AutoPostBack="False" OnClick="handleClick(this);" Text="Show All PP Goals" /></div>         
+                        </div>
+                        <div class="col-xs-3">
+                            <div class='checkbox checkbox-primary'><asp:CheckBox ID="cbChanceGoals" runat="server" AutoPostBack="False" OnClick="handleClick(this);" Text="Show All 5% Chances" /></div>         
                         </div>
                     </div>
                 </div>

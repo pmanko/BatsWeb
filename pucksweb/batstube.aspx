@@ -10,7 +10,6 @@
 	
 	<script>
 	    var videoPaths = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-paths"]) %>'.split(';');
-	    var changePaths = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-paths"]) %>';
 	    var videoTitles = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-titles"]) %>'.split(';');
 	    //var BAM = '<%= HttpUtility.JavaScriptStringEncode((string)Session["BAM"]) %>'; 
 	</script>

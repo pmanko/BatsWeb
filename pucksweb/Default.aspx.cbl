@@ -43,9 +43,9 @@
       *        10  WEBPASS-LAST            PIC X(15).
                10  WEBPASS-FIRST           PIC X(30).
            05  WEBPASS-REST.
-               10  WEBPASS-PASS            PIC 9(18).
+               10  WEBPASS-PASS            PIC X(24).
                10  WEBPASS-LEVEL           PIC X.
-               10  FILLER                  PIC X(50).
+               10  FILLER                  PIC X(44).
 
        working-storage section.
        copy "y:\sydexsource\pucks\pucksglobal.cpb".
@@ -54,8 +54,8 @@
        01  WS-TEAM-NAME       PIC X(15).
        01  WS-LAST            PIC X(15).
        01  WS-FIRST           PIC X(15).
-       01  WS-PASS            PIC X(6).
-       01  WS-BATSW020-FILE   PIC X(256) VALUE "BATSW020.DAT".
+       01  WS-PASS            type String.
+       01  WS-BATSW020-FILE   PIC X(256) VALUE "PKW020.DAT".
        01  WS-REJECT-FLAG     PIC X.
        01  STATUS-COMN.
            05  STATUS-BYTE-1           PIC X      VALUE SPACES.
@@ -156,9 +156,9 @@
            set WS-TEAM-NAME to teamDropDownList::SelectedItem.
            set teamName to teamDropDownList::SelectedItem::ToString::Replace(" ", type String::Empty).
  debug*     string '"' app-data-folder delimited by "  "
-      *      string '"' app-data-folder delimited by "  "
-            string '"' app-data-folder delimited by "pucksweb" teamName delimited by "  "
-              '\WEBSYNC\BATSW020.DAT"' delimited by size
+             string '"' app-data-folder delimited by "  "
+      *     string '"' app-data-folder delimited by "pucksweb" teamName delimited by "  "
+              '\WEBSYNC\PKW020.DAT"' delimited by size
               into WS-BATSW020-FILE.
    
            set WS-FIRST to first_name::Text::ToUpper.
@@ -219,6 +219,7 @@
        77  WORK-PASS                   PIC X(6)  COMP-X VALUE 0.
        77  WORK-PASS-X REDEFINES WORK-PASS  PIC X(6).
        77  WORK-FIELD                  PIC 9(18).
+       01  xorConstant                 type Byte value h"2a".
        procedure division.
             OPEN INPUT WEBPASS-FILE.
             IF STATUS-BYTE-1 NOT EQUAL ZEROES
@@ -226,8 +227,8 @@
 
             MOVE WS-TEAM-NAME::ToUpper to WEBPASS-TEAM-NAME
             MOVE WS-TEAM-NAME to self::Session["team"]
-      *     MOVE WS-LAST TO WEBPASS-LAST
             MOVE WS-FIRST TO WEBPASS-FIRST
+      *     MOVE WS-FIRST TO WEBPASS-FIRST
             READ WEBPASS-FILE
                 INVALID KEY
                     CLOSE WEBPASS-FILE
@@ -239,10 +240,27 @@
                     MOVE "X" TO WS-REJECT-FLAG
 
                     GO TO 100-DONE.
-            MOVE WS-PASS  TO WORK-PASS-X
-            COMPUTE WORK-FIELD = WORK-PASS * 17.
-            COMPUTE WORK-FIELD = 13 * (WORK-FIELD + 7).
-            IF WORK-FIELD = WEBPASS-PASS
+
+           declare bData as type Byte occurs any = type System.Text.Encoding::UTF8::GetBytes(WS-PASS) 
+           perform varying i as type Single from 0 by 1
+             until i = bData::Length
+               set bData[i] to bData[i] b-xor xorConstant
+           end-perform
+           declare boutput as type String = type Convert::ToBase64String(bData)
+
+
+      *    declare bData2 as type Byte occurs any = type Convert::FromBase64String(WS-PASS)
+      *    perform varying i as type Single from 0 by 1
+      *      until i = bData2::Length
+      *        set bData2[i] to bData2[i] b-xor xorConstant
+      *    end-perform
+      *    declare boutput2 as type String = type  System.Text.Encoding::UTF8::GetString(bData2)
+
+      *     MOVE WS-PASS  TO WORK-PASS-X
+      *     COMPUTE WORK-FIELD = WORK-PASS * 17.
+      *     COMPUTE WORK-FIELD = 13 * (WORK-FIELD + 7).
+      *     IF WORK-FIELD = WEBPASS-PASS
+            IF boutput = WEBPASS-PASS::Trim
       *          MOVE WEBPASS-LEVEL TO BATSWEB1-SEC-LEVEL
       *           MOVE "Log In successful" TO ERROR-MESSAGE-TEXT
       *           PERFORM 9000-DISPLAY-ERROR-MESSAGE THRU 9099-EXIT
