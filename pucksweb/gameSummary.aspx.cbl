@@ -148,7 +148,9 @@
                into actionFlag, methodArg
            end-unstring.
            
-           if actionFlag = 'play-full'
+           if actionFlag = 'game-selected'
+               set callbackReturn to actionFlag & "|" & self::gameSelected(methodArg)
+           else if actionFlag = 'play-full'
                set callbackReturn to actionFlag & "|" & self::playFull()
            else if actionFlag = 'from-sel'
                set callbackReturn to actionFlag & "|" & self::fromSelected(methodArg)     
@@ -288,29 +290,32 @@
 
        method-id loadGames protected.
        local-storage section.
-           01 dataLine             type String.
-           01 gameNum              pic x.
+      *    01 dataLine             type String.
+      *    01 gameNum              pic x.
        linkage section.
            COPY "Y:\SYDEXSOURCE\pucks\pk360_dg.CPB".
        procedure division.
            set mydata to self::Session["pk360data"] as type pucksweb.pk360Data
            set address of PK360-DIALOG-FIELDS to myData::tablePointer 
-           invoke gamesTable::Rows::Clear()
-           invoke self::addTableRow(gamesTable, " Date       Vis                     Score Home                    Score Video Gametype"::Replace(" ", "&nbsp;"), 'h')
+      *    invoke gamesTable::Rows::Clear()
+      *    invoke self::addTableRow(gamesTable, " Date       Vis                     Score Home                    Score Video Gametype"::Replace(" ", "&nbsp;"), 'h')
+           set visField::Value to ""
            move 1 to aa.
        5-loop.
            if aa > PK360-NUM-GAMES
-               go to 10-done
-           else
-           if PK360-G-NUM(AA) = 0
-               move space to gameNum
-           else
-               move PK360-G-NUM(AA) to gameNum
-           end-if
-           set dataLine to PK360-G-DSP-DATE(AA)::ToString("0#/##/##") & " " &
-           PK360-G-VIS(aa) & " " & PK360-G-VIS-SCORE(aa) & " " & PK360-G-HOME(aa) & " " & PK360-G-HOME-SCORE(aa) & " " & PK360-G-VIDEO(aa) & " " & PK360-G-PLAYOFF(AA)
-           INSPECT dataline REPLACING ALL " " BY X'A0'
-           invoke self::addTableRow(gamesTable, " " & dataLine, 'b').
+               go to 10-done.
+      *    else
+      *    if PK360-G-NUM(AA) = 0
+      *        move space to gameNum
+      *    else
+      *        move PK360-G-NUM(AA) to gameNum
+      *    end-if
+      *    set dataLine to PK360-G-DSP-DATE(AA)::ToString("0#/##/##") & " " &
+      *    PK360-G-VIS(aa) & " " & PK360-G-VIS-SCORE(aa) & " " & PK360-G-HOME(aa) & " " & PK360-G-HOME-SCORE(aa) & " " & PK360-G-VIDEO(aa) & " " & PK360-G-PLAYOFF(AA)
+      *    INSPECT dataline REPLACING ALL " " BY X'A0'
+      *    invoke self::addTableRow(gamesTable, " " & dataLine, 'b').
+           set visField::Value to visField::Value & PK360-G-DSP-DATE(AA)::ToString("0#/##/##") & "," &
+           PK360-G-VIS(aa) & "," & PK360-G-VIS-SCORE(aa) & "," & PK360-G-HOME(aa) & "," & PK360-G-HOME-SCORE(aa) & "," & PK360-G-PLAYOFF(AA) & ";"
            add 1 to aa.
            go to 5-loop.
        10-done.

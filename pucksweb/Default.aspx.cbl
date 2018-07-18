@@ -53,8 +53,8 @@
        77  WS-NETWORK-FLAG             PIC X      VALUE "A".
        01  WS-TEAM-NAME       PIC X(15).
        01  WS-LAST            PIC X(15).
-       01  WS-FIRST           PIC X(15).
-       01  WS-PASS            type String.
+       01  WS-FIRST           PIC X(30).
+       01  WS-PASS            PIC X(24).
        01  WS-BATSW020-FILE   PIC X(256) VALUE "PKW020.DAT".
        01  WS-REJECT-FLAG     PIC X.
        01  STATUS-COMN.
@@ -95,10 +95,10 @@
            if type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"] not = null
                set rememberCheckBox::Checked to true
                set ticket to type FormsAuthentication::Decrypt(type HttpContext::Current::Request::Cookies[".ASPXFORMSAUTH"]::Value)
-               set first_name::Text to ticket::Name::Substring(0, 15)::Trim
+               set first_name::Text to ticket::Name::Substring(0, 30)::Trim
       *         set last_name::Text to ticket::Name::Substring(15, 15)::Trim
-               set password::Text to ticket::Name::Substring(15, 6)::Trim
-               set team to ticket::Name::Substring(21, 15)::Trim.
+               set password::Text to ticket::Name::Substring(30, 24)::Trim
+               set team to ticket::Name::Substring(54, 15)::Trim.
            move 0 to aa.
        5-loop.
            if teamDropDownList::Items::Count = aa
@@ -169,7 +169,7 @@
            invoke self::verify_password
            
            if WS-REJECT-FLAG = "Y"
-               set userName to WS-FIRST & WS-LAST & WS-PASS & WS-TEAM-NAME
+               set userName to WS-FIRST & WS-PASS & WS-TEAM-NAME
                set ticket to type FormsAuthenticationTicket::New(userName, False, 525600)
                set encTicket to type FormsAuthentication::Encrypt(ticket)
                invoke self::Response::Cookies::Add(type HttpCookie::New(type FormsAuthentication::FormsCookieName, encTicket))
@@ -241,7 +241,7 @@
 
                     GO TO 100-DONE.
 
-           declare bData as type Byte occurs any = type System.Text.Encoding::UTF8::GetBytes(WS-PASS) 
+           declare bData as type Byte occurs any = type System.Text.Encoding::UTF8::GetBytes(WS-PASS::Trim) 
            perform varying i as type Single from 0 by 1
              until i = bData::Length
                set bData[i] to bData[i] b-xor xorConstant

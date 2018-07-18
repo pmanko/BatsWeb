@@ -7,16 +7,22 @@
     <script type="text/javascript" src="Scripts/gamesummary.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <meta name="format-detection" content="telephone=no" />
+    <link type="text/css" href="/dist/styles/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="/dist/styles/select.bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="/dist/scripts/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/dist/scripts/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="/dist/scripts/dataTables.select.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container main-container">
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <div class="panel panel-default" id="gamesPanel">
-                <div class="panel-heading">
+<%--                <div class="panel-heading">
                     <div class="panel-title">List of Games</div>
-                </div>
-                <div class="listbox-replacement-wrapper">
+                </div>--%>
+                <div class="panel-body padding-none">
+<%--                <div class="listbox-replacement-wrapper">
                     <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                 data-index-field="#MainContent_gamesIndexField" 
                                 data-value-field="#MainContent_gamesValueField" 
@@ -27,10 +33,13 @@
                         <asp:TableHeaderCell> Date                  Vis                      Score Home                   Score Video Gametype</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                     </asp:Table>
-                </div>
+                </div>--%>
+                <table id="vis" class="table table-hover table-striped" style="width:100%"> </table>
                 <asp:HiddenField ID="gamesValueField" runat="server" onvaluechanged="gameSelected" />
                 <asp:HiddenField ID="gamesIndexField" runat="server"   />
-                <br />
+                <asp:HiddenField ID="visField" runat="server" />
+                </div>
+                <%--<br />--%>
                 <div class="panel-footer">
                     <div class="row">
                     <div class="col-xs-3">
@@ -58,7 +67,8 @@
                                     <asp:ListItem>2007-2008</asp:ListItem>
                                     <asp:ListItem>2006-2007</asp:ListItem>
                                     <asp:ListItem>2005-2006</asp:ListItem>
-                                </asp:DropDownList></div>
+                                </asp:DropDownList>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-3 padding-0">

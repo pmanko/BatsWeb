@@ -33,12 +33,44 @@ function pageLoad(sender, args) {
     var s = $("#MainContent_gamesIndexField").val();
     s++;
     console.log(ddFlag);
-    if (ddFlag == false) {
-        table.rows[s].click();
-        table.rows[s].scrollIntoView();
-        ddFlag = true;
+    //if (ddFlag == false) {
+    //    table.rows[s].click();
+    //    table.rows[s].scrollIntoView();
+    //    ddFlag = true;
+    //}
+    var result = $("#MainContent_visField").val().split(";");
+    var visFinish = new Array(result.length - 1)
+    for (i = 0; i < result.length - 1; i++) {
+        visFinish[i] = result[i].split(",");
     }
+    $('#vis').DataTable({
+        paging: false,
+        info: false,
+        ordering: false,
+        searching: false,
+        data: visFinish,
+        scrollY: 200,
+        select: {
+            style: 'single'
+        },
+        //scrollCollapse: true,
+        columns: [
+            { title: "Date" },
+            { title: "Vis" },
+            { title: "Score" },
+            { title: "Home" },
+            { title: "Score"},
+            { title: "Gametype" },
+        ]
+    });
 }
+
+$(document).on('click', '#vis tr', function (e) {
+    var table = $('#vis').DataTable();
+    var row_clicked = table.row(this).index();
+    console.log(row_clicked);
+    makeServerRequest("update-play-dblclick", $("#MainContent_playIndexField").val());
+});
 
 // Open Batstube
 function openBatsTube() {
@@ -306,7 +338,7 @@ $(document).on('click', '#btnVisSelected', function (events) {
 //});
 
 function rinkClick(result) {
-    if (result = "play")
+    if (result == "play")
         openBatsTube();
     else
         alert(result);

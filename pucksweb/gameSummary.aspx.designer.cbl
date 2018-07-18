@@ -14,14 +14,6 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
-      *>> gamesTable control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 gamesTable type System.Web.UI.WebControls.Table protected.
-      *>> <summary>
       *>> gamesValueField control.
       *>> </summary>
       *>> <remarks>
@@ -37,6 +29,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 gamesIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> visField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 visField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> rbAllGames control.
       *>> </summary>
