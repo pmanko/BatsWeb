@@ -25,14 +25,12 @@ gulp.task('vendor-scripts', function () {
         ],
 		jquery_ui_styles: ['node_modules/jquery-ui/themes/ui-lightness'],
         angular: ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js'],
-        videojs: ['node_modules/video.js/dist/video.js'],
+        videojs: ['node_modules/video.js/dist/video.js', 'node_modules/videojs-flash/dist/videojs-flash.js'],
+        videojsflash: ["node_modules/video.js/dist/video-js.swf"],
         videojscss: ["node_modules/video.js/dist/video-js.min.css"],
         videojsfonts: ["node_modules/video.js/dist/font"],
         fontawesomecss: ["node_modules/components-font-awesome/css/font-awesome.min.css"],
-        fontawesome: ["node_modules/components-font-awesome/fonts"],
-        datatables: ['node_modules/datatables.net/js/jquery.datatables.min.js', 'node_modules/datatables.net-select/js/datatables.select.min.js'],
-        datatablescss: ['node_modules/bootstrap-select/dist/css/bootstrap-select.min.css']
-        
+        fontawesome: ["node_modules/components-font-awesome/fonts"]
     }
 
     gulp.src(vendorSources.jquery)
@@ -46,6 +44,9 @@ gulp.task('vendor-scripts', function () {
     gulp.src(vendorSources.videojs)
         .pipe(concat('videojs.bundle.min.js'))
         .pipe(gulp.dest(outputLocation + '/scripts/'));
+
+    gulp.src(vendorSources.videojsflash)
+        .pipe(gulp.dest(outputLocation + '/swf/'));
 
     gulp.src(vendorSources.videojscss)
         .pipe(gulp.dest(outputLocation + '/styles/'));
@@ -61,12 +62,6 @@ gulp.task('vendor-scripts', function () {
 
     gulp.src(vendorSources.fontawesome + "/*")
         .pipe(gulp.dest(outputLocation + '/fonts/'));
-
-    gulp.src(vendorSources.datatables)
-        .pipe(gulp.dest(outputLocation + '/scripts/'));        
-
-    gulp.src(vendorSources.datatablescss)
-        .pipe(gulp.dest(outputLocation + '/styles/'));
 
 });
 

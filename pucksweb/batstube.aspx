@@ -7,7 +7,7 @@
 	<link type="text/css" href="/Styles/batstube.css" rel="stylesheet" />
 
     <script src="/dist/scripts/videojs.bundle.min.js"></script>
-	
+    <%--<script src="/dist/scripts/videojs.bundle.minWRONG.js"></script>--%>
 	<script>
 	    var videoPaths = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-paths"]) %>'.split(';');
 	    var videoTitles = '<%= HttpUtility.JavaScriptStringEncode((string)Session["video-titles"]) %>'.split(';');
@@ -18,7 +18,7 @@
 	    var preventKeys = false;
 	</script>
 	<script src="/Scripts/batstube_app.js"></script> 
-	<script src="/Scripts/download.js"></script> 
+	<%--<script src="/Scripts/download.js"></script>--%> 
     <script type="text/javascript" src="Scripts/batstube.js"></script> 
     <script>
         $(document).on("click", "#btnDownload", function (event) {
@@ -70,8 +70,7 @@
 				<div class='row'>
 					<div class='col-lg-12'>
 						<div class='embed-responsive embed-responsive-16by9'>
-							<video id="main_vid" class='embed-responsive-item video-js vjs-default-skin vjs-big-play-centered'>
-								<source src="" type="video/mp4">
+							<video id="main_vid" class='embed-responsive-item video-js vjs-default-skin vjs-big-play-centered vjs-fullscreen-control'>
 								<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 							</video>
 						</div>

@@ -5,6 +5,7 @@ var mouseIsDown = false;
 var startX, endX, startY, endY;
 var hRectX, hRectY, hRectH, hRectW;
 var vRectX, vRectY, vRectH, vRectW;
+var gameRow, playRow;
 
 function pageLoad(sender, args) {
     homeCanvas = document.getElementById("homeCanvas");
@@ -29,27 +30,25 @@ function pageLoad(sender, args) {
     document.getElementById('MainContent_playIndexField').value = "";
     $("#homeRinkImagebtn").attr("src", "homeSummaryRink.aspx?" + d.getTime());
     $("#visRinkImagebtn").attr("src", "visSummaryRink.aspx?" + d.getTime());
-    var table = document.getElementById('MainContent_gamesTable');
-    var s = $("#MainContent_gamesIndexField").val();
-    s++;
-    console.log(ddFlag);
-    //if (ddFlag == false) {
+    //var s = $("#MainContent_gamesIndexField").val();
+    //s++;
+
     //    table.rows[s].click();
     //    table.rows[s].scrollIntoView();
     //    ddFlag = true;
     //}
-    var result = $("#MainContent_visField").val().split(";");
+    var result = $("#MainContent_gamesField").val().split(";");
     var visFinish = new Array(result.length - 1)
     for (i = 0; i < result.length - 1; i++) {
         visFinish[i] = result[i].split(",");
     }
-    $('#vis').DataTable({
+    $('#gamesTable').DataTable({
         paging: false,
         info: false,
         ordering: false,
         searching: false,
         data: visFinish,
-        scrollY: 200,
+        scrollY: 250,
         select: {
             style: 'single'
         },
@@ -63,13 +62,68 @@ function pageLoad(sender, args) {
             { title: "Gametype" },
         ]
     });
+    console.log(ddFlag);
+    var s = $("#MainContent_gamesIndexField").val();
+    if (ddFlag == false) {
+        var table = $('#gamesTable').DataTable();
+        console.log(s);
+        table.rows(s).select();
+        table.scrollTo(s);
+        //table.scroller.scrollTo(100);
+        //table.rows[s].select();
+    }
+    var plays = $("#MainContent_playsField").val().split(";");
+    if (plays == "")
+        return;
+    var playsFinish = new Array(plays.length - 1)
+    for (i = 0; i < plays.length - 1; i++) {
+        playsFinish[i] = plays[i].split(",");
+    }
+    $('#playsTable').DataTable({
+        paging: false,
+        info: false,
+        ordering: false,
+        searching: false,
+        data: playsFinish,
+        scrollY: 250,
+        select: {
+            style: 'single'
+        },
+        //scrollCollapse: true,
+        columns: [
+            { title: "P V-H   Description" },
+        ]
+    });
 }
 
-$(document).on('click', '#vis tr', function (e) {
-    var table = $('#vis').DataTable();
+$(document).on('click', '#gamesTable tr', function (e) {
+    var table = $('#gamesTable').DataTable();
     var row_clicked = table.row(this).index();
-    console.log(row_clicked);
-    makeServerRequest("update-play-dblclick", $("#MainContent_playIndexField").val());
+    gameRow = this;
+    $("#MainContent_gamesIndexField").val(row_clicked);
+    console.log($("#MainContent_gamesIndexField").val());
+    makeServerRequest("game-selected", row_clicked);
+});
+
+$(document).on('dblclick', '#gamesTable tr', function (e) {
+    var table = $('#gamesTable').DataTable();
+    table.rows(this).select();
+    gameRow = this;
+    $('#MainContent_playsButton').trigger('click');
+});
+
+$(document).on('click', '#playsTable tr', function (e) {
+    var table = $('#playsTable').DataTable();
+    var row_clicked = table.row(this).index();
+    playRow = this;
+});
+
+$(document).on('dblclick', '#playsTable tr', function (e) {
+    var table = $('#gamesTable').DataTable();
+    table.rows(this).select();
+    playRow = this;
+    makeServerRequest("update-play-dblclick", playRow.rowIndex);
+    openBatsTube();
 });
 
 // Open Batstube
@@ -197,8 +251,11 @@ $(document).on("click", "#btnGoals", function (event) {
     var isExpanded = $('#allGoals').attr("aria-expanded");
     if (isExpanded) {
         document.getElementById('MainContent_goalsIndexField').value = "";
-        document.getElementById('lblAllGoals').innerHTML = $("#MainContent_gamesValueField").val().substr(0, 9) + " Goals";
-        makeServerRequest('show-goals', $("#MainContent_gamesIndexField").val());
+        console.log(gameRow.firstChild.innerHTML);
+        document.getElementById('lblAllGoals').innerHTML = gameRow.firstChild.innerHTML + " Goals";
+        //document.getElementById('lblAllGoals').innerHTML = $("#MainContent_gamesValueField").val().substr(0, 9) + " Goals";
+        makeServerRequest('show-goals', gameRow.rowIndex);
+        //makeServerRequest('show-goals', $("#MainContent_gamesIndexField").val());
     }
 });
 
@@ -239,7 +296,8 @@ function limit(element) {
 
 $(document).on('click', '.btn-async-request', function (events) {
     if ($(this).data("actionFlag") == 'from-sel' || $(this).data("actionFlag") == 'play-sel') {
-        makeServerRequest($(this).data("actionFlag"), $("#MainContent_playIndexField").val());
+        //makeServerRequest($(this).data("actionFlag"), $("#MainContent_playIndexField").val());
+        makeServerRequest($(this).data("actionFlag"), playRow.rowIndex);
     }
     else if ($(this).data("actionFlag") == 'play-jump') {
         makeServerRequest($(this).data("actionFlag"), (document.getElementById('period').value + "," + document.getElementById('min').value + ":" + document.getElementById('sec').value));

@@ -29,9 +29,9 @@
   overflow: hidden;
 }
 
-.listbox-replacement tr.selected, .listbox-replacement tr.selected:hover {
+/*.listbox-replacement tr.selected, .listbox-replacement tr.selected:hover {
   background-color: #337ab7;
-}
+}*/
 
 table.listbox-replacement > tbody > tr > td {
   display: block;

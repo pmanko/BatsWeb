@@ -14,14 +14,6 @@
       *>> </remarks>
        01 ScriptManager1 type System.Web.UI.ScriptManager protected.
       *>> <summary>
-      *>> gamesValueField control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 gamesValueField type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
       *>> gamesIndexField control.
       *>> </summary>
       *>> <remarks>
@@ -30,13 +22,13 @@
       *>> </remarks>
        01 gamesIndexField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
-      *>> visField control.
+      *>> gamesField control.
       *>> </summary>
       *>> <remarks>
       *>> Auto-generated field.
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
-       01 visField type System.Web.UI.WebControls.HiddenField protected.
+       01 gamesField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> rbAllGames control.
       *>> </summary>
@@ -126,22 +118,6 @@
       *>> </remarks>
        01 UpdatePanel2 type System.Web.UI.UpdatePanel protected.
       *>> <summary>
-      *>> playTable control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playTable type System.Web.UI.WebControls.Table protected.
-      *>> <summary>
-      *>> playValueField control.
-      *>> </summary>
-      *>> <remarks>
-      *>> Auto-generated field.
-      *>> To modify move field declaration from designer file to code-behind file.
-      *>> </remarks>
-       01 playValueField type System.Web.UI.WebControls.HiddenField protected.
-      *>> <summary>
       *>> playIndexField control.
       *>> </summary>
       *>> <remarks>
@@ -149,6 +125,14 @@
       *>> To modify move field declaration from designer file to code-behind file.
       *>> </remarks>
        01 playIndexField type System.Web.UI.WebControls.HiddenField protected.
+      *>> <summary>
+      *>> playsField control.
+      *>> </summary>
+      *>> <remarks>
+      *>> Auto-generated field.
+      *>> To modify move field declaration from designer file to code-behind file.
+      *>> </remarks>
+       01 playsField type System.Web.UI.WebControls.HiddenField protected.
       *>> <summary>
       *>> ddNhlEvent control.
       *>> </summary>

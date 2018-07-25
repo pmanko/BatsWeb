@@ -7,10 +7,10 @@
     <script type="text/javascript" src="Scripts/gamesummary.js"></script> 
     <script type="text/javascript" src="Scripts/callBatstube.js"></script> 
     <meta name="format-detection" content="telephone=no" />
-    <link type="text/css" href="/dist/styles/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <%--<link type="text/css" href="/dist/styles/dataTables.bootstrap.min.css" rel="stylesheet" />--%>
     <link type="text/css" href="/dist/styles/select.bootstrap.min.css" rel="stylesheet" />
     <script type="text/javascript" src="/dist/scripts/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="/dist/scripts/dataTables.bootstrap.min.js"></script>
+    <%--<script type="text/javascript" src="/dist/scripts/dataTables.bootstrap.min.js"></script>--%>
     <script type="text/javascript" src="/dist/scripts/dataTables.select.min.js"></script>
 </asp:Content>
 
@@ -22,6 +22,8 @@
                     <div class="panel-title">List of Games</div>
                 </div>--%>
                 <div class="panel-body padding-none">
+                    <div class="row">
+                    <div class="col-xs-12">
 <%--                <div class="listbox-replacement-wrapper">
                     <asp:Table id="gamesTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                                 data-index-field="#MainContent_gamesIndexField" 
@@ -34,10 +36,12 @@
                     </asp:TableHeaderRow>
                     </asp:Table>
                 </div>--%>
-                <table id="vis" class="table table-hover table-striped" style="width:100%"> </table>
-                <asp:HiddenField ID="gamesValueField" runat="server" onvaluechanged="gameSelected" />
+                <table id="gamesTable" class="table table-hover table-striped" style="width:100%;height:250px;margin-top:0;margin-bottom:0"> </table>
+                <%--<asp:HiddenField ID="gamesValueField" runat="server" onvaluechanged="gameSelected" />--%>
                 <asp:HiddenField ID="gamesIndexField" runat="server"   />
-                <asp:HiddenField ID="visField" runat="server" />
+                <asp:HiddenField ID="gamesField" runat="server" />
+                </div>
+                </div>
                 </div>
                 <%--<br />--%>
                 <div class="panel-footer">
@@ -145,13 +149,14 @@
             <br />
 
             <div class="panel panel-default">
-                <div class="panel-heading">
+<%--                <div class="panel-heading">
                     <div class="panel-title">Play Summary</div>
-                </div>
+                </div>--%>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-                <div class="listbox-replacement-wrapper">
-                    <asp:Table id="playTable" runat="server" class="table table-condensed table-bordered table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
+                <div class='panel-body padding-none'>
+ <%--               <div class="playsTable_wrapper">
+                    <asp:Table id="playTable" runat="server" class="table table-condensed table-bordered table-striped table-hover table-no-grid listbox-replacement listbox-replacement-clickable" 
                     data-value-field="#MainContent_playValueField" 
                     data-index-field="#MainContent_playIndexField" 
                     data-postback="false" 
@@ -160,11 +165,12 @@
                     data-on-dblclick-select="playUpdateDblclick"
                     >
                                                                      
-                    </asp:Table>
-                </div>
-                <asp:HiddenField ID="playValueField" runat="server" />
+                    </asp:Table>--%>
+                    <table id="playsTable" class="table table-hover table-striped" style="width:100%;height:250px;margin-top:0;margin-bottom:0"> </table>
+                <%--<asp:HiddenField ID="playValueField" runat="server" />--%>
                 <asp:HiddenField ID="playIndexField" runat="server"  />
-                                    
+                <asp:HiddenField ID="playsField" runat="server" />        
+                </div>
                 <div class="panel-footer">
                     <div class='row'>
                         <div class="col-xs-6">

@@ -1,7 +1,5 @@
-﻿var VidApp = angular.module('VidApp', ['ngRoute']);
+var VidApp = angular.module('VidApp', ['ngRoute']);
 VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope, $http, $location) {
-
-
     $scope.model = {
         currentVideo: undefined
     };
@@ -65,8 +63,10 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     };
     $scope.setupVideos();
     $scope.model.currentVideo = $scope.sentVideos[0];
+    console.log('yo');
 
-    videojs("main_vid", { "controls": true, "autoplay": false, "preload": "auto", techOrder: ["html5", "flash"] }, function () {
+    videojs("main_vid", { "controls": true, "autoplay": false, "preload": false }, function () {
+        console.log('loadstart');
         this.trigger("loadstart");
         this.src([{ type: "video/mp4", src: $scope.model.currentVideo.path }]);
         this.errorDisplay.close();
@@ -107,10 +107,13 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
     }
 
     $scope.setCurrentVideo = function (newVid) {
-        $scope.checkChanged();
+        console.log(newVid);
+        //$scope.checkChanged();
         $scope.model.currentVideo = newVid;
+        console.log('setCurr');
 
         videojs("main_vid").ready(function () {
+            console.log('ready');
             var myvid = this;
             var currentRate = myvid.playbackRate();
             myvid.errorDisplay.close();
@@ -119,6 +122,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
             myvid.addClass("embed-responsive-item");
 
             myvid.defaultPlaybackRate = currentRate;
+            console.log('play');
             myvid.play();
             this.playbackRate(currentRate);
         });
@@ -266,6 +270,7 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
 
     $scope.removeClip = function () {
         videojs("main_vid").ready(function () {
+            var indexToSet = $scope.myIndexOf($scope.model.currentVideo);
             for (var i = 0; i < videoPaths.length; i++) {
                 if ($scope.model.currentVideo.path == videoPaths[i]) {
                     videoPaths.splice(i, 1)
@@ -275,8 +280,11 @@ VidApp.controller('VideoCtrl', ['$scope', '$http', '$location', function ($scope
             }
             $scope.setupVideos();
             var myvid = this;
+            //console.log($scope.model.currentVideo);
+            $scope.setCurrentVideo($scope.sentVideos[indexToSet]);
             myvid.play();
-            myvid.currentTime(myvid.src().substring(myvid.src().indexOf(',') + 1));
+            myvid.pause();
+            //myvid.currentTime(myvid.src().substring(myvid.src().indexOf(',') + 1));
         });
     };
 

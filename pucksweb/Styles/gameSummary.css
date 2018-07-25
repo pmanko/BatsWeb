@@ -1,5 +1,5 @@
 ﻿/* Game Table Styles*/
-#MainContent_gamesTable {
+/*#MainContent_gamesTable {
     border-radius:5px;
     -moz-border-radius:5px;
     font-size: medium;
@@ -16,10 +16,14 @@
 
 #MainContent_gamesTable thead {
     border-bottom: 2px #ddd solid;
-}
+}*/
 
 /***/
 /* current Inning Table Styles*/
+
+.table {
+    cursor: pointer;
+}
 
 #MainContent_playTable td, #MainContent_playTable th {
     padding-left: 20px;
@@ -91,7 +95,3 @@
     left:0px;
 /*background-color: rgba(255, 0, 0, .1);*/
 }
-
-/*.selected{
-    background-color: #337ab7;
-}*/

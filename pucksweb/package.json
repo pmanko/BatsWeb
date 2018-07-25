@@ -10,8 +10,13 @@
   "license": "Copyright",
   "devDependencies": {},
   "dependencies": {
+    "angular": "^1.7.2",
+    "angular-route": "^1.7.2",
     "bootstrap-sass": "^3.3.7",
+    "bootstrap-select": "^1.13.1",
     "components-font-awesome": "^5.0.6",
+    "datatables": "^1.10.18",
+    "datatables.net-select": "^1.2.7",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",

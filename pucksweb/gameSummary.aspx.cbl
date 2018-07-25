@@ -299,7 +299,7 @@
            set address of PK360-DIALOG-FIELDS to myData::tablePointer 
       *    invoke gamesTable::Rows::Clear()
       *    invoke self::addTableRow(gamesTable, " Date       Vis                     Score Home                    Score Video Gametype"::Replace(" ", "&nbsp;"), 'h')
-           set visField::Value to ""
+           set gamesField::Value to ""
            move 1 to aa.
        5-loop.
            if aa > PK360-NUM-GAMES
@@ -314,8 +314,8 @@
       *    PK360-G-VIS(aa) & " " & PK360-G-VIS-SCORE(aa) & " " & PK360-G-HOME(aa) & " " & PK360-G-HOME-SCORE(aa) & " " & PK360-G-VIDEO(aa) & " " & PK360-G-PLAYOFF(AA)
       *    INSPECT dataline REPLACING ALL " " BY X'A0'
       *    invoke self::addTableRow(gamesTable, " " & dataLine, 'b').
-           set visField::Value to visField::Value & PK360-G-DSP-DATE(AA)::ToString("0#/##/##") & "," &
-           PK360-G-VIS(aa) & "," & PK360-G-VIS-SCORE(aa) & "," & PK360-G-HOME(aa) & "," & PK360-G-HOME-SCORE(aa) & "," & PK360-G-PLAYOFF(AA) & ";"
+           set gamesField::Value to gamesField::Value & PK360-G-DSP-DATE(AA)::ToString("0#/##/##") & "," &
+           PK360-G-VIS(aa)::Trim & "," & PK360-G-VIS-SCORE(aa) & "," & PK360-G-HOME(aa)::Trim & "," & PK360-G-HOME-SCORE(aa) & "," & PK360-G-PLAYOFF(AA) & ";"
            add 1 to aa.
            go to 5-loop.
        10-done.
@@ -327,14 +327,15 @@
        procedure division.
            set mydata to self::Session["pk360data"] as type pucksweb.pk360Data
            set address of PK360-DIALOG-FIELDS to myData::tablePointer 
-           invoke playTable::Rows::Clear()
-           invoke self::addTableRow(playTable, "Pd V H   Description"::Replace(" ", "&nbsp;"), 'h')
-
+      *    invoke playTable::Rows::Clear()
+      *    invoke self::addTableRow(playTable, "Pd V H   Description"::Replace(" ", "&nbsp;"), 'h')
+           set playsField::Value to ""
            move 1 to aa.
        5-loop.
            if aa > PK360-NUM-LINES
                go to 10-done.
-           invoke self::addTableRow(playTable, " " & PK360-DATA-LINE(AA), 'b').
+      *    invoke self::addTableRow(playTable, " " & PK360-DATA-LINE(AA), 'b').
+           set playsField::Value to playsField::Value & PK360-DATA-LINE(AA)::Trim & ";"
       *        MOVE BAT360-AB-LINE(AA) TO WS-DATA-LINE, WS-DATA-LINE2
       *        MOVE SPACES TO WS-ASTERISK
       *        IF WS-DATA-L = SPACES
@@ -681,9 +682,9 @@
            set pk360rununit to self::Session::Item("360rununit")
                as type RunUnit
 
-           if GamesValueField::Value = null or spaces
-               invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a game');", true)
-               exit method.
+      *    if GamesValueField::Value = null or spaces
+      *        invoke self::ClientScript::RegisterStartupScript(self::GetType(), "AlertBox", "alert('You must select a game');", true)
+      *        exit method.
 
            invoke self::loadStats
        end method.
@@ -712,20 +713,22 @@
        01 temp type String.
        linkage section.
            COPY "Y:\SYDEXSOURCE\pucks\pk360_dg.CPB".
-       procedure division using by value sender as object e as type System.EventArgs.
+       procedure division using by value indexString as type String 
+                          returning playReturn as type String.
            set mydata to self::Session["pk360data"] as type pucksweb.pk360Data
            set address of PK360-DIALOG-FIELDS to myData::tablePointer 
            set pk360rununit to self::Session::Item("360rununit")
                as type RunUnit
 
-           set PK360-SEL-GAME TO (type Int32::Parse(gamesIndexField::Value) + 1)
-           invoke self::loadStats
+                  set PK360-SEL-GAME TO (type Int32::Parse(indexString) + 1)
+      *           set gamesIndexField::Value TO PK360-SEL-GAME
+           set playReturn to self::loadStats
        end method.
 
        method-id loadStats protected.
        linkage section.
            COPY "Y:\SYDEXSOURCE\pucks\pk360_dg.CPB".
-       procedure division.
+       procedure division returning playReturn as type String.
            set mydata to self::Session["pk360data"] as type pucksweb.pk360Data
            set address of PK360-DIALOG-FIELDS to myData::tablePointer 
            set pk360rununit to self::Session::Item("360rununit")
@@ -774,6 +777,7 @@
                set ddCustomEvent::SelectedIndex to 0.
            set firstTimeFlag to "N"
                       
+      *    set playReturn to self::loadStats
            invoke self::loadLines
 
        end method.
@@ -802,7 +806,9 @@
            if aa = selected::Count
                go to videos-done.
 
-           set PK360-SEL-LINES to selected[aa] + 1
+           set PK360-SEL-LINES to selected[aa]
+      *   now longer need plus 1 for rowindex
+      *    set PK360-SEL-LINES to selected[aa] + 1
            move PK360-SEL-LINES to PK360-LINE-IP        
            move "Y" to PK360-ANY-FOUND
            move "Y" to PK360-SHOW-EVENT(PK360-LINE-IP).
@@ -1305,7 +1311,7 @@
            if aa = selected::Count
                go to videos-done.
 
-           set PK360-SEL-LINES to selected[aa] + 1
+           set PK360-SEL-LINES to selected[aa] 
            move PK360-SEL-LINES to PK360-LINE-IP        
            move "Y" to PK360-ANY-FOUND
            move "Y" to PK360-SHOW-EVENT(PK360-LINE-IP).
@@ -1346,7 +1352,7 @@
            if aa = selected::Count
                go to videos-done.
 
-           set PK360-SEL-LINES to selected[aa] + 1
+           set PK360-SEL-LINES to selected[aa]
            move PK360-SEL-LINES to PK360-LINE-IP        
            move "Y" to PK360-ANY-FOUND
            move "Y" to PK360-SHOW-EVENT(PK360-LINE-IP).
